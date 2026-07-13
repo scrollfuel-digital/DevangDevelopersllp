@@ -35,7 +35,7 @@ const NAV_LINKS = [
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
-    
+
     const [hovered, setHovered] = useState(NAV_LINKS[2])
 
     useEffect(() => {
@@ -44,31 +44,31 @@ const Navbar = () => {
 
     return (
         <>
-            {/* Logo - NOT sticky */}
-            <div className="absolute top-0 left-0 z-30 px-6 md:px-10 py-5">
+            {/* Logo - NOT sticky. Scales down through mobile / tablet / desktop */}
+            <div className="absolute top-0 left-0 z-30 px-4 sm:px-6 md:px-10 py-4 sm:py-5">
                 <img
                     src="/Devang Logo.png"
                     alt="Devang Logo"
-                    className="h-28 md:h-36 w-auto object-contain"
+                    className="h-16 sm:h-20 md:h-28 lg:h-36 w-auto object-contain"
                 />
             </div>
 
-            <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-end px-8 md:px-14 py-7">
+            <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-end px-5 sm:px-8 md:px-10 lg:px-14 py-5 sm:py-6 lg:py-7">
                 <button
                     onClick={() => setOpen(true)}
-                    className="flex items-center gap-3 text-[#F3EEE6] group"
+                    className="flex items-center gap-2 sm:gap-3 text-[#F3EEE6] group"
                     aria-label="Open menu"
                 >
                     <span
-                        className="hidden sm:inline text-[11px] tracking-[0.25em] uppercase"
+                        className="hidden sm:inline text-[10px] md:text-[11px] tracking-[0.25em] uppercase"
                         style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                         Menu
                     </span>
 
-                    <span className="flex flex-col gap-[5px] w-6">
+                    <span className="flex flex-col gap-[4px] sm:gap-[5px] w-5 sm:w-6">
                         <span className="h-[1.5px] w-full bg-[#F3EEE6] transition-all group-hover:bg-[#A9814A]" />
-                        <span className="h-[1.5px] w-4 self-end bg-[#F3EEE6] transition-all group-hover:w-full group-hover:bg-[#A9814A]" />
+                        <span className="h-[1.5px] w-3.5 sm:w-4 self-end bg-[#F3EEE6] transition-all group-hover:w-full group-hover:bg-[#A9814A]" />
                     </span>
                 </button>
             </header>
@@ -82,14 +82,14 @@ const Navbar = () => {
             >
                 <button
                     onClick={() => setOpen(false)}
-                    className="absolute top-7 right-8 md:right-14 flex items-center gap-3 text-[#F3EEE6] hover:text-[#A9814A] transition-colors z-10"
+                    className="absolute top-5 right-5 sm:top-7 sm:right-8 md:right-14 flex items-center gap-2 sm:gap-3 text-[#F3EEE6] hover:text-[#A9814A] transition-colors z-10"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                    <span className="text-[11px] tracking-[0.25em] uppercase">
+                    <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase">
                         Close
                     </span>
 
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="sm:w-4 sm:h-4">
                         <path
                             d="M1 1L15 15M15 1L1 15"
                             stroke="currentColor"
@@ -98,19 +98,19 @@ const Navbar = () => {
                     </svg>
                 </button>
 
-                <div className="flex h-full">
+                <div className="flex flex-col lg:flex-row h-full">
                     {/* Links */}
-                    <nav className="relative w-full md:w-[420px] border-r border-[#F3EEE6]/10 flex flex-col justify-center px-8 md:px-14 py-24 overflow-y-auto">
+                    <nav className="relative w-full lg:w-[420px] lg:border-r border-[#F3EEE6]/10 flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-20 sm:py-24 h-full overflow-y-auto">
                         {NAV_LINKS.map((link) => (
                             <a
                                 key={link.label}
                                 href={`#${link.label.toLowerCase()}`}
                                 onMouseEnter={() => setHovered(link)}
                                 onClick={() => setOpen(false)}
-                                className="group relative py-3"
+                                className="group relative py-2.5 sm:py-3"
                             >
                                 <span
-                                    className="text-[13px] md:text-[14px] tracking-[0.3em] uppercase text-[#F3EEE6]/70 group-hover:text-[#A9814A] transition-colors duration-300"
+                                    className="text-[15px] sm:text-[16px] md:text-[14px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#F3EEE6]/70 group-hover:text-[#A9814A] transition-colors duration-300"
                                     style={{ fontFamily: "'Inter', sans-serif" }}
                                 >
                                     {link.label}
@@ -121,8 +121,10 @@ const Navbar = () => {
                         ))}
                     </nav>
 
-                    {/* Preview Images */}
-                    <div className="hidden md:block relative flex-1 overflow-hidden">
+                    {/* Preview Images - desktop / large tablet landscape only.
+                        A cramped side-by-side split doesn't work below 1024px, so it's
+                        hidden on phones and portrait tablets rather than shrunk. */}
+                    <div className="hidden lg:block relative flex-1 overflow-hidden">
                         {NAV_LINKS.map((link) => (
                             <img
                                 key={link.label}
@@ -145,10 +147,10 @@ const Navbar = () => {
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                         setOpen(false)
                     }}
-                    className="absolute bottom-7 right-7 md:right-10 w-11 h-11 bg-[#A9814A] flex items-center justify-center hover:bg-[#C9A874] transition-colors"
+                    className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 md:right-10 w-10 h-10 sm:w-11 sm:h-11 bg-[#A9814A] flex items-center justify-center hover:bg-[#C9A874] transition-colors"
                     aria-label="Back to top"
                 >
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="sm:w-3 sm:h-3">
                         <path d="M6 0L11 8H1L6 0Z" fill="#14120F" />
                     </svg>
                 </button>
