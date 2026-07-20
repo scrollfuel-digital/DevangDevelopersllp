@@ -121,9 +121,6 @@ const Navbar = () => {
                         ))}
                     </nav>
 
-                    {/* Preview Images - desktop / large tablet landscape only.
-                        A cramped side-by-side split doesn't work below 1024px, so it's
-                        hidden on phones and portrait tablets rather than shrunk. */}
                     <div className="hidden lg:block relative flex-1 overflow-hidden">
                         {NAV_LINKS.map((link) => (
                             <img
