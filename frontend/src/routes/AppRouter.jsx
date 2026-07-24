@@ -1,30 +1,22 @@
-import { Routes, Route } from "react-router-dom";
+import React from 'react'
+import Home from '../pages/Home'
+import Project from '../pages/Project'
+import About from '../pages/About'
+import Contact from '../pages/Contact'
+import Gallery from '../pages/Gallery'
+import Blog from '../pages/Blog'
 
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Project from "../pages/Project";
-import Gallery from "../pages/Gallery";
-import Blog from "../pages/Blog";
-import Contact from "../pages/Contact";
-
-function HomePage() {
+const AppRouter = () => {
   return (
     <>
-      <Home />
-      <About />
-      <Project />
-      <Gallery />
-      <Blog />
+        <Home />
+        <About />
+        <Project />
+        <Gallery />
+        <Blog />
+        <Contact />
     </>
-  );
+  )
 }
 
-export default function AppRouter() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
-  );
-}
+export default AppRouter

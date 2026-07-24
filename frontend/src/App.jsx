@@ -7,9 +7,9 @@ function App() {
     <div className="min-h-screen bg-transparent">
       <Navbar />
 
-      <main>
-        <AppRouter />
-      </main>
+      <Routes>
+        <Route path="/" element={<AppRouter />}/>
+      </Routes>
 
       <Footer />
     </div>
