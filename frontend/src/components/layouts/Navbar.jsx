@@ -39,6 +39,7 @@ const NAV_LINKS = [
     },
 ];
 const Navbar = () => {
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false)
 
     const [hovered, setHovered] = useState(NAV_LINKS[2])
@@ -111,8 +112,19 @@ const Navbar = () => {
                                 key={link.label}
                                 to={link.path}
                                 onMouseEnter={() => setHovered(link)}
-                                onClick={() => setOpen(false)}
-                                className="group relative py-2.5 sm:py-3"
+                                onClick={() => {
+                                    setOpen(false)
+                                    if (link.path.startsWith('/')) {
+                                        navigate(link.path)
+                                    } else {
+                                        const section = link.path.replace('#', '')
+                                        const element = document.getElementById(section)
+                                        if (element) {
+                                            element.scrollIntoView({ behavior: 'smooth' })
+                                        }
+                                    }
+                                }}
+                                className="group relative py-2.5 sm:py-3 text-left"
                             >
                                 <span
                                     className="text-[15px] sm:text-[16px] md:text-[14px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#F3EEE6]/70 group-hover:text-[#A9814A] transition-colors duration-300"
