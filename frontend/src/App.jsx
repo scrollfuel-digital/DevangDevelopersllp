@@ -4,15 +4,13 @@ import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
-    <div className="min-h-screen bg-transparent">
+    <>
       <Navbar />
 
-      <main>
-        <AppRouter />
-      </main>
+      <AppRouter />
 
       <Footer />
-    </div>
+    </>
   );
 }
 

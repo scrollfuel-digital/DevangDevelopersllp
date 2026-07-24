@@ -1,45 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 const NAV_LINKS = [
     {
-        label: 'Home',
-        path: '/',
+        label: "Home",
+        path: "/",
         image:
-            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: 'About',
-        path: '#about',
+        label: "About",
+        path: "/about",
         image:
-            'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: 'Residences',
-        path: '#residences',
+        label: "Project",
+        path: "/project",
         image:
-            'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80',
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: 'Amenities',
-        path: '#amenities',
+        label: "Gallery",
+        path: "/gallery",
         image:
-            'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1600&q=80',
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: 'Gallery',
-        path: '#gallery',
+        label: "Blog",
+        path: "/blog",
         image:
-            'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80',
+            "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: 'Contact',
-        path: '/contact',
+        label: "Contact",
+        path: "/contact",
         image:
-            'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80',
+            "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
     },
-]
-
+];
 const Navbar = () => {
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
@@ -110,8 +108,9 @@ const Navbar = () => {
                     {/* Links */}
                     <nav className="relative w-full lg:w-[420px] lg:border-r border-[#F3EEE6]/10 flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-20 sm:py-24 h-full overflow-y-auto">
                         {NAV_LINKS.map((link) => (
-                            <button
+                            <NavLink
                                 key={link.label}
+                                to={link.path}
                                 onMouseEnter={() => setHovered(link)}
                                 onClick={() => {
                                     setOpen(false)
@@ -135,7 +134,7 @@ const Navbar = () => {
                                 </span>
 
                                 <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-[#A9814A] transition-all duration-300 group-hover:w-10" />
-                            </button>
+                            </NavLink>
                         ))}
                     </nav>
 
