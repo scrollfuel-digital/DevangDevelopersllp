@@ -13,8 +13,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import projectImg from "../assets/riddhi.jpg";
-export function Project() {
-  const navigate = useNavigate();
+
+function Project() {
   return (
     <section className="relative overflow-hidden bg-[#f9f6f1] py-24">
 
@@ -319,3 +319,5 @@ export function Project() {
     </section>
   );
 }
+
+export default Project

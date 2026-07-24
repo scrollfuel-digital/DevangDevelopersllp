@@ -91,7 +91,7 @@ function LinkItem({ icon: Icon, label, href }) {
     );
 }
 
-export default function About() {
+ function About() {
     return (
         <section
             className="w-full py-15 px-6 md:px-6"
@@ -162,3 +162,4 @@ export default function About() {
         </section>
     );
 }
+export default About;
