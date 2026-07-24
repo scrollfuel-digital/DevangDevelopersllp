@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Trees,
   Building2,
@@ -8,313 +9,346 @@ import {
   Zap,
   Landmark,
   ArrowRight,
+  Award,
+  Users,
+  CalendarClock,
+  MapPin,
+  Hammer,
+  CheckCircle2,
 } from "lucide-react";
 
-import projectImg from "../assets/riddhi.jpg";
+// ── Ongoing projects ─────────────────────────────────────────────
+import riddhiSiddhiImg from "../assets/projects/riddhisiddhibuilding.jpg";
+import mangalmurtiImg from "../assets/projects/mangalmurti-residency.jpg";
+
+// ── Completed projects ("Our Footprints") ────────────────────────
+import vakratundImg from "../assets/projects/vakratund-heights.jpg";
+import vignahartaImg from "../assets/projects/vignaharta-enclave.jpg";
+import manomayImg from "../assets/projects/manomay-plaza.jpg";
+import shreyasImg from "../assets/projects/shreyas-apartment.jpg";
+import kirtiKalyaniImg from "../assets/projects/kirti-kalyani-apartment.jpg";
+import avneeshImg from "../assets/projects/avneesh-apartment.jpg";
+import gaurisutImg from "../assets/projects/gaurisut-apartment.jpg";
+import riddhiSiddhiHeightsImg from "../assets/projects/riddhi-siddhi-heights-dharampeth.jpg";
+
+// ── Data ──────────────────────────────────────────────────────────
+
+const stats = [
+  { icon: CalendarClock, value: "18+", label: "Years of Experience" },
+  { icon: Users, value: "100+", label: "Happy Families" },
+  { icon: Award, value: "2022", label: "Iconic Realtors Award" },
+];
+
+const ongoingProjects = [
+  {
+    name: "129 Riddhi Siddhi Heights",
+    location: "Pandey Layout, Khamla Road, Nagpur",
+    tag: "Premium Residential Apartments",
+    image: riddhiSiddhiImg,
+    rera: "RERA Approved",
+    reraNo: "P505000XXXX",
+    description:
+      "A striking high-rise crafted for peaceful community living, backed by excellent connectivity to the city's major destinations, quality construction, and thoughtfully designed modern amenities.",
+    features: [
+      { icon: Building2, label: "High-Rise", sub: "Tower" },
+      { icon: ShieldCheck, label: "Gated", sub: "Community" },
+      { icon: Route, label: "Wide", sub: "Access Roads" },
+      { icon: Leaf, label: "Landscaped", sub: "Green Spaces" },
+    ],
+    amenities: [
+      { icon: ShieldCheck, label: "24/7 Security" },
+      { icon: Trees, label: "Avenue Plantation" },
+      { icon: Droplets, label: "Water Connection" },
+      { icon: Zap, label: "Power Backup" },
+      { icon: Landmark, label: "Clubhouse & Amenities" },
+    ],
+  },
+  {
+    name: "Mangalmurti Residency",
+    location: "Parsodi, Wardha Road, Nagpur",
+    tag: "Group Housing Project · by Devprath Constructions LLP",
+    image: mangalmurtiImg,
+    description:
+      "Exemplifying innovative design and sublime craftsmanship, Mangalmurti Residency is an all-new group housing development by our sister concern, Devprath Constructions LLP.",
+  },
+];
+
+const footprints = [
+  { name: "Vakratund Heights", location: "Shivaji Nagar, Nagpur", image: vakratundImg },
+  { name: "Vignaharta Enclave", location: "Laxmi Nagar, Nagpur", image: vignahartaImg },
+  { name: "Manomay Plaza", location: "Ramdaspeth, Nagpur", image: manomayImg },
+  { name: "Shreyas Apartment", location: "Ramdaspeth, Nagpur", image: shreyasImg },
+  { name: "Kirti Kalyani Apartment", location: "Laxmi Nagar, Nagpur", image: kirtiKalyaniImg },
+  { name: "Avneesh Apartment", location: "Wardha Road, Nagpur", image: avneeshImg },
+  { name: "Gaurisut Apartment", location: "Jaiprakash Nagar, Nagpur", image: gaurisutImg },
+  { name: "Riddhi Siddhi Heights", location: "Dharampeth, Nagpur", image: riddhiSiddhiHeightsImg },
+];
+
+// ── Component ─────────────────────────────────────────────────────
 
 function Project() {
-  return (
-    <section className="relative overflow-hidden bg-[#f9f6f1] py-24">
+  const [tab, setTab] = useState("ongoing");
 
-      {/* Background Blur */}
-      <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#efe6d8] blur-[120px]" />
-      <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-[#efe6d8] blur-[120px]" />
+  return (
+    <section className="relative overflow-hidden bg-[#faf7f0] py-24">
+      {/* Background glow */}
+      <div className="pointer-events-none absolute left-0 top-0 h-72 w-72 rounded-full bg-[#f1e3d3] blur-[120px]" />
+      <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-[#f1e3d3] blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-
-        {/* Heading */}
-
-        <div className="mb-16 text-center">
-
-          <div className="flex items-center justify-center gap-5 text-[#b98d45]">
-
-            <div className="h-px w-20 bg-[#c8a66a]" />
-
-            <span className="uppercase tracking-[5px] text-sm font-medium">
-              FEATURED PROJECTS
+        {/* ── Heading ───────────────────────────────────────────── */}
+        <div className="mb-14 text-center">
+          <div className="flex items-center justify-center gap-5 text-[#a97c3a]">
+            <div className="h-px w-20 bg-[#c9a961]" />
+            <span className="text-sm font-medium uppercase tracking-[5px]">
+              Devang Developers LLP
             </span>
-
-            <div className="h-px w-20 bg-[#c8a66a]" />
-
+            <div className="h-px w-20 bg-[#c9a961]" />
           </div>
 
-          <h2 className="mt-6 text-6xl font-serif leading-tight text-[#173629]">
-            Every project by Devang Developers
+          <h2 className="mt-5 font-serif text-4xl leading-tight text-[#5c1a2e] sm:mt-6 sm:text-5xl lg:text-6xl">
+            Walls of Happiness
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-xl text-gray-600">
-            reflects our dedication to thoughtful planning,
-            superior construction quality,
-            and modern lifestyle experiences.
+          <p className="mx-auto mt-4 max-w-3xl text-base text-gray-600 sm:mt-6 sm:text-lg lg:text-xl">
+            18+ years of delivering premium homes at valued prices — every
+            project reflects our commitment to thoughtful planning, superior
+            construction quality, and modern lifestyle experiences.
           </p>
 
-          <div className="mt-6 text-2xl text-[#c8a66a]">
-            ❦
+          {/* Stats strip */}
+          <div className="mx-auto mt-8 grid max-w-2xl grid-cols-3 gap-3 sm:mt-10 sm:gap-6">
+            {stats.map(({ icon: Icon, value, label }) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-[#ece0cd] bg-white/70 px-2 py-4 shadow-sm sm:px-4 sm:py-6"
+              >
+                <Icon className="mx-auto text-[#a97c3a]" size={22} />
+                <p className="mt-2 font-serif text-xl text-[#5c1a2e] sm:mt-3 sm:text-3xl">{value}</p>
+                <p className="mt-1 text-[11px] text-gray-500 sm:text-sm">{label}</p>
+              </div>
+            ))}
           </div>
-
         </div>
 
-        {/* Card */}
+        {/* ── Tabs ──────────────────────────────────────────────── */}
+        <div className="mb-10 flex items-center justify-center gap-2.5 px-4 sm:mb-12 sm:gap-3">
+          <button
+            onClick={() => setTab("ongoing")}
+            className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-[1.5px] transition sm:px-7 sm:py-3 sm:text-sm sm:tracking-[2px] ${tab === "ongoing"
+              ? "bg-[#5c1a2e] text-white shadow-lg"
+              : "border border-[#ddc9a3] text-[#5c1a2e] hover:bg-[#f1e3d3]"
+              }`}
+          >
+            <Hammer size={15} />
+            Ongoing Projects
+          </button>
+          <button
+            onClick={() => setTab("completed")}
+            className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-[1.5px] transition sm:px-7 sm:py-3 sm:text-sm sm:tracking-[2px] ${tab === "completed"
+              ? "bg-[#5c1a2e] text-white shadow-lg"
+              : "border border-[#ddc9a3] text-[#5c1a2e] hover:bg-[#f1e3d3]"
+              }`}
+          >
+            <CheckCircle2 size={15} />
+            Our Footprints
+          </button>
+        </div>
 
-        <div className="overflow-hidden rounded-[35px] border border-[#ece5d8] bg-white shadow-xl">
+        {/* ── Ongoing Projects ──────────────────────────────────── */}
+        {tab === "ongoing" && (
+          <div className="space-y-14">
+            {/* Featured project: 129 Riddhi Siddhi Heights */}
+            <div className="overflow-hidden rounded-[28px] border border-[#ece0cd] bg-white shadow-xl sm:rounded-[35px]">
+              <div className="grid lg:grid-cols-2">
+                {/* Left image */}
+                <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-[200px] lg:min-h-[560px]">
+                  <img
+                    src={ongoingProjects[0].image}
+                    alt={ongoingProjects[0].name}
+                    className="h-full w-full object-cover object-center"
+                  />
+                  {/* subtle gradient so badge always reads clearly */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent" />
 
-          <div className="grid lg:grid-cols-2">
+                  <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-white/95 py-2 pl-2 pr-4 shadow-md backdrop-blur-sm sm:left-5 sm:top-5">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#5c1a2e] text-white">
+                      <ShieldCheck size={15} />
+                    </span>
+                    <div className="leading-tight">
+                      <p className="text-xs font-semibold text-[#5c1a2e]">
+                        {ongoingProjects[0].rera}
+                      </p>
+                      <p className="text-[11px] text-gray-500">{ongoingProjects[0].reraNo}</p>
+                    </div>
+                  </div>
+                </div>
 
-            {/* Left */}
-
-            <div className="relative">
-
-              <img
-                src={projectImg}
-                alt="Riddhi Siddhi"
-                className="h-full w-full object-cover"
-              />
-
-              <div className="absolute bottom-7 left-7">
-
-                <div className="flex items-center gap-3 rounded-2xl bg-[#173629] px-6 py-4 text-white shadow-lg">
-
-                  <ShieldCheck size={30} />
-
-                  <div>
-
-                    <p className="font-semibold">
-                      RERA Approved
-                    </p>
-
-                    <p className="text-sm opacity-70">
-                      P505000XXXX
-                    </p>
-
+                {/* Right content */}
+                <div className="flex flex-col justify-center sm:p-2 lg:h-full lg:p-2">
+                  <div className="inline-flex items-center gap-2.5 rounded-full bg-[#faf7f0] px-4 py-1.5 sm:px-5 sm:py-2">
+                    <Leaf size={16} className="shrink-0 text-[#a97c3a]" />
+                    <span className="text-[11px] font-semibold uppercase tracking-[2.5px] text-[#a97c3a] sm:text-xs sm:tracking-[3px]">
+                      {ongoingProjects[0].tag}
+                    </span>
                   </div>
 
-                </div>
+                  <h3 className="mt-4 font-serif text-2xl leading-tight text-[#5c1a2e] sm:text-3xl lg:mt-4 lg:text-4xl">
+                    {ongoingProjects[0].name}
+                  </h3>
 
-              </div>
+                  <div className="mt-2 flex items-center gap-2 text-sm text-gray-500 sm:text-base">
+                    <MapPin size={15} className="shrink-0 text-[#a97c3a]" />
+                    <span>{ongoingProjects[0].location}</span>
+                  </div>
 
-            </div>
+                  <div className="mt-3 h-[2px] w-14 bg-[#c9a961] sm:mt-4 sm:w-16" />
 
-            {/* Right */}
-
-            <div className="p-12 lg:p-14">
-
-              <div className="inline-flex items-center gap-3 rounded-full bg-[#faf8f2] px-5 py-2">
-
-                <Leaf
-                  size={18}
-                  className="text-[#b98d45]"
-                />
-
-                <span className="text-sm font-semibold uppercase tracking-[3px] text-[#b98d45]">
-                  Premium Residential Plots
-                </span>
-
-              </div>
-
-              <h3 className="mt-8 text-6xl font-serif text-[#173629]">
-                Riddhi Siddhi
-              </h3>
-
-              <div className="mt-6 h-[2px] w-20 bg-[#c8a66a]" />
-
-              <p className="mt-8 text-xl leading-10 text-gray-600">
-
-                Riddhi Siddhi is designed to offer peaceful community
-                living while maintaining excellent connectivity to the
-                city's major destinations. Combining quality
-                construction with modern amenities, it creates a
-                comfortable environment where families can flourish.
-
-              </p>
-
-              {/* Features */}
-
-              <div className="mt-12 grid grid-cols-2 gap-8 lg:grid-cols-4">
-
-                <div className="text-center">
-
-                  <Trees
-                    className="mx-auto text-[#b98d45]"
-                    size={38}
-                  />
-
-                  <p className="mt-3 font-semibold">
-                    50+ Acres
+                  <p className="mt-3 text-sm leading-6 text-gray-600 sm:mt-4 sm:text-base sm:leading-7 lg:line-clamp-3">
+                    {ongoingProjects[0].description}
                   </p>
 
-                  <p className="text-gray-500">
-                    Total Land
-                  </p>
+                  {/* Features */}
+                  <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3 lg:grid-cols-4">
+                    {ongoingProjects[0].features.map(({ icon: Icon, label, sub }) => (
+                      <div
+                        key={label}
+                        className="flex flex-col items-center gap-1.5 rounded-2xl border border-[#ece0cd] bg-[#faf7f0]/60 px-3 py-3 text-center"
+                      >
+                        <Icon className="text-[#a97c3a]" size={22} />
+                        <div>
+                          <p className="text-xs font-semibold text-[#3a2a1f] sm:text-sm">{label}</p>
+                          <p className="text-[11px] text-gray-500 sm:text-xs">{sub}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
 
-                </div>
-
-                <div className="text-center">
-
-                  <Building2
-                    className="mx-auto text-[#b98d45]"
-                    size={38}
-                  />
-
-                  <p className="mt-3 font-semibold">
-                    Gated
-                  </p>
-
-                  <p className="text-gray-500">
-                    Community
-                  </p>
-
-                </div>
-
-                <div className="text-center">
-
-                  <Route
-                    className="mx-auto text-[#b98d45]"
-                    size={38}
-                  />
-
-                  <p className="mt-3 font-semibold">
-                    30 & 40 Ft
-                  </p>
-
-                  <p className="text-gray-500">
-                    Wide Roads
-                  </p>
-
-                </div>
-
-                <div className="text-center">
-
-                  <Leaf
-                    className="mx-auto text-[#b98d45]"
-                    size={38}
-                  />
-
-                  <p className="mt-3 font-semibold">
-                    Lush Green
-                  </p>
-
-                  <p className="text-gray-500">
-                    Landscapes
-                  </p>
-
-                </div>
-
-              </div>
-
-              {/* Price */}
-
-              <div className="mt-12 rounded-3xl border border-[#ece5d8] bg-[#fcfaf6] p-6">
-
-                <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-
-                  <div>
-
-                    <p className="text-sm uppercase tracking-[3px] text-gray-500">
-                      Starting From
+                  {/* CTA */}
+                  <div className="mt-4 rounded-2xl border border-[#ece0cd] bg-[#faf7f0] p-4 sm:mt-5 sm:rounded-3xl sm:p-5">
+                    <p className="text-[11px] uppercase tracking-[2.5px] text-gray-500 sm:text-xs sm:tracking-[3px]">
+                      An Ongoing Project By
                     </p>
-
-                    <h4 className="mt-2 text-5xl font-serif text-[#173629]">
-                      ₹18.00 Lakhs*
+                    <h4 className="mt-1 font-serif text-lg text-[#5c1a2e] sm:text-xl">
+                      Devang Developers LLP
                     </h4>
 
+                    <div className="mt-3 flex flex-col gap-2.5 sm:flex-row">
+                      <button className="group flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#5c1a2e] px-6 py-2.5 text-sm font-medium text-white transition hover:bg-[#431321] sm:py-3">
+                        Explore Project
+                        <ArrowRight
+                          size={16}
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </button>
+                      <button className="flex-1 rounded-xl border border-[#c9a961] px-6 py-2.5 text-sm font-medium text-[#a97c3a] transition hover:bg-[#c9a961] hover:text-white sm:py-3">
+                        Book Site Visit
+                      </button>
+                    </div>
                   </div>
-
-                  <div className="flex flex-col gap-4 sm:flex-row">
-
-                    <button className="group flex items-center justify-center gap-3 rounded-xl bg-[#173629] px-8 py-4 text-white transition hover:bg-[#0d261b]">
-
-                      Explore Riddhi Siddhi
-
-                      <ArrowRight
-                        size={18}
-                        className="transition-transform group-hover:translate-x-1"
-                      />
-
-                    </button>
-
-                    <button className="rounded-xl border border-[#c8a66a] px-8 py-4 font-medium text-[#b98d45] transition hover:bg-[#c8a66a] hover:text-white">
-
-                      Book Site Visit
-
-                    </button>
-
-                  </div>
-
                 </div>
-
               </div>
 
+              {/* Bottom amenities strip */}
+              <div className="flex flex-wrap items-center justify-center gap-2.5 border-t border-[#ece0cd] bg-[#faf7f2] px-4 py-6 sm:gap-3 sm:px-8 sm:py-7">
+                {ongoingProjects[0].amenities.map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="flex items-center gap-2 rounded-full border border-[#ece0cd] bg-white px-4 py-2 text-xs text-[#3a2a1f] sm:text-sm"
+                  >
+                    <Icon className="text-[#a97c3a]" size={16} />
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
+            {/* Secondary project: Mangalmurti Residency */}
+            <div className="grid overflow-hidden rounded-[28px] border border-[#ece0cd] bg-white shadow-xl sm:rounded-[35px] lg:grid-cols-2">
+              <div className="p-6 sm:p-10 lg:order-1 lg:p-14">
+                <div className="inline-flex items-center gap-2.5 rounded-full bg-[#faf7f0] px-4 py-1.5 sm:px-5 sm:py-2">
+                  <Building2 size={16} className="shrink-0 text-[#a97c3a]" />
+                  <span className="text-[11px] font-semibold uppercase tracking-[2.5px] text-[#a97c3a] sm:text-xs sm:tracking-[3px]">
+                    {ongoingProjects[1].tag}
+                  </span>
+                </div>
+
+                <h3 className="mt-6 font-serif text-3xl leading-tight text-[#5c1a2e] sm:text-4xl lg:mt-8 lg:text-5xl">
+                  {ongoingProjects[1].name}
+                </h3>
+
+                <div className="mt-3 flex items-center gap-2 text-sm text-gray-500 sm:text-base">
+                  <MapPin size={15} className="shrink-0 text-[#a97c3a]" />
+                  <span>{ongoingProjects[1].location}</span>
+                </div>
+
+                <div className="mt-5 h-[2px] w-16 bg-[#c9a961] sm:mt-6 sm:w-20" />
+
+                <p className="mt-6 text-base leading-8 text-gray-600 sm:mt-8 sm:text-lg sm:leading-9">
+                  {ongoingProjects[1].description}
+                </p>
+
+                <button className="group mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#5c1a2e] px-8 py-3.5 text-sm font-medium text-white transition hover:bg-[#431321] sm:mt-10 sm:w-auto sm:justify-start sm:py-4 sm:text-base">
+                  Enquire Now
+                  <ArrowRight
+                    size={17}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </button>
+              </div>
+
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-[420px]">
+                <img
+                  src={ongoingProjects[1].image}
+                  alt={ongoingProjects[1].name}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+            </div>
           </div>
+        )}
 
-          {/* Bottom */}
+        {/* ── Completed Projects ("Our Footprints") ────────────── */}
+        {tab === "completed" && (
+          <div>
+            <p className="mx-auto mb-8 max-w-3xl text-center text-base text-gray-600 sm:mb-10 sm:text-lg">
+              We've successfully left behind remarkable golden footprints with
+              the help of our highly skilled professionals, whose detailing
+              expertise has kept us consistent in delivering the best.
+            </p>
 
-          <div className="grid grid-cols-2 gap-y-8 border-t border-[#ece5d8] bg-[#faf8f3] px-8 py-8 lg:grid-cols-5">
-
-            <div className="flex items-center justify-center gap-3">
-
-              <ShieldCheck
-                className="text-[#b98d45]"
-                size={28}
-              />
-
-              <span>24/7 Security</span>
-
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
+              {footprints.map((p) => (
+                <div
+                  key={p.name}
+                  className="group overflow-hidden rounded-3xl border border-[#ece0cd] bg-white shadow-sm transition hover:shadow-xl"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden sm:h-48 sm:aspect-auto">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#5c1a2e]">
+                      <CheckCircle2 size={12} className="text-[#a97c3a]" />
+                      Completed
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h4 className="font-serif text-lg text-[#5c1a2e] sm:text-xl">{p.name}</h4>
+                    <div className="mt-2 flex items-center gap-1.5 text-sm text-gray-500">
+                      <MapPin size={14} className="shrink-0 text-[#a97c3a]" />
+                      <span>{p.location}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <div className="flex items-center justify-center gap-3">
-
-              <Trees
-                className="text-[#b98d45]"
-                size={28}
-              />
-
-              <span>Avenue Plantation</span>
-
-            </div>
-
-            <div className="flex items-center justify-center gap-3">
-
-              <Droplets
-                className="text-[#b98d45]"
-                size={28}
-              />
-
-              <span>Water Connection</span>
-
-            </div>
-
-            <div className="flex items-center justify-center gap-3">
-
-              <Zap
-                className="text-[#b98d45]"
-                size={28}
-              />
-
-              <span>Electricity</span>
-
-            </div>
-
-            <div className="flex items-center justify-center gap-3">
-
-              <Landmark
-                className="text-[#b98d45]"
-                size={28}
-              />
-
-              <span>Clubhouse & Amenities</span>
-
-            </div>
-
           </div>
-
-        </div>
-
+        )}
       </div>
-
     </section>
   );
 }
 
-export default Project
+export default Project;
