@@ -10,9 +10,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import projectImg from "../assets/riddhi.jpg";
+import { useNavigate } from "react-router-dom";
 
+import projectImg from "../assets/riddhi.jpg";
 export function Project() {
+  const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden bg-[#f9f6f1] py-24">
 
@@ -221,15 +223,16 @@ export function Project() {
 
                   <div className="flex flex-col gap-4 sm:flex-row">
 
-                    <button className="group flex items-center justify-center gap-3 rounded-xl bg-[#173629] px-8 py-4 text-white transition hover:bg-[#0d261b]">
-
+                    <button
+                      onClick={() => navigate("/riddhi-siddhi")}
+                      className="group flex items-center justify-center gap-3 rounded-xl bg-[#173629] px-8 py-4 text-white transition duration-300 hover:bg-[#0d261b]"
+                    >
                       Explore Riddhi Siddhi
 
                       <ArrowRight
                         size={18}
-                        className="transition-transform group-hover:translate-x-1"
+                        className="transition-transform duration-300 group-hover:translate-x-1"
                       />
-
                     </button>
 
                     <button className="rounded-xl border border-[#c8a66a] px-8 py-4 font-medium text-[#b98d45] transition hover:bg-[#c8a66a] hover:text-white">
