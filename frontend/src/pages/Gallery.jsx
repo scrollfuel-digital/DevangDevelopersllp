@@ -1,149 +1,248 @@
+import React, { useState, useEffect } from "react";
+import {
+  Sparkles,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+
+// GALLERY ITEMS DATA
+const GALLERY_ITEMS = [
+  {
+    id: 1,
+    category: "architecture",
+    title: "Riddhi Siddhi Grand Elevation",
+    project: "Riddhi Siddhi",
+    image:
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 2,
+    category: "interiors",
+    title: "Luxury Living Room Suite",
+    project: "Mangalmurti Residency",
+    image:
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 3,
+    category: "amenities",
+    title: "Resort-Style Swimming Pool",
+    project: "Wing C 129 RSH",
+    image:
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 4,
+    category: "interiors",
+    title: "Designer Modular Kitchen",
+    project: "Riddhi Siddhi",
+    image:
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 5,
+    category: "architecture",
+    title: "Mangalmurti Residential Facade",
+    project: "Mangalmurti Residency",
+    image:
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 6,
+    category: "amenities",
+    title: "Landscaped Central Green Courtyard",
+    project: "Wing C 129 RSH",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 7,
+    category: "interiors",
+    title: "Master Suite & Panoramic Balcony",
+    project: "Mangalmurti Residency",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 8,
+    category: "architecture",
+    title: "Commercial & Luxury Wing C 129 RSH",
+    project: "Wing C 129 RSH",
+    image:
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 9,
+    category: "amenities",
+    title: "Fully Equipped Fitness Center",
+    project: "Riddhi Siddhi",
+    image:
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
 export default function Gallery() {
+  const [filter, setFilter] = useState("all");
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+
+  useEffect(() => {
+    document.title = "Project Gallery | Devang Developers Nagpur";
+  }, []);
+
+  const filteredItems =
+    filter === "all"
+      ? GALLERY_ITEMS
+      : GALLERY_ITEMS.filter((item) => item.category === filter);
+
+  const handlePrevImage = () => {
+    setSelectedImageIndex((prev) =>
+      prev === 0 ? filteredItems.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setSelectedImageIndex((prev) =>
+      prev === filteredItems.length - 1 ? 0 : prev + 1
+    );
+  };
+
   return (
-    <div className="bg-[#8B9B80] min-h-screen py-16 px-5">
-      <div className="max-w-7xl mx-auto bg-white shadow-2xl overflow-hidden">
+    <div className="relative bg-[#FAF6F0] text-[#173629] font-sans antialiased overflow-x-hidden pb-20">
+      {/* GALLERY HERO */}
+      <section className="relative pt-24 pb-20 px-6 bg-[#173629] text-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#b98d45]/20 border border-[#b98d45]/40 text-[#E2C38A] text-xs uppercase tracking-[0.25em] font-semibold mb-6">
+            <Sparkles size={14} /> Architectural Visual Showcase
+          </span>
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
+            Our Project Gallery
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+            Immerse yourself in our portfolio of modern residential apartments, premium commercial developments, and lifestyle amenities in Nagpur.
+          </p>
+        </div>
+      </section>
 
-        {/* Hero */}
-        <section className="relative h-[550px] bg-gray-200">
-
-          {/* Replace with your hero image */}
-          <div className="absolute inset-0 bg-gray-300"></div>
-
-          <div className="absolute inset-0 bg-black/30"></div>
-
-          <div className="absolute left-12 top-1/2 -translate-y-1/2 text-white max-w-xl">
-
-            <p className="uppercase tracking-widest text-sm mb-3">
-              Welcome To Our Gallery
-            </p>
-
-            <h1 className="text-6xl font-bold leading-tight mb-6">
-              MODERN
-              <br />
-              GALLERY DESIGN
-            </h1>
-
-            <p className="text-gray-200 mb-8 leading-7">
-              Showcase your latest projects with a modern and elegant
-              gallery layout.
-            </p>
-
-            <div className="flex gap-5">
-              <button className="bg-[#A56737] px-8 py-3 font-semibold hover:bg-[#8b5429] transition">
-                Explore
-              </button>
-
-              <button className="bg-white text-black px-8 py-3 font-semibold hover:bg-gray-200 transition">
-                Learn More
-              </button>
-            </div>
-
-          </div>
-        </section>
-
-        {/* Gallery Section */}
-
-        <section className="bg-[#6F8661] py-20">
-
-          <h2 className="text-center text-white text-5xl font-bold leading-tight">
-            OUR
-            <br />
-            PROJECT GALLERY
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-10 px-12 mt-16">
-
-            <div className="h-[340px] rounded-3xl bg-gray-200"></div>
-
-            <div className="h-[340px] rounded-3xl bg-gray-200"></div>
-
-            <div className="h-[340px] rounded-3xl bg-gray-200"></div>
-
-          </div>
-
-          <div className="text-center mt-12">
-
-            <button className="bg-[#A56737] text-white px-10 py-3 font-semibold hover:bg-[#8b5429] transition">
-              VIEW MORE
+      {/* MAIN GALLERY SECTION */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        {/* FILTER CATEGORY TABS */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
+          {[
+            { id: "all", label: "All Works" },
+            { id: "architecture", label: "Architecture & Elevations" },
+            { id: "interiors", label: "Luxury Interiors" },
+            { id: "amenities", label: "Amenities & Recreation" },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setFilter(tab.id)}
+              className={`px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition duration-300 ${
+                filter === tab.id
+                  ? "bg-[#b98d45] text-white shadow-xl"
+                  : "bg-white text-[#173629] border border-gray-200 hover:border-[#b98d45]"
+              }`}
+            >
+              {tab.label}
             </button>
-
-            <p className="text-white mt-6 max-w-xl mx-auto">
-              Add your own project photographs here to showcase your
-              completed work.
-            </p>
-
-          </div>
-
-        </section>
-
-        {/* Feature Cards */}
-
-        <div className="relative bg-white pb-20">
-
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-full">
-
-            <div className="flex justify-center gap-10 flex-wrap">
-
-              {[
-                "Premium Quality",
-                "Latest Projects",
-                "Professional Team",
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="w-48 h-32 rounded-3xl bg-[#F7F0DE] shadow-lg flex items-center justify-center text-center font-semibold text-[#A56737]"
-                >
-                  {item}
-                </div>
-              ))}
-
-            </div>
-
-          </div>
-
+          ))}
         </div>
 
-        {/* Experience */}
+        {/* MASONRY IMAGE GRID */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredItems.map((item, index) => (
+            <div
+              key={item.id}
+              onClick={() => setSelectedImageIndex(index)}
+              className="group relative bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 cursor-pointer hover:-translate-y-2 transition duration-500"
+            >
+              <div className="relative h-[380px] overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#173629] via-[#173629]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8 text-white">
+                  <span className="text-[11px] uppercase tracking-[0.2em] text-[#b98d45] font-bold mb-2">
+                    {item.project}
+                  </span>
+                  <h3 className="text-2xl font-serif font-bold leading-snug mb-4">
+                    {item.title}
+                  </h3>
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-white/90">
+                    <Maximize2 size={16} className="text-[#b98d45]" /> Click to Inspect Full Preview
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        <section className="bg-white px-10 lg:px-16 pb-24 pt-28">
-
-          <h2 className="text-5xl font-bold text-[#496A3E] leading-tight">
-            WE CREATE
-            <br />
-            BEAUTIFUL SPACES
-          </h2>
-
-          <p className="max-w-3xl mt-6 text-gray-600 leading-7">
-            Create a professional gallery section for your interior,
-            architecture or construction projects. Simply replace the
-            placeholders with your own images.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-
-            <div className="h-52 rounded-3xl bg-gray-200"></div>
-
-            <div className="h-52 rounded-3xl bg-gray-200"></div>
-
-            <div className="h-52 rounded-3xl bg-gray-200"></div>
-
+      {/* STATS & HIGHLIGHTS */}
+      <section className="bg-[#173629] text-white py-20 px-6 border-y border-[#b98d45]/20">
+        <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+          <div>
+            <h3 className="text-5xl font-serif font-bold text-[#b98d45] mb-2">100%</h3>
+            <p className="text-sm text-gray-300 uppercase tracking-widest">RERA Compliant Projects</p>
           </div>
-
-          <div className="flex justify-center mt-12 gap-3">
-
-            <div className="w-3 h-3 rounded-full bg-[#496A3E]"></div>
-
-            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-
-            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-
-            <div className="w-3 h-3 rounded-full bg-gray-300"></div>
-
+          <div>
+            <h3 className="text-5xl font-serif font-bold text-[#b98d45] mb-2">500+</h3>
+            <p className="text-sm text-gray-300 uppercase tracking-widest">Delivered Spaces</p>
           </div>
+          <div>
+            <h3 className="text-5xl font-serif font-bold text-[#b98d45] mb-2">30+</h3>
+            <p className="text-sm text-gray-300 uppercase tracking-widest">Modern Amenities</p>
+          </div>
+          <div>
+            <h3 className="text-5xl font-serif font-bold text-[#b98d45] mb-2">10+</h3>
+            <p className="text-sm text-gray-300 uppercase tracking-widest">Years Quality Trust</p>
+          </div>
+        </div>
+      </section>
 
-        </section>
+      {/* LIGHTBOX MODAL */}
+      {selectedImageIndex !== null && (
+        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
+          <button
+            onClick={() => setSelectedImageIndex(null)}
+            className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+          >
+            <X size={26} />
+          </button>
 
-      </div>
+          <button
+            onClick={handlePrevImage}
+            className="absolute left-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+          >
+            <ChevronLeft size={30} />
+          </button>
+
+          <button
+            onClick={handleNextImage}
+            className="absolute right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+          >
+            <ChevronRight size={30} />
+          </button>
+
+          <div className="max-w-5xl w-full text-center">
+            <img
+              src={filteredItems[selectedImageIndex].image}
+              alt={filteredItems[selectedImageIndex].title}
+              className="max-h-[75vh] w-auto mx-auto rounded-2xl shadow-2xl object-contain border border-white/20"
+            />
+            <div className="mt-6 text-white">
+              <span className="text-xs uppercase tracking-[0.25em] text-[#b98d45] font-semibold">
+                {filteredItems[selectedImageIndex].project}
+              </span>
+              <h3 className="text-3xl font-serif font-bold mt-1">
+                {filteredItems[selectedImageIndex].title}
+              </h3>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
