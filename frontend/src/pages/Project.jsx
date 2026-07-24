@@ -12,7 +12,7 @@ import {
 
 import projectImg from "../assets/riddhi.jpg";
 
-export function Project() {
+function Project() {
   return (
     <section className="relative overflow-hidden bg-[#f9f6f1] py-24">
 
@@ -316,3 +316,5 @@ export function Project() {
     </section>
   );
 }
+
+export default Project

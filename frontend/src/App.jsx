@@ -2,9 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
-
-import Hero from "./pages/Hero";
-import { Project } from "./pages/Project";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
@@ -12,15 +10,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Project />
-            </>
-          }
-        />
+        <Route path="/" element={<AppRouter />}/>
       </Routes>
 
       <Footer />
