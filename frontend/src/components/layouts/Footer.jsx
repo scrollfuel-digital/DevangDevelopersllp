@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Phone, Mail, MapPin } from "lucide-react";
 
+import qrCodeImg from "../../assets/Qrcode-1.png";
+
 const socialLinks = [
   { Icon: FaFacebookF, label: "Facebook", href: "#" },
   { Icon: FaInstagram, label: "Instagram", href: "#" },
@@ -25,7 +27,7 @@ const Footer = () => {
     >
       {/* Top section: logo, RERA notice, QR code */}
       <div className="mx-auto max-w-7xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-[0.9fr_1.6fr_auto] md:items-start">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-[0.9fr_1.6fr_auto] md:items-start">
           {/* Logo + wordmark + socials */}
           <motion.div
             variants={fadeUp}
@@ -37,7 +39,7 @@ const Footer = () => {
             <img
               src="/Devang Logo.png"
               alt="Devang Logo"
-              className="mb-4 h-16 sm:h-20 md:h-24 w-auto object-contain"
+              className="mb-4 h-[72px] sm:h-24 md:h-28 w-auto object-contain"
             />
 
             <div className="flex gap-3">
@@ -45,7 +47,7 @@ const Footer = () => {
                 <a
                   key={label}
                   href={href}
-                  arialabel={label}
+                  aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c7a37a]/50 text-[#c7a37a] transition-colors duration-300 hover:border-[#c7a37a] hover:bg-[#c7a37a] hover:text-black"
                 >
                   <Icon size={16} />
@@ -61,7 +63,7 @@ const Footer = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.6 }}
-            className="text-sm leading-relaxed text-[#c9c4bd]"
+            className="text-sm leading-relaxed text-[#c9c4bd] md:-ml-4 lg:-ml-8 mr-40"
           >
             <p className="mb-4">
               Riddhi Siddhi III is registered under MahaRERA under Project
@@ -96,19 +98,18 @@ const Footer = () => {
             viewport={{ once: true, amount: 0.6 }}
             className="flex justify-center md:justify-end"
           >
-            <div className="flex h-[175px] w-[175px] items-center justify-center rounded-md bg-white p-3">
-              {/* Replace src with your actual QR code image */}
+            <div className="flex h-[175px] w-[175px] items-center justify-center rounded-md bg-white p-3 shadow-md">
               <img
-                src="/qr-code.png"
+                src={qrCodeImg}
                 alt="Scan to view project details"
                 className="h-full w-full object-contain"
               />
             </div>
           </motion.div>
-        </div >
+        </div>
 
         {/* Contact row */}
-        < motion.div
+        <motion.div
           variants={fadeUp}
           custom={3}
           initial="hidden"
@@ -131,11 +132,11 @@ const Footer = () => {
               Tatya Tope Nagar, Nagpur, 440015
             </span>
           </div>
-        </ motion.div>
-      </div >
+        </motion.div>
+      </div>
 
       {/* Rights / privacy line */}
-      < div className="border-t border-[#2a2621] py-5 text-center text-sm text-[#a49c90]" >
+      <div className="border-t border-[#2a2621] py-5 text-center text-sm text-[#a49c90]">
         <p>
           All Rights Reserved. |{" "}
           <a
@@ -144,19 +145,19 @@ const Footer = () => {
           >
             Privacy Policy Applies.
           </a>
-        </p >
-      </div >
+        </p>
+      </div>
 
       {/* Enquire strip */}
-      < div className="border-t border-[#2a2621] bg-[#111008] py-4 text-center" >
+      <div className="border-t border-[#2a2621] bg-[#111008] py-4 text-center">
         <p
           className="text-lg text-[#d9b98a]"
           style={{ fontFamily: "'Domine', serif" }}
         >
           Enquire Now or Call Us: 9921042899 / 9921294799
         </p>
-      </ div >
-    </footer >
+      </div>
+    </footer>
   );
 };
 
