@@ -1,176 +1,158 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import logo from "../../assets/DevangLogo.png";
+
 const NAV_LINKS = [
     {
-        label: "Home",
+        id: 1,
+        title: "Home",
         path: "/",
-        image:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: "About",
+        id: 2,
+        title: "About",
         path: "/about",
-        image:
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+        image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: "Project",
+        id: 3,
+        title: "Projects",
         path: "/project",
-        image:
-            "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: "Gallery",
+        id: 4,
+        title: "Gallery",
         path: "/gallery",
-        image:
-            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: "Blog",
+        id: 5,
+        title: "Blog",
         path: "/blog",
-        image:
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        label: "Contact",
+        id: 6,
+        title: "Contact",
         path: "/contact",
-        image:
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80",
     },
 ];
-const Navbar = () => {
-    const navigate = useNavigate()
-    const [open, setOpen] = useState(false)
 
-    const [hovered, setHovered] = useState(NAV_LINKS[2])
+const Navbar = () => {
+    const [open, setOpen] = useState(false);
+    const [hovered, setHovered] = useState(NAV_LINKS[0]);
 
     useEffect(() => {
-        document.body.style.overflow = open ? 'hidden' : ''
-    }, [open])
+        document.body.style.overflow = open ? "hidden" : "";
+    }, [open]);
 
     return (
         <>
-            {/* Logo - NOT sticky. Scales down through mobile / tablet / desktop */}
+            {/* Logo */}
             <div className="absolute top-0 left-0 z-30 px-4 sm:px-6 md:px-10 py-4 sm:py-5">
-                <img
-                    src="/Devang Logo.png"
-                    alt="Devang Logo"
-                    className="h-16 sm:h-20 md:h-28 lg:h-36 w-auto object-contain"
-                />
+                <NavLink to="/">
+                    <img
+                        src={logo}
+                        alt="Logo"
+                        className="h-16 sm:h-20 md:h-28 lg:h-36 w-auto object-contain"
+                    />
+                </NavLink>
             </div>
 
+            {/* Menu Button */}
             <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-end px-5 sm:px-8 md:px-10 lg:px-14 py-5 sm:py-6 lg:py-7">
                 <button
                     onClick={() => setOpen(true)}
-                    className="flex items-center gap-2 sm:gap-3 text-[#F3EEE6] group"
-                    aria-label="Open menu"
+                    className="flex items-center gap-3 text-[#F3EEE6] group"
                 >
-                    <span
-                        className="hidden sm:inline text-[10px] md:text-[11px] tracking-[0.25em] uppercase"
-                        style={{ fontFamily: "'Inter', sans-serif" }}
-                    >
+                    <span className="hidden sm:block text-[11px] tracking-[0.25em] uppercase">
                         Menu
                     </span>
 
-                    <span className="flex flex-col gap-[4px] sm:gap-[5px] w-5 sm:w-6">
-                        <span className="h-[1.5px] w-full bg-[#F3EEE6] transition-all group-hover:bg-[#A9814A]" />
-                        <span className="h-[1.5px] w-3.5 sm:w-4 self-end bg-[#F3EEE6] transition-all group-hover:w-full group-hover:bg-[#A9814A]" />
+                    <span className="flex flex-col gap-1 w-6">
+                        <span className="h-[2px] bg-white"></span>
+                        <span className="h-[2px] w-4 self-end bg-white group-hover:w-full transition-all"></span>
                     </span>
                 </button>
             </header>
 
             {/* Full Screen Menu */}
             <div
-                className={`fixed inset-0 z-50 bg-[#14120F] transition-opacity duration-500 ${open
-                    ? 'opacity-100 pointer-events-auto'
-                    : 'opacity-0 pointer-events-none'
+                className={`fixed inset-0 z-50 bg-[#14120F] transition-all duration-500 ${open
+                        ? "opacity-100 pointer-events-auto"
+                        : "opacity-0 pointer-events-none"
                     }`}
             >
+                {/* Close */}
                 <button
                     onClick={() => setOpen(false)}
-                    className="absolute top-5 right-5 sm:top-7 sm:right-8 md:right-14 flex items-center gap-2 sm:gap-3 text-[#F3EEE6] hover:text-[#A9814A] transition-colors z-10"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
+                    className="absolute top-7 right-10 z-20 flex items-center gap-3 text-white hover:text-[#A9814A]"
                 >
-                    <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase">
+                    <span className="uppercase tracking-[0.25em] text-xs">
                         Close
                     </span>
 
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="sm:w-4 sm:h-4">
-                        <path
-                            d="M1 1L15 15M15 1L1 15"
-                            stroke="currentColor"
-                            strokeWidth="1.3"
-                        />
-                    </svg>
+                    ✕
                 </button>
 
-                <div className="flex flex-col lg:flex-row h-full">
-                    {/* Links */}
-                    <nav className="relative w-full lg:w-[420px] lg:border-r border-[#F3EEE6]/10 flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-20 sm:py-24 h-full overflow-y-auto">
+                <div className="flex h-full flex-col lg:flex-row">
+                    {/* Navigation */}
+                    <nav className="w-full lg:w-[420px] border-r border-white/10 flex flex-col justify-center px-10">
                         {NAV_LINKS.map((link) => (
                             <NavLink
-                                key={link.label}
+                                key={link.id}
                                 to={link.path}
                                 onMouseEnter={() => setHovered(link)}
-                                onClick={() => {
-                                    setOpen(false)
-                                    if (link.path.startsWith('/')) {
-                                        navigate(link.path)
-                                    } else {
-                                        const section = link.path.replace('#', '')
-                                        const element = document.getElementById(section)
-                                        if (element) {
-                                            element.scrollIntoView({ behavior: 'smooth' })
-                                        }
-                                    }
-                                }}
-                                className="group relative py-2.5 sm:py-3 text-left"
+                                onClick={() => setOpen(false)}
+                                className={({ isActive }) =>
+                                    `group relative py-3 uppercase tracking-[0.3em] text-sm transition-colors ${isActive
+                                        ? "text-[#A9814A]"
+                                        : "text-white/70 hover:text-[#A9814A]"
+                                    }`
+                                }
                             >
-                                <span
-                                    className="text-[15px] sm:text-[16px] md:text-[14px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#F3EEE6]/70 group-hover:text-[#A9814A] transition-colors duration-300"
-                                    style={{ fontFamily: "'Inter', sans-serif" }}
-                                >
-                                    {link.label}
-                                </span>
+                                {link.title}
 
-                                <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-[#A9814A] transition-all duration-300 group-hover:w-10" />
+                                <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#A9814A] transition-all duration-300 group-hover:w-12"></span>
                             </NavLink>
                         ))}
                     </nav>
 
-                    <div className="hidden lg:block relative flex-1 overflow-hidden">
+                    {/* Right Image */}
+                    <div className="hidden lg:block flex-1 relative overflow-hidden">
                         {NAV_LINKS.map((link) => (
                             <img
-                                key={link.label}
+                                key={link.id}
                                 src={link.image}
-                                alt={link.label}
-                                className={`absolute inset-0 h-full w-full object-cover grayscale transition-opacity duration-700 ${hovered.label === link.label
-                                    ? 'opacity-100'
-                                    : 'opacity-0'
+                                alt={link.title}
+                                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${hovered.id === link.id ? "opacity-100" : "opacity-0"
                                     }`}
                             />
                         ))}
 
-                        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#14120F]/60" />
+                        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#14120F]/70"></div>
                     </div>
                 </div>
 
-                {/* Back to Top */}
+                {/* Back To Top */}
                 <button
                     onClick={() => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' })
-                        setOpen(false)
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                        });
+                        setOpen(false);
                     }}
-                    className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 md:right-10 w-10 h-10 sm:w-11 sm:h-11 bg-[#A9814A] flex items-center justify-center hover:bg-[#C9A874] transition-colors"
-                    aria-label="Back to top"
+                    className="absolute bottom-8 right-8 w-12 h-12 bg-[#A9814A] hover:bg-[#C9A874] flex items-center justify-center"
                 >
-                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="sm:w-3 sm:h-3">
-                        <path d="M6 0L11 8H1L6 0Z" fill="#14120F" />
-                    </svg>
+                    ↑
                 </button>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
