@@ -1,10 +1,11 @@
 import React from 'react'
-import About from './About'
 import Gallery from './Gallery'
-import Project from './Project'
 import Home from './Home'
 import Contact from './Contact'
 import Blog from './Blog'
+import About from '../components/ui/Aboutus'
+import Project from '../components/ui/project'
+
 
 const Hero = () => {
     return (
@@ -12,6 +13,7 @@ const Hero = () => {
             <Home />
             <About />
             <Project />
+         
             {/* <Gallery /> */}
             
             {/* <Blog /> */}
