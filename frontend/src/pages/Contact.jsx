@@ -12,9 +12,7 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
-
-// IMPORT YOUR BUILDING IMAGE FROM ASSETS
-import buildingImg from "../assets/building.jpg"; // Adjust path if stored elsewhere (e.g. ../assets/building.jpg)
+ // Adjust path if stored elsewhere (e.g. ../assets/building.jpg)
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -34,10 +32,7 @@ export default function Contact() {
       
       {/* HERO HEADER WITH BUILDING BACKGROUND IMAGE */}
       <section
-        className="relative pt-44 pb-32 px-6 bg-cover bg-center overflow-hidden min-h-[480px] flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${buildingImg})`,
-        }}
+        className="relative pt-44 pb-32 px-6 bg-cover bg-center overflow-hidden min-h-[480px] flex items-center justify-center bg-[#143526]"
       >
         {/* Dark Gradient Overlay (Ensures top logo, MENU button & title are 100% visible) */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/75" />
