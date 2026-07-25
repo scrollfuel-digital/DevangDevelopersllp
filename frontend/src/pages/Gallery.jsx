@@ -113,11 +113,9 @@ export default function Gallery() {
       {/* GALLERY HERO */}
       <section className="relative pt-24 pb-20 px-6 bg-[#173629] text-white">
         <div className="max-w-7xl mx-auto text-center">
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#b98d45]/20 border border-[#b98d45]/40 text-[#E2C38A] text-xs uppercase tracking-[0.25em] font-semibold mb-6">
-            <Sparkles size={14} /> Architectural Visual Showcase
-          </span>
+         
           <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
-            Our Project Gallery
+            Our Gallery
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
             Immerse yourself in our portfolio of modern residential apartments, premium commercial developments, and lifestyle amenities in Nagpur.
