@@ -12,9 +12,9 @@ const Hero = () => {
             <Home />
             <About />
             <Project />
-            <Gallery />
-            <Contact />
-            <Blog />
+            {/* <Gallery /> */}
+            
+            {/* <Blog /> */}
         </>
     )
 }
