@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import {
   Phone,
   Mail,
@@ -9,442 +8,281 @@ import {
   Send,
   User,
   FileText,
+  CheckCircle2,
+  Sparkles,
+  ArrowRight,
 } from "lucide-react";
 
-// NAV LINKS CONFIGURATION
-const NAV_LINKS = [
-  {
-    label: "Home",
-    path: "/",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    label: "About",
-    path: "#about",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    label: "Residences",
-    path: "#residences",
-    image:
-      "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    label: "Amenities",
-    path: "#amenities",
-    image:
-      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    label: "Gallery",
-    path: "#gallery",
-    image:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    label: "Contact",
-    path: "/contact",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-  },
-];
+// IMPORT YOUR BUILDING IMAGE FROM ASSETS
+import buildingImg from "../assets/building.jpg"; // <-- Adjust filename/extension if different (.png / .jpg)
 
-// NAVBAR COMPONENT
-const Navbar = () => {
-  const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [hovered, setHovered] = useState(NAV_LINKS[2]);
+export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-  }, [open]);
+    document.title = "Contact Devang Developers LLP | Sales & Enquiries";
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 4000);
+  };
 
   return (
-    <>
-      {/* Logo */}
-      <div className="absolute top-0 left-0 z-30 px-4 sm:px-6 md:px-10 py-4 sm:py-5">
-        <img
-          src="/Devang Logo.png"
-          alt="Devang Logo"
-          className="h-16 sm:h-20 md:h-28 lg:h-36 w-auto object-contain"
-        />
-      </div>
-
-      <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-end px-5 sm:px-8 md:px-10 lg:px-14 py-5 sm:py-6 lg:py-7">
-        <button
-          onClick={() => setOpen(true)}
-          className="flex items-center gap-2 sm:gap-3 text-[#F3EEE6] group"
-          aria-label="Open menu"
-        >
-          <span
-            className="hidden sm:inline text-[10px] md:text-[11px] tracking-[0.25em] uppercase"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            Menu
-          </span>
-
-          <span className="flex flex-col gap-[4px] sm:gap-[5px] w-5 sm:w-6">
-            <span className="h-[1.5px] w-full bg-[#F3EEE6] transition-all group-hover:bg-[#A9814A]" />
-            <span className="h-[1.5px] w-3.5 sm:w-4 self-end bg-[#F3EEE6] transition-all group-hover:w-full group-hover:bg-[#A9814A]" />
-          </span>
-        </button>
-      </header>
-
-      {/* Full Screen Menu */}
-      <div
-        className={`fixed inset-0 z-50 bg-[#14120F] transition-opacity duration-500 ${
-          open
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+    <div className="relative bg-[#FBF8F3] text-[#3A101E] font-sans antialiased min-h-screen">
+      
+      {/* HERO HEADER WITH FULLY VISIBLE BUILDING BACKGROUND IMAGE */}
+      <section
+        className="relative pt-44 pb-32 px-6 bg-cover bg-center overflow-hidden min-h-[480px] flex items-center justify-center"
+        style={{
+          backgroundImage: `url(${buildingImg})`,
+        }}
       >
-        <button
-          onClick={() => setOpen(false)}
-          className="absolute top-5 right-5 sm:top-7 sm:right-8 md:right-14 flex items-center gap-2 sm:gap-3 text-[#F3EEE6] hover:text-[#A9814A] transition-colors z-10"
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase">
-            Close
+        {/* Subtle Dark Gradient Overlay (Building photo is 100% visible & vibrant) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/75" />
+
+        <div className="relative max-w-4xl mx-auto text-center space-y-4 z-10">
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#54152B]/80 backdrop-blur-md border border-[#B98D45]/50 text-[#E5B582] text-xs font-semibold uppercase tracking-widest shadow-xl mb-2">
+            <Sparkles size={14} className="text-[#B98D45]" /> Contact Devang Developers
+          </div>
+
+          <span className="text-xs uppercase tracking-[0.25em] text-[#E5B582] font-bold block drop-shadow-md">
+            Get In Touch
           </span>
 
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
-            fill="none"
-            className="sm:w-4 sm:h-4"
-          >
-            <path
-              d="M1 1L15 15M15 1L1 15"
-              stroke="currentColor"
-              strokeWidth="1.3"
-            />
-          </svg>
-        </button>
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight drop-shadow-lg">
+            How Can We Help You?
+          </h1>
 
-        <div className="flex flex-col lg:flex-row h-full">
-          {/* Links */}
-          <nav className="relative w-full lg:w-[420px] lg:border-r border-[#F3EEE6]/10 flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-20 sm:py-24 h-full overflow-y-auto">
-            {NAV_LINKS.map((link) => (
-              <button
-                key={link.label}
-                onMouseEnter={() => setHovered(link)}
-                onClick={() => {
-                  setOpen(false);
-                  if (link.path.startsWith("/")) {
-                    navigate(link.path);
-                  } else {
-                    const section = link.path.replace("#", "");
-                    const element = document.getElementById(section);
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }
-                }}
-                className="group relative py-2.5 sm:py-3 text-left"
-              >
-                <span
-                  className="text-[15px] sm:text-[16px] md:text-[14px] tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[#F3EEE6]/70 group-hover:text-[#A9814A] transition-colors duration-300"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  {link.label}
-                </span>
-
-                <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-[#A9814A] transition-all duration-300 group-hover:w-10" />
-              </button>
-            ))}
-          </nav>
-
-          <div className="hidden lg:block relative flex-1 overflow-hidden">
-            {NAV_LINKS.map((link) => (
-              <img
-                key={link.label}
-                src={link.image}
-                alt={link.label}
-                className={`absolute inset-0 h-full w-full object-cover grayscale transition-opacity duration-700 ${
-                  hovered.label === link.label ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#14120F]/60" />
-          </div>
+          <p className="text-gray-100 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed drop-shadow">
+            Reach out to our sales team for project enquiries, site visits, pricing details, investment opportunities, and complete support.
+          </p>
         </div>
+      </section>
 
-        {/* Back to Top */}
-        <button
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            setOpen(false);
-          }}
-          className="absolute bottom-5 right-5 sm:bottom-7 sm:right-7 md:right-10 w-10 h-10 sm:w-11 sm:h-11 bg-[#A9814A] flex items-center justify-center hover:bg-[#C9A874] transition-colors"
-          aria-label="Back to top"
-        >
-          <svg
-            width="11"
-            height="11"
-            viewBox="0 0 12 12"
-            fill="none"
-            className="sm:w-3 sm:h-3"
-          >
-            <path d="M6 0L11 8H1L6 0Z" fill="#14120F" />
-          </svg>
-        </button>
-      </div>
-    </>
-  );
-};
-
-// CONTACT PAGE COMPONENT
-export default function Contact() {
-  return (
-    <div className="relative min-h-screen bg-transparent">
-      {/* NAVBAR */}
-      <Navbar />
-
-      {/* MAIN CONTENT */}
-      <section className="relative bg-transparent overflow-hidden">
-        {/* Background Blur */}
-        <div className="absolute left-0 top-0 h-80 w-80 rounded-full bg-[#efe6d8]/50 blur-[120px]" />
-        <div className="absolute right-0 top-0 h-80 w-80 rounded-full bg-[#efe6d8]/50 blur-[120px]" />
-
-        <div className="relative max-w-7xl mx-auto px-6 pt-40 pb-24">
-          {/* Heading */}
-          <div className="text-center mb-20">
-            <div className="flex items-center justify-center gap-8 mb-6">
-              <div className="h-[2px] w-24 bg-[#b98d45]" />
-              <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#173629]">
-                Contact Devang Developers
-              </h1>
-              <div className="h-[2px] w-24 bg-[#b98d45]" />
+      {/* MAIN FORM & DETAILS CARDS */}
+      <div className="max-w-7xl mx-auto px-5 md:px-10 -mt-12 pb-20 relative z-20 space-y-10">
+        
+        {/* MAIN SPLIT CARD SECTION */}
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          
+          {/* LEFT: FORM CARD */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-[#E8DDD3] relative overflow-hidden">
+            
+            {/* Header Badge */}
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#B98D45] mb-2">
+              <Sparkles size={16} /> Send Us a Message
             </div>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-8">
-              Let's Build Your Future Together. Whether you're looking for your
-              dream home, a commercial investment, or want to know more about our
-              projects, our experts are ready to assist you.
+            
+            <h2 className="text-3xl font-serif font-bold text-[#54152B] mb-2">
+              Sales & Project Consultation
+            </h2>
+            <p className="text-gray-500 text-sm mb-8">
+              Fill out the form below and we'll get back to you shortly.
             </p>
-          </div>
 
-          {/* HERO CONTAINER */}
-          <div className="relative rounded-[40px]">
-            {/* Background Image Container */}
-            <div
-              className="relative rounded-[40px] bg-cover bg-center pb-35 px-6"
-              style={{
-                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop')",
-              }}
-            >
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-[#173629]/85 rounded-[40px]"></div>
-
-              {/* Hero Text Content */}
-              <div className="relative z-10 py-10 flex flex-col items-center justify-center text-center max-w-3xl mx-auto py-15">
-                <span className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm mb-6">
-                  Contact Us
-                </span>
-                <h2 className="text-5xl md:text-6xl pb-2 font-serif text-white leading-tight">
-                  How Can We
-                  <br />
-                  Help You?
-                </h2>
-                
-              </div>
-            </div>
-
-            {/* Form Card (Pushed Downward to Avoid Text Overlap) */}
-            <div className="relative lg:absolute left-1/2 lg:-translate-x-1/2 lg:-bottom-[380px] z-20 mt-10 lg:mt-0 w-full max-w-3xl mx-auto">
-              <div className="bg-white rounded-3xl shadow-2xl border-4 border-[#b98d45] p-8 md:p-10">
-                <h3 className="text-3xl font-serif text-[#173629] mb-2">
-                  Send Us a Message
-                </h3>
-                <p className="text-gray-500 mb-8">
-                  Fill out the form below and we'll get back to you shortly.
+            {submitted ? (
+              <div className="bg-[#FAF3EB] border border-[#B98D45]/40 rounded-2xl p-8 text-center text-[#54152B] animate-fadeIn">
+                <CheckCircle2 size={48} className="text-[#B98D45] mx-auto mb-3" />
+                <h3 className="text-2xl font-serif font-bold mb-2">Enquiry Sent!</h3>
+                <p className="text-sm text-gray-600">
+                  Thank you for reaching out to Devang Developers. Our sales team will get in touch with you shortly.
                 </p>
-
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
-                  {/* Row 1 */}
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <div className="relative">
-                      <User
-                        size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                      />
-                      <input
-                        type="text"
-                        placeholder="Full Name"
-                        className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#173629]"
-                      />
-                    </div>
-
-                    <div className="relative">
-                      <Mail
-                        size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                      />
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#173629]"
-                      />
-                    </div>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Row 1 */}
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="relative">
+                    <User
+                      size={18}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                    />
+                    <input
+                      type="text"
+                      required
+                      placeholder="Full Name *"
+                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#54152B] focus:ring-1 focus:ring-[#54152B] transition bg-[#FBF8F3]/50 text-gray-800"
+                    />
                   </div>
 
-                  {/* Row 2 */}
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <div className="relative">
-                      <Phone
-                        size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                      />
-                      <input
-                        type="tel"
-                        placeholder="Mobile Number"
-                        className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#173629]"
-                      />
-                    </div>
-
-                    <div className="relative">
-                      <FileText
-                        size={18}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10"
-                      />
-                      <select
-                        defaultValue=""
-                        className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#173629] bg-white text-gray-700"
-                      >
-                        <option value="" disabled>Select Project</option>
-                        <option value="mangalmurti">Mangalmurti Residency</option>
-                        <option value="wing-c">Wing C 129 RSH</option>
-                        <option value="riddhi-siddhi">Riddhi Siddhi</option>
-                      </select>
-                    </div>
+                  <div className="relative">
+                    <Mail
+                      size={18}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                    />
+                    <input
+                      type="email"
+                      required
+                      placeholder="Email Address *"
+                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#54152B] focus:ring-1 focus:ring-[#54152B] transition bg-[#FBF8F3]/50 text-gray-800"
+                    />
                   </div>
-
-                  {/* Message */}
-                  <textarea
-                    rows={5}
-                    placeholder="Write Your Message..."
-                    className="w-full rounded-xl border border-gray-200 p-5 outline-none focus:border-[#173629]"
-                  ></textarea>
-
-                  {/* Button */}
-                  <button
-                    type="submit"
-                    className="w-full bg-[#b98d45] hover:bg-[#a57d3f] text-white py-4 rounded-full text-lg font-medium transition duration-300 flex items-center justify-center gap-3"
-                  >
-                    Contact Our Sales Team
-                    <Send size={18} />
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          {/* Spacer to give room for the floating card */}
-          <div className="hidden lg:block h-[420px]"></div>
-
-          {/* CONTACT INFO CARDS */}
-          <div className="grid md:grid-cols-3 gap-8 mt-24">
-            {/* Phone */}
-            <div className="group rounded-3xl bg-[#111111] border border-[#C9A14A]/20 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A14A] hover:shadow-[0_0_40px_rgba(201,161,74,.2)]">
-              <div className="w-16 h-16 rounded-2xl bg-[#C9A14A]/10 flex items-center justify-center mb-8 group-hover:bg-[#C9A14A] transition">
-                <Phone className="text-[#C9A14A] group-hover:text-black" />
-              </div>
-              <h3 className="text-2xl font-serif text-white mb-5">
-                Phone Number
-              </h3>
-              <p className="text-gray-400 leading-8">
-                +91 9921042899
-                <br />
-                +91 9921294799
-              </p>
-            </div>
-
-            {/* Email */}
-            <div className="group rounded-3xl bg-[#111111] border border-[#C9A14A]/20 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A14A] hover:shadow-[0_0_40px_rgba(201,161,74,.2)]">
-              <div className="w-16 h-16 rounded-2xl bg-[#C9A14A]/10 flex items-center justify-center mb-8 group-hover:bg-[#C9A14A] transition">
-                <Mail className="text-[#C9A14A] group-hover:text-black" />
-              </div>
-              <h3 className="text-2xl font-serif text-white mb-5">
-                Email
-              </h3>
-              <p className="text-gray-400 break-all">
-                devangdevelopers@gmail.com
-              </p>
-            </div>
-
-            {/* Address */}
-            <div className="group rounded-3xl bg-[#111111] border border-[#C9A14A]/20 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#C9A14A] hover:shadow-[0_0_40px_rgba(201,161,74,.2)]">
-              <div className="w-16 h-16 rounded-2xl bg-[#C9A14A]/10 flex items-center justify-center mb-8 group-hover:bg-[#C9A14A] transition">
-                <MapPin className="text-[#C9A14A] group-hover:text-black" />
-              </div>
-              <h3 className="text-2xl font-serif text-white mb-5">
-                Office Address
-              </h3>
-              <p className="text-gray-400 leading-8">
-                I-24, ARPIT SHRUSHTI,
-                <br />
-                Behind Ganesh Temple,
-                <br />
-                Tatya Tope Nagar,
-                <br />
-                Nagpur – 440015
-              </p>
-            </div>
-          </div>
-
-          {/* EXTRA INFO */}
-          <div className="grid lg:grid-cols-2 gap-10 mt-20">
-            {/* Business Hours */}
-            <div className="rounded-[32px] bg-[#111111] border border-[#C9A14A]/20 p-10">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-[#C9A14A]/10 flex items-center justify-center">
-                  <Clock3 className="text-[#C9A14A]" />
                 </div>
-                <h2 className="text-3xl font-serif text-white">
-                  Business Hours
-                </h2>
+
+                {/* Row 2 */}
+                <div className="grid md:grid-cols-2 gap-5">
+                  <div className="relative">
+                    <Phone
+                      size={18}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                    />
+                    <input
+                      type="tel"
+                      required
+                      placeholder="Mobile Number *"
+                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#54152B] focus:ring-1 focus:ring-[#54152B] transition bg-[#FBF8F3]/50 text-gray-800"
+                    />
+                  </div>
+
+                  <div className="relative">
+                    <FileText
+                      size={18}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10"
+                    />
+                    <select
+                      defaultValue=""
+                      required
+                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#54152B] focus:ring-1 focus:ring-[#54152B] transition bg-[#FBF8F3]/50 text-gray-700"
+                    >
+                      <option value="" disabled>Select Project *</option>
+                      <option value="riddhi-siddhi">129 Riddhi Siddhi Heights</option>
+                      <option value="mangalmurti">Mangalmurti Residency</option>
+                      <option value="wing-c">Wing C 129 RSH</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Message */}
+                <textarea
+                  rows={5}
+                  placeholder="Write Your Message..."
+                  className="w-full rounded-xl border border-gray-200 p-5 outline-none focus:border-[#54152B] focus:ring-1 focus:ring-[#54152B] transition bg-[#FBF8F3]/50 text-gray-800"
+                ></textarea>
+
+                {/* Primary Burgundy Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-[#54152B] hover:bg-[#3D0F1F] text-white py-4 rounded-xl text-lg font-medium transition duration-300 shadow-xl flex items-center justify-center gap-3"
+                >
+                  Contact Our Sales Team <Send size={18} />
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* RIGHT: DETAILS & OFFICE CARDS */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* DEVANG DEVELOPERS BRANDING CARD */}
+            <div className="bg-[#FAF3EB] rounded-3xl p-8 border border-[#B98D45]/30 shadow-md">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B98D45] block mb-2">
+                An Project By
+              </span>
+              <h3 className="text-2xl font-serif font-bold text-[#54152B]">
+                Devang Developers LLP
+              </h3>
+              <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                Crafting luxury residential and commercial landmarks in Nagpur with uncompromising quality, transparency, and timely delivery.
+              </p>
+            </div>
+
+            {/* CONTACT CARDS */}
+            <div className="bg-white rounded-3xl p-8 border border-[#E8DDD3] shadow-xl space-y-6">
+              
+              {/* Phone */}
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#54152B]/10 flex items-center justify-center text-[#54152B] shrink-0">
+                  <Phone size={22} />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-lg text-[#54152B]">Phone Number</h4>
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                    +91 9921042899
+                    <br />
+                    +91 9921294799
+                  </p>
+                </div>
               </div>
-              <div className="space-y-5 text-gray-300 text-lg">
-                <div className="flex justify-between border-b border-white/10 pb-3">
+
+              {/* Email */}
+              <div className="flex items-start gap-4 border-t border-gray-100 pt-5">
+                <div className="w-12 h-12 rounded-2xl bg-[#54152B]/10 flex items-center justify-center text-[#54152B] shrink-0">
+                  <Mail size={22} />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-lg text-[#54152B]">Email Address</h4>
+                  <p className="text-gray-600 text-sm mt-1 break-all">
+                    devangdevelopers@gmail.com
+                  </p>
+                </div>
+              </div>
+
+              {/* Office Address */}
+              <div className="flex items-start gap-4 border-t border-gray-100 pt-5">
+                <div className="w-12 h-12 rounded-2xl bg-[#54152B]/10 flex items-center justify-center text-[#54152B] shrink-0">
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-lg text-[#54152B]">Office Address</h4>
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                    I-24, ARPIT SHRUSHTI,
+                    <br />
+                    Behind Ganesh Temple, Tatya Tope Nagar,
+                    <br />
+                    Nagpur – 440015
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* BUSINESS HOURS CARD */}
+            <div className="bg-white rounded-3xl p-8 border border-[#E8DDD3] shadow-lg">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-[#54152B]/10 flex items-center justify-center text-[#54152B]">
+                  <Clock3 size={20} />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#54152B]">
+                  Business Hours
+                </h3>
+              </div>
+
+              <div className="space-y-3 text-sm text-gray-700">
+                <div className="flex justify-between border-b border-gray-100 pb-2">
                   <span>Monday - Saturday</span>
-                  <span className="text-[#C9A14A]">
-                    10:00 AM - 7:00 PM
-                  </span>
+                  <span className="text-[#B98D45] font-semibold">10:00 AM - 7:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Sunday</span>
-                  <span className="text-[#C9A14A]">
-                    By Appointment
-                  </span>
+                  <span className="text-[#B98D45] font-semibold">By Appointment</span>
                 </div>
               </div>
             </div>
 
-            {/* Website */}
-            <div className="rounded-[32px] bg-[#111111] border border-[#C9A14A]/20 p-10">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-[#C9A14A]/10 flex items-center justify-center">
-                  <Globe className="text-[#C9A14A]" />
-                </div>
-                <h2 className="text-3xl font-serif text-white">
-                  Website
-                </h2>
+            {/* WEBSITE CARD */}
+            <div className="bg-white rounded-3xl p-8 border border-[#E8DDD3] shadow-lg flex items-center justify-between">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#B98D45]">Official Portal</span>
+                <p className="text-base font-serif font-bold text-[#54152B]">www.devangdevelopers.com</p>
               </div>
-              <p className="text-gray-300 text-lg leading-8">
-                www.devangdevelopers.com
-              </p>
-              <p className="text-gray-500 mt-5 leading-8">
-                Explore our residential and commercial developments,
-                project updates, amenities and investment opportunities.
-              </p>
+              <a
+                href="https://www.devangdevelopers.com"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-full bg-[#54152B] text-white flex items-center justify-center hover:bg-[#3D0F1F] transition"
+              >
+                <ArrowRight size={18} />
+              </a>
             </div>
+
           </div>
+
         </div>
-      </section>
+
+      </div>
     </div>
   );
 }
