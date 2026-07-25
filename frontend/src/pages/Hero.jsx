@@ -14,9 +14,6 @@ const Hero = () => {
             <About />
             <Project />
          
-            {/* <Gallery /> */}
-            
-            {/* <Blog /> */}
         </>
     )
 }
