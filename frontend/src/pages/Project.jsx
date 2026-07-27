@@ -1,4 +1,6 @@
-import { useState } from "react";
+import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import {
   Trees,
   Building2,
@@ -15,11 +17,12 @@ import {
   MapPin,
   Hammer,
   CheckCircle2,
+  Sparkles,
+  ArrowUpRight,
 } from "lucide-react";
 
-// ── Ongoing projects ─────────────────────────────────────────────
+// ── Ongoing project image ─────────────────────────────────────────
 import riddhiSiddhiImg from "../assets/projects/riddhisiddhibuilding.jpg";
-import mangalmurtiImg from "../assets/projects/mangalmurti-residency.jpg";
 
 // ── Completed projects ("Our Footprints") ────────────────────────
 import vakratundImg from "../assets/projects/vakratund-heights.jpg";
@@ -31,7 +34,134 @@ import avneeshImg from "../assets/projects/avneesh-apartment.jpg";
 import gaurisutImg from "../assets/projects/gaurisut-apartment.jpg";
 import riddhiSiddhiHeightsImg from "../assets/projects/riddhi-siddhi-heights-dharampeth.jpg";
 
-// ── Data ──────────────────────────────────────────────────────────
+// ── 3D TILTED CARD COMPONENT ──────────────────────────────────────
+const springValues = {
+  damping: 30,
+  stiffness: 100,
+  mass: 2,
+};
+
+function TiltedCard({
+  imageSrc,
+  altText = "Tilted card image",
+  captionText = "",
+  containerHeight = "400px",
+  containerWidth = "100%",
+  imageHeight = "100%",
+  imageWidth = "100%",
+  scaleOnHover = 1.05,
+  rotateAmplitude = 14,
+  showTooltip = true,
+  overlayContent = null,
+  displayOverlayContent = true,
+  className = "",
+}) {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useMotionValue(0), springValues);
+  const rotateY = useSpring(useMotionValue(0), springValues);
+  const scale = useSpring(1, springValues);
+  const opacity = useSpring(0);
+  const rotateFigcaption = useSpring(0, {
+    stiffness: 350,
+    damping: 30,
+    mass: 1,
+  });
+
+  const [lastY, setLastY] = useState(0);
+
+  function handleMouse(e) {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const offsetXPosition = e.clientX - rect.left - rect.width / 2;
+    const offsetYPosition = e.clientY - rect.top - rect.height / 2;
+    const rotationXValue = (offsetYPosition / (rect.height / 2)) * -rotateAmplitude;
+    const rotationYValue = (offsetXPosition / (rect.width / 2)) * rotateAmplitude;
+    rotateX.set(rotationXValue);
+    rotateY.set(rotationYValue);
+    x.set(e.clientX - rect.left);
+    y.set(e.clientY - rect.top);
+    const velocityY = offsetYPosition - lastY;
+    rotateFigcaption.set(-velocityY * 0.6);
+    setLastY(offsetYPosition);
+  }
+
+  function handleMouseEnter() {
+    scale.set(scaleOnHover);
+    if (showTooltip) opacity.set(1);
+  }
+
+  function handleMouseLeave() {
+    if (showTooltip) opacity.set(0);
+    scale.set(1);
+    rotateX.set(0);
+    rotateY.set(0);
+    rotateFigcaption.set(0);
+    setLastY(0);
+  }
+
+  return (
+    <figure
+      ref={ref}
+      className={`relative [perspective:800px] flex flex-col items-center justify-center cursor-pointer ${className}`}
+      style={{
+        height: containerHeight,
+        width: containerWidth,
+      }}
+      onMouseMove={handleMouse}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.div
+        className="relative [transform-style:preserve-3d] w-full h-full rounded-[28px] overflow-hidden border border-[#c9a874]/40 bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
+        style={{
+          width: imageWidth,
+          height: imageHeight,
+          rotateX,
+          rotateY,
+          scale,
+        }}
+      >
+        {/* CROPPED LEFT-SIDE BUILDING PHOTO */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#faf7f0]">
+          <img
+            src={imageSrc}
+            alt={altText}
+            className="absolute left-0 top-0 h-full w-[180%] max-w-none object-cover object-left transition-transform duration-700"
+          />
+          {/* Neutral Clean Dark Gradient Overlay (No Red) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        </div>
+
+        {displayOverlayContent && overlayContent && (
+          <motion.div
+            className="absolute inset-0 z-[2] will-change-transform [transform:translateZ(35px)] flex flex-col justify-between p-5"
+          >
+            {overlayContent}
+          </motion.div>
+        )}
+      </motion.div>
+
+      {/* ── CURSOR-FOLLOWING BUILDING NAME TOOLTIP ── */}
+      {showTooltip && captionText && (
+        <motion.figcaption
+          className="pointer-events-none absolute left-0 top-0 rounded-full px-5 py-2.5 text-xs sm:text-sm font-serif font-bold tracking-wide opacity-0 z-30 hidden sm:block shadow-xl border border-[#c9a874] bg-[#852541] text-[#ffffff]"
+          style={{
+            x,
+            y,
+            opacity,
+            rotate: rotateFigcaption,
+          }}
+        >
+          ✨ {captionText}
+        </motion.figcaption>
+      )}
+    </figure>
+  );
+}
+
+// ── DATA ──────────────────────────────────────────────────────────
 
 const stats = [
   { icon: CalendarClock, value: "18+", label: "Years of Experience" },
@@ -48,7 +178,7 @@ const ongoingProjects = [
     rera: "RERA Approved",
     reraNo: "P505000XXXX",
     description:
-      "A striking high-rise crafted for peaceful community living, backed by excellent connectivity to the city's major destinations, quality construction, and thoughtfully designed modern amenities.",
+      "A striking high-rise tower crafted for peaceful community living, backed by excellent connectivity to the city's major destinations, quality construction, and thoughtfully designed modern amenities.",
     features: [
       { icon: Building2, label: "High-Rise", sub: "Tower" },
       { icon: ShieldCheck, label: "Gated", sub: "Community" },
@@ -63,296 +193,354 @@ const ongoingProjects = [
       { icon: Landmark, label: "Clubhouse & Amenities" },
     ],
   },
-  {
-    name: "Mangalmurti Residency",
-    location: "Parsodi, Wardha Road, Nagpur",
-    tag: "Group Housing Project · by Devprath Constructions LLP",
-    image: mangalmurtiImg,
-    description:
-      "Exemplifying innovative design and sublime craftsmanship, Mangalmurti Residency is an all-new group housing development by our sister concern, Devprath Constructions LLP.",
-  },
 ];
 
 const footprints = [
-  { name: "Vakratund Heights", location: "Shivaji Nagar, Nagpur", image: vakratundImg },
-  { name: "Vignaharta Enclave", location: "Laxmi Nagar, Nagpur", image: vignahartaImg },
-  { name: "Manomay Plaza", location: "Ramdaspeth, Nagpur", image: manomayImg },
-  { name: "Shreyas Apartment", location: "Ramdaspeth, Nagpur", image: shreyasImg },
-  { name: "Kirti Kalyani Apartment", location: "Laxmi Nagar, Nagpur", image: kirtiKalyaniImg },
-  { name: "Avneesh Apartment", location: "Wardha Road, Nagpur", image: avneeshImg },
-  { name: "Gaurisut Apartment", location: "Jaiprakash Nagar, Nagpur", image: gaurisutImg },
-  { name: "Riddhi Siddhi Heights", location: "Dharampeth, Nagpur", image: riddhiSiddhiHeightsImg },
+  {
+    name: "Vakratund Heights",
+    location: "Shivaji Nagar, Nagpur",
+    image: vakratundImg,
+    badge: "⭐ Prime Landmark",
+  },
+  {
+    name: "Vignaharta Enclave",
+    location: "Laxmi Nagar, Nagpur",
+    image: vignahartaImg,
+    badge: "🏆 Delivered",
+  },
+  {
+    name: "Manomay Plaza",
+    location: "Ramdaspeth, Nagpur",
+    image: manomayImg,
+    badge: "🏢 Commercial Hub",
+  },
+  {
+    name: "Shreyas Apartment",
+    location: "Ramdaspeth, Nagpur",
+    image: shreyasImg,
+    badge: "⭐ Guest Favourite",
+  },
+  {
+    name: "Kirti Kalyani Apartment",
+    location: "Laxmi Nagar, Nagpur",
+    image: kirtiKalyaniImg,
+    badge: "🏆 Delivered",
+  },
+  {
+    name: "Avneesh Apartment",
+    location: "Wardha Road, Nagpur",
+    image: avneeshImg,
+    badge: "✨ Prime Hub",
+  },
+  {
+    name: "Gaurisut Apartment",
+    location: "Jaiprakash Nagar, Nagpur",
+    image: gaurisutImg,
+    badge: "⭐ Top Quality",
+  },
+  {
+    name: "Riddhi Siddhi Heights",
+    location: "Dharampeth, Nagpur",
+    image: riddhiSiddhiHeightsImg,
+    badge: "👑 Iconic Tower",
+  },
 ];
 
-// ── Component ─────────────────────────────────────────────────────
+// COLUMN CARDS
+const col1Cards = [footprints[0], footprints[3], footprints[6]];
+const col2Cards = [footprints[1], footprints[4], footprints[7]];
+const col3Cards = [footprints[2], footprints[5], footprints[0]];
+
+// ── MAIN PAGE COMPONENT ───────────────────────────────────────────
 
 function Project() {
+  const navigate = useNavigate();
   const [tab, setTab] = useState("ongoing");
 
+  const handleRedirectContact = () => {
+    window.scrollTo(0, 0);
+    navigate("/contact");
+  };
+
+  // HELPER TO RENDER A 3D CARD
+  const renderCard = (p, idxKey) => (
+    <div key={idxKey} onClick={handleRedirectContact} className="w-full">
+      <TiltedCard
+        imageSrc={p.image}
+        altText={p.name}
+        captionText={p.name}
+        containerHeight="400px"
+        containerWidth="100%"
+        rotateAmplitude={14}
+        scaleOnHover={1.05}
+        showTooltip={true}
+        overlayContent={
+          <>
+            <div className="flex items-center justify-between">
+              <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-wider shadow-md flex items-center gap-1">
+                {p.badge}
+              </span>
+              <span className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-md">
+                <ArrowUpRight size={15} />
+              </span>
+            </div>
+
+            <div className="space-y-2.5 pt-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-3.5 rounded-2xl">
+              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
+                <MapPin size={15} className="text-[#c9a874] shrink-0" />
+                <span className="leading-snug truncate">{p.location}</span>
+              </p>
+
+              <button className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
+                Explore <ArrowRight size={13} />
+              </button>
+            </div>
+          </>
+        }
+      />
+    </div>
+  );
+
   return (
-    <div className="relative min-h-screen bg-[#faf7f0]">
-      {/* ── REDUCED HEIGHT TOP HERO HEADER ─────────────────────────── */}
-      <section className="relative bg-[#143526] text-white pt-28 pb-10 px-6 text-center">
-        <div className="relative mx-auto max-w-7xl z-10">
-          <div className="flex items-center justify-center gap-5 text-[#c9a961]">
-            <div className="h-px w-16 bg-[#c9a961]" />
-            <span className="text-xs font-medium uppercase tracking-[4px] text-[#E5B582]">
-              Devang Developers LLP
-            </span>
-            <div className="h-px w-16 bg-[#c9a961]" />
+    <div className="relative min-h-screen bg-[#faf7f0] text-[#852541] font-sans antialiased overflow-x-hidden">
+      
+      {/* INLINE CSS FOR INFINITE VERTICAL SCROLLING */}
+      <style>{`
+        @keyframes scrollVerticalUp {
+          0% { transform: translateY(0%); }
+          100% { transform: translateY(-50%); }
+        }
+        @keyframes scrollVerticalDown {
+          0% { transform: translateY(-50%); }
+          100% { transform: translateY(0%); }
+        }
+        .animate-scroll-up {
+          animation: scrollVerticalUp 25s linear infinite;
+        }
+        .animate-scroll-down {
+          animation: scrollVerticalDown 25s linear infinite;
+        }
+        .scroll-container:hover .animate-scroll-up,
+        .scroll-container:hover .animate-scroll-down {
+          animation-play-state: paused;
+        }
+      `}</style>
+
+      {/* ── TOP HERO HEADER BANNER ─────────────────────────────────── */}
+      <section className="relative bg-[#852541] text-[#ffffff] pt-32 pb-12 px-6 text-center border-b border-[#c9a874]/30">
+        <div className="relative mx-auto max-w-7xl z-10 space-y-3">
+          
+          <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#c9a874] text-xs font-semibold uppercase tracking-[0.25em] shadow-lg">
+            <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark Portfolio
           </div>
 
-          <h1 className="mt-2 font-serif text-3xl leading-tight text-white sm:mt-3 sm:text-4xl lg:text-5xl">
+          <h1 className="font-serif text-4xl sm:text-6xl text-[#ffffff] font-bold leading-tight tracking-wide">
             Walls of Happiness
           </h1>
 
-          <p className="mx-auto mt-2 max-w-3xl text-xs text-gray-200 sm:mt-3 sm:text-sm lg:text-base font-light leading-relaxed">
-            18+ years of delivering premium homes at valued prices — every
-            project reflects our commitment to thoughtful planning, superior
-            construction quality, and modern lifestyle experiences.
+          <p className="mx-auto max-w-3xl text-xs sm:text-sm text-gray-200 font-light leading-relaxed">
+            18+ years of delivering luxury residential apartments and commercial landmarks with superior construction quality across Nagpur.
           </p>
 
           {/* Stats strip */}
-          <div className="mx-auto mt-5 grid max-w-xl grid-cols-3 gap-2 sm:mt-6 sm:gap-4">
+          <div className="mx-auto mt-6 grid max-w-xl grid-cols-3 gap-3">
             {stats.map(({ icon: Icon, value, label }) => (
               <div
                 key={label}
-                className="rounded-xl border border-[#c9a961]/30 bg-[#0D2419] px-2 py-2.5 shadow-md sm:px-3 sm:py-3.5"
+                className="rounded-2xl border border-[#c9a874]/40 bg-[#852541]/80 px-3 py-3 shadow-xl backdrop-blur-md"
               >
-                <Icon className="mx-auto text-[#c9a961]" size={18} />
-                <p className="mt-1 font-serif text-lg text-white sm:mt-1.5 sm:text-2xl">{value}</p>
-                <p className="mt-0.5 text-[10px] text-gray-300 sm:text-xs">{label}</p>
+                <Icon className="mx-auto text-[#c9a874]" size={20} />
+                <p className="mt-1 font-serif text-xl sm:text-3xl text-[#ffffff] font-bold">{value}</p>
+                <p className="mt-0.5 text-[10px] text-gray-200">{label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── MAIN CONTENT ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#faf7f0] py-12">
-        {/* Background glow */}
-        <div className="pointer-events-none absolute left-0 top-0 h-72 w-72 rounded-full bg-[#f1e3d3] blur-[120px]" />
-        <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-[#f1e3d3] blur-[120px]" />
-
-        <div className="relative mx-auto max-w-7xl px-6">
-          {/* ── Tabs ──────────────────────────────────────────────── */}
-          <div className="mb-10 flex items-center justify-center gap-2.5 px-4 sm:mb-12 sm:gap-3">
+      {/* ── MAIN SHOWCASE SECTION ───────────────────────────────────── */}
+      <section className="relative overflow-hidden py-16 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto space-y-16">
+        
+        {/* ── TABS CONTROLLER ───────────────────────────────────────── */}
+        <div className="flex justify-center">
+          <div className="p-1.5 rounded-full bg-[#ffffff] border border-[#c9a874]/40 shadow-xl flex items-center gap-2">
             <button
               onClick={() => setTab("ongoing")}
-              className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-[1.5px] transition sm:px-7 sm:py-3 sm:text-sm sm:tracking-[2px] ${
+              className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-500 cursor-pointer ${
                 tab === "ongoing"
-                  ? "bg-[#5c1a2e] text-white shadow-lg"
-                  : "border border-[#ddc9a3] text-[#5c1a2e] hover:bg-[#f1e3d3]"
+                  ? "bg-[#852541] text-[#ffffff] shadow-xl scale-105"
+                  : "text-[#852541] hover:bg-[#faf7f0]"
               }`}
             >
               <Hammer size={15} />
-              Ongoing Projects
+              Ongoing Flagship
             </button>
             <button
               onClick={() => setTab("completed")}
-              className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-[1.5px] transition sm:px-7 sm:py-3 sm:text-sm sm:tracking-[2px] ${
+              className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-500 cursor-pointer ${
                 tab === "completed"
-                  ? "bg-[#5c1a2e] text-white shadow-lg"
-                  : "border border-[#ddc9a3] text-[#5c1a2e] hover:bg-[#f1e3d3]"
+                  ? "bg-[#852541] text-[#ffffff] shadow-xl scale-105"
+                  : "text-[#852541] hover:bg-[#faf7f0]"
               }`}
             >
               <CheckCircle2 size={15} />
-              Our Footprints
+              Our Footprints (8)
             </button>
           </div>
+        </div>
 
-          {/* ── Ongoing Projects ──────────────────────────────────── */}
-          {tab === "ongoing" && (
-            <div className="space-y-14">
-              {/* Featured project: 129 Riddhi Siddhi Heights */}
-              <div className="overflow-hidden rounded-[28px] border border-[#ece0cd] bg-white shadow-xl sm:rounded-[35px]">
-                <div className="grid lg:grid-cols-2">
-                  {/* Left image */}
-                  <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-[200px] lg:min-h-[560px]">
-                    <img
-                      src={ongoingProjects[0].image}
-                      alt={ongoingProjects[0].name}
-                      className="h-full w-full object-cover object-center"
-                    />
-                    {/* subtle gradient so badge always reads clearly */}
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent" />
+        {/* ── ONGOING FLAGSHIP PROJECT ──────────────────────────────── */}
+        {tab === "ongoing" && (
+          <div className="space-y-12">
+            <div className="overflow-hidden rounded-[36px] border border-[#c9a874]/40 bg-[#ffffff] shadow-2xl grid lg:grid-cols-12 items-center">
+              
+              {/* Left Image */}
+              <div className="lg:col-span-6 relative h-[360px] lg:h-[560px] overflow-hidden">
+                <img
+                  src={ongoingProjects[0].image}
+                  alt={ongoingProjects[0].name}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#852541] via-transparent to-black/40" />
 
-                    <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-white/95 py-2 pl-2 pr-4 shadow-md backdrop-blur-sm sm:left-5 sm:top-5">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#5c1a2e] text-white">
-                        <ShieldCheck size={15} />
-                      </span>
-                      <div className="leading-tight">
-                        <p className="text-xs font-semibold text-[#5c1a2e]">
-                          {ongoingProjects[0].rera}
-                        </p>
-                        <p className="text-[11px] text-gray-500">{ongoingProjects[0].reraNo}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right content */}
-                  <div className="flex flex-col justify-center sm:p-2 lg:h-full lg:p-2">
-                    <div className="inline-flex items-center gap-2.5 rounded-full bg-[#faf7f0] px-4 py-1.5 sm:px-5 sm:py-2">
-                      <Leaf size={16} className="shrink-0 text-[#a97c3a]" />
-                      <span className="text-[11px] font-semibold uppercase tracking-[2.5px] text-[#a97c3a] sm:text-xs sm:tracking-[3px]">
-                        {ongoingProjects[0].tag}
-                      </span>
-                    </div>
-
-                    <h3 className="mt-4 font-serif text-2xl leading-tight text-[#5c1a2e] sm:text-3xl lg:mt-4 lg:text-4xl">
-                      {ongoingProjects[0].name}
-                    </h3>
-
-                    <div className="mt-2 flex items-center gap-2 text-sm text-gray-500 sm:text-base">
-                      <MapPin size={15} className="shrink-0 text-[#a97c3a]" />
-                      <span>{ongoingProjects[0].location}</span>
-                    </div>
-
-                    <div className="mt-3 h-[2px] w-14 bg-[#c9a961] sm:mt-4 sm:w-16" />
-
-                    <p className="mt-3 text-sm leading-6 text-gray-600 sm:mt-4 sm:text-base sm:leading-7 lg:line-clamp-3">
-                      {ongoingProjects[0].description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3 lg:grid-cols-4">
-                      {ongoingProjects[0].features.map(({ icon: Icon, label, sub }) => (
-                        <div
-                          key={label}
-                          className="flex flex-col items-center gap-1.5 rounded-2xl border border-[#ece0cd] bg-[#faf7f0]/60 px-3 py-3 text-center"
-                        >
-                          <Icon className="text-[#a97c3a]" size={22} />
-                          <div>
-                            <p className="text-xs font-semibold text-[#3a2a1f] sm:text-sm">{label}</p>
-                            <p className="text-[11px] text-gray-500 sm:text-xs">{sub}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="mt-4 rounded-2xl border border-[#ece0cd] bg-[#faf7f0] p-4 sm:mt-5 sm:rounded-3xl sm:p-5">
-                      <p className="text-[11px] uppercase tracking-[2.5px] text-gray-500 sm:text-xs sm:tracking-[3px]">
-                        An Ongoing Project By
-                      </p>
-                      <h4 className="mt-1 font-serif text-lg text-[#5c1a2e] sm:text-xl">
-                        Devang Developers LLP
-                      </h4>
-
-                      <div className="mt-3 flex flex-col gap-2.5 sm:flex-row">
-                        <button className="group flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#5c1a2e] px-6 py-2.5 text-sm font-medium text-white transition hover:bg-[#431321] sm:py-3">
-                          Explore Project
-                          <ArrowRight
-                            size={16}
-                            className="transition-transform group-hover:translate-x-1"
-                          />
-                        </button>
-                        <button className="flex-1 rounded-xl border border-[#c9a961] px-6 py-2.5 text-sm font-medium text-[#a97c3a] transition hover:bg-[#c9a961] hover:text-white sm:py-3">
-                          Book Site Visit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
+                  <ShieldCheck size={16} className="text-[#bb9034]" /> {ongoingProjects[0].rera}
                 </div>
+              </div>
 
-                {/* Bottom amenities strip */}
-                <div className="flex flex-wrap items-center justify-center gap-2.5 border-t border-[#ece0cd] bg-[#faf7f2] px-4 py-6 sm:gap-3 sm:px-8 sm:py-7">
-                  {ongoingProjects[0].amenities.map(({ icon: Icon, label }) => (
+              {/* Right Content */}
+              <div className="lg:col-span-6 p-8 lg:p-12 space-y-5 text-[#852541]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#bb9034] block">
+                  {ongoingProjects[0].tag}
+                </span>
+
+                <h3 className="font-serif text-3xl lg:text-5xl font-bold leading-tight">
+                  {ongoingProjects[0].name}
+                </h3>
+
+                <p className="flex items-center gap-2 text-base sm:text-lg font-medium text-gray-700">
+                  <MapPin size={18} className="text-[#bb9034] shrink-0" /> {ongoingProjects[0].location}
+                </p>
+
+                <p className="text-xs md:text-sm text-gray-600 font-light leading-relaxed">
+                  {ongoingProjects[0].description}
+                </p>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-2 gap-3">
+                  {ongoingProjects[0].features.map(({ icon: Icon, label, sub }) => (
                     <div
                       key={label}
-                      className="flex items-center gap-2 rounded-full border border-[#ece0cd] bg-white px-4 py-2 text-xs text-[#3a2a1f] sm:text-sm"
+                      className="flex items-center gap-3 p-3 rounded-2xl bg-[#faf7f0] border border-[#c9a874]/30"
                     >
-                      <Icon className="text-[#a97c3a]" size={16} />
-                      <span>{label}</span>
+                      <div className="w-9 h-9 rounded-xl bg-[#852541]/10 flex items-center justify-center text-[#852541]">
+                        <Icon size={18} />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-[#852541]">{label}</p>
+                        <p className="text-[10px] text-gray-500">{sub}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
 
-              {/* Secondary project: Mangalmurti Residency */}
-              <div className="grid overflow-hidden rounded-[28px] border border-[#ece0cd] bg-white shadow-xl sm:rounded-[35px] lg:grid-cols-2">
-                <div className="p-6 sm:p-10 lg:order-1 lg:p-14">
-                  <div className="inline-flex items-center gap-2.5 rounded-full bg-[#faf7f0] px-4 py-1.5 sm:px-5 sm:py-2">
-                    <Building2 size={16} className="shrink-0 text-[#a97c3a]" />
-                    <span className="text-[11px] font-semibold uppercase tracking-[2.5px] text-[#a97c3a] sm:text-xs sm:tracking-[3px]">
-                      {ongoingProjects[1].tag}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-6 font-serif text-3xl leading-tight text-[#5c1a2e] sm:text-4xl lg:mt-8 lg:text-5xl">
-                    {ongoingProjects[1].name}
-                  </h3>
-
-                  <div className="mt-3 flex items-center gap-2 text-sm text-gray-500 sm:text-base">
-                    <MapPin size={15} className="shrink-0 text-[#a97c3a]" />
-                    <span>{ongoingProjects[1].location}</span>
-                  </div>
-
-                  <div className="mt-5 h-[2px] w-16 bg-[#c9a961] sm:mt-6 sm:w-20" />
-
-                  <p className="mt-6 text-base leading-8 text-gray-600 sm:mt-8 sm:text-lg sm:leading-9">
-                    {ongoingProjects[1].description}
-                  </p>
-
-                  <button className="group mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-[#5c1a2e] px-8 py-3.5 text-sm font-medium text-white transition hover:bg-[#431321] sm:mt-10 sm:w-auto sm:justify-start sm:py-4 sm:text-base">
-                    Enquire Now
-                    <ArrowRight
-                      size={17}
-                      className="transition-transform group-hover:translate-x-1"
-                    />
+                {/* CTAs */}
+                <div className="pt-3 flex flex-col sm:flex-row gap-3">
+                  <button className="flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer">
+                    Explore Project <ArrowRight size={14} />
+                  </button>
+                  <button
+                    onClick={handleRedirectContact}
+                    className="flex-1 border border-[#bb9034] text-[#bb9034] hover:bg-[#bb9034] hover:text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-sm cursor-pointer"
+                  >
+                    Book Site Visit
                   </button>
                 </div>
 
-                <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-[420px]">
-                  <img
-                    src={ongoingProjects[1].image}
-                    alt={ongoingProjects[1].name}
-                    className="h-full w-full object-cover object-center"
-                  />
-                </div>
               </div>
-            </div>
-          )}
 
-          {/* ── Completed Projects ("Our Footprints") ────────────── */}
-          {tab === "completed" && (
-            <div>
-              <p className="mx-auto mb-8 max-w-3xl text-center text-base text-gray-600 sm:mb-10 sm:text-lg">
-                We've successfully left behind remarkable golden footprints with
-                the help of our highly skilled professionals, whose detailing
-                expertise has kept us consistent in delivering the best.
+            </div>
+          </div>
+        )}
+
+        {/* ── OUR FOOTPRINTS (AUTOMATIC INFINITE VERTICAL SCROLL COLUMNS) ── */}
+        {tab === "completed" && (
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            
+            {/* ── LEFT COLUMN (FIXED STICKY TEXT & CTAS) ── */}
+            <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+              
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#852541] text-xs font-semibold uppercase tracking-[0.2em]">
+                <Sparkles size={14} className="text-[#bb9034]" /> Infinite Auto-Scroll Showcase
+              </div>
+
+              <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#852541] leading-tight">
+                Empower Living with Devang
+              </h2>
+
+              <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                18+ years of delivering luxury residential towers and commercial spaces across Nagpur. Cards scroll automatically up and down; hover over any card to pause and tilt!
               </p>
 
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
-                {footprints.map((p) => (
-                  <div
-                    key={p.name}
-                    className="group overflow-hidden rounded-3xl border border-[#ece0cd] bg-white shadow-sm transition hover:shadow-xl"
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden sm:h-48 sm:aspect-auto">
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#5c1a2e]">
-                        <CheckCircle2 size={12} className="text-[#a97c3a]" />
-                        Completed
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <h4 className="font-serif text-lg text-[#5c1a2e] sm:text-xl">{p.name}</h4>
-                      <div className="mt-2 flex items-center gap-1.5 text-sm text-gray-500">
-                        <MapPin size={14} className="shrink-0 text-[#a97c3a]" />
-                        <span>{p.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+              {/* ACTION PILL BUTTONS */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <button
+                  onClick={handleRedirectContact}
+                  className="group flex items-center gap-3 rounded-full bg-[#852541] px-6 py-3 text-xs font-bold text-white transition hover:bg-[#681c32] shadow-xl cursor-pointer"
+                >
+                  <span>Book Site Visit</span>
+                  <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:rotate-45 transition duration-300">
+                    <ArrowUpRight size={14} />
+                  </span>
+                </button>
+
+                <button
+                  onClick={handleRedirectContact}
+                  className="group flex items-center gap-3 rounded-full border border-[#c9a874] bg-white px-6 py-3 text-xs font-bold text-[#852541] transition hover:bg-[#faf7f0] shadow-md cursor-pointer"
+                >
+                  <span>Contact Us</span>
+                  <span className="w-7 h-7 rounded-full bg-[#852541]/10 flex items-center justify-center text-[#852541] group-hover:rotate-45 transition duration-300">
+                    <ArrowUpRight size={14} />
+                  </span>
+                </button>
               </div>
+
+              {/* AUTO-SCROLL STATUS INDICATOR */}
+              <div className="flex items-center gap-3 pt-4 border-t border-[#c9a874]/30">
+                <span className="flex h-3 w-3 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#bb9034] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[#bb9034]"></span>
+                </span>
+                <span className="text-xs text-[#852541] font-semibold">
+                  Auto-scrolling up & down (Hover to pause)
+                </span>
+              </div>
+
             </div>
-          )}
-        </div>
+
+            {/* ── RIGHT COLUMN (3 VERTICAL AUTO-SCROLLING CARD COLUMNS) ── */}
+            <div className="lg:col-span-8 scroll-container h-[640px] overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+              
+              {/* Column 1 (Scrolls UP automatically) */}
+              <div className="flex flex-col gap-6 animate-scroll-up">
+                {[...col1Cards, ...col1Cards].map((p, idx) => renderCard(p, `col1-${idx}`))}
+              </div>
+
+              {/* Column 2 (Scrolls DOWN automatically) */}
+              <div className="flex flex-col gap-6 animate-scroll-down">
+                {[...col2Cards, ...col2Cards].map((p, idx) => renderCard(p, `col2-${idx}`))}
+              </div>
+
+              {/* Column 3 (Scrolls UP automatically) */}
+              <div className="flex flex-col gap-6 animate-scroll-up">
+                {[...col3Cards, ...col3Cards].map((p, idx) => renderCard(p, `col3-${idx}`))}
+              </div>
+
+            </div>
+
+          </div>
+        )}
+
       </section>
     </div>
   );

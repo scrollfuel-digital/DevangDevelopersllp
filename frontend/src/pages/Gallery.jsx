@@ -5,311 +5,283 @@ import {
   ChevronLeft,
   ChevronRight,
   MapPin,
-  Building2,
   Sparkles,
+  MoreHorizontal,
+  Expand,
+  ArrowRight,
 } from "lucide-react";
 
-// IMPORT ALL REAL PROJECT IMAGES FROM ASSETS
-import riddhiSiddhiImg from "../assets/projects/riddhisiddhibuilding.jpg";
-import mangalmurtiImg from "../assets/projects/mangalmurti-residency.jpg";
-import gaurisutImg from "../assets/projects/gaurisut-apartment.jpg";
-import avneeshImg from "../assets/projects/avneesh-apartment.jpg";
-import kirtiKalyaniImg from "../assets/projects/kirti-kalyani-apartment.jpg";
-import riddhiSiddhiHeightsImg from "../assets/projects/riddhi-siddhi-heights-dharampeth.jpg";
-import manomayImg from "../assets/projects/manomay-plaza.jpg";
-import shreyasImg from "../assets/projects/shreyas-apartment.jpg";
+// REAL PROJECT IMAGES
 import vakratundImg from "../assets/projects/vakratund-heights.jpg";
 import vignahartaImg from "../assets/projects/vignaharta-enclave.jpg";
+import manomayImg from "../assets/projects/manomay-plaza.jpg";
+import shreyasImg from "../assets/projects/shreyas-apartment.jpg";
+import kirtiKalyaniImg from "../assets/projects/kirti-kalyani-apartment.jpg";
+import avneeshImg from "../assets/projects/avneesh-apartment.jpg";
+import gaurisutImg from "../assets/projects/gaurisut-apartment.jpg";
+import riddhiSiddhiHeightsImg from "../assets/projects/riddhi-siddhi-heights-dharampeth.jpg";
+import riddhiSiddhiImg from "../assets/projects/riddhisiddhibuilding.jpg";
+import mangalmurtiImg from "../assets/projects/mangalmurti-residency.jpg";
 
-// COMPLETE 10 REAL PROJECTS GALLERY DATA
+// REAL PROJECTS DATA
 const GALLERY_ITEMS = [
   {
     id: 1,
-    category: "residential",
-    title: "Gaurisut Apartment",
-    location: "Jaiprakash Nagar, Nagpur",
-    project: "Gaurisut Apartment",
-    image: gaurisutImg,
-  },
-  {
-    id: 2,
-    category: "residential",
-    title: "Avneesh Apartment",
-    location: "Wardha Road, Nagpur",
-    project: "Avneesh Apartment",
-    image: avneeshImg,
-  },
-  {
-    id: 3,
-    category: "residential",
-    title: "Kirti Kalyani Apartment",
-    location: "Laxmi Nagar, Nagpur",
-    project: "Kirti Kalyani Apartment",
-    image: kirtiKalyaniImg,
-  },
-  {
-    id: 4,
-    category: "highrise",
-    title: "Riddhi Siddhi Heights",
-    location: "Dharampeth, Nagpur",
-    project: "Riddhi Siddhi Heights",
-    image: riddhiSiddhiHeightsImg,
-  },
-  {
-    id: 5,
-    category: "commercial",
-    title: "Manomay Plaza",
-    location: "Ramdaspeth, Nagpur",
-    project: "Manomay Plaza",
-    image: manomayImg,
-  },
-  {
-    id: 6,
-    category: "residential",
-    title: "Mangalmurti Residency",
-    location: "Friends Colony, Nagpur",
-    project: "Mangalmurti Residency",
-    image: mangalmurtiImg,
-  },
-  {
-    id: 7,
-    category: "residential",
-    title: "Shreyas Apartment",
-    location: "Ramdaspeth, Nagpur",
-    project: "Shreyas Apartment",
-    image: shreyasImg,
-  },
-  {
-    id: 8,
-    category: "highrise",
     title: "Vakratund Heights",
     location: "Shivaji Nagar, Nagpur",
-    project: "Vakratund Heights",
+    desc: "A landmark high-rise residential tower offering spacious living and modern amenities.",
     image: vakratundImg,
   },
   {
-    id: 9,
-    category: "residential",
+    id: 2,
     title: "Vignaharta Enclave",
     location: "Laxmi Nagar, Nagpur",
-    project: "Vignaharta Enclave",
+    desc: "Premium residential apartments crafted for peaceful family living.",
     image: vignahartaImg,
   },
   {
-    id: 10,
-    category: "highrise",
+    id: 3,
+    title: "Manomay Plaza",
+    location: "Ramdaspeth, Nagpur",
+    desc: "Contemporary commercial plaza with modern architectural design.",
+    image: manomayImg,
+  },
+  {
+    id: 4,
+    title: "Shreyas Apartment",
+    location: "Ramdaspeth, Nagpur",
+    desc: "Luxury boutique residences situated in prime Ramdaspeth area.",
+    image: shreyasImg,
+  },
+  {
+    id: 5,
+    title: "Kirti Kalyani Apartment",
+    location: "Laxmi Nagar, Nagpur",
+    desc: "Thoughtfully built residential spaces with superb connectivity.",
+    image: kirtiKalyaniImg,
+  },
+  {
+    id: 6,
+    title: "Avneesh Apartment",
+    location: "Wardha Road, Nagpur",
+    desc: "Modern apartments offering premium comfort along Wardha Road.",
+    image: avneeshImg,
+  },
+  {
+    id: 7,
+    title: "Gaurisut Apartment",
+    location: "Jaiprakash Nagar, Nagpur",
+    desc: "Serene community living designed with high quality construction.",
+    image: gaurisutImg,
+  },
+  {
+    id: 8,
+    title: "Riddhi Siddhi Heights",
+    location: "Dharampeth, Nagpur",
+    desc: "Iconic luxury tower located in prestigious Dharampeth neighbourhood.",
+    image: riddhiSiddhiHeightsImg,
+  },
+  {
+    id: 9,
     title: "129 Riddhi Siddhi Heights",
-    location: "Pandey Layout, Khamla Road, Nagpur",
-    project: "129 Riddhi Siddhi Heights",
+    location: "Khamla Road, Nagpur",
+    desc: "A striking high-rise tower crafted for modern lifestyle amenities.",
     image: riddhiSiddhiImg,
+  },
+  {
+    id: 10,
+    title: "Mangalmurti Residency",
+    location: "Parsodi, Wardha Road, Nagpur",
+    desc: "Innovative group housing development by Devprath Constructions LLP.",
+    image: mangalmurtiImg,
   },
 ];
 
 export default function Gallery() {
-  const [filter, setFilter] = useState("all");
+  const [activeSlide, setActiveSlide] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-
-  // HERO SLIDER STATE
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalItems = GALLERY_ITEMS.length;
 
   useEffect(() => {
     document.title = "Project Gallery | Devang Developers Nagpur";
   }, []);
 
-  // Auto-play Slider
+  // ── AUTOMATIC TIMER (SLIDES ONE BY ONE EVERY 3.5 SECONDS) ──────────
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev === GALLERY_ITEMS.length - 1 ? 0 : prev + 1));
-    }, 4500);
+      setActiveSlide((prev) => (prev + 1) % totalItems);
+    }, 3500);
+
     return () => clearInterval(timer);
-  }, []);
+  }, [totalItems]);
 
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? GALLERY_ITEMS.length - 1 : prev - 1));
+  const handlePrev = () => {
+    setActiveSlide((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
   };
 
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev === GALLERY_ITEMS.length - 1 ? 0 : prev + 1));
-  };
-
-  const filteredItems =
-    filter === "all"
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === filter);
-
-  const handlePrevModal = () => {
-    setSelectedImageIndex((prev) =>
-      prev === 0 ? filteredItems.length - 1 : prev - 1
-    );
-  };
-
-  const handleNextModal = () => {
-    setSelectedImageIndex((prev) =>
-      prev === filteredItems.length - 1 ? 0 : prev + 1
-    );
+  const handleNext = () => {
+    setActiveSlide((prev) => (prev + 1) % totalItems);
   };
 
   return (
-    <div className="relative bg-[#FAF6F0] text-[#173629] font-sans antialiased overflow-x-hidden pb-20">
+    <div className="relative bg-[#121110] text-white font-sans antialiased overflow-x-hidden min-h-screen pb-20">
       
-      {/* ── TOP HEADER ────────────────────────────────────────────── */}
+      {/* ── TOP HEADER BANNER ───────────────────────────────────────── */}
       <section className="relative bg-[#143526] text-white pt-36 pb-16 px-6 text-center">
         <div className="max-w-4xl mx-auto space-y-3">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B98D45]/20 border border-[#B98D45]/40 text-[#E5B582] text-xs font-semibold uppercase tracking-widest shadow-md mb-1">
+            <Sparkles size={14} className="text-[#B98D45]" /> 3D Cover Flow Portfolio
+          </span>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-wide">
             Our Gallery
           </h1>
           <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
-            Immerse yourself in our portfolio of modern residential apartments, premium commercial developments, and landmark towers in Nagpur.
+            Explore our landmark residential apartments, commercial plazas, and high-rise towers across Nagpur.
           </p>
         </div>
       </section>
 
-      {/* ── FEATURED PROJECT SLIDER / CAROUSEL ──────────────────────── */}
-      <section className="py-10 px-6 max-w-6xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#B98D45]/30 min-h-[380px] md:min-h-[460px] flex items-center bg-[#143526]">
-          
-          {/* SLIDES */}
-          {GALLERY_ITEMS.map((slide, idx) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                currentSlide === idx ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
-            >
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-full h-full object-cover"
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
-              
-              {/* Slide Caption */}
-              <div className="absolute bottom-6 left-6 right-6 text-white z-20 space-y-1.5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#B98D45]/80 text-[10px] font-bold uppercase tracking-wider">
-                  <Sparkles size={12} /> {slide.project}
-                </span>
-                <h2 className="text-2xl md:text-4xl font-serif font-bold">
-                  {slide.title}
-                </h2>
-                <p className="flex items-center gap-1.5 text-xs text-gray-200">
-                  <MapPin size={13} className="text-[#B98D45]" /> {slide.location}
-                </p>
-              </div>
-            </div>
-          ))}
-
-          {/* SLIDER ARROWS */}
-          <button
-            onClick={handlePrevSlide}
-            className="absolute left-4 z-30 p-2.5 rounded-full bg-black/50 hover:bg-[#B98D45] text-white transition backdrop-blur-md"
-            aria-label="Previous Slide"
-          >
-            <ChevronLeft size={22} />
-          </button>
-
-          <button
-            onClick={handleNextSlide}
-            className="absolute right-4 z-30 p-2.5 rounded-full bg-black/50 hover:bg-[#B98D45] text-white transition backdrop-blur-md"
-            aria-label="Next Slide"
-          >
-            <ChevronRight size={22} />
-          </button>
-
-          {/* SLIDER PAGINATION DOTS */}
-          <div className="absolute bottom-4 right-6 z-30 flex items-center gap-2">
-            {GALLERY_ITEMS.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === idx ? "w-6 bg-[#B98D45]" : "w-2 bg-white/50"
-                }`}
-              />
-            ))}
+      {/* ── 3D COVERFLOW CAROUSEL STAGE (LARGER CARDS) ────────────────── */}
+      <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
+        
+        {/* Header Controls */}
+        <div className="flex items-center justify-between px-4">
+          <div>
+            <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#B98D45] block">
+              3D Interactive Showcase
+            </span>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-white">
+              Project Cover Flow
+            </h2>
           </div>
 
-        </div>
-      </section>
-
-      {/* ── MAIN GALLERY SECTION ───────────────────────────────────── */}
-      <section className="py-12 px-6 max-w-7xl mx-auto">
-        
-        {/* FILTER TABS */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          {[
-            { id: "all", label: "All Projects (10)" },
-            { id: "residential", label: "Residential Apartments" },
-            { id: "highrise", label: "High-Rise Towers" },
-            { id: "commercial", label: "Commercial" },
-          ].map((tab) => (
+          {/* Navigation Controls (< >) */}
+          <div className="flex items-center gap-3">
             <button
-              key={tab.id}
-              onClick={() => setFilter(tab.id)}
-              className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition duration-300 ${
-                filter === tab.id
-                  ? "bg-[#5c1a2e] text-white shadow-lg"
-                  : "bg-white text-[#173629] border border-gray-200 hover:border-[#b98d45]"
-              }`}
+              onClick={handlePrev}
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#B98D45] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
+              aria-label="Previous Slide"
             >
-              {tab.label}
+              <ChevronLeft size={24} />
             </button>
-          ))}
+            <button
+              onClick={handleNext}
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#B98D45] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
+              aria-label="Next Slide"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
         </div>
 
-        {/* PROJECT GRID CARDS */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item, index) => (
-            <div
-              key={item.id}
-              onClick={() => setSelectedImageIndex(index)}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-lg border border-[#ece0cd] cursor-pointer hover:-translate-y-2 transition duration-500"
-            >
-              <div className="relative h-[320px] overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                />
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#5c1a2e] via-[#5c1a2e]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
-                  <span className="text-[11px] uppercase tracking-[0.2em] text-[#c9a961] font-bold mb-1">
-                    {item.project}
+        {/* 3D CAROUSEL COVERFLOW WRAPPER (INCREASED HEIGHT TO 640px) */}
+        <div className="relative h-[540px] md:h-[640px] flex items-center justify-center perspective-[1200px] overflow-hidden">
+          
+          {GALLERY_ITEMS.map((item, idx) => {
+            let offset = idx - activeSlide;
+            if (offset < -Math.floor(totalItems / 2)) offset += totalItems;
+            if (offset > Math.floor(totalItems / 2)) offset -= totalItems;
+
+            const isCenter = offset === 0;
+            const isVisible = Math.abs(offset) <= 2;
+
+            if (!isVisible) return null;
+
+            const translateX = offset * 250;
+            const rotateY = offset * -25;
+            const scale = isCenter ? 1 : 0.84 - Math.abs(offset) * 0.05;
+            const opacity = isCenter ? 1 : 0.65 - Math.abs(offset) * 0.15;
+
+            return (
+              <div
+                key={item.id}
+                onClick={() => {
+                  if (isCenter) setSelectedImageIndex(idx);
+                  else setActiveSlide(idx);
+                }}
+                className={`group absolute transition-all duration-700 ease-out cursor-pointer rounded-3xl overflow-hidden border backdrop-blur-md flex flex-col justify-between ${
+                  isCenter
+                    ? "z-30 w-[340px] md:w-[440px] h-[500px] md:h-[600px] border-white/40 shadow-[0_35px_80px_rgba(0,0,0,0.85)] bg-black/40"
+                    : "z-10 w-[290px] md:w-[370px] h-[440px] md:h-[530px] border-white/20 shadow-xl bg-black/50"
+                }`}
+                style={{
+                  transform: `translateX(${translateX}px) rotateY(${rotateY}deg) scale(${scale})`,
+                  opacity: opacity,
+                }}
+              >
+                {/* ── LEFT-SIDE BUILDING CROPPING CONTAINER ── */}
+                <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#FAF7F2]">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute left-0 top-0 h-full w-[180%] max-w-none object-cover object-left transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                </div>
+
+                {/* TOP BUTTONS BAR */}
+                <div className="relative z-20 p-5 flex items-center justify-between">
+                  {isCenter ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedImageIndex(idx);
+                      }}
+                      className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-medium flex items-center gap-1.5 shadow-lg hover:bg-white/30 transition"
+                    >
+                      <Expand size={14} /> Expand
+                    </button>
+                  ) : (
+                    <span />
+                  )}
+                  <span className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+                    <MoreHorizontal size={18} />
                   </span>
-                  <h3 className="text-xl font-serif font-bold leading-snug mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="flex items-center gap-1.5 text-xs text-gray-200 mb-3">
-                    <MapPin size={13} className="text-[#c9a961]" /> {item.location}
-                  </p>
-                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-white/90">
-                    <Maximize2 size={15} className="text-[#c9a961]" /> Click to Preview
+                </div>
+
+                {/* ── BUILDING NAME IN THE EXACT MIDDLE (DISAPPEARS ON HOVER) ── */}
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none z-20">
+                  <div className="bg-white/95 backdrop-blur-md px-7 py-6 rounded-2xl border border-white/40 shadow-2xl space-y-2 max-w-[85%] transform transition duration-500 group-hover:scale-95">
+                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#143526] leading-snug">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="flex items-center justify-center gap-1.5 text-xs md:text-sm text-[#54152B] font-semibold border-t border-gray-100 pt-2.5">
+                      <ArrowRight size={15} className="text-[#B98D45]" />
+                      <span>{item.location}</span>
+                    </p>
                   </div>
                 </div>
-              </div>
 
-              {/* Static Card Info Footer */}
-              <div className="p-5 bg-white border-t border-gray-100 flex items-center justify-between">
-                <div>
-                  <h4 className="font-serif font-bold text-lg text-[#5c1a2e]">
-                    {item.title}
-                  </h4>
-                  <p className="flex items-center gap-1 text-xs text-gray-500 mt-0.5">
-                    <MapPin size={13} className="text-[#a97c3a]" /> {item.location}
-                  </p>
+                {/* BOTTOM INDEX INDICATOR */}
+                <div className="relative z-20 p-5 text-right">
+                  <span className="text-xs text-white/80 font-mono bg-black/40 px-3.5 py-1.5 rounded-full border border-white/20">
+                    {idx + 1} / {totalItems}
+                  </span>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[#faf7f0] flex items-center justify-center text-[#a97c3a] group-hover:bg-[#5c1a2e] group-hover:text-white transition">
-                  <Building2 size={16} />
-                </div>
-              </div>
 
-            </div>
+              </div>
+            );
+          })}
+
+        </div>
+
+        {/* PAGINATION DOTS (• • •) */}
+        <div className="flex items-center justify-center gap-2 pt-4">
+          {GALLERY_ITEMS.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveSlide(idx)}
+              className={`h-2.5 rounded-full transition-all duration-500 ${
+                activeSlide === idx ? "w-8 bg-[#B98D45]" : "w-2.5 bg-white/20"
+              }`}
+            />
           ))}
         </div>
+
       </section>
 
-      {/* ── LIGHTBOX MODAL ────────────────────────────────────────── */}
+      {/* ── LIGHTBOX MODAL PREVIEW ON CLICK ────────────────────────── */}
       {selectedImageIndex !== null && (
         <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
           <button
@@ -320,14 +292,22 @@ export default function Gallery() {
           </button>
 
           <button
-            onClick={handlePrevModal}
+            onClick={() =>
+              setSelectedImageIndex((prev) =>
+                prev === 0 ? totalItems - 1 : prev - 1
+              )
+            }
             className="absolute left-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
           >
             <ChevronLeft size={30} />
           </button>
 
           <button
-            onClick={handleNextModal}
+            onClick={() =>
+              setSelectedImageIndex((prev) =>
+                prev === totalItems - 1 ? 0 : prev + 1
+              )
+            }
             className="absolute right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
           >
             <ChevronRight size={30} />
@@ -335,16 +315,16 @@ export default function Gallery() {
 
           <div className="max-w-5xl w-full text-center space-y-4">
             <img
-              src={filteredItems[selectedImageIndex].image}
-              alt={filteredItems[selectedImageIndex].title}
+              src={GALLERY_ITEMS[selectedImageIndex].image}
+              alt={GALLERY_ITEMS[selectedImageIndex].title}
               className="max-h-[75vh] w-auto mx-auto rounded-2xl shadow-2xl object-contain border border-white/20"
             />
             <div className="text-white">
               <h3 className="text-2xl font-serif font-bold text-white">
-                {filteredItems[selectedImageIndex].title}
+                {GALLERY_ITEMS[selectedImageIndex].title}
               </h3>
               <p className="text-xs text-[#E5B582] mt-1">
-                📍 {filteredItems[selectedImageIndex].location}
+                📍 {GALLERY_ITEMS[selectedImageIndex].location}
               </p>
             </div>
           </div>
