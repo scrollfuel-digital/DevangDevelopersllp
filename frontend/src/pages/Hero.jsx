@@ -5,6 +5,7 @@ import Contact from './Contact'
 import Blog from './Blog'
 import About from '../components/ui/Aboutus'
 import Project from '../components/ui/project'
+import HomeGallery from '../components/ui/HomeGallery';
 
 
 const Hero = () => {
@@ -13,6 +14,7 @@ const Hero = () => {
             <Home />
             <About />
             <Project />
+            <HomeGallery />
          
         </>
     )
