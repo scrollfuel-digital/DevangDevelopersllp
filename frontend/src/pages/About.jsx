@@ -54,7 +54,7 @@ export default function About() {
     <div className="relative bg-[#FAF7F2] text-[#143526] font-sans antialiased overflow-x-hidden min-h-screen">
       
       {/* DEEP FOREST GREEN HERO HEADER */}
-      <section className="relative pt-36 pb-20 px-6 bg-[#143526] text-white">
+      <section className="relative pt-36 pb-20 px-6 bg-[#000000] text-white">
         <div className="max-w-4xl mx-auto text-center space-y-3">
           <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#B98D45]/20 border border-[#B98D45]/40 text-[#E5B582] text-xs uppercase tracking-[0.25em] font-semibold shadow-md">
             <Sparkles size={14} className="text-[#B98D45]" /> Devang Developers LLP
