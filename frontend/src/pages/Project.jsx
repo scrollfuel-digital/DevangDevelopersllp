@@ -146,7 +146,7 @@ function TiltedCard({
       {/* ── CURSOR-FOLLOWING BUILDING NAME TOOLTIP ── */}
       {showTooltip && captionText && (
         <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-full px-5 py-2.5 text-xs sm:text-sm font-serif font-bold tracking-wide opacity-0 z-30 hidden sm:block shadow-xl border border-[#c9a874] bg-[#852541] text-[#ffffff]"
+          className="pointer-events-none absolute left-0 top-0 rounded-full px-5 py-2.5 text-xs sm:text-sm font-serif font-bold tracking-wide opacity-0 z-30 hidden sm:block shadow-xl border border-[#c9a874] bg-[#852548] text-[#ffffff]"
           style={{
             x,
             y,
@@ -246,10 +246,9 @@ const footprints = [
   },
 ];
 
-// COLUMN CARDS
-const col1Cards = [footprints[0], footprints[3], footprints[6]];
-const col2Cards = [footprints[1], footprints[4], footprints[7]];
-const col3Cards = [footprints[2], footprints[5], footprints[0]];
+// COLUMN CARDS FOR 2 COLUMNS
+const col1Cards = [footprints[0], footprints[2], footprints[4], footprints[6]];
+const col2Cards = [footprints[1], footprints[3], footprints[5], footprints[7]];
 
 // ── MAIN PAGE COMPONENT ───────────────────────────────────────────
 
@@ -262,14 +261,14 @@ function Project() {
     navigate("/contact");
   };
 
-  // HELPER TO RENDER A 3D CARD
+  // HELPER TO RENDER A 3D CARD (INCREASED HEIGHT TO 450px)
   const renderCard = (p, idxKey) => (
     <div key={idxKey} onClick={handleRedirectContact} className="w-full">
       <TiltedCard
         imageSrc={p.image}
         altText={p.name}
         captionText={p.name}
-        containerHeight="400px"
+        containerHeight="450px"
         containerWidth="100%"
         rotateAmplitude={14}
         scaleOnHover={1.05}
@@ -285,13 +284,13 @@ function Project() {
               </span>
             </div>
 
-            <div className="space-y-2.5 pt-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-3.5 rounded-2xl">
+            <div className="space-y-3 pt-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 rounded-2xl">
               <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
                 <MapPin size={15} className="text-[#c9a874] shrink-0" />
                 <span className="leading-snug truncate">{p.location}</span>
               </p>
 
-              <button className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
+              <button className="w-full bg-[#852541]/85 hover:bg-[#852541] text-white py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
                 Explore <ArrowRight size={13} />
               </button>
             </div>
@@ -326,19 +325,19 @@ function Project() {
         }
       `}</style>
 
-      {/* ── TOP HERO HEADER BANNER ─────────────────────────────────── */}
-      <section className="relative bg-[#852541] text-[#ffffff] pt-32 pb-12 px-6 text-center border-b border-[#c9a874]/30">
+      {/* ── TOP HERO HEADER BANNER (RESTORED SOLID BURGUNDY COLOR) ─────────────────── */}
+      <section className="relative bg-[#ffffffc8] text-[#852541] pt-32 pb-12 px-6 text-center border-b border-[#c9a874]/30">
         <div className="relative mx-auto max-w-7xl z-10 space-y-3">
           
           <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#c9a874] text-xs font-semibold uppercase tracking-[0.25em] shadow-lg">
             <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark Portfolio
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl text-[#ffffff] font-bold leading-tight tracking-wide">
+          <h1 className="font-serif text-4xl sm:text-6xl text-[#852541] font-bold leading-tight tracking-wide">
             Walls of Happiness
           </h1>
 
-          <p className="mx-auto max-w-3xl text-xs sm:text-sm text-gray-200 font-light leading-relaxed">
+          <p className="mx-auto max-w-3xl text-xs sm:text-sm text-[#bb9034] font-light leading-relaxed">
             18+ years of delivering luxury residential apartments and commercial landmarks with superior construction quality across Nagpur.
           </p>
 
@@ -368,7 +367,7 @@ function Project() {
               onClick={() => setTab("ongoing")}
               className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-500 cursor-pointer ${
                 tab === "ongoing"
-                  ? "bg-[#852541] text-[#ffffff] shadow-xl scale-105"
+                  ? "bg-[#852541]/85 text-[#ffffff] shadow-xl scale-105"
                   : "text-[#852541] hover:bg-[#faf7f0]"
               }`}
             >
@@ -379,7 +378,7 @@ function Project() {
               onClick={() => setTab("completed")}
               className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-500 cursor-pointer ${
                 tab === "completed"
-                  ? "bg-[#852541] text-[#ffffff] shadow-xl scale-105"
+                  ? "bg-[#852541]/85 text-[#ffffff] shadow-xl scale-105"
                   : "text-[#852541] hover:bg-[#faf7f0]"
               }`}
             >
@@ -401,9 +400,9 @@ function Project() {
                   alt={ongoingProjects[0].name}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#852541] via-transparent to-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
-                <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
+                <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/80 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
                   <ShieldCheck size={16} className="text-[#bb9034]" /> {ongoingProjects[0].rera}
                 </div>
               </div>
@@ -446,7 +445,7 @@ function Project() {
 
                 {/* CTAs */}
                 <div className="pt-3 flex flex-col sm:flex-row gap-3">
-                  <button className="flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer">
+                  <button className="flex-1 bg-[#852541]/85 hover:bg-[#852541] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer">
                     Explore Project <ArrowRight size={14} />
                   </button>
                   <button
@@ -463,12 +462,12 @@ function Project() {
           </div>
         )}
 
-        {/* ── OUR FOOTPRINTS (AUTOMATIC INFINITE VERTICAL SCROLL COLUMNS) ── */}
+        {/* ── OUR FOOTPRINTS (AUTOMATIC INFINITE VERTICAL SCROLL: 2 COLUMNS) ── */}
         {tab === "completed" && (
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             
             {/* ── LEFT COLUMN (FIXED STICKY TEXT & CTAS) ── */}
-            <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
               
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#852541] text-xs font-semibold uppercase tracking-[0.2em]">
                 <Sparkles size={14} className="text-[#bb9034]" /> Infinite Auto-Scroll Showcase
@@ -486,7 +485,7 @@ function Project() {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={handleRedirectContact}
-                  className="group flex items-center gap-3 rounded-full bg-[#852541] px-6 py-3 text-xs font-bold text-white transition hover:bg-[#681c32] shadow-xl cursor-pointer"
+                  className="group flex items-center gap-3 rounded-full bg-[#852541]/85 px-6 py-3 text-xs font-bold text-white transition hover:bg-[#852541] shadow-xl cursor-pointer"
                 >
                   <span>Book Site Visit</span>
                   <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:rotate-45 transition duration-300">
@@ -518,22 +517,17 @@ function Project() {
 
             </div>
 
-            {/* ── RIGHT COLUMN (3 VERTICAL AUTO-SCROLLING CARD COLUMNS) ── */}
-            <div className="lg:col-span-8 scroll-container h-[640px] overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+            {/* ── RIGHT COLUMN (2 VERTICAL AUTO-SCROLLING CARD COLUMNS - LARGER CARDS) ── */}
+            <div className="lg:col-span-7 scroll-container h-[680px] overflow-hidden grid grid-cols-1 sm:grid-cols-2 gap-8 relative">
               
               {/* Column 1 (Scrolls UP automatically) */}
-              <div className="flex flex-col gap-6 animate-scroll-up">
+              <div className="flex flex-col gap-8 animate-scroll-up">
                 {[...col1Cards, ...col1Cards].map((p, idx) => renderCard(p, `col1-${idx}`))}
               </div>
 
               {/* Column 2 (Scrolls DOWN automatically) */}
-              <div className="flex flex-col gap-6 animate-scroll-down">
+              <div className="flex flex-col gap-8 animate-scroll-down">
                 {[...col2Cards, ...col2Cards].map((p, idx) => renderCard(p, `col2-${idx}`))}
-              </div>
-
-              {/* Column 3 (Scrolls UP automatically) */}
-              <div className="flex flex-col gap-6 animate-scroll-up">
-                {[...col3Cards, ...col3Cards].map((p, idx) => renderCard(p, `col3-${idx}`))}
               </div>
 
             </div>

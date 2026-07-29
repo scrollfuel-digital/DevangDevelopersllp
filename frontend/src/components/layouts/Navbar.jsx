@@ -66,15 +66,15 @@ const Navbar = () => {
             <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-end px-5 sm:px-8 md:px-10 lg:px-14 py-5 sm:py-6 lg:py-7">
                 <button
                     onClick={() => setOpen(true)}
-                    className="flex items-center gap-3 text-[#F3EEE6] group"
+                    className="flex items-center gap-3 text-[#d78d16] group"
                 >
-                    <span className="hidden sm:block text-[11px] tracking-[0.25em] uppercase">
+                    <span className="hidden sm:block text-[15px] tracking-[0.25em] uppercase">
                         Menu
                     </span>
 
                     <span className="flex flex-col gap-1 w-6">
-                        <span className="h-[2px] bg-white"></span>
-                        <span className="h-[2px] w-4 self-end bg-white group-hover:w-full transition-all"></span>
+                        <span className="h-[2px] bg-[#d78d16]"></span>
+                        <span className="h-[2px] w-4 self-end bg-[#d78d16] group-hover:w-full transition-all"></span>
                     </span>
                 </button>
             </header>

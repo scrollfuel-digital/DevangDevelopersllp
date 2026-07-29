@@ -124,16 +124,20 @@ export default function Gallery() {
   };
 
   return (
-    <div className="relative bg-[#121110] text-white font-sans antialiased overflow-x-hidden min-h-screen pb-20">
+    <div className="relative bg-[#1A0A10] text-white font-sans antialiased overflow-x-hidden min-h-screen pb-20 selection:bg-[#852541] selection:text-[#FAF7F2]">
       
-      {/* ── TOP HEADER BANNER ───────────────────────────────────────── */}
-      <section className="relative bg-[#143526] text-white pt-36 pb-16 px-6 text-center">
-        <div className="max-w-4xl mx-auto space-y-3">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#B98D45]/20 border border-[#B98D45]/40 text-[#E5B582] text-xs font-semibold uppercase tracking-widest shadow-md mb-1">
-            <Sparkles size={14} className="text-[#B98D45]" /> 3D Cover Flow Portfolio
+      {/* ── TOP HEADER BANNER (BRAND MAROON #852541) ─────────────────── */}
+      <section className="relative bg-[#852541] text-white pt-36 pb-16 px-6 text-center border-b border-[#bb9034]/30 shadow-2xl">
+        
+        {/* Subtle Decorative Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#6B1C33] to-[#852541] opacity-90 pointer-events-none" />
+
+        <div className="relative max-w-4xl mx-auto space-y-3 z-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#bb9034]/40 text-[#c9a874] text-xs font-semibold uppercase tracking-widest shadow-md mb-1">
+            <Sparkles size={14} className="text-[#bb9034]" /> 3D Cover Flow Portfolio
           </span>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-wide">
-            Our Gallery
+            Our <span className="text-[#c9a874]">Gallery</span>
           </h1>
           <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
             Explore our landmark residential apartments, commercial plazas, and high-rise towers across Nagpur.
@@ -141,13 +145,13 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* ── 3D COVERFLOW CAROUSEL STAGE (LARGER CARDS) ────────────────── */}
+      {/* ── 3D COVERFLOW CAROUSEL STAGE ────────────────────────────────── */}
       <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
         
         {/* Header Controls */}
         <div className="flex items-center justify-between px-4">
           <div>
-            <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#B98D45] block">
+            <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#bb9034] block">
               3D Interactive Showcase
             </span>
             <h2 className="text-2xl md:text-3xl font-serif font-bold text-white">
@@ -159,14 +163,14 @@ export default function Gallery() {
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#B98D45] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#852541] hover:border-[#bb9034] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
               aria-label="Previous Slide"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#B98D45] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
+              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#852541] hover:border-[#bb9034] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
               aria-label="Next Slide"
             >
               <ChevronRight size={24} />
@@ -174,7 +178,7 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* 3D CAROUSEL COVERFLOW WRAPPER (INCREASED HEIGHT TO 640px) */}
+        {/* 3D CAROUSEL COVERFLOW WRAPPER */}
         <div className="relative h-[540px] md:h-[640px] flex items-center justify-center perspective-[1200px] overflow-hidden">
           
           {GALLERY_ITEMS.map((item, idx) => {
@@ -201,7 +205,7 @@ export default function Gallery() {
                 }}
                 className={`group absolute transition-all duration-700 ease-out cursor-pointer rounded-3xl overflow-hidden border backdrop-blur-md flex flex-col justify-between ${
                   isCenter
-                    ? "z-30 w-[340px] md:w-[440px] h-[500px] md:h-[600px] border-white/40 shadow-[0_35px_80px_rgba(0,0,0,0.85)] bg-black/40"
+                    ? "z-30 w-[340px] md:w-[440px] h-[500px] md:h-[600px] border-[#bb9034]/60 shadow-[0_35px_80px_rgba(0,0,0,0.85)] bg-black/40"
                     : "z-10 w-[290px] md:w-[370px] h-[440px] md:h-[530px] border-white/20 shadow-xl bg-black/50"
                 }`}
                 style={{
@@ -209,7 +213,7 @@ export default function Gallery() {
                   opacity: opacity,
                 }}
               >
-                {/* ── LEFT-SIDE BUILDING CROPPING CONTAINER ── */}
+                {/* ── BUILDING IMAGE CROPPING CONTAINER ── */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#FAF7F2]">
                   <img
                     src={item.image}
@@ -227,27 +231,27 @@ export default function Gallery() {
                         e.stopPropagation();
                         setSelectedImageIndex(idx);
                       }}
-                      className="px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-medium flex items-center gap-1.5 shadow-lg hover:bg-white/30 transition"
+                      className="px-4 py-2 rounded-full bg-[#852541]/80 backdrop-blur-md border border-[#bb9034]/50 text-[#c9a874] text-xs font-medium flex items-center gap-1.5 shadow-lg hover:bg-[#852541] transition"
                     >
-                      <Expand size={14} /> Expand
+                      <Expand size={14} className="text-[#bb9034]" /> Expand
                     </button>
                   ) : (
                     <span />
                   )}
-                  <span className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+                  <span className="w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
                     <MoreHorizontal size={18} />
                   </span>
                 </div>
 
-                {/* ── BUILDING NAME IN THE EXACT MIDDLE (DISAPPEARS ON HOVER) ── */}
+                {/* ── BUILDING NAME OVERLAY (BRAND MAROON & GOLD ACCENTS) ── */}
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none z-20">
-                  <div className="bg-white/95 backdrop-blur-md px-7 py-6 rounded-2xl border border-white/40 shadow-2xl space-y-2 max-w-[85%] transform transition duration-500 group-hover:scale-95">
-                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#143526] leading-snug">
+                  <div className="bg-white/95 backdrop-blur-md px-7 py-6 rounded-2xl border border-[#bb9034]/40 shadow-2xl space-y-2 max-w-[85%] transform transition duration-500 group-hover:scale-95">
+                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#852541] leading-snug">
                       {item.title}
                     </h3>
                     
-                    <p className="flex items-center justify-center gap-1.5 text-xs md:text-sm text-[#54152B] font-semibold border-t border-gray-100 pt-2.5">
-                      <ArrowRight size={15} className="text-[#B98D45]" />
+                    <p className="flex items-center justify-center gap-1.5 text-xs md:text-sm text-[#852541] font-semibold border-t border-[#bb9034]/20 pt-2.5">
+                      <ArrowRight size={15} className="text-[#bb9034]" />
                       <span>{item.location}</span>
                     </p>
                   </div>
@@ -255,7 +259,7 @@ export default function Gallery() {
 
                 {/* BOTTOM INDEX INDICATOR */}
                 <div className="relative z-20 p-5 text-right">
-                  <span className="text-xs text-white/80 font-mono bg-black/40 px-3.5 py-1.5 rounded-full border border-white/20">
+                  <span className="text-xs text-white/90 font-mono bg-[#852541]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#bb9034]/40">
                     {idx + 1} / {totalItems}
                   </span>
                 </div>
@@ -273,7 +277,7 @@ export default function Gallery() {
               key={idx}
               onClick={() => setActiveSlide(idx)}
               className={`h-2.5 rounded-full transition-all duration-500 ${
-                activeSlide === idx ? "w-8 bg-[#B98D45]" : "w-2.5 bg-white/20"
+                activeSlide === idx ? "w-8 bg-[#bb9034]" : "w-2.5 bg-white/20"
               }`}
             />
           ))}
@@ -286,7 +290,7 @@ export default function Gallery() {
         <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
           <button
             onClick={() => setSelectedImageIndex(null)}
-            className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+            className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50"
           >
             <X size={26} />
           </button>
@@ -297,7 +301,7 @@ export default function Gallery() {
                 prev === 0 ? totalItems - 1 : prev - 1
               )
             }
-            className="absolute left-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+            className="absolute left-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50"
           >
             <ChevronLeft size={30} />
           </button>
@@ -308,7 +312,7 @@ export default function Gallery() {
                 prev === totalItems - 1 ? 0 : prev + 1
               )
             }
-            className="absolute right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition z-50"
+            className="absolute right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50"
           >
             <ChevronRight size={30} />
           </button>
@@ -317,13 +321,13 @@ export default function Gallery() {
             <img
               src={GALLERY_ITEMS[selectedImageIndex].image}
               alt={GALLERY_ITEMS[selectedImageIndex].title}
-              className="max-h-[75vh] w-auto mx-auto rounded-2xl shadow-2xl object-contain border border-white/20"
+              className="max-h-[75vh] w-auto mx-auto rounded-2xl shadow-2xl object-contain border border-[#bb9034]/40"
             />
             <div className="text-white">
               <h3 className="text-2xl font-serif font-bold text-white">
                 {GALLERY_ITEMS[selectedImageIndex].title}
               </h3>
-              <p className="text-xs text-[#E5B582] mt-1">
+              <p className="text-xs text-[#c9a874] mt-1">
                 📍 {GALLERY_ITEMS[selectedImageIndex].location}
               </p>
             </div>
