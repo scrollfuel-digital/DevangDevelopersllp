@@ -52,12 +52,12 @@ const Navbar = () => {
     return (
         <>
             {/* Logo */}
-            <div className="absolute top-0 left-0 z-30 px-4 sm:px-6 md:px-10 py-4 sm:py-5">
+            <div className="absolute top-2 left-4 sm:left-6 md:left-10 z-30">
                 <NavLink to="/">
                     <img
                         src={logo}
-                        alt="Logo"
-                        className="h-16 sm:h-20 md:h-28 lg:h-36 w-auto object-contain"
+                        alt="Devang Developers Logo"
+                        className="h-20 sm:h-24 md:h-32 lg:h-35 w-auto object-contain drop-shadow-md transition-transform duration-300 hover:scale-[1.02]"
                     />
                 </NavLink>
             </div>
@@ -66,15 +66,15 @@ const Navbar = () => {
             <header className="absolute top-0 left-0 right-0 z-40 flex items-center justify-end px-5 sm:px-8 md:px-10 lg:px-14 py-5 sm:py-6 lg:py-7">
                 <button
                     onClick={() => setOpen(true)}
-                    className="flex items-center gap-3 text-[#d78d16] group"
+                    className="flex items-center gap-3 text-[#A9814A] group"
                 >
                     <span className="hidden sm:block text-[15px] tracking-[0.25em] uppercase">
                         Menu
                     </span>
 
                     <span className="flex flex-col gap-1 w-6">
-                        <span className="h-[2px] bg-[#d78d16]"></span>
-                        <span className="h-[2px] w-4 self-end bg-[#d78d16] group-hover:w-full transition-all"></span>
+                        <span className="h-[2px] bg-[#A9814A]"></span>
+                        <span className="h-[2px] w-4 self-end bg-[#A9814A] group-hover:w-full transition-all"></span>
                     </span>
                 </button>
             </header>

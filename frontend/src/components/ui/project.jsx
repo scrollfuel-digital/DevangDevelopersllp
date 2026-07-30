@@ -39,8 +39,8 @@ const stats = [
 ];
 
 const flagshipProject = {
-  id: "riddhi-siddhi",
-  name: "129 Riddhi Siddhi Heights",
+  id: "riddhi-siddhi-3",
+  name: "Riddhi Siddhi 3",
   tagline: "Flagship High-Rise Residential Landmark",
   location: "Pandey Layout, Khamla Road, Nagpur",
   image: riddhiSiddhiImg,
@@ -106,18 +106,15 @@ function Project() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#FAF7F2] text-[#852541] font-sans antialiased selection:bg-[#852541] selection:text-[#FAF7F2]">
+    <div className="relative min-h-screen bg-[#FBF9F6] text-[#852541] font-sans antialiased selection:bg-[#852541] selection:text-[#FBF9F6]">
       
-      {/* ── HEADER BANNER ────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[white] text-[#852541] pt-28 pb-16 px-6 text-center shadow-2xl border-b border-[#bb9034]/30">
+      {/* ── HEADER BANNER (SEAMLESS MATCHING ABOUT SECTION BG #FBF9F6) ──────── */}
+      <section className="relative overflow-hidden bg-[#FBF9F6] text-[#852541] pt-36 pb-16 px-6 text-center">
         
-        {/* Decorative Radial Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(#c9a874_1px,transparent_1px)] [background-size:28px_28px] opacity-15 pointer-events-none" />
-
         <div className="relative max-w-4xl mx-auto z-10 space-y-4">
           
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#bb9034]/40 text-[#c9a874] text-xs font-bold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/30 text-[#852541] text-xs font-semibold uppercase tracking-[0.25em]">
             <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark
           </div>
 
@@ -126,17 +123,17 @@ function Project() {
              Riddhi Siddhi <span className="text-[#bb9034]">3</span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-[#bb9034] font-serif italic leading-relaxed">
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-gray-700 font-serif italic leading-relaxed">
             A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on Khamla Road, Nagpur.
           </p>
 
           {/* Quick Stats Bar */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#bb9034]">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#852541]">
             {stats.map(({ icon: Icon, value, label }) => (
-              <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-[#bb9034]/30 backdrop-blur-md">
+              <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#bb9034]/30">
                 <Icon size={16} className="text-[#bb9034]" />
-                <span className="font-serif font-bold text-white text-sm">{value}</span>
-                <span className="text-[#bb9034]">{label}</span>
+                <span className="font-serif font-bold text-[#852541] text-sm">{value}</span>
+                <span className="text-gray-600">{label}</span>
               </div>
             ))}
           </div>
@@ -144,10 +141,10 @@ function Project() {
         </div>
       </section>
 
-      {/* ── FLAGSHIP PROJECT SHOWCASE (EXCLUSIVE) ────────────────────────── */}
-      <section className="py-12 px-4 sm:px-6 max-w-7xl mx-auto space-y-10">
+      {/* ── FLAGSHIP PROJECT SHOWCASE ────────────────────────────────────────── */}
+      <section className="py-8 px-4 sm:px-6 max-w-7xl mx-auto space-y-10">
         
-        <div className="bg-white rounded-3xl border border-[#bb9034]/30 shadow-2xl overflow-hidden grid lg:grid-cols-12">
+        <div className="bg-[#FBF9F6] rounded-3xl border border-[#bb9034]/30 overflow-hidden grid lg:grid-cols-12">
           
           {/* Left Column: High-Impact Image Spotlight */}
           <div className="lg:col-span-6 relative min-h-[420px] lg:min-h-[600px] overflow-hidden group">
@@ -156,34 +153,34 @@ function Project() {
               alt={flagshipProject.name}
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#5A162A] via-[#852541]/30 to-transparent opacity-95" />
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
             {/* Floating Badges */}
             <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#bb9034]/50 text-[#c9a874] text-xs font-bold shadow-xl">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#852541] text-[#c9a874] text-xs font-bold">
                 <ShieldCheck size={16} className="text-[#bb9034]" /> {flagshipProject.rera}
               </span>
-              <span className="px-4 py-2 rounded-full bg-[#bb9034] text-white text-xs font-bold uppercase tracking-wider shadow-lg">
+              <span className="px-4 py-2 rounded-full bg-[#bb9034] text-white text-xs font-bold uppercase tracking-wider">
                 {flagshipProject.status}
               </span>
             </div>
 
             {/* Bottom Title Info */}
-            <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 z-10">
+            <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
               <span className="text-xs uppercase tracking-[0.2em] text-[#e5c178] font-bold block">
                 {flagshipProject.tagline}
               </span>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
-                {flagshipProject.name}
+                Riddhi Siddhi 3
               </h2>
-              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-200 font-medium">
-                <MapPin size={15} className="text-[#bb9034] shrink-0" /> {flagshipProject.location}
+              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
+                <MapPin size={15} className="text-[#bb9034]" /> {flagshipProject.location}
               </p>
             </div>
           </div>
 
           {/* Right Column: Tabbed Details & Interactive Information */}
-          <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6 bg-white text-[#852541]">
+          <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6 bg-[#FBF9F6] text-[#852541]">
             
             <div className="space-y-6">
               
@@ -223,14 +220,14 @@ function Project() {
                   </div>
 
                   {/* Highlights Bullet List */}
-                  <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-[#bb9034]/25 space-y-3 shadow-inner">
+                  <div className="bg-white p-5 rounded-2xl border border-[#bb9034]/25 space-y-3">
                     <h4 className="text-xs uppercase tracking-widest text-[#852541] font-bold flex items-center gap-1.5">
                       <Sparkles size={14} className="text-[#bb9034]" /> Key Highlights
                     </h4>
                     <div className="grid sm:grid-cols-2 gap-2.5 text-xs text-gray-700">
                       {flagshipProject.highlights.map((h, idx) => (
-                        <div key={idx} className="flex items-center gap-2 bg-white p-2 rounded-lg border border-[#bb9034]/10 shadow-sm">
-                          <Check size={14} className="text-[#bb9034] shrink-0" />
+                        <div key={idx} className="flex items-center gap-2 bg-[#FBF9F6] p-2 rounded-lg border border-[#bb9034]/10">
+                          <Check size={14} className="text-[#bb9034]" />
                           <span className="font-medium text-gray-800">{h}</span>
                         </div>
                       ))}
@@ -265,7 +262,7 @@ function Project() {
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {flagshipProject.amenities.map(({ icon: Icon, label, desc }) => (
-                      <div key={label} className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF7F2] border border-[#bb9034]/20">
+                      <div key={label} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-[#bb9034]/20">
                         <div className="p-2 rounded-lg bg-[#852541] text-[#bb9034] shrink-0">
                           <Icon size={16} />
                         </div>
@@ -288,7 +285,7 @@ function Project() {
                     </h4>
                     <span className="text-xs font-bold text-[#852541]">{flagshipProject.completion}</span>
                   </div>
-                  <div className="space-y-3.5 bg-[#FAF7F2] p-5 rounded-2xl border border-[#bb9034]/20">
+                  <div className="space-y-3.5 bg-white p-5 rounded-2xl border border-[#bb9034]/20">
                     {flagshipProject.progress.map((item, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex justify-between text-xs font-semibold text-gray-800">
@@ -315,7 +312,7 @@ function Project() {
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {flagshipProject.locationAdvantages.map((item, idx) => (
-                      <div key={idx} className="bg-[#FAF7F2] p-4 rounded-xl border border-[#bb9034]/20 space-y-1">
+                      <div key={idx} className="bg-white p-4 rounded-xl border border-[#bb9034]/20 space-y-1">
                         <span className="text-xs font-bold text-[#852541] block">{item.title}</span>
                         <p className="text-[11px] text-gray-600">{item.desc}</p>
                       </div>
@@ -330,7 +327,7 @@ function Project() {
             <div className="flex flex-col sm:flex-row gap-3 pt-5 border-t border-[#bb9034]/20">
               <button
                 onClick={handleOpenEnquiry}
-                className="flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg"
+                className="flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
               >
                 <PhoneCall size={15} /> Enquire Pricing & Floor Plans
               </button>
@@ -349,40 +346,12 @@ function Project() {
 
       </section>
 
-      {/* ── CALL TO ACTION BANNER ────────────────────────────────────────── */}
-      <section className="bg-[#852541] text-white py-14 px-6 text-center border-t border-[#bb9034]/30">
-        <div className="max-w-4xl mx-auto space-y-5">
-          <span className="text-xs uppercase font-bold text-[#c9a874] tracking-widest block">
-            Devang Developers Structural Assurance
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white">
-            Ready to Experience Premium Living in Nagpur?
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-200 max-w-xl mx-auto">
-            Schedule a private site visit to <strong>129 Riddhi Siddhi Heights</strong> or consult with our project director.
-          </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <button
-              onClick={handleOpenEnquiry}
-              className="px-8 py-3.5 rounded-xl bg-[#bb9034] hover:bg-[#c9a874] text-white text-xs font-bold uppercase tracking-wider transition shadow-lg flex items-center gap-2"
-            >
-              <CalendarClock size={16} /> Schedule Site Visit
-            </button>
-            <a
-              href="tel:+919822200000"
-              className="px-8 py-3.5 rounded-xl border border-white/40 hover:bg-white hover:text-[#852541] text-white text-xs font-bold uppercase tracking-wider transition flex items-center gap-2"
-            >
-              <PhoneCall size={16} /> Speak With Sales Desk
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* ── ENQUIRY MODAL ───────────────────────────────────────────────── */}
       {enquiryModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-[#bb9034]/40 relative text-[#852541]">
+          <div className="bg-[#dbd8d1] rounded-3xl max-w-md w-full p-6 sm:p-8 border border-[#bb9034]/40 relative text-[#852541]">
             <button
               onClick={() => setEnquiryModalOpen(false)}
               className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 text-gray-500 transition"
@@ -411,7 +380,7 @@ function Project() {
                       placeholder="e.g. Rajesh Sharma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#FAF7F2] border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
                     />
                   </div>
 
@@ -423,7 +392,7 @@ function Project() {
                       placeholder="+91 98220 XXXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#FAF7F2] border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
                     />
                   </div>
 
@@ -432,7 +401,7 @@ function Project() {
                     <select
                       value={formData.unitType}
                       onChange={(e) => setFormData({ ...formData, unitType: e.target.value })}
-                      className="w-full bg-[#FAF7F2] border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
                     >
                       <option value="2 BHK">2 BHK Residential</option>
                       <option value="3 BHK">3 BHK Residential</option>
@@ -447,14 +416,14 @@ function Project() {
                       placeholder="Ask about floor plans, pricing, site visit date..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-[#FAF7F2] border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
                 >
                   <Send size={14} /> Submit Enquiry
                 </button>
@@ -466,11 +435,11 @@ function Project() {
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#852541]">Enquiry Received!</h3>
                 <p className="text-xs text-gray-600">
-                  Thank you for reaching out regarding 129 Riddhi Siddhi Heights. Our sales executive will call you shortly.
+                  Thank you for reaching out regarding Riddhi Siddhi 3. Our sales executive will call you shortly.
                 </p>
                 <button
                   onClick={() => setEnquiryModalOpen(false)}
-                  className="px-6 py-2.5 bg-[#852541] text-[#FAF7F2] text-xs font-bold uppercase rounded-xl"
+                  className="px-6 py-2.5 bg-[#852541] text-[#FBF9F6] text-xs font-bold uppercase rounded-xl"
                 >
                   Close
                 </button>

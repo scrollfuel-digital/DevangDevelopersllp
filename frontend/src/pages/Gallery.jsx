@@ -6,9 +6,6 @@ import {
   ChevronRight,
   MapPin,
   Sparkles,
-  MoreHorizontal,
-  Expand,
-  ArrowRight,
 } from "lucide-react";
 
 // REAL PROJECT IMAGES
@@ -83,7 +80,7 @@ const GALLERY_ITEMS = [
   },
   {
     id: 9,
-    title: "129 Riddhi Siddhi Heights",
+    title: "Riddhi Siddhi 3",
     location: "Khamla Road, Nagpur",
     desc: "A striking high-rise tower crafted for modern lifestyle amenities.",
     image: riddhiSiddhiImg,
@@ -104,9 +101,9 @@ export default function Gallery() {
 
   useEffect(() => {
     document.title = "Project Gallery | Devang Developers Nagpur";
+    window.scrollTo(0, 0);
   }, []);
 
-  // ── AUTOMATIC TIMER (SLIDES ONE BY ONE EVERY 3.5 SECONDS) ──────────
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % totalItems);
@@ -124,63 +121,57 @@ export default function Gallery() {
   };
 
   return (
-    <div className="relative bg-[#1A0A10] text-white font-sans antialiased overflow-x-hidden min-h-screen pb-20 selection:bg-[#852541] selection:text-[#FAF7F2]">
+    <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased min-h-screen selection:bg-[#852541] selection:text-[#FAF7F2]">
       
-      {/* ── TOP HEADER BANNER (BRAND MAROON #852541) ─────────────────── */}
-      <section className="relative bg-[#852541] text-white pt-36 pb-16 px-6 text-center border-b border-[#bb9034]/30 shadow-2xl">
-        
-        {/* Subtle Decorative Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#6B1C33] to-[#852541] opacity-90 pointer-events-none" />
+      {/* ── HERO HEADER BANNER ────────────────────────────────────────────── */}
+      <section className="relative pt-36 pb-16 px-6 bg-[#FAF7F2] text-center overflow-hidden">
+        <div className="relative max-w-5xl mx-auto space-y-4 z-10">
+          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
+            <Sparkles size={14} className="text-[#bb9034] animate-pulse" /> Devang Developers LLP
+          </div>
 
-        <div className="relative max-w-4xl mx-auto space-y-3 z-10">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#bb9034]/40 text-[#c9a874] text-xs font-semibold uppercase tracking-widest shadow-md mb-1">
-            <Sparkles size={14} className="text-[#bb9034]" /> 3D Cover Flow Portfolio
-          </span>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-wide">
-            Our <span className="text-[#c9a874]">Gallery</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
+            Our <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Gallery</span>
           </h1>
-          <p className="text-gray-200 text-sm md:text-base max-w-2xl mx-auto font-light leading-relaxed">
-            Explore our landmark residential apartments, commercial plazas, and high-rise towers across Nagpur.
+
+          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+            18+ Years of Architectural Landmarks & Quality Developments across Nagpur.
           </p>
         </div>
       </section>
 
-      {/* ── 3D COVERFLOW CAROUSEL STAGE ────────────────────────────────── */}
-      <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
+      {/* ── 3D COVERFLOW CAROUSEL & GALLERY GRID ────────────────────────── */}
+      <section className="py-10 px-6 max-w-7xl mx-auto space-y-16">
         
-        {/* Header Controls */}
-        <div className="flex items-center justify-between px-4">
+        {/* CAROUSEL HEADER CONTROLS */}
+        <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#bb9034] block">
-              3D Interactive Showcase
+            <span className="text-xs uppercase tracking-[0.25em] text-[#bb9034] font-bold block">
+              Spotlight Portfolio
             </span>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-white">
-              Project Cover Flow
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#852541]">
+              Architectural Landmarks
             </h2>
           </div>
 
-          {/* Navigation Controls (< >) */}
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#852541] hover:border-[#bb9034] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
-              aria-label="Previous Slide"
+              className="w-11 h-11 rounded-full bg-white border border-[#bb9034]/30 text-[#852541] hover:bg-[#852541] hover:text-white transition shadow-md flex items-center justify-center cursor-pointer"
             >
-              <ChevronLeft size={24} />
+              <ChevronLeft size={22} />
             </button>
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full bg-white/10 border border-white/20 hover:bg-[#852541] hover:border-[#bb9034] text-white shadow-lg flex items-center justify-center transition cursor-pointer active:scale-95"
-              aria-label="Next Slide"
+              className="w-11 h-11 rounded-full bg-white border border-[#bb9034]/30 text-[#852541] hover:bg-[#852541] hover:text-white transition shadow-md flex items-center justify-center cursor-pointer"
             >
-              <ChevronRight size={24} />
+              <ChevronRight size={22} />
             </button>
           </div>
         </div>
 
-        {/* 3D CAROUSEL COVERFLOW WRAPPER */}
-        <div className="relative h-[540px] md:h-[640px] flex items-center justify-center perspective-[1200px] overflow-hidden">
-          
+        {/* 3D CAROUSEL COVERFLOW */}
+        <div className="relative h-[480px] md:h-[560px] flex items-center justify-center perspective-[1200px] overflow-hidden">
           {GALLERY_ITEMS.map((item, idx) => {
             let offset = idx - activeSlide;
             if (offset < -Math.floor(totalItems / 2)) offset += totalItems;
@@ -191,11 +182,6 @@ export default function Gallery() {
 
             if (!isVisible) return null;
 
-            const translateX = offset * 250;
-            const rotateY = offset * -25;
-            const scale = isCenter ? 1 : 0.84 - Math.abs(offset) * 0.05;
-            const opacity = isCenter ? 1 : 0.65 - Math.abs(offset) * 0.15;
-
             return (
               <div
                 key={item.id}
@@ -203,96 +189,51 @@ export default function Gallery() {
                   if (isCenter) setSelectedImageIndex(idx);
                   else setActiveSlide(idx);
                 }}
-                className={`group absolute transition-all duration-700 ease-out cursor-pointer rounded-3xl overflow-hidden border backdrop-blur-md flex flex-col justify-between ${
-                  isCenter
-                    ? "z-30 w-[340px] md:w-[440px] h-[500px] md:h-[600px] border-[#bb9034]/60 shadow-[0_35px_80px_rgba(0,0,0,0.85)] bg-black/40"
-                    : "z-10 w-[290px] md:w-[370px] h-[440px] md:h-[530px] border-white/20 shadow-xl bg-black/50"
-                }`}
                 style={{
-                  transform: `translateX(${translateX}px) rotateY(${rotateY}deg) scale(${scale})`,
-                  opacity: opacity,
+                  transform: `translateX(${offset * 260}px) rotateY(${offset * -20}deg) scale(${isCenter ? 1 : 0.82})`,
+                  opacity: isCenter ? 1 : 0.65,
                 }}
+                className={`group absolute transition-all duration-700 ease-out cursor-pointer rounded-[32px] overflow-hidden border flex flex-col justify-between ${
+                  isCenter
+                    ? "z-30 w-[320px] md:w-[420px] h-[440px] md:h-[520px] border-[#bb9034] shadow-2xl bg-white"
+                    : "z-10 w-[270px] md:w-[350px] h-[380px] md:h-[460px] border-[#bb9034]/30 shadow-md bg-white"
+                }`}
               >
-                {/* ── BUILDING IMAGE CROPPING CONTAINER ── */}
-                <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#FAF7F2]">
+                <div className="relative w-full h-full overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="absolute left-0 top-0 h-full w-[180%] max-w-none object-cover object-left transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/20" />
-                </div>
-
-                {/* TOP BUTTONS BAR */}
-                <div className="relative z-20 p-5 flex items-center justify-between">
-                  {isCenter ? (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedImageIndex(idx);
-                      }}
-                      className="px-4 py-2 rounded-full bg-[#852541]/80 backdrop-blur-md border border-[#bb9034]/50 text-[#c9a874] text-xs font-medium flex items-center gap-1.5 shadow-lg hover:bg-[#852541] transition"
-                    >
-                      <Expand size={14} className="text-[#bb9034]" /> Expand
-                    </button>
-                  ) : (
-                    <span />
-                  )}
-                  <span className="w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
-                    <MoreHorizontal size={18} />
-                  </span>
-                </div>
-
-                {/* ── BUILDING NAME OVERLAY (BRAND MAROON & GOLD ACCENTS) ── */}
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center transition-all duration-500 group-hover:opacity-0 group-hover:pointer-events-none z-20">
-                  <div className="bg-white/95 backdrop-blur-md px-7 py-6 rounded-2xl border border-[#bb9034]/40 shadow-2xl space-y-2 max-w-[85%] transform transition duration-500 group-hover:scale-95">
-                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#852541] leading-snug">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                  
+                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-1.5 z-10">
+                    <span className="text-[10px] uppercase tracking-widest text-[#c9a874] font-bold flex items-center gap-1">
+                      <MapPin size={12} /> {item.location}
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-serif font-bold text-white leading-tight">
                       {item.title}
                     </h3>
-                    
-                    <p className="flex items-center justify-center gap-1.5 text-xs md:text-sm text-[#852541] font-semibold border-t border-[#bb9034]/20 pt-2.5">
-                      <ArrowRight size={15} className="text-[#bb9034]" />
-                      <span>{item.location}</span>
+                    <p className="text-xs text-gray-200 line-clamp-2 font-light">
+                      {item.desc}
                     </p>
                   </div>
                 </div>
-
-                {/* BOTTOM INDEX INDICATOR */}
-                <div className="relative z-20 p-5 text-right">
-                  <span className="text-xs text-white/90 font-mono bg-[#852541]/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#bb9034]/40">
-                    {idx + 1} / {totalItems}
-                  </span>
-                </div>
-
               </div>
             );
           })}
-
-        </div>
-
-        {/* PAGINATION DOTS (• • •) */}
-        <div className="flex items-center justify-center gap-2 pt-4">
-          {GALLERY_ITEMS.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveSlide(idx)}
-              className={`h-2.5 rounded-full transition-all duration-500 ${
-                activeSlide === idx ? "w-8 bg-[#bb9034]" : "w-2.5 bg-white/20"
-              }`}
-            />
-          ))}
         </div>
 
       </section>
 
-      {/* ── LIGHTBOX MODAL PREVIEW ON CLICK ────────────────────────── */}
+      {/* ── LIGHTBOX MODAL ──────────────────────────────────────────────── */}
       {selectedImageIndex !== null && (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
           <button
             onClick={() => setSelectedImageIndex(null)}
-            className="absolute top-6 right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50"
+            className="absolute top-6 right-6 text-white hover:text-[#c9a874] p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50 cursor-pointer"
           >
-            <X size={26} />
+            <X size={24} />
           </button>
 
           <button
@@ -301,9 +242,9 @@ export default function Gallery() {
                 prev === 0 ? totalItems - 1 : prev - 1
               )
             }
-            className="absolute left-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50"
+            className="absolute left-6 text-white hover:text-[#c9a874] p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50 cursor-pointer"
           >
-            <ChevronLeft size={30} />
+            <ChevronLeft size={28} />
           </button>
 
           <button
@@ -312,16 +253,16 @@ export default function Gallery() {
                 prev === totalItems - 1 ? 0 : prev + 1
               )
             }
-            className="absolute right-6 text-white/80 hover:text-white p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50"
+            className="absolute right-6 text-white hover:text-[#c9a874] p-3 rounded-full bg-white/10 hover:bg-[#852541] transition z-50 cursor-pointer"
           >
-            <ChevronRight size={30} />
+            <ChevronRight size={28} />
           </button>
 
-          <div className="max-w-5xl w-full text-center space-y-4">
+          <div className="max-w-4xl w-full text-center space-y-4">
             <img
               src={GALLERY_ITEMS[selectedImageIndex].image}
               alt={GALLERY_ITEMS[selectedImageIndex].title}
-              className="max-h-[75vh] w-auto mx-auto rounded-2xl shadow-2xl object-contain border border-[#bb9034]/40"
+              className="max-h-[75vh] w-auto mx-auto rounded-3xl shadow-2xl object-contain border border-[#bb9034]/40"
             />
             <div className="text-white">
               <h3 className="text-2xl font-serif font-bold text-white">
@@ -334,6 +275,7 @@ export default function Gallery() {
           </div>
         </div>
       )}
+
     </div>
   );
 }

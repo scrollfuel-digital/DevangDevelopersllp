@@ -27,39 +27,36 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative bg-[#FAF7F2] text-[#ffffff] font-sans antialiased min-h-screen selection:bg-[#ffffff] selection:text-[#FAF7F2]">
+    <div className="relative bg-[#ffffff] text-[#852541] font-sans antialiased min-h-screen selection:bg-[#852541] selection:text-[#ffffff]">
       
-      {/* HERO HEADER WITH BRAND MAROON BACKGROUND (COMPACT SIZE) */}
+      {/* HERO HEADER */}
       <section
-        className="relative pt-28 pb-16 px-6 overflow-hidden min-h-[320px] flex items-center justify-center bg-[#ffffff] text-white border-b border-[#bb9034]/30 shadow-xl"
+        className="relative pt-36 pb-14 px-6 overflow-hidden min-h-[280px] flex items-center justify-center bg-[#ffffff] text-center"
       >
-        {/* Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#ffffff]/90 via-[#ffffff]/70 to-[#ffffff]/95 pointer-events-none" />
-
-        <div className="relative max-w-4xl mx-auto text-center space-y-3 z-10">
+        <div className="relative max-w-5xl mx-auto text-center space-y-4 z-10">
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#bb9034]/50 text-[#c9a874] text-xs font-semibold uppercase tracking-widest shadow-lg mb-1">
-            <Sparkles size={13} className="text-[#bb9034]" /> Contact Devang Developers
+          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
+            <Sparkles size={14} className="text-[#bb9034] animate-pulse" /> Devang Developers LLP
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-serif font-bold text-[#852541] leading-tight drop-shadow-md">
-            How Can We <span className="text-[#e5c178]">Help You?</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
+            How Can We <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Help You?</span>
           </h1>
 
-          <p className="text-[#bb9034] text-xs md:text-sm font-light max-w-xl mx-auto leading-relaxed drop-shadow">
-            Reach out to our sales team for project enquiries, site visits, pricing details, and complete support.
+          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+            Reach out to our sales team for project enquiries, site visits, and complete support.
           </p>
         </div>
       </section>
 
       {/* MAIN FORM & DETAILS CARDS */}
-      <div className="max-w-7xl mx-auto px-5 md:px-10 -mt-8 pb-20 relative z-20 space-y-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-14 pb-20 relative z-20 space-y-10 bg-[#ffffff]">
         
         {/* MAIN SPLIT CARD SECTION */}
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT: FORM CARD */}
-          <div className="lg:col-span-7 bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-[#E8DDD3] relative overflow-hidden">
+          <div className="lg:col-span-7 bg-[#FAF7F2] rounded-3xl p-8 md:p-12 border border-[#bb9034]/30 relative overflow-hidden shadow-lg">
             
             {/* Header Badge */}
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#bb9034] mb-2">
@@ -69,12 +66,12 @@ export default function Contact() {
             <h2 className="text-3xl font-serif font-bold text-[#852541] mb-2">
               Sales & Project Consultation
             </h2>
-            <p className="text-gray-500 text-sm mb-8">
+            <p className="text-gray-600 text-sm mb-8">
               Fill out the form below and we'll get back to you shortly.
             </p>
 
             {submitted ? (
-              <div className="bg-[#FAF7F2] border border-[#bb9034]/40 rounded-2xl p-8 text-center text-[#852541] animate-fadeIn">
+              <div className="bg-white border border-[#bb9034]/40 rounded-2xl p-8 text-center text-[#852541] animate-fadeIn">
                 <CheckCircle2 size={48} className="text-[#bb9034] mx-auto mb-3" />
                 <h3 className="text-2xl font-serif font-bold mb-2">Enquiry Sent!</h3>
                 <p className="text-sm text-gray-600">
@@ -94,7 +91,7 @@ export default function Contact() {
                       type="text"
                       required
                       placeholder="Full Name *"
-                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-[#FAF7F2]/60 text-gray-800"
+                      className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-800"
                     />
                   </div>
 
@@ -107,7 +104,7 @@ export default function Contact() {
                       type="email"
                       required
                       placeholder="Email Address *"
-                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-[#FAF7F2]/60 text-gray-800"
+                      className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-800"
                     />
                   </div>
                 </div>
@@ -123,7 +120,7 @@ export default function Contact() {
                       type="tel"
                       required
                       placeholder="Mobile Number *"
-                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-[#FAF7F2]/60 text-gray-800"
+                      className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-800"
                     />
                   </div>
 
@@ -135,10 +132,10 @@ export default function Contact() {
                     <select
                       defaultValue=""
                       required
-                      className="w-full rounded-xl border border-gray-200 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-[#FAF7F2]/60 text-gray-700"
+                      className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-700"
                     >
                       <option value="" disabled>Select Project *</option>
-                      <option value="riddhi-siddhi">129 Riddhi Siddhi Heights</option>
+                      <option value="riddhi-siddhi">Riddhi Siddhi 3 (Khamla Road)</option>
                       <option value="mangalmurti">Mangalmurti Residency</option>
                       <option value="wing-c">Wing C 129 RSH</option>
                     </select>
@@ -149,7 +146,7 @@ export default function Contact() {
                 <textarea
                   rows={5}
                   placeholder="Write Your Message..."
-                  className="w-full rounded-xl border border-gray-200 p-5 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-[#FAF7F2]/60 text-gray-800"
+                  className="w-full rounded-xl border border-[#bb9034]/30 p-5 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-800"
                 ></textarea>
 
                 {/* Primary Burgundy Button */}
@@ -180,16 +177,16 @@ export default function Contact() {
             </div>
 
             {/* CONTACT DETAILS CARDS */}
-            <div className="bg-white rounded-3xl p-8 border border-[#E8DDD3] shadow-xl space-y-6">
+            <div className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#bb9034]/30 shadow-md space-y-6">
               
               {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#852541]/10 flex items-center justify-center text-[#852541] shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#852541] text-[#c9a874] flex items-center justify-center shrink-0">
                   <Phone size={22} />
                 </div>
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#852541]">Phone Number</h4>
-                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                  <p className="text-gray-700 text-sm mt-1 leading-relaxed">
                     +91 9921042899
                     <br />
                     +91 9921294799
@@ -198,26 +195,26 @@ export default function Contact() {
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-4 border-t border-gray-100 pt-5">
-                <div className="w-12 h-12 rounded-2xl bg-[#852541]/10 flex items-center justify-center text-[#852541] shrink-0">
+              <div className="flex items-start gap-4 border-t border-[#bb9034]/20 pt-5">
+                <div className="w-12 h-12 rounded-2xl bg-[#852541] text-[#c9a874] flex items-center justify-center shrink-0">
                   <Mail size={22} />
                 </div>
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#852541]">Email Address</h4>
-                  <p className="text-gray-600 text-sm mt-1 break-all">
+                  <p className="text-gray-700 text-sm mt-1 break-all">
                     devangdevelopers@gmail.com
                   </p>
                 </div>
               </div>
 
               {/* Office Address */}
-              <div className="flex items-start gap-4 border-t border-gray-100 pt-5">
-                <div className="w-12 h-12 rounded-2xl bg-[#852541]/10 flex items-center justify-center text-[#852541] shrink-0">
+              <div className="flex items-start gap-4 border-t border-[#bb9034]/20 pt-5">
+                <div className="w-12 h-12 rounded-2xl bg-[#852541] text-[#c9a874] flex items-center justify-center shrink-0">
                   <MapPin size={22} />
                 </div>
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#852541]">Office Address</h4>
-                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                  <p className="text-gray-700 text-sm mt-1 leading-relaxed">
                     I-24, ARPIT SHRUSHTI,
                     <br />
                     Behind Ganesh Temple, Tatya Tope Nagar,
@@ -230,9 +227,9 @@ export default function Contact() {
             </div>
 
             {/* BUSINESS HOURS CARD */}
-            <div className="bg-white rounded-3xl p-8 border border-[#E8DDD3] shadow-lg">
+            <div className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#bb9034]/30 shadow-md">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-[#852541]/10 flex items-center justify-center text-[#852541]">
+                <div className="w-10 h-10 rounded-xl bg-[#852541] text-[#c9a874] flex items-center justify-center">
                   <Clock3 size={20} />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-[#852541]">
@@ -241,7 +238,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-3 text-sm text-gray-700">
-                <div className="flex justify-between border-b border-gray-100 pb-2">
+                <div className="flex justify-between border-b border-[#bb9034]/20 pb-2">
                   <span>Monday - Saturday</span>
                   <span className="text-[#bb9034] font-semibold">10:00 AM - 7:00 PM</span>
                 </div>
@@ -253,7 +250,7 @@ export default function Contact() {
             </div>
 
             {/* WEBSITE CARD */}
-            <div className="bg-white rounded-3xl p-8 border border-[#E8DDD3] shadow-lg flex items-center justify-between">
+            <div className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#bb9034]/30 shadow-md flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#bb9034]">Official Portal</span>
                 <p className="text-base font-serif font-bold text-[#852541]">www.devangdevelopers.com</p>

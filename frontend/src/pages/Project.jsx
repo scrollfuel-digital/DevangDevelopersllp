@@ -114,7 +114,7 @@ function TiltedCard({
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className="relative [transform-style:preserve-3d] w-full h-full rounded-[28px] overflow-hidden border border-[#c9a874]/40 bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
+        className="relative [transform-style:preserve-3d] w-full h-full rounded-[30px] overflow-hidden border-2 border-[#bb9034]/60 hover:border-[#852541] bg-white shadow-[0_12px_35px_rgba(133,37,65,0.12)] hover:shadow-[0_25px_60px_rgba(133,37,65,0.25)] transition-all duration-500"
         style={{
           width: imageWidth,
           height: imageHeight,
@@ -123,6 +123,9 @@ function TiltedCard({
           scale,
         }}
       >
+        {/* Top Gold Shimmer Line */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-20 bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]" />
+
         {/* CROPPED LEFT-SIDE BUILDING PHOTO */}
         <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#faf7f0]">
           <img
@@ -130,7 +133,7 @@ function TiltedCard({
             alt={altText}
             className="absolute left-0 top-0 h-full w-[180%] max-w-none object-cover object-left transition-transform duration-700"
           />
-          {/* Neutral Clean Dark Gradient Overlay (No Red) */}
+          {/* Neutral Clean Dark Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
         </div>
 
@@ -146,7 +149,7 @@ function TiltedCard({
       {/* ── CURSOR-FOLLOWING BUILDING NAME TOOLTIP ── */}
       {showTooltip && captionText && (
         <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-full px-5 py-2.5 text-xs sm:text-sm font-serif font-bold tracking-wide opacity-0 z-30 hidden sm:block shadow-xl border border-[#c9a874] bg-[#852548] text-[#ffffff]"
+          className="pointer-events-none absolute left-0 top-0 rounded-full px-5 py-2.5 text-xs sm:text-sm font-serif font-bold tracking-wide opacity-0 z-30 hidden sm:block shadow-xl border border-[#c9a874] bg-[#852541] text-[#ffffff]"
           style={{
             x,
             y,
@@ -164,9 +167,9 @@ function TiltedCard({
 // ── DATA ──────────────────────────────────────────────────────────
 
 const stats = [
-  { icon: CalendarClock, value: "18+", label: "Years of Experience" },
+  { icon: CalendarClock, value: "18+", label: "Years Experience" },
   { icon: Users, value: "100+", label: "Happy Families" },
-  { icon: Award, value: "2022", label: "Iconic Realtors Award" },
+  { icon: Award, value: "2022", label: "Iconic Realtor Award" },
 ];
 
 const ongoingProjects = [
@@ -261,7 +264,7 @@ function Project() {
     navigate("/contact");
   };
 
-  // HELPER TO RENDER A 3D CARD (INCREASED HEIGHT TO 450px)
+  // HELPER TO RENDER A 3D CARD
   const renderCard = (p, idxKey) => (
     <div key={idxKey} onClick={handleRedirectContact} className="w-full">
       <TiltedCard
@@ -290,7 +293,7 @@ function Project() {
                 <span className="leading-snug truncate">{p.location}</span>
               </p>
 
-              <button className="w-full bg-[#852541]/85 hover:bg-[#852541] text-white py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
+              <button className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
                 Explore <ArrowRight size={13} />
               </button>
             </div>
@@ -301,7 +304,7 @@ function Project() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#faf7f0] text-[#852541] font-sans antialiased overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#FAF7F2] text-[#852541] font-sans antialiased overflow-x-hidden">
       
       {/* INLINE CSS FOR INFINITE VERTICAL SCROLLING */}
       <style>{`
@@ -325,32 +328,32 @@ function Project() {
         }
       `}</style>
 
-      {/* ── TOP HERO HEADER BANNER (RESTORED SOLID BURGUNDY COLOR) ─────────────────── */}
-      <section className="relative bg-[#ffffffc8] text-[#852541] pt-32 pb-12 px-6 text-center border-b border-[#c9a874]/30">
-        <div className="relative mx-auto max-w-7xl z-10 space-y-3">
+      {/* ── TOP HERO HEADER BANNER (SEAMLESS MATCHING ABOUT PAGE HEADER) ── */}
+      <section className="relative overflow-hidden bg-[#FAF7F2] text-[#852541] pt-36 pb-16 px-6 text-center">
+        <div className="relative mx-auto max-w-7xl z-10 space-y-5">
           
-          <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#c9a874] text-xs font-semibold uppercase tracking-[0.25em] shadow-lg">
-            <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark Portfolio
+          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
+            <Sparkles size={14} className="text-[#bb9034] animate-pulse" /> Devang Developers LLP
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl text-[#852541] font-bold leading-tight tracking-wide">
-            Walls of Happiness
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
+            Walls of <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Happiness</span>
           </h1>
 
-          <p className="mx-auto max-w-3xl text-xs sm:text-sm text-[#bb9034] font-light leading-relaxed">
-            18+ years of delivering luxury residential apartments and commercial landmarks with superior construction quality across Nagpur.
+          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+            18+ years of delivering luxury residential apartments and commercial landmarks across Nagpur.
           </p>
 
           {/* Stats strip */}
-          <div className="mx-auto mt-6 grid max-w-xl grid-cols-3 gap-3">
+          <div className="mx-auto pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#852541]">
             {stats.map(({ icon: Icon, value, label }) => (
               <div
                 key={label}
-                className="rounded-2xl border border-[#c9a874]/40 bg-[#852541]/80 px-3 py-3 shadow-xl backdrop-blur-md"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#bb9034]/30 shadow-sm"
               >
-                <Icon className="mx-auto text-[#c9a874]" size={20} />
-                <p className="mt-1 font-serif text-xl sm:text-3xl text-[#ffffff] font-bold">{value}</p>
-                <p className="mt-0.5 text-[10px] text-gray-200">{label}</p>
+                <Icon size={16} className="text-[#bb9034]" />
+                <span className="font-serif font-bold text-[#852541] text-sm">{value}</span>
+                <span className="text-gray-600">{label}</span>
               </div>
             ))}
           </div>
@@ -367,7 +370,7 @@ function Project() {
               onClick={() => setTab("ongoing")}
               className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-500 cursor-pointer ${
                 tab === "ongoing"
-                  ? "bg-[#852541]/85 text-[#ffffff] shadow-xl scale-105"
+                  ? "bg-[#852541] text-[#ffffff] shadow-xl scale-105"
                   : "text-[#852541] hover:bg-[#faf7f0]"
               }`}
             >
@@ -378,7 +381,7 @@ function Project() {
               onClick={() => setTab("completed")}
               className={`flex items-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-500 cursor-pointer ${
                 tab === "completed"
-                  ? "bg-[#852541]/85 text-[#ffffff] shadow-xl scale-105"
+                  ? "bg-[#852541] text-[#ffffff] shadow-xl scale-105"
                   : "text-[#852541] hover:bg-[#faf7f0]"
               }`}
             >
@@ -400,9 +403,10 @@ function Project() {
                   alt={ongoingProjects[0].name}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-                <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/80 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
+                <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
                   <ShieldCheck size={16} className="text-[#bb9034]" /> {ongoingProjects[0].rera}
                 </div>
               </div>
@@ -445,7 +449,7 @@ function Project() {
 
                 {/* CTAs */}
                 <div className="pt-3 flex flex-col sm:flex-row gap-3">
-                  <button className="flex-1 bg-[#852541]/85 hover:bg-[#852541] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer">
+                  <button className="flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer">
                     Explore Project <ArrowRight size={14} />
                   </button>
                   <button
@@ -485,7 +489,7 @@ function Project() {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={handleRedirectContact}
-                  className="group flex items-center gap-3 rounded-full bg-[#852541]/85 px-6 py-3 text-xs font-bold text-white transition hover:bg-[#852541] shadow-xl cursor-pointer"
+                  className="group flex items-center gap-3 rounded-full bg-[#852541] px-6 py-3 text-xs font-bold text-white transition hover:bg-[#681c32] shadow-xl cursor-pointer"
                 >
                   <span>Book Site Visit</span>
                   <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:rotate-45 transition duration-300">
