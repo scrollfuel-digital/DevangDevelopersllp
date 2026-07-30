@@ -141,9 +141,12 @@ export default function About() {
   return (
     <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased overflow-x-hidden min-h-screen">
       
-      {/* Ambient Background Glow Spheres */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#bb9034]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-[#852541]/5 rounded-full blur-3xl pointer-events-none" />
+      {/* DEEP FOREST GREEN HERO HEADER */}
+      <section className="relative pt-36 pb-20 px-6 bg-[#000000] text-white">
+        <div className="max-w-4xl mx-auto text-center space-y-3">
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#B98D45]/20 border border-[#B98D45]/40 text-[#E5B582] text-xs uppercase tracking-[0.25em] font-semibold shadow-md">
+            <Sparkles size={14} className="text-[#B98D45]" /> Devang Developers LLP
+          </span>
 
       {/* ── HERO HEADER BANNER ────────────────────────────────────────────── */}
       <section className="relative pt-36 pb-16 px-6 bg-[#FAF7F2] text-center overflow-hidden">
