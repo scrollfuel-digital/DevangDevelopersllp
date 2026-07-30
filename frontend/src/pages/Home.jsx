@@ -1,42 +1,58 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import rs3BuildingImg from '../assets/RS3 building.png'
 
 const SLIDES = [
   {
-    image: 'https://static.vecteezy.com/system/resources/previews/027/101/673/large_2x/a-contemporary-residential-apartment-building-with-a-luxurious-exterior-and-outdoor-space-this-free-photo.jpg',
+    image: rs3BuildingImg,
     eyebrow: 'Nagpur',
-    title: ['DEVANG GADERNS,', 'NAGPUR'],
+    title: ['DEVANG', 'DEVELOPERS', 'NAGPUR'],
     subtitle:
-      'Neo-classical architecture set amid the quiet of nature — Devang Gardens offers a lifetime of ease.',
+      '18+ years of iconic architecture & premium living landmarks in Nagpur — crafted with superior quality.',
   },
   {
-    image: 'https://i.pinimg.com/736x/ad/d6/e0/add6e09fa4f3727af295fb2f1a1770bf.jpg',
-    eyebrow: 'Nagpur',
-    title: ['DEVANG ESTATE,', 'NAGPUR'],
+    image: rs3BuildingImg,
+    eyebrow: 'Luxury Apartments',
+    title: ['RIDDHI SIDDHI 3'],
     subtitle:
-      "Winner of the 'Best Design for Community Living' award — the largest township in Nagpur, all in one place.",
+      'A striking high-rise tower crafted for peaceful community living and modern lifestyle amenities.',
   },
   {
-    image: 'https://www.mues.us/wp-content/uploads/2021/03/exterior_new-scaled-e1616805070908-2048x1024.jpg',
-    eyebrow: 'Nagpur',
-    title: ['THE WALK,', 'DEVANG ESTATE'],
+    image: rs3BuildingImg,
+    eyebrow: 'Prime Living',
+    title: ['WALLS OF', 'HAPPINESS'],
     subtitle:
-      "India's first high-street residential address — welcome to The Walk at DEVANG ESTATE, Nagpur.",
+      'Delivering superior construction standards, prime locations, and transparent home buying experiences.',
   },
-
 ]
 
 const Icon = ({ path }) => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d={path} />
   </svg>
 )
 
 const SOCIALS = [
-  { label: 'Facebook', path: 'M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z' },
-  { label: 'Instagram', path: 'M12 2c-2.7 0-3.1 0-4.1.1-1.1.1-1.8.2-2.4.5-.7.3-1.2.6-1.8 1.2-.6.6-.9 1.1-1.2 1.8-.3.6-.4 1.3-.5 2.4C2 9 2 9.4 2 12s0 3.1.1 4.1c.1 1.1.2 1.8.5 2.4.3.7.6 1.2 1.2 1.8.6.6 1.1.9 1.8 1.2.6.3 1.3.4 2.4.5C8.9 22 9.3 22 12 22s3.1 0 4.1-.1c1.1-.1 1.8-.2 2.4-.5.7-.3 1.2-.6 1.8-1.2.6-.6.9-1.1 1.2-1.8.3-.6.4-1.3.5-2.4.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.1-1.1-.2-1.8-.5-2.4-.3-.7-.6-1.2-1.2-1.8-.6-.6-1.1-.9-1.8-1.2-.6-.3-1.3-.4-2.4-.5C15.1 2 14.7 2 12 2Zm0 1.8c2.6 0 2.9 0 4 .1.9.1 1.5.2 1.8.4.5.2.8.4 1.1.7.3.3.5.6.7 1.1.2.3.3.9.4 1.8.1 1.1.1 1.4.1 4s0 2.9-.1 4c-.1.9-.2 1.5-.4 1.8-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.3.2-.9.3-1.8.4-1.1.1-1.4.1-4 .1s-2.9 0-4-.1c-.9-.1-1.5-.2-1.8-.4-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.2-.3-.3-.9-.4-1.8-.1-1.1-.1-1.4-.1-4s0-2.9.1-4c.1-.9.2-1.5.4-1.8.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.3-.2.9-.3 1.8-.4 1.1-.1 1.4-.1 4-.1Zm0 3.2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.2-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z' },
-  { label: 'YouTube', path: 'M23 12s0-3.2-.4-4.7c-.2-.9-.9-1.6-1.8-1.8C19 5 12 5 12 5s-7 0-8.8.5c-.9.2-1.6.9-1.8 1.8C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.9.9 1.6 1.8 1.8C5 19 12 19 12 19s7 0 8.8-.5c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.7.4-4.7ZM9.8 15.3V8.7l6 3.3-6 3.3Z' },
-  { label: 'LinkedIn', path: 'M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.1ZM5.3 7.4A2 2 0 1 1 5.3 3.4a2 2 0 0 1 0 4ZM7 20.4H3.6V9H7v11.4Z' },
-  { label: 'Twitter', path: 'M18.9 3H22l-7 8 8.2 10h-6.4l-5-6.5-5.7 6.5H2l7.5-8.6L1.6 3H8.2l4.5 6 6.2-6Z' },
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/919921042899?text=Hello%20Devang%20Developers%2C%20I%20am%20interested%20in%20your%20projects.',
+    path: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m0-18.067c-4.512 0-8.186 3.674-8.188 8.187 0 1.442.377 2.85 1.096 4.094l.169.294-.648 2.368 2.424-.636.284.168a8.14 8.14 0 004.86 1.572h.003c4.512 0 8.186-3.674 8.188-8.187A8.13 8.13 0 0017.854 4.3 8.13 8.13 0 0012.051 1.9',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/devangdevelopers?igsh=MWsxMjhsZ3Vtc2FucQ==',
+    path: 'M12 2c-2.7 0-3.1 0-4.1.1-1.1.1-1.8.2-2.4.5-.7.3-1.2.6-1.8 1.2-.6.6-.9 1.1-1.2 1.8-.3.6-.4 1.3-.5 2.4C2 9 2 9.4 2 12s0 3.1.1 4.1c.1 1.1.2 1.8.5 2.4.3.7.6 1.2 1.2 1.8.6.6 1.1.9 1.8 1.2.6.3 1.3.4 2.4.5C8.9 22 9.3 22 12 22s3.1 0 4.1-.1c1.1-.1 1.8-.2 2.4-.5.7-.3 1.2-.6 1.8-1.2.6-.6.9-1.1 1.2-1.8.3-.6.4-1.3.5-2.4.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.1-1.1-.2-1.8-.5-2.4-.3-.7-.6-1.2-1.2-1.8-.6-.6-1.1-.9-1.8-1.2-.6-.3-1.3-.4-2.4-.5C15.1 2 14.7 2 12 2Zm0 1.8c2.6 0 2.9 0 4 .1.9.1 1.5.2 1.8.4.5.2.8.4 1.1.7.3.3.5.6.7 1.1.2.3.3.9.4 1.8.1 1.1.1 1.4.1 4s0 2.9-.1 4c-.1.9-.2 1.5-.4 1.8-.2.5-.4.8-.7 1.1-.3.3-.6.5-1.1.7-.3.2-.9.3-1.8.4-1.1.1-1.4.1-4 .1s-2.9 0-4-.1c-.9-.1-1.5-.2-1.8-.4-.5-.2-.8-.4-1.1-.7-.3-.3-.5-.6-.7-1.1-.2-.3-.3-.9-.4-1.8-.1-1.1-.1-1.4-.1-4s0-2.9.1-4c.1-.9.2-1.5.4-1.8.2-.5.4-.8.7-1.1.3-.3.6-.5 1.1-.7.3-.2.9-.3 1.8-.4 1.1-.1 1.4-.1 4-.1Zm0 3.2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.2-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/share/1MAB2J8GPz/',
+    path: 'M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/devang-developers-llp/',
+    path: 'M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.4V9h3.4v1.6h.1c.5-.9 1.7-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.1ZM5.3 7.4A2 2 0 1 1 5.3 3.4a2 2 0 0 1 0 4ZM7 20.4H3.6V9H7v11.4Z',
+  },
 ]
 
 const STRIPS = 8
@@ -159,6 +175,7 @@ const AnimatedWords = ({ text, baseDelay = 0 }) => {
 }
 
 const Home = () => {
+  const navigate = useNavigate()
   const [current, setCurrent] = useState(0)
   const [previous, setPrevious] = useState(null)
   const [revealed, setRevealed] = useState(false)
@@ -300,14 +317,16 @@ const Home = () => {
       <div className="absolute inset-0 z-[2] pointer-events-none bg-[#1a1815]/25" />
 
       {/* Social rail */}
-      <div className="hidden md:flex absolute left-10 top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-2">
+      <div className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-3">
         <span className="h-10 w-px bg-[#F3EEE6]/25" />
         {SOCIALS.map((s) => (
           <a
             key={s.label}
-            href="#"
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={s.label}
-            className="w-8 h-8 flex items-center justify-center text-[#F3EEE6]/70 hover:bg-[#A9814A] hover:text-[#F3EEE6]/70 transition-colors"
+            className="w-11 h-11 rounded-full bg-[#1a1815]/50 backdrop-blur-md border border-[#F3EEE6]/30 flex items-center justify-center text-[#F3EEE6] hover:bg-[#A9814A] hover:border-[#A9814A] hover:scale-110 transition-all duration-300 shadow-lg"
           >
             <Icon path={s.path} />
           </a>
@@ -315,24 +334,24 @@ const Home = () => {
       </div>
 
       {/* Prev / Next */}
-      <div className="hidden md:flex absolute left-28 top-1/2 -translate-y-1/2 z-10 items-center gap-8 font-['Inter',sans-serif]">
+      <div className="hidden md:flex absolute left-32 top-1/2 -translate-y-1/2 z-10 items-center gap-10 font-['Inter',sans-serif]">
         <button
           onClick={() => goTo(current - 1)}
-          className="flex items-center gap-2 text-[#F3EEE6]/70 hover:text-[#A9814A] transition-colors  font-extrabold"
+          className="flex items-center gap-3 text-[#852541] hover:text-[#6B1C33] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110"
         >
-          <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-            <path d="M15 5H1M1 5L5.5 1M1 5L5.5 9" stroke="currentColor" strokeWidth="1.3" />
+          <svg width="22" height="14" viewBox="0 0 16 10" fill="none">
+            <path d="M15 5H1M1 5L5.5 1M1 5L5.5 9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span className="text-[11px] tracking-[0.25em] uppercase">Prev</span>
+          <span className="text-base sm:text-lg font-extrabold tracking-[0.25em] uppercase">Prev</span>
         </button>
 
         <button
           onClick={() => goTo(current + 1)}
-          className="flex items-center gap-2 text-[#F3EEE6]/70 hover:text-[#A9814A] transition-colors font-extrabold"
+          className="flex items-center gap-3 text-[#852541] hover:text-[#6B1C33] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110"
         >
-          <span className="text-[11px] tracking-[0.25em] uppercase ">Next</span>
-          <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-            <path d="M1 5H15M15 5L10.5 1M15 5L10.5 9" stroke="currentColor" strokeWidth="1.3" />
+          <span className="text-base sm:text-lg font-extrabold tracking-[0.25em] uppercase">Next</span>
+          <svg width="22" height="14" viewBox="0 0 16 10" fill="none">
+            <path d="M1 5H15M15 5L10.5 1M15 5L10.5 9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
@@ -365,7 +384,11 @@ const Home = () => {
 
         <button
           key={`cta-${current}`}
-          className="animate-[blockUp_560ms_cubic-bezier(0.65,0,0.35,1)_1650ms_both] mt-2 bg-[#A9814A]/90 text-[#14120F] text-[11px] tracking-[0.25em] uppercase px-8 py-4 rounded-full hover:bg-[#F3EEE6] transition-colors duration-300 font-bold font-['Inter',sans-serif]"
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate("/project");
+          }}
+          className="animate-[blockUp_560ms_cubic-bezier(0.65,0,0.35,1)_1650ms_both] mt-2 bg-[#A9814A]/90 text-[#14120F] text-[11px] tracking-[0.25em] uppercase px-8 py-4 rounded-full hover:bg-[#F3EEE6] transition-colors duration-300 font-bold font-['Inter',sans-serif] cursor-pointer"
         >
           Learn More
         </button>

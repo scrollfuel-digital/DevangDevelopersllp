@@ -3,7 +3,6 @@ import {
   Trees,
   Building2,
   Route,
-  Leaf,
   ShieldCheck,
   Droplets,
   Zap,
@@ -16,321 +15,440 @@ import {
   Hammer,
   CheckCircle2,
   Sparkles,
-  ChevronRight,
+  FileText,
+  PhoneCall,
+  Check,
+  Clock,
+  Send,
+  Download,
+  Info,
+  Building,
+  Compass,
+  X,
 } from "lucide-react";
 
-// ── Ongoing projects ─────────────────────────────────────────────
+// ── Ongoing Flagship Project Image ────────────────────────────────
 import riddhiSiddhiImg from "../../assets/projects/riddhisiddhibuilding.jpg";
-import mangalmurtiImg from "../../assets/projects/mangalmurti-residency.jpg";
-
-// ── Completed projects ("Our Footprints") ────────────────────────
-import vakratundImg from "../../assets/projects/vakratund-heights.jpg";
-import vignahartaImg from "../../assets/projects/vignaharta-enclave.jpg";
-import manomayImg from "../../assets/projects/manomay-plaza.jpg";
-import shreyasImg from "../../assets/projects/shreyas-apartment.jpg";
-import kirtiKalyaniImg from "../../assets/projects/kirti-kalyani-apartment.jpg";
-import avneeshImg from "../../assets/projects/avneesh-apartment.jpg";
-import gaurisutImg from "../../assets/projects/gaurisut-apartment.jpg";
-import riddhiSiddhiHeightsImg from "../../assets/projects/riddhi-siddhi-heights-dharampeth.jpg";
 
 // ── Data ──────────────────────────────────────────────────────────
 
 const stats = [
   { icon: CalendarClock, value: "18+", label: "Years Experience" },
   { icon: Users, value: "100+", label: "Happy Families" },
-  { icon: Award, value: "2022", label: "Iconic Realtors" },
+  { icon: Award, value: "2022", label: "Iconic Realtor Award" },
 ];
 
-const ongoingProjects = [
-  {
-    id: "riddhi-siddhi",
-    name: "129 Riddhi Siddhi Heights",
-    location: "Pandey Layout, Khamla Road, Nagpur",
-    tag: "Premium Residential Apartments",
-    image: riddhiSiddhiImg,
-    rera: "RERA Approved: P505000XXXX",
-    description:
-      "A striking high-rise tower crafted for peaceful community living with excellent connectivity and modern lifestyle amenities.",
-    specs: [
-      { title: "Structure", desc: "RCC Earthquake Resistant" },
-      { title: "Flooring", desc: "Vitrified Premium Tiles" },
-      { title: "Security", desc: "24/7 Gated Security & CCTV" },
-      { title: "Power", desc: "100% Common Area Backup" },
-    ],
-    amenities: [
-      { icon: ShieldCheck, label: "24/7 Security" },
-      { icon: Trees, label: "Avenue Plantation" },
-      { icon: Droplets, label: "Water Connection" },
-      { icon: Zap, label: "Power Backup" },
-      { icon: Landmark, label: "Clubhouse" },
-    ],
-  },
-  {
-    id: "mangalmurti",
-    name: "Mangalmurti Residency",
-    location: "Parsodi, Wardha Road, Nagpur",
-    tag: "Group Housing · by Devprath Constructions LLP",
-    image: mangalmurtiImg,
-    description:
-      "Exemplifying innovative design and sublime craftsmanship, Mangalmurti Residency is an all-new group housing development by our sister concern, Devprath Constructions LLP.",
-    specs: [
-      { title: "Developer", desc: "Devprath Constructions LLP" },
-      { title: "Type", desc: "Group Housing Development" },
-      { title: "Location", desc: "Wardha Road Hub" },
-      { title: "Status", desc: "Construction Active" },
-    ],
-    amenities: [
-      { icon: ShieldCheck, label: "Gated Security" },
-      { icon: Route, label: "Wide Road Access" },
-      { icon: Leaf, label: "Green Surroundings" },
-    ],
-  },
-];
-
-const footprints = [
-  { name: "Vakratund Heights", location: "Shivaji Nagar, Nagpur", image: vakratundImg, category: "High-Rise Tower" },
-  { name: "Vignaharta Enclave", location: "Laxmi Nagar, Nagpur", image: vignahartaImg, category: "Residential" },
-  { name: "Manomay Plaza", location: "Ramdaspeth, Nagpur", image: manomayImg, category: "Commercial Plaza" },
-  { name: "Shreyas Apartment", location: "Ramdaspeth, Nagpur", image: shreyasImg, category: "Residential" },
-  { name: "Kirti Kalyani Apartment", location: "Laxmi Nagar, Nagpur", image: kirtiKalyaniImg, category: "Residential" },
-  { name: "Avneesh Apartment", location: "Wardha Road, Nagpur", image: avneeshImg, category: "Residential" },
-  { name: "Gaurisut Apartment", location: "Jaiprakash Nagar, Nagpur", image: gaurisutImg, category: "Residential" },
-  { name: "Riddhi Siddhi Heights", location: "Dharampeth, Nagpur", image: riddhiSiddhiHeightsImg, category: "High-Rise Tower" },
-];
+const flagshipProject = {
+  id: "riddhi-siddhi-3",
+  name: "Riddhi Siddhi 3",
+  tagline: "Flagship High-Rise Residential Landmark",
+  location: "Pandey Layout, Khamla Road, Nagpur",
+  image: riddhiSiddhiImg,
+  rera: "RERA Approved: P505000XXXX",
+  status: "Under Construction",
+  completion: "Target Q4 2025",
+  units: "2 & 3 BHK Premium Residences",
+  description:
+    "A striking high-rise tower crafted for peaceful community living with excellent connectivity on Khamla Road, Nagpur. Built with uncompromising civil engineering standards, neo-classical facade design, and modern lifestyle amenities.",
+  specs: [
+    { title: "Structure", desc: "RCC Earthquake Resistant Frame", detail: "Fe550 grade steel & high-strength concrete" },
+    { title: "Flooring", desc: "Vitrified Premium Tiles", detail: "800x800mm Italian finish vitrified tiles" },
+    { title: "Security", desc: "24/7 Smart Gated Security", detail: "Multi-tier security with CCTV surveillance" },
+    { title: "Power Backup", desc: "100% Common Area Backup", detail: "Auto DG generator for elevators & lighting" },
+  ],
+  amenities: [
+    { icon: ShieldCheck, label: "24/7 Gated Security", desc: "CCTV surveillance & smart entry gates" },
+    { icon: Trees, label: "Avenue Plantation", desc: "Landscaped green gardens & paved walkways" },
+    { icon: Droplets, label: "24h Water Supply", desc: "Hydro-pneumatic pumping system" },
+    { icon: Zap, label: "Power Backup", desc: "Auto DG backup for essential services" },
+    { icon: Landmark, label: "Clubhouse & Recreation", desc: "Community hall & indoor game zone" },
+    { icon: Route, label: "Wide Access Roads", desc: "Ample turning radius & paved driveways" },
+  ],
+  highlights: [
+    "Prime Connectivity on Khamla Road Corridor",
+    "Neo-Classical Elevation & Grand Entrance Lobby",
+    "100% Vastu Compliant Efficient Layouts",
+    "High-Speed Automatic Passenger Elevators",
+    "Rainwater Harvesting & Eco Systems",
+    "Dedicated EV Charging Infrastructure",
+  ],
+  progress: [
+    { stage: "RCC Structure & Slab Work", percentage: 90 },
+    { stage: "Brickwork & External Plaster", percentage: 75 },
+    { stage: "Electrical & Plumbing Piping", percentage: 60 },
+    { stage: "Flooring & Interior Finishing", percentage: 40 },
+  ],
+  locationAdvantages: [
+    { title: "Airport Transit", desc: "12 Mins Drive to Nagpur Airport" },
+    { title: "Metro Connectivity", desc: "5 Mins Drive to Metro Station" },
+    { title: "Hospitals & Healthcare", desc: "Within 2 Km Radius" },
+    { title: "Schools & Colleges", desc: "Top Institutions Nearby" },
+  ],
+};
 
 function Project() {
-  const [tab, setTab] = useState("ongoing");
-  const [activeOngoingIndex, setActiveOngoingIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "", unitType: "2 BHK" });
 
-  const activeProject = ongoingProjects[activeOngoingIndex];
+  const handleOpenEnquiry = () => {
+    setEnquiryModalOpen(true);
+    setFormSubmitted(false);
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setFormData({ name: "", phone: "", message: "", unitType: "2 BHK" });
+    }, 500);
+  };
 
   return (
-    <div className="relative min-h-screen bg-[#FAF7F2] text-[#143526] font-sans antialiased overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#FBF9F6] text-[#852541] font-sans antialiased selection:bg-[#852541] selection:text-[#FBF9F6]">
       
-      {/* ── TOP HERO HEADER BANNER ───────────────────────────────────── */}
-      <section className="relative bg-[#143526] text-white pt-28 pb-8 px-6 text-center">
-        <div className="relative mx-auto max-w-4xl z-10 space-y-2">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#B98D45]/20 border border-[#B98D45]/40 text-[#E5B582] text-[11px] font-semibold uppercase tracking-widest shadow-sm">
-            <Sparkles size={13} className="text-[#B98D45]" /> Devang Developers Landmark Portfolio
+      {/* ── HEADER BANNER (SEAMLESS MATCHING ABOUT SECTION BG #FBF9F6) ──────── */}
+      <section className="relative overflow-hidden bg-[#FBF9F6] text-[#852541] pt-36 pb-16 px-6 text-center">
+        
+        <div className="relative max-w-4xl mx-auto z-10 space-y-4">
+          
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/30 text-[#852541] text-xs font-semibold uppercase tracking-[0.25em]">
+            <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-5xl text-white font-bold tracking-wide">
-            Walls of Happiness
+          {/* Main Title */}
+          <h1 className="font-serif text-3xl sm:text-5xl text-[#852541] font-extrabold tracking-wide">
+             Riddhi Siddhi <span className="text-[#bb9034]">3</span>
           </h1>
 
-          <p className="mx-auto max-w-2xl text-xs sm:text-sm text-gray-200 font-light leading-relaxed">
-            18+ years of delivering premium homes with superior construction quality across Nagpur.
+          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-gray-700 font-serif italic leading-relaxed">
+            A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on Khamla Road, Nagpur.
           </p>
 
-          {/* Stats Bar */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5">
+          {/* Quick Stats Bar */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#852541]">
             {stats.map(({ icon: Icon, value, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#B98D45]/30 bg-[#0D2419] shadow-sm text-xs"
-              >
-                <Icon size={14} className="text-[#E5B582]" />
-                <span className="font-serif font-bold text-white">{value}</span>
-                <span className="text-[10px] text-gray-300">{label}</span>
+              <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#bb9034]/30">
+                <Icon size={16} className="text-[#bb9034]" />
+                <span className="font-serif font-bold text-[#852541] text-sm">{value}</span>
+                <span className="text-gray-600">{label}</span>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* ── MAIN SHOWCASE SECTION ──────────────────────────────────── */}
-      <section className="py-8 px-6 max-w-7xl mx-auto space-y-6">
+      {/* ── FLAGSHIP PROJECT SHOWCASE ────────────────────────────────────────── */}
+      <section className="py-8 px-4 sm:px-6 max-w-7xl mx-auto space-y-10">
         
-        {/* TAB CONTROLLER */}
-        <div className="flex justify-center">
-          <div className="p-1 rounded-full bg-white border border-[#E8DDD3] shadow-sm flex items-center gap-1.5">
-            <button
-              onClick={() => setTab("ongoing")}
-              className={`flex items-center gap-2 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                tab === "ongoing"
-                  ? "bg-[#143526] text-white shadow-md"
-                  : "text-[#143526] hover:bg-[#FAF7F2]"
-              }`}
-            >
-              <Hammer size={14} className={tab === "ongoing" ? "text-[#E5B582]" : ""} />
-              Ongoing Flagships
-            </button>
-            <button
-              onClick={() => setTab("completed")}
-              className={`flex items-center gap-2 rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                tab === "completed"
-                  ? "bg-[#143526] text-white shadow-lg"
-                  : "text-[#143526] hover:bg-[#FAF7F2]"
-              }`}
-            >
-              <CheckCircle2 size={14} className={tab === "completed" ? "text-[#E5B582]" : ""} />
-              Our Footprints (8)
-            </button>
-          </div>
-        </div>
+        <div className="bg-[#FBF9F6] rounded-3xl border border-[#bb9034]/30 overflow-hidden grid lg:grid-cols-12">
+          
+          {/* Left Column: High-Impact Image Spotlight */}
+          <div className="lg:col-span-6 relative min-h-[420px] lg:min-h-[600px] overflow-hidden group">
+            <img
+              src={flagshipProject.image}
+              alt={flagshipProject.name}
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        {/* ── FEATURE STAGE CARD ────────────────────────────────────── */}
-        {tab === "ongoing" && (
-          <div className="space-y-4">
-            
-            {/* Project Selector Pills */}
-            <div className="flex flex-wrap justify-center gap-2.5">
-              {ongoingProjects.map((p, idx) => (
-                <button
-                  key={p.id}
-                  onClick={() => setActiveOngoingIndex(idx)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
-                    activeOngoingIndex === idx
-                      ? "bg-[#B98D45] text-white shadow-lg scale-105"
-                      : "bg-white text-[#143526] border border-[#E8DDD3] hover:border-[#B98D45]"
-                  }`}
-                >
-                  <Building2 size={14} />
-                  {p.name}
-                  <ChevronRight size={13} className={activeOngoingIndex === idx ? "rotate-90 transition" : ""} />
-                </button>
-              ))}
+            {/* Floating Badges */}
+            <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#852541] text-[#c9a874] text-xs font-bold">
+                <ShieldCheck size={16} className="text-[#bb9034]" /> {flagshipProject.rera}
+              </span>
+              <span className="px-4 py-2 rounded-full bg-[#bb9034] text-white text-xs font-bold uppercase tracking-wider">
+                {flagshipProject.status}
+              </span>
             </div>
 
-            {/* SLEEK DISPLAY CARD */}
-            <div className="bg-[#143526] rounded-3xl border border-[#B98D45]/30 shadow-xl overflow-hidden grid lg:grid-cols-12 max-h-none lg:max-h-[380px]">
-              
-              {/* Left Image Feature */}
-              <div className="lg:col-span-7 relative h-[260px] lg:h-[380px] overflow-hidden">
-                <img
-                  src={activeProject.image}
-                  alt={activeProject.name}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#143526]/95 via-[#143526]/30 to-transparent" />
+            {/* Bottom Title Info */}
+            <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+              <span className="text-xs uppercase tracking-[0.2em] text-[#e5c178] font-bold block">
+                {flagshipProject.tagline}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
+                Riddhi Siddhi 3
+              </h2>
+              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
+                <MapPin size={15} className="text-[#bb9034]" /> {flagshipProject.location}
+              </p>
+            </div>
+          </div>
 
-                {/* Specs Overlay */}
-                <div className="absolute bottom-4 left-5 right-5 text-white space-y-1 z-10">
-                  <span className="text-[10px] uppercase tracking-[0.18em] text-[#E5B582] font-bold block">
-                    {activeProject.tag}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
-                    {activeProject.name}
-                  </h3>
-                  <p className="flex items-center gap-1 text-[11px] text-gray-200">
-                    <MapPin size={13} className="text-[#B98D45]" /> {activeProject.location}
-                  </p>
-                </div>
+          {/* Right Column: Tabbed Details & Interactive Information */}
+          <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6 bg-[#FBF9F6] text-[#852541]">
+            
+            <div className="space-y-6">
+              
+              {/* Navigation Tabs */}
+              <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar gap-4 pb-2">
+                {[
+                  { id: "overview", label: "Overview" },
+                  { id: "specs", label: "Structural Quality" },
+                  { id: "amenities", label: "Amenities" },
+                  { id: "progress", label: "Construction Progress" },
+                  { id: "location", label: "Location Advantage" },
+                ].map((st) => (
+                  <button
+                    key={st.id}
+                    onClick={() => setActiveTab(st.id)}
+                    className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap pb-2 border-b-2 transition-all ${
+                      activeTab === st.id
+                        ? "border-[#852541] text-[#852541]"
+                        : "border-transparent text-gray-400 hover:text-[#852541]"
+                    }`}
+                  >
+                    {st.label}
+                  </button>
+                ))}
               </div>
 
-              {/* Right Content Panel */}
-              <div className="lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between space-y-3 bg-[#143526] text-white border-t lg:border-t-0 lg:border-l border-[#B98D45]/20 overflow-y-auto">
-                <div className="space-y-3">
-                  
-                  {/* RERA Badge */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0D2419] border border-[#B98D45]/40 text-[#E5B582] text-[11px] font-semibold">
-                    <ShieldCheck size={13} /> {activeProject.rera}
+              {/* TAB 1: OVERVIEW */}
+              {activeTab === "overview" && (
+                <div className="space-y-5 animate-fadeIn">
+                  <div>
+                    <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold mb-2 flex items-center gap-2">
+                      <Info size={14} /> Project Summary
+                    </h4>
+                    <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
+                      {flagshipProject.description}
+                    </p>
                   </div>
 
-                  <p className="text-xs text-gray-300 leading-relaxed font-light line-clamp-2">
-                    {activeProject.description}
-                  </p>
-
-                  {/* Highlights Grid */}
-                  <div>
-                    <h4 className="text-[10px] uppercase tracking-widest text-[#B98D45] font-bold mb-1.5">
-                      Key Highlights
+                  {/* Highlights Bullet List */}
+                  <div className="bg-white p-5 rounded-2xl border border-[#bb9034]/25 space-y-3">
+                    <h4 className="text-xs uppercase tracking-widest text-[#852541] font-bold flex items-center gap-1.5">
+                      <Sparkles size={14} className="text-[#bb9034]" /> Key Highlights
                     </h4>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {activeProject.specs.map((item, idx) => (
-                        <div key={idx} className="bg-[#0D2419] p-2 rounded-lg border border-[#B98D45]/20">
-                          <span className="text-[9px] text-[#B98D45] font-semibold block">{item.title}</span>
-                          <span className="text-[11px] font-medium text-white truncate block">{item.desc}</span>
+                    <div className="grid sm:grid-cols-2 gap-2.5 text-xs text-gray-700">
+                      {flagshipProject.highlights.map((h, idx) => (
+                        <div key={idx} className="flex items-center gap-2 bg-[#FBF9F6] p-2 rounded-lg border border-[#bb9034]/10">
+                          <Check size={14} className="text-[#bb9034]" />
+                          <span className="font-medium text-gray-800">{h}</span>
                         </div>
                       ))}
                     </div>
                   </div>
+                </div>
+              )}
 
-                  {/* Amenities */}
-                  <div>
-                    <h4 className="text-[10px] uppercase tracking-widest text-[#B98D45] font-bold mb-1.5">
-                      Amenities
+              {/* TAB 2: SPECS */}
+              {activeTab === "specs" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
+                    <ShieldCheck size={14} /> Structural & Engineering Standards
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {flagshipProject.specs.map((item, idx) => (
+                      <div key={idx} className="bg-[#852541]/5 p-4 rounded-xl border border-[#852541]/15 space-y-1">
+                        <span className="text-[11px] text-[#bb9034] font-bold uppercase tracking-wider block">{item.title}</span>
+                        <span className="text-xs font-serif font-bold text-[#852541] block">{item.desc}</span>
+                        <p className="text-[11px] text-gray-600 mt-1">{item.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 3: AMENITIES */}
+              {activeTab === "amenities" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
+                    <Landmark size={14} /> Modern Lifestyle Suite
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {flagshipProject.amenities.map(({ icon: Icon, label, desc }) => (
+                      <div key={label} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-[#bb9034]/20">
+                        <div className="p-2 rounded-lg bg-[#852541] text-[#bb9034] shrink-0">
+                          <Icon size={16} />
+                        </div>
+                        <div>
+                          <h5 className="text-xs font-bold text-[#852541]">{label}</h5>
+                          <p className="text-[11px] text-gray-600 leading-tight mt-0.5">{desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 4: PROGRESS */}
+              {activeTab === "progress" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
+                      <Hammer size={14} /> Construction Status
                     </h4>
-                    <div className="flex flex-wrap gap-1">
-                      {activeProject.amenities.map(({ icon: Icon, label }) => (
-                        <span key={label} className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] text-gray-200">
-                          <Icon size={11} className="text-[#B98D45]" /> {label}
-                        </span>
-                      ))}
-                    </div>
+                    <span className="text-xs font-bold text-[#852541]">{flagshipProject.completion}</span>
                   </div>
-
+                  <div className="space-y-3.5 bg-white p-5 rounded-2xl border border-[#bb9034]/20">
+                    {flagshipProject.progress.map((item, idx) => (
+                      <div key={idx} className="space-y-1">
+                        <div className="flex justify-between text-xs font-semibold text-gray-800">
+                          <span>{item.stage}</span>
+                          <span className="text-[#852541] font-bold">{item.percentage}%</span>
+                        </div>
+                        <div className="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                          <div
+                            className="bg-gradient-to-r from-[#852541] to-[#bb9034] h-full rounded-full transition-all duration-1000"
+                            style={{ width: `${item.percentage}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              )}
 
-                {/* CTAs WITHOUT REDIRECT */}
-                <div className="flex gap-2 pt-2 border-t border-white/10">
-                  <button className="flex-1 bg-[#B98D45] hover:bg-[#a37937] text-white py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-1.5 shadow-sm">
-                    Explore Project <ArrowRight size={13} />
-                  </button>
-                  <button className="flex-1 border border-white/30 text-white hover:bg-white hover:text-[#143526] py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition">
-                    Book Site Visit
-                  </button>
+              {/* TAB 5: LOCATION ADVANTAGE */}
+              {activeTab === "location" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
+                    <Compass size={14} /> Khamla Road Proximity Matrix
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {flagshipProject.locationAdvantages.map((item, idx) => (
+                      <div key={idx} className="bg-white p-4 rounded-xl border border-[#bb9034]/20 space-y-1">
+                        <span className="text-xs font-bold text-[#852541] block">{item.title}</span>
+                        <p className="text-[11px] text-gray-600">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              )}
 
-              </div>
+            </div>
 
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-5 border-t border-[#bb9034]/20">
+              <button
+                onClick={handleOpenEnquiry}
+                className="flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+              >
+                <PhoneCall size={15} /> Enquire Pricing & Floor Plans
+              </button>
+
+              <button
+                onClick={handleOpenEnquiry}
+                className="flex-1 border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+              >
+                <Download size={15} /> Request E-Brochure
+              </button>
             </div>
 
           </div>
-        )}
 
-        {/* ── DELIVERED FOOTPRINTS ─────────────────────────────────── */}
-        {tab === "completed" && (
-          <div className="space-y-5">
-            <div className="text-center max-w-xl mx-auto">
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-[#B98D45]">
-                Delivered Landmarks
-              </span>
-              <h2 className="text-xl md:text-2xl font-serif font-bold text-[#143526] mt-0.5">
-                Our Golden Footprints
-              </h2>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {footprints.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group bg-white rounded-2xl border border-[#E8DDD3] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition duration-300 flex flex-col justify-between"
-                >
-                  <div className="relative h-44 overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#143526] via-transparent to-transparent opacity-80" />
-
-                    <div className="absolute bottom-2.5 left-3.5 right-3.5 text-white">
-                      <span className="text-[9px] uppercase tracking-widest text-[#E5B582] font-bold block">
-                        {item.category}
-                      </span>
-                      <h4 className="font-serif font-bold text-base text-white">
-                        {item.name}
-                      </h4>
-                      <p className="flex items-center gap-1 text-[10px] text-gray-300 mt-0.5">
-                        <MapPin size={11} className="text-[#B98D45]" /> {item.location}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-3 bg-[#143526] text-white border-t border-[#B98D45]/30 flex items-center justify-between">
-                    <span className="text-[10px] font-semibold text-[#E5B582]">
-                      Completed & Delivered
-                    </span>
-                    <CheckCircle2 size={14} className="text-[#B98D45]" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
 
       </section>
+
+
+
+      {/* ── ENQUIRY MODAL ───────────────────────────────────────────────── */}
+      {enquiryModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-[#dbd8d1] rounded-3xl max-w-md w-full p-6 sm:p-8 border border-[#bb9034]/40 relative text-[#852541]">
+            <button
+              onClick={() => setEnquiryModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 text-gray-500 transition"
+            >
+              <X size={18} />
+            </button>
+
+            {!formSubmitted ? (
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div className="space-y-1">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#bb9034]">Devang Developers Enquiry</span>
+                  <h3 className="text-xl font-serif font-bold text-[#852541]">
+                     Riddhi Siddhi 3
+                  </h3>
+                  <p className="text-xs text-gray-600">
+                    Fill in your details below and our sales team will contact you with pricing & site plan.
+                  </p>
+                </div>
+
+                <div className="space-y-3 pt-2">
+                  <div>
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-700 block mb-1">Your Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rajesh Sharma"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-700 block mb-1">Phone Number</label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 98220 XXXXX"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-700 block mb-1">Interested Configuration</label>
+                    <select
+                      value={formData.unitType}
+                      onChange={(e) => setFormData({ ...formData, unitType: e.target.value })}
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                    >
+                      <option value="2 BHK">2 BHK Residential</option>
+                      <option value="3 BHK">3 BHK Residential</option>
+                      <option value="4 BHK Luxury">4 BHK Luxury Penthouse</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-bold uppercase tracking-wider text-gray-700 block mb-1">Additional Notes / Message</label>
+                    <textarea
+                      rows={3}
+                      placeholder="Ask about floor plans, pricing, site visit date..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+                >
+                  <Send size={14} /> Submit Enquiry
+                </button>
+              </form>
+            ) : (
+              <div className="text-center py-8 space-y-4 animate-fadeIn">
+                <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 size={32} />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[#852541]">Enquiry Received!</h3>
+                <p className="text-xs text-gray-600">
+                  Thank you for reaching out regarding Riddhi Siddhi 3. Our sales executive will call you shortly.
+                </p>
+                <button
+                  onClick={() => setEnquiryModalOpen(false)}
+                  className="px-6 py-2.5 bg-[#852541] text-[#FBF9F6] text-xs font-bold uppercase rounded-xl"
+                >
+                  Close
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

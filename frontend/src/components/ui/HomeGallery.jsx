@@ -18,7 +18,7 @@ import riddhiSiddhiHeightsImg from "../../assets/projects/riddhi-siddhi-heights-
 const FEATURED_PROJECTS = [
   {
     id: 1,
-    title: "129 Riddhi Siddhi Heights",
+    title: "129 Riddhi Siddhi ",
     location: "Khamla Road, Nagpur",
     type: "High-Rise Tower",
     image: riddhiSiddhiImg,

@@ -114,7 +114,7 @@ function TiltedCard({
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className="relative [transform-style:preserve-3d] w-full h-full rounded-[28px] overflow-hidden border border-[#c9a874]/40 bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
+        className="relative [transform-style:preserve-3d] w-full h-full rounded-[30px] overflow-hidden border-2 border-[#bb9034]/60 hover:border-[#852541] bg-white shadow-[0_12px_35px_rgba(133,37,65,0.12)] hover:shadow-[0_25px_60px_rgba(133,37,65,0.25)] transition-all duration-500"
         style={{
           width: imageWidth,
           height: imageHeight,
@@ -123,6 +123,9 @@ function TiltedCard({
           scale,
         }}
       >
+        {/* Top Gold Shimmer Line */}
+        <div className="absolute top-0 left-0 right-0 h-1 z-20 bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]" />
+
         {/* CROPPED LEFT-SIDE BUILDING PHOTO */}
         <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#faf7f0]">
           <img
@@ -130,7 +133,7 @@ function TiltedCard({
             alt={altText}
             className="absolute left-0 top-0 h-full w-[180%] max-w-none object-cover object-left transition-transform duration-700"
           />
-          {/* Neutral Clean Dark Gradient Overlay (No Red) */}
+          {/* Neutral Clean Dark Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
         </div>
 
@@ -164,9 +167,9 @@ function TiltedCard({
 // ── DATA ──────────────────────────────────────────────────────────
 
 const stats = [
-  { icon: CalendarClock, value: "18+", label: "Years of Experience" },
+  { icon: CalendarClock, value: "18+", label: "Years Experience" },
   { icon: Users, value: "100+", label: "Happy Families" },
-  { icon: Award, value: "2022", label: "Iconic Realtors Award" },
+  { icon: Award, value: "2022", label: "Iconic Realtor Award" },
 ];
 
 const ongoingProjects = [
@@ -246,10 +249,9 @@ const footprints = [
   },
 ];
 
-// COLUMN CARDS
-const col1Cards = [footprints[0], footprints[3], footprints[6]];
-const col2Cards = [footprints[1], footprints[4], footprints[7]];
-const col3Cards = [footprints[2], footprints[5], footprints[0]];
+// COLUMN CARDS FOR 2 COLUMNS
+const col1Cards = [footprints[0], footprints[2], footprints[4], footprints[6]];
+const col2Cards = [footprints[1], footprints[3], footprints[5], footprints[7]];
 
 // ── MAIN PAGE COMPONENT ───────────────────────────────────────────
 
@@ -269,7 +271,7 @@ function Project() {
         imageSrc={p.image}
         altText={p.name}
         captionText={p.name}
-        containerHeight="400px"
+        containerHeight="450px"
         containerWidth="100%"
         rotateAmplitude={14}
         scaleOnHover={1.05}
@@ -285,13 +287,13 @@ function Project() {
               </span>
             </div>
 
-            <div className="space-y-2.5 pt-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-3.5 rounded-2xl">
+            <div className="space-y-3 pt-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 rounded-2xl">
               <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
                 <MapPin size={15} className="text-[#c9a874] shrink-0" />
                 <span className="leading-snug truncate">{p.location}</span>
               </p>
 
-              <button className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
+              <button className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
                 Explore <ArrowRight size={13} />
               </button>
             </div>
@@ -302,7 +304,7 @@ function Project() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#faf7f0] text-[#852541] font-sans antialiased overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#FAF7F2] text-[#852541] font-sans antialiased overflow-x-hidden">
       
       {/* INLINE CSS FOR INFINITE VERTICAL SCROLLING */}
       <style>{`
@@ -326,32 +328,32 @@ function Project() {
         }
       `}</style>
 
-      {/* ── TOP HERO HEADER BANNER ─────────────────────────────────── */}
-      <section className="relative bg-[#852541] text-[#ffffff] pt-32 pb-12 px-6 text-center border-b border-[#c9a874]/30">
-        <div className="relative mx-auto max-w-7xl z-10 space-y-3">
+      {/* ── TOP HERO HEADER BANNER (SEAMLESS MATCHING ABOUT PAGE HEADER) ── */}
+      <section className="relative overflow-hidden bg-[#FAF7F2] text-[#852541] pt-36 pb-16 px-6 text-center">
+        <div className="relative mx-auto max-w-7xl z-10 space-y-5">
           
-          <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#c9a874] text-xs font-semibold uppercase tracking-[0.25em] shadow-lg">
-            <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark Portfolio
+          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
+            <Sparkles size={14} className="text-[#bb9034] animate-pulse" /> Devang Developers LLP
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl text-[#ffffff] font-bold leading-tight tracking-wide">
-            Walls of Happiness
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
+            Walls of <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Happiness</span>
           </h1>
 
-          <p className="mx-auto max-w-3xl text-xs sm:text-sm text-gray-200 font-light leading-relaxed">
-            18+ years of delivering luxury residential apartments and commercial landmarks with superior construction quality across Nagpur.
+          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+            18+ years of delivering luxury residential apartments and commercial landmarks across Nagpur.
           </p>
 
           {/* Stats strip */}
-          <div className="mx-auto mt-6 grid max-w-xl grid-cols-3 gap-3">
+          <div className="mx-auto pt-2 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#852541]">
             {stats.map(({ icon: Icon, value, label }) => (
               <div
                 key={label}
-                className="rounded-2xl border border-[#c9a874]/40 bg-[#852541]/80 px-3 py-3 shadow-xl backdrop-blur-md"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#bb9034]/30 shadow-sm"
               >
-                <Icon className="mx-auto text-[#c9a874]" size={20} />
-                <p className="mt-1 font-serif text-xl sm:text-3xl text-[#ffffff] font-bold">{value}</p>
-                <p className="mt-0.5 text-[10px] text-gray-200">{label}</p>
+                <Icon size={16} className="text-[#bb9034]" />
+                <span className="font-serif font-bold text-[#852541] text-sm">{value}</span>
+                <span className="text-gray-600">{label}</span>
               </div>
             ))}
           </div>
@@ -401,7 +403,8 @@ function Project() {
                   alt={ongoingProjects[0].name}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#852541] via-transparent to-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
                 <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
                   <ShieldCheck size={16} className="text-[#bb9034]" /> {ongoingProjects[0].rera}
@@ -463,12 +466,12 @@ function Project() {
           </div>
         )}
 
-        {/* ── OUR FOOTPRINTS (AUTOMATIC INFINITE VERTICAL SCROLL COLUMNS) ── */}
+        {/* ── OUR FOOTPRINTS (AUTOMATIC INFINITE VERTICAL SCROLL: 2 COLUMNS) ── */}
         {tab === "completed" && (
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             
             {/* ── LEFT COLUMN (FIXED STICKY TEXT & CTAS) ── */}
-            <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
               
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#852541] text-xs font-semibold uppercase tracking-[0.2em]">
                 <Sparkles size={14} className="text-[#bb9034]" /> Infinite Auto-Scroll Showcase
@@ -518,22 +521,17 @@ function Project() {
 
             </div>
 
-            {/* ── RIGHT COLUMN (3 VERTICAL AUTO-SCROLLING CARD COLUMNS) ── */}
-            <div className="lg:col-span-8 scroll-container h-[640px] overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+            {/* ── RIGHT COLUMN (2 VERTICAL AUTO-SCROLLING CARD COLUMNS - LARGER CARDS) ── */}
+            <div className="lg:col-span-7 scroll-container h-[680px] overflow-hidden grid grid-cols-1 sm:grid-cols-2 gap-8 relative">
               
               {/* Column 1 (Scrolls UP automatically) */}
-              <div className="flex flex-col gap-6 animate-scroll-up">
+              <div className="flex flex-col gap-8 animate-scroll-up">
                 {[...col1Cards, ...col1Cards].map((p, idx) => renderCard(p, `col1-${idx}`))}
               </div>
 
               {/* Column 2 (Scrolls DOWN automatically) */}
-              <div className="flex flex-col gap-6 animate-scroll-down">
+              <div className="flex flex-col gap-8 animate-scroll-down">
                 {[...col2Cards, ...col2Cards].map((p, idx) => renderCard(p, `col2-${idx}`))}
-              </div>
-
-              {/* Column 3 (Scrolls UP automatically) */}
-              <div className="flex flex-col gap-6 animate-scroll-up">
-                {[...col3Cards, ...col3Cards].map((p, idx) => renderCard(p, `col3-${idx}`))}
               </div>
 
             </div>
