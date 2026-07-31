@@ -1,28 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import rs3BuildingImg from '../assets/RS3 building.png'
+import rs3FrontImg from '../assets/projects/rs3-front-elevation.jpg'
+import rs3SideImg from '../assets/projects/rs3-side-elevation.jpg'
+import rs3CornerImg from '../assets/projects/rs3-corner-elevation.jpg'
 
 const SLIDES = [
   {
-    image: rs3BuildingImg,
+    image: rs3FrontImg,
     eyebrow: 'Nagpur',
     title: ['DEVANG', 'DEVELOPERS', 'NAGPUR'],
     subtitle:
       '18+ years of iconic architecture & premium living landmarks in Nagpur — crafted with superior quality.',
   },
   {
-    image: rs3BuildingImg,
+    image: rs3SideImg,
     eyebrow: 'Luxury Apartments',
     title: ['RIDDHI SIDDHI 3'],
     subtitle:
       'A striking high-rise tower crafted for peaceful community living and modern lifestyle amenities.',
   },
   {
-    image: rs3BuildingImg,
+    image: rs3CornerImg,
     eyebrow: 'Prime Living',
     title: ['WALLS OF', 'HAPPINESS'],
     subtitle:
       'Delivering superior construction standards, prime locations, and transparent home buying experiences.',
+  },
+  {
+    image: rs3BuildingImg,
+    eyebrow: 'Architectural Landmark',
+    title: ['RIDDHI SIDDHI', 'ELEVATION'],
+    subtitle:
+      'Uncompromising civil engineering standards and neo-classical facade design on Khamla Road.',
   },
 ]
 

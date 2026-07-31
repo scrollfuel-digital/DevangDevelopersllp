@@ -174,7 +174,7 @@ const stats = [
 
 const ongoingProjects = [
   {
-    name: "129 Riddhi Siddhi Heights",
+    name: "Riddhi Siddhi 3",
     location: "Pandey Layout, Khamla Road, Nagpur",
     tag: "Premium Residential Apartments",
     image: riddhiSiddhiImg,
@@ -375,7 +375,7 @@ function Project() {
               }`}
             >
               <Hammer size={15} />
-              Ongoing Flagship
+              Ongoing Project
             </button>
             <button
               onClick={() => setTab("completed")}
@@ -449,7 +449,13 @@ function Project() {
 
                 {/* CTAs */}
                 <div className="pt-3 flex flex-col sm:flex-row gap-3">
-                  <button className="flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer">
+                  <button
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      navigate("/project/riddhi-siddhi-3");
+                    }}
+                    className="flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+                  >
                     Explore Project <ArrowRight size={14} />
                   </button>
                   <button

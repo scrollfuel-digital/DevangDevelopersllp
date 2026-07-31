@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Trees,
   Building2,
@@ -41,7 +42,7 @@ const stats = [
 const flagshipProject = {
   id: "riddhi-siddhi-3",
   name: "Riddhi Siddhi 3",
-  tagline: "Flagship High-Rise Residential Landmark",
+  tagline: "Ongoing High-Rise Residential Landmark",
   location: "Pandey Layout, Khamla Road, Nagpur",
   image: riddhiSiddhiImg,
   rera: "RERA Approved: P505000XXXX",
@@ -87,6 +88,7 @@ const flagshipProject = {
 };
 
 function Project() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -326,17 +328,20 @@ function Project() {
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-3 pt-5 border-t border-[#bb9034]/20">
               <button
-                onClick={handleOpenEnquiry}
-                className="flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  navigate("/project/riddhi-siddhi-3");
+                }}
+                className="flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
               >
-                <PhoneCall size={15} /> Enquire Pricing & Floor Plans
+                <ArrowRight size={15} /> Explore Full Details
               </button>
 
               <button
                 onClick={handleOpenEnquiry}
-                className="flex-1 border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2"
+                className="flex-1 border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Download size={15} /> Request E-Brochure
+                <PhoneCall size={15} /> Enquire Pricing & Plans
               </button>
             </div>
 
