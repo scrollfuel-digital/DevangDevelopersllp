@@ -166,15 +166,7 @@ function LinkItem({ icon: Icon, label, href }) {
                         By maintaining absolute transparency, complete RERA regulatory compliance, and a proven track record of strictly on-time project deliveries, we have earned the enduring trust of over 100 happy homeowner families.
                     </motion.p>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.4 }}
-                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
-                    >
-                        Strategically choosing rapidly developing urban corridors like Khamla Road, our developments place residents within minutes of Nagpur Airport, Metro stations, top healthcare facilities, and premier educational institutes. 
-                        By combining elegant elevation design with sustainable green practices like rainwater harvesting and EV charging infrastructure, Devang Developers continues to shape residences that inspire lasting confidence, elevate daily living, and stand proud as enduring symbols of quality—our true walls of happiness.
-                    </motion.p>
+                   
                 </div>
 
                 
