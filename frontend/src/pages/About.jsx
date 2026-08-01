@@ -141,13 +141,6 @@ export default function About() {
   return (
     <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased overflow-x-hidden min-h-screen">
       
-      {/* DEEP FOREST GREEN HERO HEADER */}
-      <section className="relative pt-36 pb-20 px-6 bg-[#000000] text-white">
-        <div className="max-w-4xl mx-auto text-center space-y-3">
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#B98D45]/20 border border-[#B98D45]/40 text-[#E5B582] text-xs uppercase tracking-[0.25em] font-semibold shadow-md">
-            <Sparkles size={14} className="text-[#B98D45]" /> Devang Developers LLP
-          </span>
-
       {/* ── HERO HEADER BANNER ────────────────────────────────────────────── */}
       <section className="relative pt-36 pb-16 px-6 bg-[#FAF7F2] text-center overflow-hidden">
 
@@ -160,7 +153,7 @@ export default function About() {
             About <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Devang Developers</span>
           </h1>
 
-          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-2xl font-sans text-[#bb9034] font-bold max-w-3xl mx-auto leading-relaxed">
             Building More Than Homes. Creating Timeless Legacies.
           </p>
 

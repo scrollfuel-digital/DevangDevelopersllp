@@ -39,6 +39,7 @@ import {
   MessageSquare,
   ExternalLink,
   Clock,
+  Maximize2,
 } from "lucide-react";
 
 import riddhiSiddhiImg from "../assets/projects/riddhisiddhibuilding.jpg";
@@ -49,6 +50,7 @@ import floorPlan7th from "../assets/projects/floorplan-7th.jpg";
 import rs3FrontImg from "../assets/projects/rs3-front-elevation.jpg";
 import rs3SideImg from "../assets/projects/rs3-side-elevation.jpg";
 import rs3CornerImg from "../assets/projects/rs3-corner-elevation.jpg";
+import gameZoneImg from "../assets/projects/gamezone-cropped.jpg";
 
 export default function RiddhiSiddhiDetails() {
   const navigate = useNavigate();
@@ -62,6 +64,8 @@ export default function RiddhiSiddhiDetails() {
   const [lightboxImage, setLightboxImage] = useState(null);
   const [amenitySlideIndex, setAmenitySlideIndex] = useState(0);
   const [isAmenityAutoPlaying, setIsAmenityAutoPlaying] = useState(true);
+  const [activeIconCardIndex, setActiveIconCardIndex] = useState(0);
+  const [isIconSliderAutoPlaying, setIsIconSliderAutoPlaying] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -122,6 +126,15 @@ export default function RiddhiSiddhiDetails() {
     }, 4500);
     return () => clearInterval(interval);
   }, [isAmenityAutoPlaying, amenitySlideIndex]);
+
+  // AUTO-PLAY TIMER FOR 11TH FLOOR AMENITIES CARDS SLIDER (2.5 SECONDS)
+  useEffect(() => {
+    if (!isIconSliderAutoPlaying) return;
+    const interval = setInterval(() => {
+      setActiveIconCardIndex((prev) => (prev === amenitiesList.length - 1 ? 0 : prev + 1));
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [isIconSliderAutoPlaying, activeIconCardIndex]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -196,7 +209,7 @@ export default function RiddhiSiddhiDetails() {
       tagline: "Fun without stepping out",
       description:
         "A dedicated indoor game zone designed for fun and recreation. Equipped with games that encourage bonding and friendly competition. A perfect space to enjoy quality leisure time.",
-      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
+      image: gameZoneImg,
     },
   ];
 
@@ -315,39 +328,29 @@ export default function RiddhiSiddhiDetails() {
   const [locationCategory, setLocationCategory] = useState("all");
 
   const locationLandmarks = [
-    { name: "Khamla Main Market & Daily Groceries", type: "Daily Needs & Retail", dist: "2 Mins Walk", category: "shopping", icon: ShoppingBag },
-    { name: "SBI, HDFC & ICICI Banks / ATMs", type: "Financial & Banking", dist: "2 Mins Walk", category: "shopping", icon: Compass },
-    { name: "Max Fashion, Pantaloons & Westside", type: "Retail & Apparel Hub", dist: "3 Mins Drive", category: "shopping", icon: ShoppingBag },
-    { name: "PVR Inox Cinema & Reliance Trends", type: "Entertainment & Cinema", dist: "4 Mins Drive", category: "shopping", icon: Film },
+    { name: "Khamla Main Market & Daily Groceries", type: "Daily Needs & Retail", dist: "2 Mins Walk", category: "shopping", icon: ShoppingBag, mapQuery: "Khamla+Main+Market+Nagpur" },
+    { name: "SBI, HDFC & ICICI Banks / ATMs", type: "Financial & Banking", dist: "2 Mins Walk", category: "shopping", icon: Compass, mapQuery: "Banks+Khamla+Road+Nagpur" },
+    { name: "Max Fashion, Pantaloons & Westside", type: "Retail & Apparel Hub", dist: "3 Mins Drive", category: "shopping", icon: ShoppingBag, mapQuery: "Max+Fashion+Khamla+Nagpur" },
+    { name: "PVR Inox Cinema & Reliance Trends", type: "Entertainment & Cinema", dist: "4 Mins Drive", category: "shopping", icon: Film, mapQuery: "PVR+Inox+Nagpur" },
     
-    { name: "Somalwar High School & Junior College", type: "Premier Education", dist: "3 Mins Drive", category: "education", icon: GraduationCap },
-    { name: "Orange City Hospital & Research Institute", type: "Multi-Specialty Care", dist: "5 Mins Drive", category: "education", icon: Hospital },
-    { name: "VNIT Campus Nagpur", type: "Engineering & Tech University", dist: "8 Mins Drive", category: "education", icon: GraduationCap },
-    { name: "Neeti Clinics & Diagnostics", type: "Healthcare Center", dist: "4 Mins Drive", category: "education", icon: Hospital },
+    { name: "Somalwar High School & Junior College", type: "Premier Education", dist: "3 Mins Drive", category: "education", icon: GraduationCap, mapQuery: "Somalwar+High+School+Khamla+Nagpur" },
+    { name: "Orange City Hospital & Research Institute", type: "Multi-Specialty Care", dist: "5 Mins Drive", category: "education", icon: Hospital, mapQuery: "Orange+City+Hospital+Nagpur" },
+    { name: "VNIT Campus Nagpur", type: "Engineering & Tech University", dist: "8 Mins Drive", category: "education", icon: GraduationCap, mapQuery: "VNIT+Campus+Nagpur" },
+    { name: "Neeti Clinics & Diagnostics", type: "Healthcare Center", dist: "4 Mins Drive", category: "education", icon: Hospital, mapQuery: "Neeti+Clinics+Nagpur" },
 
-    { name: "Jaiprakash Nagar Metro Station (Wardha Rd)", type: "Rapid Transit Metro", dist: "5 Mins Drive", category: "transit", icon: Train },
-    { name: "Radisson Blu 5-Star Hotel", type: "Luxury Hospitality", dist: "8 Mins Drive", category: "transit", icon: Building2 },
-    { name: "Ajni Junction Railway Station", type: "Central Rail Hub", dist: "10 Mins Drive", category: "transit", icon: Train },
-    { name: "Dr. Babasaheb Ambedkar Airport", type: "International Airport Corridor", dist: "12 Mins Drive", category: "transit", icon: Plane },
+    { name: "Jaiprakash Nagar Metro Station (Wardha Rd)", type: "Rapid Transit Metro", dist: "5 Mins Drive", category: "transit", icon: Train, mapQuery: "Jaiprakash+Nagar+Metro+Station+Nagpur" },
+    { name: "Radisson Blu 5-Star Hotel", type: "Luxury Hospitality", dist: "8 Mins Drive", category: "transit", icon: Building2, mapQuery: "Radisson+Blu+Hotel+Nagpur" },
+    { name: "Ajni Junction Railway Station", type: "Central Rail Hub", dist: "10 Mins Drive", category: "transit", icon: Train, mapQuery: "Ajni+Railway+Station+Nagpur" },
+    { name: "Dr. Babasaheb Ambedkar Airport", type: "International Airport Corridor", dist: "12 Mins Drive", category: "transit", icon: Plane, mapQuery: "Nagpur+Airport" },
   ];
 
   return (
-    <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased min-h-screen selection:bg-[#852541] selection:text-[#FAF7F2]">
+    <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased min-h-screen selection:bg-[#852541] selection:text-[#FAF7F2] pb-20 sm:pb-24 lg:pb-32">
       
       {/* ── TOP HERO BANNER ────────────────────────────────────────────── */}
-      <section className="relative pt-36 pb-12 px-6 bg-[#FAF7F2] text-center border-b border-[#bb9034]/20">
+      <section className="relative pt-20 pb-8 px-6 bg-[#FAF7F2] text-center border-b border-[#bb9034]/20">
         <div className="max-w-5xl mx-auto space-y-4">
           
-          {/* Back Button */}
-          <div className="flex items-center justify-start mb-2">
-            <button
-              onClick={() => navigate("/project")}
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#852541] hover:text-[#bb9034] transition cursor-pointer"
-            >
-              <ChevronLeft size={16} /> Back to Projects Portfolio
-            </button>
-          </div>
-
           <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
             <Sparkles size={14} className="text-[#bb9034] animate-pulse" /> Official Project E-Brochure
           </div>
@@ -372,127 +375,176 @@ export default function RiddhiSiddhiDetails() {
         </div>
       </section>
 
-      {/* ── BROCHURE PAGE 1: HERO TOWER SLIDER & EDITORIAL VISION ───────────────── */}
-      <section className="py-16 px-6 max-w-7xl mx-auto">
+      {/* ── BROCHURE PAGE 1: HERO TOWER SLIDER & EDITORIAL VISION (LUXURY MOTION REDESIGN) ── */}
+      <section className="py-10 px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Architectural Tower Illustration SLIDER */}
-          <div className="lg:col-span-5 relative">
+          {/* Left Column: Interactive Architectural Tower Showcase */}
+          <div className="lg:col-span-6 space-y-4">
+            
+            {/* Main Interactive Slider Box */}
             <div
               onMouseEnter={() => setIsHeroAutoPlaying(false)}
               onMouseLeave={() => setIsHeroAutoPlaying(true)}
-              className="relative rounded-3xl overflow-hidden border-2 border-[#bb9034]/50 shadow-2xl bg-white group h-[400px] sm:h-[460px]"
+              className="relative rounded-[32px] overflow-hidden border-2 border-[#bb9034]/50 shadow-[0_20px_50px_rgba(133,37,65,0.15)] bg-white group h-[420px] sm:h-[480px] transition-all duration-500 hover:shadow-[0_30px_70px_rgba(133,37,65,0.25)]"
             >
-              {/* Slide Images */}
+              {/* Animated Slide Images */}
               <AnimatePresence mode="wait">
                 <motion.img
                   key={heroSlideIndex}
                   src={heroBuildingSlides[heroSlideIndex].image}
                   alt={heroBuildingSlides[heroSlideIndex].title}
-                  initial={{ opacity: 0, scale: 1.04 }}
+                  initial={{ opacity: 0, scale: 1.06 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full h-full object-cover"
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => setLightboxImage(heroBuildingSlides[heroSlideIndex].image)}
                 />
               </AnimatePresence>
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+              {/* Dynamic Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35 pointer-events-none" />
 
-              {/* Top Bar Progress & Slide Indicator */}
+              {/* Top Bar: Live Counter & Action Buttons */}
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                <span className="px-3 py-1 rounded-full bg-[#852541]/90 backdrop-blur-md text-[#c9a874] text-[9px] font-extrabold uppercase tracking-widest shadow-md border border-[#c9a874]/40">
-                  0{heroSlideIndex + 1} / 0{heroBuildingSlides.length}
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#852541]/90 backdrop-blur-md text-[#c9a874] text-[10px] font-extrabold uppercase tracking-widest shadow-md border border-[#c9a874]/40">
+                  <Sparkles size={12} className="text-[#c9a874]" /> View 0{heroSlideIndex + 1} / 0{heroBuildingSlides.length}
                 </span>
 
-                {/* Arrow Controls */}
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <button
-                    onClick={() => {
-                      setIsHeroAutoPlaying(false);
-                      setHeroSlideIndex((prev) => (prev === 0 ? heroBuildingSlides.length - 1 : prev - 1));
-                    }}
-                    className="w-8 h-8 rounded-full bg-black/60 hover:bg-[#852541] text-white flex items-center justify-center transition cursor-pointer shadow-md border border-white/20"
+                    onClick={() => setLightboxImage(heroBuildingSlides[heroSlideIndex].image)}
+                    className="px-3 py-1.5 rounded-full bg-black/60 hover:bg-[#852541] backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider transition cursor-pointer shadow-md border border-white/30 flex items-center gap-1"
                   >
-                    <ChevronLeft size={16} />
+                    <Eye size={13} /> Expand
                   </button>
-                  <button
-                    onClick={() => {
-                      setIsHeroAutoPlaying(false);
-                      setHeroSlideIndex((prev) => (prev === heroBuildingSlides.length - 1 ? 0 : prev + 1));
-                    }}
-                    className="w-8 h-8 rounded-full bg-black/60 hover:bg-[#852541] text-white flex items-center justify-center transition cursor-pointer shadow-md border border-white/20"
-                  >
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
-              </div>
 
-              {/* Bottom Caption Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 text-white space-y-1 z-10">
-                <h3 className="text-lg font-serif font-bold text-white leading-tight">
-                  {heroBuildingSlides[heroSlideIndex].title}
-                </h3>
-                <p className="text-[10px] text-gray-200 font-light">
-                  {heroBuildingSlides[heroSlideIndex].sub}
-                </p>
-
-                {/* Dots indicator */}
-                <div className="flex items-center gap-1.5 pt-2">
-                  {heroBuildingSlides.map((_, idx) => (
+                  <div className="flex items-center gap-1">
                     <button
-                      key={idx}
                       onClick={() => {
                         setIsHeroAutoPlaying(false);
-                        setHeroSlideIndex(idx);
+                        setHeroSlideIndex((prev) => (prev === 0 ? heroBuildingSlides.length - 1 : prev - 1));
                       }}
-                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                        heroSlideIndex === idx ? "w-6 bg-[#bb9034]" : "w-1.5 bg-white/60"
-                      }`}
-                    />
-                  ))}
+                      className="w-8 h-8 rounded-full bg-black/60 hover:bg-[#852541] text-white flex items-center justify-center transition cursor-pointer shadow-md border border-white/20"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <button
+                      onClick={() => {
+                        setIsHeroAutoPlaying(false);
+                        setHeroSlideIndex((prev) => (prev === heroBuildingSlides.length - 1 ? 0 : prev + 1));
+                      }}
+                      className="w-8 h-8 rounded-full bg-black/60 hover:bg-[#852541] text-white flex items-center justify-center transition cursor-pointer shadow-md border border-white/20"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </div>
                 </div>
               </div>
 
-            </div>
-          </div>
-
-          {/* Right Column: Editorial Vision Paragraph */}
-          <div className="lg:col-span-7 space-y-6 py-2">
-
-            {/* Verbatim Vision Text */}
-            <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-light">
-              <p>
-                This architectural illustration represents more than a structure. It reflects a thoughtfully conceived vision shaped by precision, purpose, and enduring values. Riddhi Siddhi – III stands as a testament to refined design, structural clarity, and timeless aesthetics.
-              </p>
-              <p>
-                At Devang Developers, every project is guided by integrity, uncompromising craftsmanship, and a deep commitment to long-term value. We believe real estate is not merely about constructing buildings, but about creating homes that inspire confidence, comfort, and a superior quality of life.
-              </p>
-              <p>
-                Each detail of this development embodies our philosophy of thoughtful planning, quality execution, and transparent dealings. Our journey is driven by the belief that premium living experiences should be delivered with authenticity and value—principles that continue to define how we design, build, and deliver every home.
-              </p>
-            </div>
-
-            {/* Founder Sign-off */}
-            <div className="pt-6 border-t border-[#bb9034]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
-                <p className="text-xl font-serif font-bold text-[#852541]">
-                  — Hemal Nadiyana
-                </p>
-                <p className="text-xs text-[#bb9034] uppercase tracking-widest font-semibold mt-0.5">
-                  Founding Partner
+              {/* Bottom Caption Badge */}
+              <div className="absolute bottom-5 left-5 right-5 text-white space-y-1 z-10 drop-shadow-md">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
+                  {heroBuildingSlides[heroSlideIndex].title}
+                </h3>
+                <p className="text-xs text-gray-200 font-light">
+                  {heroBuildingSlides[heroSlideIndex].sub}
                 </p>
               </div>
 
-              <button
-                onClick={() => setModalOpen(true)}
-                className="bg-[#852541] hover:bg-[#6B1C33] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center gap-2 cursor-pointer border border-[#bb9034]/40"
-              >
-                <PhoneCall size={16} className="text-[#c9a874]" /> Schedule Site Visit
-              </button>
             </div>
 
+            {/* Interactive View Angle Thumbnails Bar */}
+            <div className="grid grid-cols-4 gap-2 pt-1">
+              {heroBuildingSlides.map((slide, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setIsHeroAutoPlaying(false);
+                    setHeroSlideIndex(idx);
+                  }}
+                  className={`relative rounded-2xl overflow-hidden border-2 transition-all duration-300 h-20 group cursor-pointer ${
+                    heroSlideIndex === idx
+                      ? "border-[#852541] ring-2 ring-[#bb9034]/60 scale-[1.03] shadow-md"
+                      : "border-[#bb9034]/30 opacity-70 hover:opacity-100 hover:border-[#bb9034]"
+                  }`}
+                >
+                  <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all" />
+                  <span className="absolute bottom-1 left-1.5 right-1.5 text-[9px] font-bold text-white truncate drop-shadow-sm">
+                    {slide.title.split(" ")[0]} {slide.title.split(" ")[1] || ""}
+                  </span>
+                  {heroSlideIndex === idx && (
+                    <div className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-[#852541] text-[#c9a874] flex items-center justify-center text-[8px] font-bold">
+                      ✓
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+
+          </div>
+
+          {/* Right Column: Luxury Glassmorphic Founder Editorial Vision Card */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-[32px] bg-gradient-to-br from-white via-[#FAF7F2] to-[#f4eee4] p-7 sm:p-9 border-2 border-[#bb9034]/40 shadow-xl space-y-6 overflow-hidden">
+              
+              {/* Decorative Gold Watermark Quote Mark */}
+              <span className="absolute top-2 right-6 text-8xl font-serif text-[#852541]/5 select-none pointer-events-none">
+                “
+              </span>
+
+              {/* Eyebrow Label */}
+              <div className="flex items-center gap-2">
+                <span className="w-8 h-[2px] bg-[#bb9034]" />
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#bb9034]">
+                  Architectural Philosophy
+                </span>
+              </div>
+
+              {/* Verbatim Vision Text with Refined Luxury Typography */}
+              <div className="space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed font-light relative z-10">
+                <p>
+                  This architectural illustration represents more than a structure. It reflects a thoughtfully conceived vision shaped by <strong className="font-semibold text-[#852541]">precision, purpose, and enduring values</strong>. Riddhi Siddhi – III stands as a testament to refined design, structural clarity, and timeless aesthetics.
+                </p>
+                <p>
+                  At Devang Developers, every project is guided by <strong className="font-semibold text-[#852541]">integrity, uncompromising craftsmanship</strong>, and a deep commitment to long-term value. We believe real estate is not merely about constructing buildings, but about creating homes that inspire confidence, comfort, and a superior quality of life.
+                </p>
+                <p>
+                  Each detail of this development embodies our philosophy of thoughtful planning, quality execution, and <strong className="font-semibold text-[#852541]">transparent dealings</strong>. Our journey is driven by the belief that premium living experiences should be delivered with authenticity and value—principles that continue to define how we design, build, and deliver every home.
+                </p>
+              </div>
+
+              {/* Founder Sign-off & High-Impact CTA Button Bar */}
+              <div className="pt-6 border-t border-[#bb9034]/30 flex flex-col sm:flex-row items-center justify-between gap-5 relative z-10">
+                
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#852541] text-[#c9a874] flex items-center justify-center font-serif font-bold text-lg shadow-md border border-[#c9a874]/40">
+                    HN
+                  </div>
+                  <div>
+                    <p className="text-lg font-serif font-bold text-[#852541] leading-snug">
+                      Hemal Nadiyana
+                    </p>
+                    <p className="text-[10px] text-[#bb9034] uppercase tracking-widest font-extrabold">
+                      Founding Partner
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="w-full sm:w-auto bg-[#852541] hover:bg-[#6B1C33] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer border border-[#bb9034]/50 hover:scale-105"
+                >
+                  <PhoneCall size={15} className="text-[#c9a874] animate-pulse" />
+                  <span>Schedule Site Visit</span>
+                  <ArrowRight size={14} className="text-[#c9a874]" />
+                </button>
+
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -516,49 +568,79 @@ export default function RiddhiSiddhiDetails() {
             </p>
           </div>
 
-          {/* 10 ICONIC AMENITIES CARDS */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-3 sm:gap-4 pt-2">
-            {amenitiesList.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white border border-[#bb9034]/30 hover:border-[#852541] hover:bg-[#852541] hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-md group cursor-default"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[#FAF7F2] flex items-center justify-center border border-[#bb9034]/30 group-hover:border-white group-hover:bg-white transition-all duration-300 mb-2.5 shadow-xs">
-                    <Icon size={20} className="text-[#852541] group-hover:text-[#852541] transition-colors" />
+          {/* 10 ICONIC AMENITIES CARDS AUTO-SLIDER (NO BUTTONS, SLIDES 1-BY-1 AUTOMATICALLY) */}
+          <div
+            onMouseEnter={() => setIsIconSliderAutoPlaying(false)}
+            onMouseLeave={() => setIsIconSliderAutoPlaying(true)}
+            className="relative overflow-hidden py-4 px-1"
+          >
+            <motion.div
+              animate={{ x: `-${(activeIconCardIndex * 100) / amenitiesList.length}%` }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-3 sm:gap-4 w-[280%] sm:w-[200%] lg:w-[150%]"
+            >
+              {amenitiesList.map((item, idx) => {
+                const Icon = item.icon;
+                const isActive = activeIconCardIndex === idx;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => {
+                      setIsIconSliderAutoPlaying(false);
+                      setActiveIconCardIndex(idx);
+                    }}
+                    className={`flex-1 flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-500 cursor-pointer select-none min-h-[105px] ${
+                      isActive
+                        ? "bg-[#852541] text-white border-2 border-[#bb9034] shadow-xl scale-105 -translate-y-1"
+                        : "bg-white text-[#852541] border border-[#bb9034]/30 hover:border-[#852541] shadow-xs hover:shadow-md"
+                    }`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center mb-2.5 transition-all duration-300 ${
+                        isActive
+                          ? "bg-white text-[#852541] border-2 border-[#bb9034] shadow-sm"
+                          : "bg-[#FAF7F2] text-[#852541] border border-[#bb9034]/30"
+                      }`}
+                    >
+                      <Icon size={20} className={isActive ? "text-[#852541]" : "text-[#852541]"} />
+                    </div>
+
+                    <span
+                      className={`text-[10px] font-extrabold uppercase tracking-wider text-center leading-tight transition-colors ${
+                      isActive ? "text-white" : "text-[#852541]"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-center text-[#852541] group-hover:text-white leading-tight">
-                    {item.label}
-                  </span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </motion.div>
           </div>
 
         </div>
       </section>
 
-      {/* ── CARD 1: EXCLUSIVE LIFESTYLE SPACES (LEFT CORNER ALIGNED) ── */}
-      <section className="py-8 px-4 sm:px-6 max-w-7xl mx-auto flex justify-start">
-        <div className="w-full lg:w-[88%] space-y-4">
-          <div className="text-left pl-2">
+      {/* ── SECTION 1: EXCLUSIVE LIFESTYLE SPACES ── */}
+      <section className="py-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+        <div className="w-full space-y-6">
+          <div className="text-left border-l-4 border-[#bb9034] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
               01 / 03 • Exclusive Lifestyle Spaces
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#852541]">
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
               Rooftop & Recreation Showcase
             </h2>
           </div>
 
-          {/* AMENITIES AUTOMATED SLIDER CONTAINER */}
+          {/* AMENITIES AUTOMATED SLIDER CONTAINER (OPEN SPACE DISPLAY) */}
           <div
             onMouseEnter={() => setIsAmenityAutoPlaying(false)}
             onMouseLeave={() => setIsAmenityAutoPlaying(true)}
-            className="bg-white rounded-[32px] border-2 border-[#bb9034]/40 shadow-xl p-6 sm:p-8 space-y-6 relative overflow-hidden group"
+            className="space-y-6 relative group w-full"
           >
             {/* Animated Gold Progress Bar */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FAF7F2] overflow-hidden">
+            <div className="w-full h-1.5 bg-[#FAF7F2] rounded-full overflow-hidden border border-[#bb9034]/20">
               <motion.div
                 key={amenitySlideIndex + (isAmenityAutoPlaying ? "-play" : "-pause")}
                 initial={{ width: "0%" }}
@@ -569,18 +651,18 @@ export default function RiddhiSiddhiDetails() {
             </div>
 
             {/* SLIDE CARD CONTENT DISPLAY */}
-            <div className="relative min-h-[280px]">
+            <div className="relative min-h-[280px] w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={amenitySlideIndex}
-                  initial={{ opacity: 0, x: 50, scale: 0.98 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -50, scale: 0.98 }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="grid lg:grid-cols-12 gap-8 items-center bg-[#FAF7F2] rounded-2xl p-5 sm:p-7 border border-[#bb9034]/30 shadow-sm"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="grid lg:grid-cols-12 gap-8 items-center bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#bb9034]/30 shadow-md w-full"
                 >
                   {/* PHOTO CONTAINER */}
-                  <div className="lg:col-span-7 relative h-[240px] sm:h-[290px] rounded-xl overflow-hidden border border-[#bb9034]/30 shadow-md group">
+                  <div className="lg:col-span-7 relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden border border-[#bb9034]/30 shadow-lg group">
                     <img
                       src={lifestyleAmenities[amenitySlideIndex].image}
                       alt={lifestyleAmenities[amenitySlideIndex].category}
@@ -590,12 +672,12 @@ export default function RiddhiSiddhiDetails() {
                   </div>
 
                   {/* CONTENT CONTAINER */}
-                  <div className="lg:col-span-5 space-y-4">
-                    <div className="space-y-1.5">
+                  <div className="lg:col-span-5 space-y-5">
+                    <div className="space-y-2">
                       <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
                         0{amenitySlideIndex + 1} / 0{lifestyleAmenities.length}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl font-serif italic text-[#852541] leading-snug">
+                      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#852541] leading-snug">
                         "{lifestyleAmenities[amenitySlideIndex].tagline}"
                       </h3>
                     </div>
@@ -607,7 +689,7 @@ export default function RiddhiSiddhiDetails() {
                     <div className="pt-2 flex items-center gap-3">
                       <button
                         onClick={() => setModalOpen(true)}
-                        className="inline-flex items-center gap-2 bg-[#852541] hover:bg-[#bb9034] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-md cursor-pointer"
+                        className="inline-flex items-center gap-2 bg-[#852541] hover:bg-[#bb9034] text-white px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-md cursor-pointer"
                       >
                         <span>Schedule Site Visit</span>
                         <ArrowRight size={14} />
@@ -618,25 +700,23 @@ export default function RiddhiSiddhiDetails() {
               </AnimatePresence>
             </div>
 
-            {/* FOOTER NAV CONTROLS & DOTS */}
-            <div className="flex items-center justify-between pt-2">
-              {/* Dots */}
-              <div className="flex items-center gap-2">
-                {lifestyleAmenities.map((_, idx) => (
+            {/* Slider Navigation Dots & Arrows */}
+            <div className="flex items-center justify-between pt-2 border-t border-[#bb9034]/20 w-full">
+              <div className="flex gap-2">
+                {lifestyleAmenities.map((item, idx) => (
                   <button
                     key={idx}
                     onClick={() => {
                       setIsAmenityAutoPlaying(false);
                       setAmenitySlideIndex(idx);
                     }}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      amenitySlideIndex === idx ? "w-8 bg-[#852541]" : "w-2 bg-[#bb9034]/40"
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      amenitySlideIndex === idx ? "w-8 bg-[#852541]" : "w-2.5 bg-[#bb9034]/40"
                     }`}
                   />
                 ))}
               </div>
 
-              {/* Arrows */}
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => {
@@ -645,9 +725,9 @@ export default function RiddhiSiddhiDetails() {
                       prev === 0 ? lifestyleAmenities.length - 1 : prev - 1
                     );
                   }}
-                  className="w-9 h-9 rounded-full border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white flex items-center justify-center transition cursor-pointer shadow-sm"
+                  className="w-10 h-10 rounded-full border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white flex items-center justify-center transition cursor-pointer shadow-sm"
                 >
-                  <ChevronLeft size={16} />
+                  <ChevronLeft size={18} />
                 </button>
                 <button
                   onClick={() => {
@@ -656,9 +736,9 @@ export default function RiddhiSiddhiDetails() {
                       prev === lifestyleAmenities.length - 1 ? 0 : prev + 1
                     );
                   }}
-                  className="w-9 h-9 rounded-full bg-[#852541] text-white hover:bg-[#bb9034] flex items-center justify-center transition cursor-pointer shadow-md"
+                  className="w-10 h-10 rounded-full bg-[#852541] text-white hover:bg-[#bb9034] flex items-center justify-center transition cursor-pointer shadow-md"
                 >
-                  <ChevronRight size={16} />
+                  <ChevronRight size={18} />
                 </button>
               </div>
             </div>
@@ -667,74 +747,25 @@ export default function RiddhiSiddhiDetails() {
         </div>
       </section>
 
-      {/* ── CARD 2: TECHNICAL SPECIFICATIONS SLIDER (RIGHT CORNER ALIGNED) ── */}
-      <section className="py-8 px-4 sm:px-6 max-w-7xl mx-auto flex justify-end">
-        <div className="w-full lg:w-[88%] space-y-4">
-          <div className="text-right pr-2">
+      {/* ── SECTION 2: TECHNICAL SPECIFICATIONS SLIDER ── */}
+      <section className="py-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+        <div className="w-full space-y-6">
+          <div className="text-left border-l-4 border-[#852541] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
               02 / 03 • Technical Specifications
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#852541]">
-              S P E C I F I C A T I O N S
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
+              Engineered Quality Standards
             </h2>
           </div>
 
           <div
             onMouseEnter={() => setIsSpecAutoPlaying(false)}
             onMouseLeave={() => setIsSpecAutoPlaying(true)}
-            className="bg-white rounded-[32px] border-2 border-[#bb9034]/40 shadow-xl p-6 sm:p-8 space-y-6 relative overflow-hidden group"
+            className="space-y-6 relative group w-full"
           >
-            {/* Animated Gold Progress Timer Bar */}
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#FAF7F2] overflow-hidden">
-              <motion.div
-                key={activeSpecIndex + (isSpecAutoPlaying ? "-play" : "-pause")}
-                initial={{ width: "0%" }}
-                animate={{ width: isSpecAutoPlaying ? "100%" : "0%" }}
-                transition={{ duration: 5, ease: "linear" }}
-                className="h-full bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]"
-              />
-            </div>
-
-            {/* Header & Controls */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#bb9034]/25 pb-4 pt-1">
-              <div>
-                <p className="text-xs font-serif italic text-[#bb9034]">
-                  That define superior living • Hover card to pause auto-slide
-                </p>
-              </div>
-
-              {/* Slider Navigation Buttons */}
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-serif font-bold text-[#852541] mr-2">
-                  0{activeSpecIndex + 1} / 0{fullSpecs.length}
-                </span>
-                <button
-                  onClick={() => {
-                    setIsSpecAutoPlaying(false);
-                    setActiveSpecIndex((prev) =>
-                      prev === 0 ? fullSpecs.length - 1 : prev - 1
-                    );
-                  }}
-                  className="w-9 h-9 rounded-full border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white flex items-center justify-center transition cursor-pointer shadow-sm"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <button
-                  onClick={() => {
-                    setIsSpecAutoPlaying(false);
-                    setActiveSpecIndex((prev) =>
-                      prev === fullSpecs.length - 1 ? 0 : prev + 1
-                    );
-                  }}
-                  className="w-9 h-9 rounded-full bg-[#852541] text-white hover:bg-[#bb9034] flex items-center justify-center transition cursor-pointer shadow-md"
-                >
-                  <ChevronRight size={16} />
-                </button>
-              </div>
-            </div>
-
             {/* CATEGORY TAB PILLS */}
-            <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar gap-2 pb-2">
+            <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar scroll-smooth gap-2 pb-2 w-full">
               {fullSpecs.map((spec, idx) => (
                 <button
                   key={idx}
@@ -742,10 +773,10 @@ export default function RiddhiSiddhiDetails() {
                     setIsSpecAutoPlaying(false);
                     setActiveSpecIndex(idx);
                   }}
-                  className={`px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer ${
+                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer shrink-0 ${
                     activeSpecIndex === idx
                       ? "bg-[#852541] text-white shadow-md"
-                      : "bg-[#FAF7F2] text-[#852541] hover:bg-[#bb9034]/20"
+                      : "bg-[#FAF7F2] text-[#852541] hover:bg-[#bb9034]/20 border border-[#bb9034]/20"
                   }`}
                 >
                   {spec.category}
@@ -754,36 +785,36 @@ export default function RiddhiSiddhiDetails() {
             </div>
 
             {/* SLIDE CONTENT DISPLAY */}
-            <div className="relative min-h-[220px]">
+            <div className="relative min-h-[220px] w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeSpecIndex}
-                  initial={{ opacity: 0, x: 50, scale: 0.98 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: -50, scale: 0.98 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-[#FAF7F2] p-5 sm:p-7 rounded-2xl border border-[#bb9034]/30 space-y-4 shadow-sm"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="bg-[#FAF7F2] p-6 sm:p-8 rounded-3xl border border-[#bb9034]/30 space-y-5 shadow-sm w-full"
                 >
                   <div className="flex items-center justify-between border-b border-[#bb9034]/25 pb-3">
                     <div className="flex items-center gap-3">
                       <span className="w-8 h-8 rounded-full bg-[#852541] text-[#c9a874] font-serif font-bold text-xs flex items-center justify-center shadow-md">
                         0{activeSpecIndex + 1}
                       </span>
-                      <h3 className="text-lg font-serif font-bold text-[#852541]">
+                      <h3 className="text-xl font-serif font-bold text-[#852541]">
                         {fullSpecs[activeSpecIndex].category}
                       </h3>
                     </div>
 
                     <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#bb9034] flex items-center gap-1">
-                      <CheckCircle2 size={12} /> Devang Quality Standard
+                      <CheckCircle2 size={13} /> Devang Quality Standard
                     </span>
                   </div>
 
-                  <ul className="grid sm:grid-cols-2 gap-3 pt-2">
+                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
                     {fullSpecs[activeSpecIndex].items.map((item, itemIdx) => (
                       <li
                         key={itemIdx}
-                        className="flex items-start gap-2.5 bg-white p-3.5 rounded-2xl border border-[#bb9034]/20 shadow-xs hover:border-[#852541] hover:shadow-md transition duration-300"
+                        className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-[#bb9034]/20 shadow-xs hover:border-[#852541] hover:shadow-md transition duration-300"
                       >
                         <CheckCircle2 size={16} className="text-[#bb9034] shrink-0 mt-0.5" />
                         <span className="text-xs text-gray-700 font-light leading-relaxed">
@@ -796,38 +827,69 @@ export default function RiddhiSiddhiDetails() {
               </AnimatePresence>
             </div>
 
+            {/* Slider Navigation Controls */}
+            <div className="flex items-center justify-between pt-2 border-t border-[#bb9034]/20 w-full">
+              <span className="text-xs font-serif italic text-[#bb9034]">
+                Page 0{activeSpecIndex + 1} of 0{fullSpecs.length}
+              </span>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    setIsSpecAutoPlaying(false);
+                    setActiveSpecIndex((prev) =>
+                      prev === 0 ? fullSpecs.length - 1 : prev - 1
+                    );
+                  }}
+                  className="w-10 h-10 rounded-full border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white flex items-center justify-center transition cursor-pointer shadow-sm"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={() => {
+                    setIsSpecAutoPlaying(false);
+                    setActiveSpecIndex((prev) =>
+                      prev === fullSpecs.length - 1 ? 0 : prev + 1
+                    );
+                  }}
+                  className="w-10 h-10 rounded-full bg-[#852541] text-white hover:bg-[#bb9034] flex items-center justify-center transition cursor-pointer shadow-md"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ── CARD 3: ARCHITECTURAL FLOOR PLANS SHOWCASE (LEFT CORNER ALIGNED) ── */}
-      <section className="py-8 px-4 sm:px-6 max-w-7xl mx-auto flex justify-start">
-        <div className="w-full lg:w-[88%] space-y-4">
-          <div className="text-left pl-2">
+      {/* ── SECTION 3: ARCHITECTURAL FLOOR PLANS SHOWCASE ── */}
+      <section className="py-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
+        <div className="w-full space-y-6">
+          <div className="text-left border-l-4 border-[#bb9034] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
               03 / 03 • Architectural Layout Blueprints
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#852541]">
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
               Floor & Layout Master Plans
             </h2>
-            <p className="text-xs text-gray-600 font-light leading-relaxed">
+            <p className="text-xs text-gray-600 font-light leading-relaxed mt-1">
               Explore 100% Vastu-compliant residential layouts with precise built-up & salable area breakdowns.
             </p>
           </div>
 
-          {/* MAIN CARD CONTAINER */}
-          <div className="bg-white rounded-[32px] border-2 border-[#bb9034]/40 shadow-xl p-5 sm:p-7 space-y-6">
+          {/* MAIN FLOOR PLANS CONTAINER */}
+          <div className="space-y-6 w-full">
             
             {/* FLOOR LEVEL FILTER TABS */}
-            <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar gap-2 pb-2 justify-start sm:justify-center">
+            <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar scroll-smooth gap-2.5 pb-2 w-full justify-start sm:justify-center">
               {Object.keys(floorPlansData).map((key) => (
                 <button
                   key={key}
                   onClick={() => setActivePlanKey(key)}
-                  className={`px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer shrink-0 ${
                     activePlanKey === key
                       ? "bg-[#852541] text-white shadow-md"
-                      : "bg-[#FAF7F2] text-[#852541] hover:bg-[#bb9034]/20"
+                      : "bg-[#FAF7F2] text-[#852541] hover:bg-[#bb9034]/20 border border-[#bb9034]/20"
                   }`}
                 >
                   {floorPlansData[key].title}
@@ -836,64 +898,69 @@ export default function RiddhiSiddhiDetails() {
             </div>
 
             {/* ACTIVE PLAN CARD DISPLAY */}
-            <div className="bg-[#FAF7F2] p-4 sm:p-6 rounded-2xl border border-[#bb9034]/30 space-y-4">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-[#bb9034]/20 pb-3">
+            <div className="bg-[#FAF7F2] p-5 sm:p-8 rounded-3xl border border-[#bb9034]/30 space-y-5 shadow-sm w-full">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#bb9034]/20 pb-4">
                 <div>
-                  <h3 className="text-base font-serif font-bold text-[#852541]">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-[#852541]">
                     {floorPlansData[activePlanKey].title}
                   </h3>
-                  <p className="text-[11px] text-gray-600 font-light mt-0.5">
+                  <p className="text-xs text-gray-600 font-light mt-0.5">
                     {floorPlansData[activePlanKey].subtitle}
                   </p>
                 </div>
 
                 <button
                   onClick={() => setLightboxImage(floorPlansData[activePlanKey].image)}
-                  className="inline-flex items-center gap-1.5 bg-[#852541] hover:bg-[#bb9034] text-white px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition shadow-sm cursor-pointer"
+                  className="inline-flex items-center gap-1.5 bg-[#852541] hover:bg-[#bb9034] text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer shrink-0"
                 >
-                  <Eye size={13} /> Full Screen View
+                  <Eye size={14} /> Full Screen View
                 </button>
               </div>
 
               {/* BROCHURE PLAN PHOTO DISPLAY */}
-              <div className="grid lg:grid-cols-12 gap-6 items-center">
-                {/* Left: Interactive Brochure Floor Plan Image */}
+              <div className="grid lg:grid-cols-12 gap-8 items-center w-full">
+                {/* Left: Interactive Floor Plan Image */}
                 <div
                   onClick={() => setLightboxImage(floorPlansData[activePlanKey].image)}
-                  className="lg:col-span-7 relative rounded-xl overflow-hidden border-2 border-[#bb9034]/30 bg-white shadow-sm group cursor-pointer"
+                  className="lg:col-span-7 relative rounded-2xl overflow-hidden border-2 border-[#bb9034]/30 bg-white shadow-md group cursor-pointer"
                 >
                   <img
                     src={floorPlansData[activePlanKey].image}
                     alt={floorPlansData[activePlanKey].title}
-                    className="w-full h-[240px] sm:h-[300px] object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[260px] sm:h-[340px] object-contain p-3 transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="bg-white/90 text-[#852541] px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-lg flex items-center gap-1.5">
-                      <Eye size={14} /> Click to Expand High-Res Plan
-                    </span>
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-2 text-white font-bold text-xs transition duration-300 backdrop-blur-xs">
+                    <Maximize2 size={18} /> Click to Expand Plan
                   </div>
                 </div>
 
-                {/* Right: Area Breakdown Table */}
-                <div className="lg:col-span-5 bg-white p-4 rounded-xl border border-[#bb9034]/30 space-y-3 shadow-xs">
-                  <h4 className="text-xs font-serif font-bold text-[#852541] border-b border-[#bb9034]/20 pb-1.5 uppercase tracking-wider">
-                    Area Breakdown Table
-                  </h4>
+                {/* Right: Area Calculation Breakdown */}
+                <div className="lg:col-span-5 bg-white p-5 rounded-2xl border border-[#bb9034]/30 space-y-4 shadow-sm">
+                  <div className="flex items-center justify-between border-b border-gray-100 pb-2.5">
+                    <span className="text-xs font-serif font-bold text-[#852541] uppercase tracking-wider">
+                      Area Schedule Matrix
+                    </span>
+                    <span className="text-[10px] font-bold text-[#bb9034] bg-[#FAF7F2] px-2.5 py-1 rounded-md border border-[#bb9034]/30">
+                      Vastu Approved
+                    </span>
+                  </div>
+
+                  {/* Area Table */}
                   <div className="overflow-x-auto">
-                    <table className="w-full text-left text-[11px]">
+                    <table className="w-full text-left text-xs">
                       <thead>
-                        <tr className="border-b border-[#bb9034]/30 text-[#852541]">
-                          <th className="py-1.5 px-1 font-bold">FLAT NO.</th>
-                          <th className="py-1.5 px-1 font-bold">BUILT-UP</th>
-                          <th className="py-1.5 px-1 font-bold">SALABLE</th>
+                        <tr className="border-b border-gray-200 text-[#852541] font-bold">
+                          <th className="py-2">Flat</th>
+                          <th className="py-2">Built-up</th>
+                          <th className="py-2">Salable Area</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-100 text-gray-700">
+                      <tbody className="divide-y divide-gray-100 font-medium text-gray-700">
                         {floorPlansData[activePlanKey].table.map((row, idx) => (
-                          <tr key={idx} className="hover:bg-[#FAF7F2]">
-                            <td className="py-1.5 px-1 font-bold text-[#852541]">Flat {row.flat}</td>
-                            <td className="py-1.5 px-1 font-mono">{row.built} sq.ft</td>
-                            <td className="py-1.5 px-1 font-mono font-bold text-[#bb9034]">{row.salable} sq.ft</td>
+                          <tr key={idx} className="hover:bg-[#FAF7F2] transition">
+                            <td className="py-2 font-bold text-[#852541]">Flat {row.flat}</td>
+                            <td className="py-2">{row.built} sq.ft</td>
+                            <td className="py-2 font-bold text-[#852541]">{row.salable} sq.ft</td>
                           </tr>
                         ))}
                       </tbody>
@@ -906,9 +973,9 @@ export default function RiddhiSiddhiDetails() {
 
                   <button
                     onClick={() => setModalOpen(true)}
-                    className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2.5 rounded-lg text-[11px] font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer mt-1"
+                    className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 cursor-pointer mt-1"
                   >
-                    <Download size={13} /> Request Plan PDF
+                    <Download size={14} /> Request Plan PDF
                   </button>
                 </div>
               </div>
@@ -920,14 +987,14 @@ export default function RiddhiSiddhiDetails() {
       </section>
 
       {/* ── LOCATION ADVANTAGE: STANDING AT RIDDHI SIDDHI 3 ───────────────── */}
-      <section className="py-16 px-6 max-w-7xl mx-auto space-y-12">
+      <section className="py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-12 w-full">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034] flex items-center justify-center gap-1.5">
             <Navigation size={13} className="animate-bounce text-[#bb9034]" /> Strategic Location & Neighborhood
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold text-[#852541]">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#852541]">
             Where Everything You Need Is Minutes Away
           </h2>
           <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
@@ -936,7 +1003,7 @@ export default function RiddhiSiddhiDetails() {
         </div>
 
         {/* ── "STANDING AT YOUR DOORSTEP" RADIAL PROXIMITY CARDS ── */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 w-full">
           
           {/* RADIAL 1: 2-5 MINS WALK */}
           <div className="bg-white rounded-3xl p-6 border-2 border-[#bb9034]/30 shadow-lg hover:shadow-xl transition duration-300 relative overflow-hidden group">
@@ -1031,11 +1098,11 @@ export default function RiddhiSiddhiDetails() {
         </div>
 
         {/* ── CATEGORIZED LANDMARK HOTSPOTS SHOWCASE ── */}
-        <div className="bg-white rounded-[32px] border-2 border-[#bb9034]/40 p-6 sm:p-8 space-y-6 shadow-xl">
+        <div className="bg-[#FAF7F2] rounded-3xl border border-[#bb9034]/30 p-6 sm:p-8 space-y-6 shadow-sm w-full max-w-full">
           
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#bb9034]/20 pb-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#bb9034]/20 pb-4 w-full">
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#852541]">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#852541]">
                 Nearby Key Landmarks & Transit Times
               </h3>
               <p className="text-xs text-gray-500 font-light mt-0.5">
@@ -1044,7 +1111,7 @@ export default function RiddhiSiddhiDetails() {
             </div>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex border-b border-[#bb9034]/10 sm:border-b-0 overflow-x-auto no-scrollbar scroll-smooth gap-2 pb-1 sm:pb-0 w-full sm:w-auto shrink-0">
               {[
                 { label: "All Hotspots", id: "all" },
                 { label: "🎓 Education & Healthcare", id: "education" },
@@ -1054,10 +1121,10 @@ export default function RiddhiSiddhiDetails() {
                 <button
                   key={tab.id}
                   onClick={() => setLocationCategory(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition cursor-pointer ${
+                  className={`px-4 py-2 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider transition cursor-pointer whitespace-nowrap shrink-0 ${
                     locationCategory === tab.id
                       ? "bg-[#852541] text-white shadow-md"
-                      : "bg-[#FAF7F2] text-[#852541] hover:bg-[#bb9034]/20 border border-[#bb9034]/20"
+                      : "bg-white text-[#852541] hover:bg-[#bb9034]/20 border border-[#bb9034]/20"
                   }`}
                 >
                   {tab.label}
@@ -1067,7 +1134,7 @@ export default function RiddhiSiddhiDetails() {
           </div>
 
           {/* Landmarks Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
             {locationLandmarks
               .filter(
                 (item) => locationCategory === "all" || item.category === locationCategory
@@ -1075,58 +1142,63 @@ export default function RiddhiSiddhiDetails() {
               .map((mark, idx) => {
                 const IconComponent = mark.icon;
                 return (
-                  <div
+                  <a
                     key={idx}
-                    className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#bb9034]/25 shadow-xs hover:border-[#852541] hover:shadow-md transition duration-300 flex items-center justify-between gap-3 group"
+                    href={`https://www.google.com/maps/search/${mark.mapQuery || encodeURIComponent(mark.name + ", Nagpur")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Click to open ${mark.name} in Google Maps`}
+                    className="bg-white p-4 rounded-2xl border border-[#bb9034]/25 shadow-xs hover:border-[#852541] hover:shadow-lg transition duration-300 flex items-center justify-between gap-3 group cursor-pointer w-full"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-white text-[#852541] flex items-center justify-center shadow-sm shrink-0 border border-[#bb9034]/20 group-hover:bg-[#852541] group-hover:text-white transition duration-300">
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                      <div className="w-10 h-10 rounded-xl bg-[#FAF7F2] text-[#852541] flex items-center justify-center shadow-sm shrink-0 border border-[#bb9034]/20 group-hover:bg-[#852541] group-hover:text-white transition duration-300">
                         <IconComponent size={18} />
                       </div>
-                      <div>
-                        <h4 className="text-xs font-bold text-[#852541] group-hover:text-[#bb9034] transition">
-                          {mark.name}
+                      <div className="min-w-0 flex-1">
+                        <h4 className="text-xs font-bold text-[#852541] group-hover:text-[#bb9034] transition flex items-center gap-1 leading-tight">
+                          <span className="truncate">{mark.name}</span>
+                          <ExternalLink size={11} className="opacity-0 group-hover:opacity-100 transition-opacity text-[#bb9034] shrink-0" />
                         </h4>
-                        <p className="text-[10px] text-gray-500 font-light mt-0.5">{mark.type}</p>
+                        <p className="text-[10px] text-gray-500 font-light mt-0.5 truncate">{mark.type}</p>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-[#852541]/10 text-[#852541] text-[10px] font-bold shrink-0 border border-[#852541]/20">
+                    <span className="px-2.5 py-1 rounded-full bg-[#852541]/10 text-[#852541] text-[10px] font-extrabold shrink-0 border border-[#852541]/20 group-hover:bg-[#852541] group-hover:text-white transition-colors ml-1">
                       {mark.dist}
                     </span>
-                  </div>
+                  </a>
                 );
               })}
           </div>
 
           {/* Direct Action Buttons & Map Links */}
-          <div className="pt-6 border-t border-[#bb9034]/20 grid sm:grid-cols-3 gap-4">
+          <div className="pt-5 border-t border-[#bb9034]/20 grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
             <a
               href="https://maps.google.com/?q=32-A,+Deep+Apartment,+Pande+Layout,+Khamla+Road,+Nagpur"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
             >
-              <Navigation size={15} />
-              <span>Get Live Google Maps Directions</span>
-              <ExternalLink size={13} />
+              <Navigation size={14} className="shrink-0" />
+              <span className="truncate">Google Maps Directions</span>
+              <ExternalLink size={12} className="shrink-0" />
             </a>
 
             <a
               href="https://wa.me/919921042899?text=Hello%20Devang%20Developers%2C%20please%20send%20me%20the%20exact%20location%20pin%20for%20Riddhi%20Siddhi%203."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
             >
-              <MessageSquare size={15} />
-              <span>Send Location Pin to WhatsApp</span>
+              <MessageSquare size={14} className="shrink-0" />
+              <span className="truncate">WhatsApp Location Pin</span>
             </a>
 
             <button
               onClick={() => setModalOpen(true)}
-              className="w-full bg-[#bb9034] hover:bg-[#852541] text-white py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full bg-[#bb9034] hover:bg-[#852541] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
             >
-              <MapPin size={15} />
-              <span>Book Guided Location Tour</span>
+              <MapPin size={14} className="shrink-0" />
+              <span className="truncate">Book Location Tour</span>
             </button>
           </div>
 
@@ -1166,6 +1238,20 @@ export default function RiddhiSiddhiDetails() {
         </div>
 
       </section>
+
+      {/* ── BACK TO PROJECTS PORTFOLIO BUTTON (ABOVE FOOTER, LEFT CORNER) ── */}
+      <div className="max-w-7xl mx-auto px-6 pt-10 pb-4 flex justify-start">
+        <button
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate("/project");
+          }}
+          className="inline-flex items-center gap-2.5 bg-white hover:bg-[#852541] text-[#852541] hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl border-2 border-[#bb9034]/40 cursor-pointer hover:scale-105 group"
+        >
+          <ChevronLeft size={18} className="text-[#bb9034] group-hover:text-white transition-colors" />
+          <span>Back to Projects Portfolio</span>
+        </button>
+      </div>
 
       {/* ── HIGH-RES FLOOR PLAN LIGHTBOX MODAL ──────────────────────────── */}
       {lightboxImage && (
