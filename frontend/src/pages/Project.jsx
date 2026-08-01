@@ -304,7 +304,7 @@ function Project() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#FAF7F2] text-[#852541] font-sans antialiased overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#FAF7F2] text-[#852541] font-sans antialiased overflow-x-hidden pb-20 sm:pb-24 lg:pb-32">
       
       {/* INLINE CSS FOR INFINITE VERTICAL SCROLLING */}
       <style>{`
@@ -329,8 +329,8 @@ function Project() {
       `}</style>
 
       {/* ── TOP HERO HEADER BANNER (SEAMLESS MATCHING ABOUT PAGE HEADER) ── */}
-      <section className="relative overflow-hidden bg-[#FAF7F2] text-[#852541] pt-36 pb-16 px-6 text-center">
-        <div className="relative mx-auto max-w-7xl z-10 space-y-5">
+      <section className="relative overflow-hidden bg-[#FAF7F2] text-[#852541] pt-20 pb-8 px-6 text-center">
+        <div className="relative mx-auto max-w-7xl z-10 space-y-4">
           
           <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
             <Sparkles size={14} className="text-[#bb9034] animate-pulse" /> Devang Developers LLP
@@ -340,7 +340,7 @@ function Project() {
             Walls of <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Happiness</span>
           </h1>
 
-          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-2xl font-sans text-[#bb9034] font-bold max-w-3xl mx-auto leading-relaxed">
             18+ years of delivering luxury residential apartments and commercial landmarks across Nagpur.
           </p>
 
@@ -361,7 +361,7 @@ function Project() {
       </section>
 
       {/* ── MAIN SHOWCASE SECTION ───────────────────────────────────── */}
-      <section className="relative overflow-hidden py-16 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto space-y-16">
+      <section className="relative overflow-hidden py-8 px-6 sm:px-10 lg:px-12 max-w-7xl mx-auto space-y-10">
         
         {/* ── TABS CONTROLLER ───────────────────────────────────────── */}
         <div className="flex justify-center">
@@ -412,7 +412,7 @@ function Project() {
               </div>
 
               {/* Right Content */}
-              <div className="lg:col-span-6 p-8 lg:p-12 space-y-5 text-[#852541]">
+              <div className="lg:col-span-6 p-4 sm:p-8 lg:p-12 space-y-5 text-[#852541] w-full max-w-full overflow-hidden">
                 <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#bb9034] block">
                   {ongoingProjects[0].tag}
                 </span>
@@ -421,22 +421,22 @@ function Project() {
                   {ongoingProjects[0].name}
                 </h3>
 
-                <p className="flex items-center gap-2 text-base sm:text-lg font-medium text-gray-700">
-                  <MapPin size={18} className="text-[#bb9034] shrink-0" /> {ongoingProjects[0].location}
+                <p className="flex items-center gap-2 text-sm sm:text-lg font-medium text-gray-700">
+                  <MapPin size={18} className="text-[#bb9034] shrink-0" /> <span className="break-words">{ongoingProjects[0].location}</span>
                 </p>
 
-                <p className="text-xs md:text-sm text-gray-600 font-light leading-relaxed">
+                <p className="text-xs md:text-sm text-gray-600 font-light leading-relaxed break-words">
                   {ongoingProjects[0].description}
                 </p>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {ongoingProjects[0].features.map(({ icon: Icon, label, sub }) => (
                     <div
                       key={label}
                       className="flex items-center gap-3 p-3 rounded-2xl bg-[#faf7f0] border border-[#c9a874]/30"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-[#852541]/10 flex items-center justify-center text-[#852541]">
+                      <div className="w-9 h-9 rounded-xl bg-[#852541]/10 flex items-center justify-center text-[#852541] shrink-0">
                         <Icon size={18} />
                       </div>
                       <div>
@@ -448,21 +448,21 @@ function Project() {
                 </div>
 
                 {/* CTAs */}
-                <div className="pt-3 flex flex-col sm:flex-row gap-3">
+                <div className="pt-3 flex flex-col sm:flex-row gap-2.5 w-full">
                   <button
                     onClick={() => {
                       window.scrollTo(0, 0);
                       navigate("/project/riddhi-siddhi-3");
                     }}
-                    className="flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full sm:flex-1 bg-[#852541] hover:bg-[#681c32] text-[#ffffff] py-3.5 px-4 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer text-center"
                   >
-                    Explore Project <ArrowRight size={14} />
+                    <span>Explore Project</span> <ArrowRight size={14} className="shrink-0" />
                   </button>
                   <button
                     onClick={handleRedirectContact}
-                    className="flex-1 border border-[#bb9034] text-[#bb9034] hover:bg-[#bb9034] hover:text-[#ffffff] py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest transition duration-300 shadow-sm cursor-pointer"
+                    className="w-full sm:flex-1 border border-[#bb9034] text-[#bb9034] hover:bg-[#bb9034] hover:text-[#ffffff] py-3.5 px-4 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-widest transition duration-300 shadow-sm cursor-pointer text-center"
                   >
-                    Book Site Visit
+                    <span>Book Site Visit</span>
                   </button>
                 </div>
 

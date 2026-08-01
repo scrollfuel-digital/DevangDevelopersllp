@@ -94,7 +94,7 @@ function LinkItem({ icon: Icon, label, href }) {
  function About() {
     return (
         <section
-            className="w-full py-16 px-4 md:px-8"
+            className="w-full pt-16 pb-6 px-4 md:px-8"
             style={{
                 backgroundColor: "#FBF9F6",
                 fontFamily: "'Inter', sans-serif",

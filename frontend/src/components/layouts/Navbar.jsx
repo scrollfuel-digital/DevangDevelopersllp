@@ -22,12 +22,6 @@ const NAV_LINKS = [
         image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
     },
     {
-        id: 4,
-        title: "Gallery",
-        path: "/gallery",
-        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
-    },
-    {
         id: 5,
         title: "Blog",
         path: "/blog",
@@ -89,7 +83,7 @@ const Navbar = () => {
                 {/* Close */}
                 <button
                     onClick={() => setOpen(false)}
-                    className="absolute top-7 right-10 z-20 flex items-center gap-3 text-white hover:text-[#A9814A]"
+                    className="absolute top-5 right-6 sm:top-7 sm:right-10 z-20 flex items-center gap-3 text-white hover:text-[#A9814A] cursor-pointer"
                 >
                     <span className="uppercase tracking-[0.25em] text-xs">
                         Close
@@ -98,9 +92,9 @@ const Navbar = () => {
                     ✕
                 </button>
 
-                <div className="flex h-full flex-col lg:flex-row">
+                <div className="flex h-full flex-col lg:flex-row overflow-y-auto">
                     {/* Navigation */}
-                    <nav className="w-full lg:w-[420px] border-r border-white/10 flex flex-col justify-center px-10">
+                    <nav className="w-full lg:w-[420px] lg:border-r border-white/10 flex flex-col justify-center px-6 sm:px-10 py-16 sm:py-20">
                         {NAV_LINKS.map((link) => (
                             <NavLink
                                 key={link.id}

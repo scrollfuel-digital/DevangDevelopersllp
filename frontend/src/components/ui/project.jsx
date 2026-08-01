@@ -111,7 +111,7 @@ function Project() {
     <div className="relative min-h-screen bg-[#FBF9F6] text-[#852541] font-sans antialiased selection:bg-[#852541] selection:text-[#FBF9F6]">
       
       {/* ── HEADER BANNER (SEAMLESS MATCHING ABOUT SECTION BG #FBF9F6) ──────── */}
-      <section className="relative overflow-hidden bg-[#FBF9F6] text-[#852541] pt-36 pb-16 px-6 text-center">
+      <section className="relative overflow-hidden bg-[#FBF9F6] text-[#852541] pt-8 pb-8 px-6 text-center">
         
         <div className="relative max-w-4xl mx-auto z-10 space-y-4">
           
@@ -182,12 +182,12 @@ function Project() {
           </div>
 
           {/* Right Column: Tabbed Details & Interactive Information */}
-          <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6 bg-[#FBF9F6] text-[#852541]">
+          <div className="lg:col-span-6 p-4 sm:p-8 lg:p-10 flex flex-col justify-between space-y-5 bg-[#FBF9F6] text-[#852541] w-full max-w-full overflow-hidden">
             
-            <div className="space-y-6">
+            <div className="space-y-5 w-full max-w-full">
               
               {/* Navigation Tabs */}
-              <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar gap-4 pb-2">
+              <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar scroll-smooth gap-3 pb-2 w-full max-w-full">
                 {[
                   { id: "overview", label: "Overview" },
                   { id: "specs", label: "Structural Quality" },
@@ -198,7 +198,7 @@ function Project() {
                   <button
                     key={st.id}
                     onClick={() => setActiveTab(st.id)}
-                    className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap pb-2 border-b-2 transition-all ${
+                    className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap pb-2 border-b-2 transition-all shrink-0 cursor-pointer ${
                       activeTab === st.id
                         ? "border-[#852541] text-[#852541]"
                         : "border-transparent text-gray-400 hover:text-[#852541]"
@@ -211,26 +211,26 @@ function Project() {
 
               {/* TAB 1: OVERVIEW */}
               {activeTab === "overview" && (
-                <div className="space-y-5 animate-fadeIn">
+                <div className="space-y-4 animate-fadeIn w-full">
                   <div>
                     <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold mb-2 flex items-center gap-2">
-                      <Info size={14} /> Project Summary
+                      <Info size={14} className="shrink-0" /> Project Summary
                     </h4>
-                    <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-gray-700 text-xs sm:text-sm leading-relaxed break-words">
                       {flagshipProject.description}
                     </p>
                   </div>
 
                   {/* Highlights Bullet List */}
-                  <div className="bg-white p-5 rounded-2xl border border-[#bb9034]/25 space-y-3">
+                  <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-[#bb9034]/25 space-y-3 w-full">
                     <h4 className="text-xs uppercase tracking-widest text-[#852541] font-bold flex items-center gap-1.5">
-                      <Sparkles size={14} className="text-[#bb9034]" /> Key Highlights
+                      <Sparkles size={14} className="text-[#bb9034] shrink-0" /> Key Highlights
                     </h4>
-                    <div className="grid sm:grid-cols-2 gap-2.5 text-xs text-gray-700">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700 w-full">
                       {flagshipProject.highlights.map((h, idx) => (
-                        <div key={idx} className="flex items-center gap-2 bg-[#FBF9F6] p-2 rounded-lg border border-[#bb9034]/10">
-                          <Check size={14} className="text-[#bb9034]" />
-                          <span className="font-medium text-gray-800">{h}</span>
+                        <div key={idx} className="flex items-start gap-2 bg-[#FBF9F6] p-2 rounded-lg border border-[#bb9034]/10">
+                          <Check size={14} className="text-[#bb9034] shrink-0 mt-0.5" />
+                          <span className="font-medium text-gray-800 break-words leading-tight">{h}</span>
                         </div>
                       ))}
                     </div>
@@ -240,16 +240,16 @@ function Project() {
 
               {/* TAB 2: SPECS */}
               {activeTab === "specs" && (
-                <div className="space-y-4 animate-fadeIn">
+                <div className="space-y-4 animate-fadeIn w-full">
                   <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
-                    <ShieldCheck size={14} /> Structural & Engineering Standards
+                    <ShieldCheck size={14} className="shrink-0" /> Structural & Engineering Standards
                   </h4>
-                  <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {flagshipProject.specs.map((item, idx) => (
-                      <div key={idx} className="bg-[#852541]/5 p-4 rounded-xl border border-[#852541]/15 space-y-1">
+                      <div key={idx} className="bg-[#852541]/5 p-3 sm:p-4 rounded-xl border border-[#852541]/15 space-y-1">
                         <span className="text-[11px] text-[#bb9034] font-bold uppercase tracking-wider block">{item.title}</span>
                         <span className="text-xs font-serif font-bold text-[#852541] block">{item.desc}</span>
-                        <p className="text-[11px] text-gray-600 mt-1">{item.detail}</p>
+                        <p className="text-[11px] text-gray-600 mt-1 leading-snug break-words">{item.detail}</p>
                       </div>
                     ))}
                   </div>
@@ -258,19 +258,19 @@ function Project() {
 
               {/* TAB 3: AMENITIES */}
               {activeTab === "amenities" && (
-                <div className="space-y-4 animate-fadeIn">
+                <div className="space-y-4 animate-fadeIn w-full">
                   <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
-                    <Landmark size={14} /> Modern Lifestyle Suite
+                    <Landmark size={14} className="shrink-0" /> Modern Lifestyle Suite
                   </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {flagshipProject.amenities.map(({ icon: Icon, label, desc }) => (
-                      <div key={label} className="flex items-start gap-3 p-3.5 rounded-xl bg-white border border-[#bb9034]/20">
+                      <div key={label} className="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-[#bb9034]/20">
                         <div className="p-2 rounded-lg bg-[#852541] text-[#bb9034] shrink-0">
                           <Icon size={16} />
                         </div>
                         <div>
                           <h5 className="text-xs font-bold text-[#852541]">{label}</h5>
-                          <p className="text-[11px] text-gray-600 leading-tight mt-0.5">{desc}</p>
+                          <p className="text-[11px] text-gray-600 leading-tight mt-0.5 break-words">{desc}</p>
                         </div>
                       </div>
                     ))}
@@ -280,19 +280,19 @@ function Project() {
 
               {/* TAB 4: PROGRESS */}
               {activeTab === "progress" && (
-                <div className="space-y-4 animate-fadeIn">
+                <div className="space-y-4 animate-fadeIn w-full">
                   <div className="flex items-center justify-between">
                     <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
-                      <Hammer size={14} /> Construction Status
+                      <Hammer size={14} className="shrink-0" /> Construction Status
                     </h4>
                     <span className="text-xs font-bold text-[#852541]">{flagshipProject.completion}</span>
                   </div>
-                  <div className="space-y-3.5 bg-white p-5 rounded-2xl border border-[#bb9034]/20">
+                  <div className="space-y-3.5 bg-white p-4 sm:p-5 rounded-2xl border border-[#bb9034]/20 w-full">
                     {flagshipProject.progress.map((item, idx) => (
                       <div key={idx} className="space-y-1">
                         <div className="flex justify-between text-xs font-semibold text-gray-800">
-                          <span>{item.stage}</span>
-                          <span className="text-[#852541] font-bold">{item.percentage}%</span>
+                          <span className="break-words">{item.stage}</span>
+                          <span className="text-[#852541] font-bold shrink-0 pl-2">{item.percentage}%</span>
                         </div>
                         <div className="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
                           <div
@@ -308,15 +308,15 @@ function Project() {
 
               {/* TAB 5: LOCATION ADVANTAGE */}
               {activeTab === "location" && (
-                <div className="space-y-4 animate-fadeIn">
+                <div className="space-y-4 animate-fadeIn w-full">
                   <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
-                    <Compass size={14} /> Khamla Road Proximity Matrix
+                    <Compass size={14} className="shrink-0" /> Khamla Road Proximity Matrix
                   </h4>
-                  <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {flagshipProject.locationAdvantages.map((item, idx) => (
-                      <div key={idx} className="bg-white p-4 rounded-xl border border-[#bb9034]/20 space-y-1">
+                      <div key={idx} className="bg-white p-3 sm:p-4 rounded-xl border border-[#bb9034]/20 space-y-1">
                         <span className="text-xs font-bold text-[#852541] block">{item.title}</span>
-                        <p className="text-[11px] text-gray-600">{item.desc}</p>
+                        <p className="text-[11px] text-gray-600 leading-snug break-words">{item.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -326,22 +326,24 @@ function Project() {
             </div>
 
             {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-5 border-t border-[#bb9034]/20">
+            <div className="flex flex-col sm:flex-row gap-2.5 pt-4 border-t border-[#bb9034]/20 w-full">
               <button
                 onClick={() => {
                   window.scrollTo(0, 0);
                   navigate("/project/riddhi-siddhi-3");
                 }}
-                className="flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full sm:flex-1 bg-[#852541] hover:bg-[#6B1C33] text-white py-3 px-4 rounded-xl text-[11px] sm:text-xs font-extrabold uppercase tracking-wider transition flex items-center justify-center gap-1.5 cursor-pointer shadow-md text-center"
               >
-                <ArrowRight size={15} /> Explore Full Details
+                <ArrowRight size={14} className="shrink-0" />
+                <span>Explore Full Details</span>
               </button>
 
               <button
                 onClick={handleOpenEnquiry}
-                className="flex-1 border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:flex-1 border border-[#852541] text-[#852541] hover:bg-[#852541] hover:text-white py-3 px-4 rounded-xl text-[11px] sm:text-xs font-extrabold uppercase tracking-wider transition flex items-center justify-center gap-1.5 cursor-pointer text-center"
               >
-                <PhoneCall size={15} /> Enquire Pricing & Plans
+                <PhoneCall size={14} className="shrink-0" />
+                <span>Enquire Pricing & Plans</span>
               </button>
             </div>
 
