@@ -136,7 +136,7 @@ function LinkItem({ icon: Icon, label, href }) {
                     className="text-base md:text-lg font-extrabold mb-5"
                     style={{ color: "#4b4641", fontFamily: "'Poppins', sans-serif" }}
                 >
-                     Building Trust Through Every Brick
+                     Where Happiness Finds a Home
                 </motion.h3>
 
                 {/* Paragraph */}
