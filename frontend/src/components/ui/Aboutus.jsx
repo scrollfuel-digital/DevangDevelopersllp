@@ -2,106 +2,17 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-    Building2,
-    Landmark,
-    Handshake,
-    HandCoins,
-    Users,
-    Building,
-} from "lucide-react";
 
-
-
-const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-
-const stagger = {
-    hidden: {},
-    show: {
-        transition: {
-            staggerChildren: 0.12,
-            delayChildren: 0.15,
-        },
-    },
-};
-
-function LinkItem({ icon: Icon, label, href }) {
-    const handleClick = () => {
-        window.location.href = href;
-    };
-
-    return (
-        <motion.button
-            type="button"
-            onClick={handleClick}
-            variants={fadeUp}
-            whileHover="hover"
-            initial="rest"
-            animate="rest"
-            className="group relative flex flex-col items-center gap-4 text-center w-full px-4 py-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-            style={{ outlineColor: "#8A6A3F" }}
-        >
-            {/* Icon ring */}
-            <span className="relative flex h-20 w-20 items-center justify-center rounded-full">
-                <motion.span
-                    aria-hidden="true"
-                    className="absolute inset-0 rounded-full"
-                    style={{ border: "1px solid #D9CBAF" }}
-                    variants={{
-                        rest: { scale: 1, backgroundColor: "rgba(138,106,63,0)" },
-                        hover: { scale: 1.06, backgroundColor: "rgba(138,106,63,1)" },
-                    }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                />
-                <motion.span
-                    className="relative flex items-center justify-center"
-                    variants={{
-                        rest: { color: "#8A6A3F" },
-                        hover: { color: "#FBF9F6" },
-                    }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <Icon size={28} strokeWidth={1.4} />
-                </motion.span>
-            </span>
-
-            {/* Label */}
-            <span
-                className="text-[13px] md:text-sm font-semibold leading-snug tracking-wide transition-colors duration-300 max-w-[11rem] group-hover:text-[#8A6A3F]"
-                style={{ color: "#5f5a54", fontFamily: "'Poppins', sans-serif" }}
-            >
-                {label}
-            </span>
-
-            {/* Underline accent */}
-            <motion.span
-                aria-hidden="true"
-                className="h-px w-6"
-                style={{ backgroundColor: "#B08D5F" }}
-                variants={{
-                    rest: { width: 24, opacity: 0.4 },
-                    hover: { width: 40, opacity: 1 },
-                }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-            />
-        </motion.button>
-    );
-}
-
- function About() {
+function About() {
     return (
         <section
-            className="w-full pt-16 pb-6 px-4 md:px-8"
+            className="w-full pt-16 pb-12 px-4 md:px-8"
             style={{
                 backgroundColor: "#FBF9F6",
                 fontFamily: "'Inter', sans-serif",
             }}
         >
             <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-
 
                 {/* Heading */}
                 <motion.h2
@@ -116,7 +27,7 @@ function LinkItem({ icon: Icon, label, href }) {
                     <span style={{ color: "#B08D5F" }}>DEVANG DEVELOPERS</span>
                 </motion.h2>
 
-                {/* Signature divider - draws in on scroll */}
+                {/* Signature divider */}
                 <motion.span
                     aria-hidden="true"
                     initial={{ scaleX: 0, opacity: 0 }}
@@ -165,11 +76,7 @@ function LinkItem({ icon: Icon, label, href }) {
                         Our construction philosophy relies strictly on premium civil materials including Fe550 grade TMT steel, RCC earthquake-resistant structural framing, advanced hydro-pneumatic water systems, auto DG power backups, and multi-tier 24/7 smart gated security systems. 
                         By maintaining absolute transparency, complete RERA regulatory compliance, and a proven track record of strictly on-time project deliveries, we have earned the enduring trust of over 100 happy homeowner families.
                     </motion.p>
-
-                   
                 </div>
-
-                
             </div>
         </section>
     );
