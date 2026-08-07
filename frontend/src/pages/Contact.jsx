@@ -43,7 +43,7 @@ export default function Contact() {
             How Can We <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Help You?</span>
           </h1>
 
-          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-2xl font-sans text-[#bb9034] font-medium max-w-3xl mx-auto leading-relaxed">
             Reach out to our sales team for project enquiries, site visits, and complete support.
           </p>
         </div>

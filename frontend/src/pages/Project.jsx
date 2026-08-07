@@ -51,7 +51,7 @@ function TiltedCard({
   imageWidth = "100%",
   scaleOnHover = 1.05,
   rotateAmplitude = 14,
-  showTooltip = true,
+  showTooltip = false,
   overlayContent = null,
   displayOverlayContent = true,
   className = "",
@@ -89,11 +89,9 @@ function TiltedCard({
 
   function handleMouseEnter() {
     scale.set(scaleOnHover);
-    if (showTooltip) opacity.set(1);
   }
 
   function handleMouseLeave() {
-    if (showTooltip) opacity.set(0);
     scale.set(1);
     rotateX.set(0);
     rotateY.set(0);
@@ -145,21 +143,6 @@ function TiltedCard({
           </motion.div>
         )}
       </motion.div>
-
-      {/* ── CURSOR-FOLLOWING BUILDING NAME TOOLTIP ── */}
-      {showTooltip && captionText && (
-        <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-full px-5 py-2.5 text-xs sm:text-sm font-serif font-bold tracking-wide opacity-0 z-30 hidden sm:block shadow-xl border border-[#c9a874] bg-[#852541] text-[#ffffff]"
-          style={{
-            x,
-            y,
-            opacity,
-            rotate: rotateFigcaption,
-          }}
-        >
-          ✨ {captionText}
-        </motion.figcaption>
-      )}
     </figure>
   );
 }
@@ -264,9 +247,15 @@ function Project() {
     navigate("/contact");
   };
 
+  const handleRedirectRiddhiSiddhi = (e) => {
+    e?.stopPropagation();
+    window.scrollTo(0, 0);
+    navigate("/project/riddhi-siddhi-3");
+  };
+
   // HELPER TO RENDER A 3D CARD
   const renderCard = (p, idxKey) => (
-    <div key={idxKey} onClick={handleRedirectContact} className="w-full">
+    <div key={idxKey} onClick={handleRedirectRiddhiSiddhi} className="w-full">
       <TiltedCard
         imageSrc={p.image}
         altText={p.name}
@@ -275,7 +264,7 @@ function Project() {
         containerWidth="100%"
         rotateAmplitude={14}
         scaleOnHover={1.05}
-        showTooltip={true}
+        showTooltip={false}
         overlayContent={
           <>
             <div className="flex items-center justify-between">
@@ -293,7 +282,10 @@ function Project() {
                 <span className="leading-snug truncate">{p.location}</span>
               </p>
 
-              <button className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5">
+              <button
+                onClick={handleRedirectRiddhiSiddhi}
+                className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition duration-300 shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+              >
                 Explore <ArrowRight size={13} />
               </button>
             </div>
