@@ -37,10 +37,10 @@ const Footer = () => {
       <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-[#bb9034]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#852541]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-16 md:py-20 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-10 sm:pt-14 md:pt-16 pb-6 relative z-10">
         
         {/* Main 4-Column Footer Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-start pb-10 sm:pb-14 border-b-2 border-[#852541]/20">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-start pb-6 sm:pb-8 border-b-2 border-[#852541]/20">
           
           {/* COLUMN 1: Brand Logo & Socials */}
           <motion.div
@@ -105,7 +105,7 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* COLUMN 3: Corporate Head Desk (NO WHITE CARDS - DIRECT DISPLAY) */}
+          {/* COLUMN 3: Corporate Head Desk */}
           <motion.div
             variants={fadeUp}
             custom={2}
@@ -196,8 +196,8 @@ const Footer = () => {
 
       </div>
 
-      {/* Distinct Executive Bottom Copyright Bar */}
-      <div className="bg-[#852541] text-white py-4 sm:py-6 px-4 sm:px-6 border-t-2 border-[#bb9034]/40">
+      {/* Distinct Executive Bottom Copyright Bar (Moved Directly Upwards, Zero Blank Space) */}
+      <div className="bg-[#852541] text-white py-4 sm:py-5 px-4 sm:px-6 border-t-2 border-[#bb9034]/40">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs">
           <span>
             © {new Date().getFullYear()} <strong className="font-bold text-[#c9a874]">Devang Developers LLP</strong>. All rights reserved.
