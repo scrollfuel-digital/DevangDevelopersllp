@@ -21,6 +21,17 @@ import {
   X,
 } from "lucide-react";
 
+// ── TEAM PHOTOS FROM ASSETS ──────────────────────────────────────────
+import hemalSirImg from "../assets/Teams photo/Hemal sir.png";
+import milindNadiyanaImg from "../assets/Teams photo/Mr. Milind Nadiyana.png";
+import amitAgrawalImg from "../assets/Teams photo/Mr.Amit Agrawal.png";
+import psPathankarImg from "../assets/Teams photo/Mr.P.s Pathankar.png";
+import riteshMehtaImg from "../assets/Teams photo/Mr.Ritesh Mehta.png";
+import pJaykrishnanImg from "../assets/Teams photo/P. Jaykrishnan.png";
+import sandipShastriImg from "../assets/Teams photo/Adv.Sandip Shastri.png";
+import riteshBhaiImg from "../assets/Teams photo/Ritesh Bhai.png";
+import kirtiBhaiImg from "../assets/Teams photo/Kirti Bhai.png";
+
 // ── ULTRA LUXURY 3D SPOTLIGHT CARD COMPONENT ────────────────────────
 const springConfig = { damping: 25, stiffness: 120, mass: 1.2 };
 
@@ -145,92 +156,92 @@ export default function About() {
 
   const teamMembers = [
     {
-      id: "hemal-nadiyana",
-      name: "Mr. Hemal Nadiyana",
-      role: "Founder & Managing Partner",
-      category: "founders",
-      image: "/team/hemal-nadiyana.jpg",
-      experience: "18+ Years",
-      badge: "Core Visionary",
-      expertise: ["Real Estate Strategy", "Land Acquisition", "Structural Engineering Integrity"],
-      bio: "Under the visionary leadership of Mr. Hemal Nadiyana, Devang Developers has delivered over 100+ happy homes across Nagpur. Guided by uncompromising civil engineering standards and transparent ethics, he spearheads project execution from land acquisition to final possession.",
-    },
-    {
-      id: "advisor-civil",
-      name: "Er. Rajesh Sharma",
-      role: "Principal Structural Engineering Advisor",
+      id: "mr-milind-nadiyana",
+      name: "Mr. Milind Nadiyana",
+      role: "Architect & Elevation Designer",
       category: "structural",
-      image: "/team/advisor-civil.jpg",
-      experience: "20+ Years",
-      badge: "Chartered Engineer",
-      expertise: ["RCC Earthquake Design", "Fe550 Steel Audits", "Load Distribution Matrix"],
-      bio: "Over 20 years of expertise in high-rise civil structural analysis, ensuring all Devang developments withstand seismic forces and comply with stringent IS code civil standards.",
-    },
-    {
-      id: "advisor-architecture",
-      name: "Ar. Vikramaditya Joshi",
-      role: "Chief Architectural & Elevation Designer",
-      category: "structural",
-      image: "/team/advisor-architecture.jpg",
+      image: milindNadiyanaImg,
       experience: "16+ Years",
       badge: "Master Architect",
       expertise: ["Neo-Classical Facades", "100% Vastu Layouts", "Natural Light & Air Grid"],
       bio: "Pioneers the neo-classical elevation design and Vastu-compliant layout plans that define the iconic visual identity of Riddhi Siddhi 3 and Devang landmarks.",
     },
     {
-      id: "advisor-legal",
-      name: "Adv. Suresh K. Deshmukh",
-      role: "Senior Legal & Conveyance Counsel",
-      category: "legal",
-      image: "/team/advisor-legal.jpg",
-      experience: "22+ Years",
-      badge: "Legal Stalwart",
-      expertise: ["Clear Title Certification", "Sanctioned Plan Audits", "Land Conveyance Deeds"],
-      bio: "Ensures 100% clear title ownership, litigate-free property documentation, and transparent legal paperwork for all buyers and investors.",
-    },
-    {
-      id: "operations-site",
-      name: "Er. Prakash Kulkarni",
-      role: "Chief Site Operations & Construction Head",
-      category: "engineering",
-      image: "/team/operations-site.jpg",
-      experience: "15+ Years",
-      badge: "Civil Execution",
-      expertise: ["Concrete Mix Testing", "On-Site Safety Grid", "Quality Assurance"],
-      bio: "Manages day-to-day civil construction, raw material quality testing, and structural execution on site to guarantee timely project milestones.",
-    },
-    {
-      id: "advocate-rera",
-      name: "Adv. Milind Wankhede",
-      role: "MahaRERA Compliance Advisor",
-      category: "legal",
-      image: "/team/advocate-rera.jpg",
-      experience: "14+ Years",
-      badge: "Regulatory Expert",
-      expertise: ["MahaRERA Registrations", "Escrow Account Protocols", "Possession Timelines"],
-      bio: "Specializes in regulatory MahaRERA compliance, ensuring customer agreements, escrow transparency, and statutory disclosures are strictly maintained.",
-    },
-    {
-      id: "finance-head",
-      name: "Mr. Nitin Agrawal",
+      id: "mr-amit-agrawal",
+      name: "Mr. Amit Agrawal",
       role: "Chief Financial & Commercial Officer",
       category: "engineering",
-      image: "/team/finance-head.jpg",
+      image: amitAgrawalImg,
       experience: "17+ Years",
       badge: "Finance Head",
       expertise: ["Bank Loan Tie-ups", "Commercial Strategy", "Customer Financial Desk"],
       bio: "Directs financial planning, institutional project funding, and seamless home loan approvals with major nationalized banks for buyers.",
     },
     {
-      id: "mep-quality",
-      name: "Er. Santosh Patil",
+      id: "mr-ps-pathankar",
+      name: "Mr. P.S. Pathankar",
+      role: "Principal Structural Engineering Advisor",
+      category: "structural",
+      image: psPathankarImg,
+      experience: "20+ Years",
+      badge: "Chartered Engineer",
+      expertise: ["RCC Earthquake Design", "Fe550 Steel Audits", "Load Distribution Matrix"],
+      bio: "Over 20 years of expertise in high-rise civil structural analysis, ensuring all Devang developments withstand seismic forces and comply with stringent IS code civil standards.",
+    },
+    {
+      id: "mr-ritesh-mehta",
+      name: "Mr. Ritesh Mehta",
+      role: "Senior Project Operations Head",
+      category: "engineering",
+      image: riteshMehtaImg,
+      experience: "15+ Years",
+      badge: "Civil Operations",
+      expertise: ["Concrete Mix Testing", "On-Site Safety Grid", "Quality Assurance"],
+      bio: "Manages day-to-day civil construction, raw material quality testing, and structural execution on site to guarantee timely project milestones.",
+    },
+    {
+      id: "p-jaykrishnan",
+      name: "P. Jaykrishnan",
       role: "Quality Control & MEP Advisory Head",
       category: "structural",
-      image: "/team/mep-quality.jpg",
+      image: pJaykrishnanImg,
       experience: "16+ Years",
       badge: "MEP Specialist",
       expertise: ["Hydro-Pneumatic Plumbing", "Substation Grid Design", "Waterproofing Standards"],
       bio: "Oversees Mechanical, Electrical, and Plumbing (MEP) infrastructure, ensuring high-capacity DG power backup, eco rainwater systems, and advanced MEP engineering.",
+    },
+    {
+      id: "adv-sandip-shastri",
+      name: "Adv. Sandip Shastri",
+      role: "Senior Legal & MahaRERA Compliance Counsel",
+      category: "legal",
+      image: sandipShastriImg,
+      experience: "22+ Years",
+      badge: "Legal Stalwart",
+      expertise: ["MahaRERA Registrations", "Clear Title Certification", "Escrow Protocols"],
+      bio: "Specializes in regulatory MahaRERA compliance and conveyance, ensuring 100% clear title ownership, litigate-free property documentation, and customer agreement transparency.",
+    },
+    {
+      id: "ritesh-bhai",
+      name: "Ritesh Bhai",
+      role: "Co-Founder & Executive Partner",
+      category: "founders",
+      image: riteshBhaiImg,
+      experience: "18+ Years",
+      badge: "Core Leadership",
+      expertise: ["Strategic Growth", "Land Acquisition", "Partner Relations"],
+      bio: "Co-founding leadership driving strategic growth, land acquisition, and key stakeholder partnerships across premier residential developments.",
+    },
+    {
+      id: "kirti-bhai",
+      name: "Kirti Bhai",
+      role: "Co-Founder & Advisory Board Member",
+      category: "founders",
+      image: kirtiBhaiImg,
+      experience: "18+ Years",
+      badge: "Founding Board",
+      expertise: ["Corporate Governance", "Visionary Leadership", "Brand Heritage"],
+      bio: "Founding board member guiding Devang Developers' corporate governance, ethics, and enduring legacy across Nagpur.",
     },
   ];
 
@@ -450,7 +461,7 @@ export default function About() {
               
               <div className="relative w-64 sm:w-72 h-80 sm:h-96 rounded-t-[130px] rounded-b-[32px] overflow-hidden border-4 border-[#FAF7F2] shadow-2xl bg-white">
                 <img
-                  src="/team/hemal-nadiyana.jpg"
+                  src={hemalSirImg}
                   alt="Mr. Hemal Nadiyana - Founder & Managing Partner"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
@@ -520,57 +531,55 @@ export default function About() {
           ))}
         </div>
 
-        {/* 8 CARDLESS EDITORIAL TEAM PORTRAITS GRID (NO WHITE BOX CARDS) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full pt-4">
+        {/* 8 EDITORIAL TEAM PORTRAITS GRID (NAME REVEALS ON HOVER WITH HORIZONTAL LEFT/RIGHT SLIDE TRANSITION) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full pt-4">
           {teamMembers
             .filter((m) => selectedCategory === "all" || m.category === selectedCategory)
-            .map((member) => (
+            .map((member, idx) => (
               <div
                 key={member.id}
                 onClick={() => setActiveMemberModal(member)}
-                className="group cursor-pointer flex flex-col items-center text-center space-y-4"
+                className="group cursor-pointer flex flex-col items-center justify-center text-center"
               >
-                {/* Arch-Top Spotlight Frame (No Box Card Wrapper) */}
-                <div className="relative w-52 sm:w-56 h-64 sm:h-72 rounded-t-[100px] rounded-b-2xl overflow-hidden border-2 border-[#bb9034]/40 shadow-lg group-hover:shadow-2xl group-hover:border-[#852541] transition-all duration-500">
+                {/* Arch-Top Spotlight Frame */}
+                <div className="relative w-56 sm:w-64 h-80 sm:h-88 rounded-t-[110px] rounded-b-3xl overflow-hidden border-2 border-[#bb9034]/50 shadow-xl group-hover:shadow-2xl group-hover:border-[#852541] transition-all duration-500 bg-white">
+                  
+                  {/* High-Resolution Portrait Image */}
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#852541]/80 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity" />
 
-                  {/* Experience Badge */}
-                  <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-[#852541]/90 text-[#c9a874] text-[9px] font-bold uppercase tracking-wider shadow-sm border border-[#c9a874]/40">
-                    {member.experience}
-                  </span>
+                  {/* HORIZONTAL LEFT / RIGHT SLIDE-IN HOVER OVERLAY WITH LUXURY OBSIDIAN-BURGUNDY & GOLD GRADIENT COLOR */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br from-[#1b080e]/95 via-[#681c32]/95 to-[#bb9034]/90 flex flex-col justify-center p-6 text-center transform ${
+                      idx % 2 === 0 ? "-translate-x-full" : "translate-x-full"
+                    } group-hover:translate-x-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out z-20 backdrop-blur-xs border-y border-[#c9a874]/40`}
+                  >
+                    <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#f3e5ab] block mb-1">
+                      {member.experience}
+                    </span>
 
-                  {/* Hover Overlay Button */}
-                  <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="block w-full py-1.5 rounded-full bg-[#852541] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+                    <h4 className="text-xl font-serif font-bold text-white leading-tight mb-1">
+                      {member.name}
+                    </h4>
+
+                    <p className="text-xs text-[#f3e5ab] font-medium leading-snug mb-3">
+                      {member.role}
+                    </p>
+
+                    <div className="w-12 h-[2px] bg-[#f3e5ab]/50 mx-auto mb-3" />
+
+                    <p className="text-[10px] text-gray-200 font-light truncate mb-4">
+                      {member.expertise.join(" • ")}
+                    </p>
+
+                    <span className="inline-block py-2.5 px-5 rounded-full bg-gradient-to-r from-[#c9a874] to-[#e6ca94] text-[#852541] text-[10px] font-black uppercase tracking-wider shadow-xl group-hover:scale-105 transition-transform">
                       View Profile Details
                     </span>
                   </div>
-                </div>
 
-                {/* Open Editorial Typography (No Box Background) */}
-                <div className="space-y-1 w-full max-w-[240px]">
-                  <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#bb9034] block">
-                    {member.badge}
-                  </span>
-                  
-                  <h4 className="text-lg font-serif font-extrabold text-[#852541] group-hover:text-[#bb9034] transition-colors leading-tight">
-                    {member.name}
-                  </h4>
-
-                  <p className="text-xs text-gray-600 font-medium leading-snug">
-                    {member.role}
-                  </p>
-
-                  <div className="w-10 h-[2px] bg-[#bb9034]/40 mx-auto my-2 group-hover:w-16 group-hover:bg-[#852541] transition-all duration-300" />
-
-                  <p className="text-[10px] text-gray-500 font-light truncate">
-                    {member.expertise.join(" • ")}
-                  </p>
                 </div>
               </div>
             ))}
