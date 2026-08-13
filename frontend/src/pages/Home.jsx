@@ -1,38 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import rs3BuildingImg from '../assets/RS3 building.png'
-import rs3FrontImg from '../assets/projects/rs3-front-elevation.jpg'
-import rs3SideImg from '../assets/projects/rs3-side-elevation.jpg'
-import rs3CornerImg from '../assets/projects/rs3-corner-elevation.jpg'
+import dharampethImg from '../assets/Completed projects/Dharampeth building.png'
+import mangalmurtiImg from '../assets/Completed projects/Mangalmurti Residency.png'
+import kirtiKalyaniHeroImg from '../assets/projects/kirti-kalyani-hero.png'
+import rs3HeroFullImg from '../assets/projects/rs3-hero-full.png'
 
 const SLIDES = [
   {
-    image: rs3FrontImg,
-    eyebrow: 'Nagpur',
-    title: ['DEVANG', 'DEVELOPERS', 'NAGPUR'],
+    image: rs3HeroFullImg,
+    eyebrow: 'Ongoing Luxury Flagship',
+    title: ['RIDDHI SIDDHI', '~ III ~'],
     subtitle:
-      '18+ years of iconic architecture & premium living landmarks in Nagpur — crafted with superior quality.',
+      'A striking high-rise tower crafted for peaceful residential living with excellent connectivity on London Street, Nagpur.',
   },
   {
-    image: rs3SideImg,
-    eyebrow: 'Luxury Apartments',
-    title: ['RIDDHI SIDDHI 3'],
+    image: dharampethImg,
+    eyebrow: 'Completed Landmark',
+    title: ['DHARAMPETH', 'BUILDING'],
     subtitle:
-      'A striking high-rise tower crafted for peaceful community living and modern lifestyle amenities.',
+      '25+ years of iconic architecture & premium living landmarks in Nagpur — crafted with superior quality.',
   },
   {
-    image: rs3CornerImg,
-    eyebrow: 'Prime Living',
-    title: ['WALLS OF', 'HAPPINESS'],
+    image: mangalmurtiImg,
+    eyebrow: 'Completed Landmark',
+    title: ['MANGALMURTI', 'RESIDENCY'],
     subtitle:
-      'Delivering superior construction standards, prime locations, and transparent home buying experiences.',
+      'A striking residential development crafted for peaceful community living and modern lifestyle amenities.',
   },
   {
-    image: rs3BuildingImg,
-    eyebrow: 'Architectural Landmark',
-    title: ['RIDDHI SIDDHI', 'ELEVATION'],
+    image: kirtiKalyaniHeroImg,
+    eyebrow: 'Completed Landmark',
+    title: ['KIRTI KALYANI', 'APARTMENT'],
     subtitle:
-      'Uncompromising civil engineering standards and neo-classical facade design on Khamla Road.',
+      'Uncompromising civil engineering standards and thoughtful residential layout design in prime Nagpur.',
   },
 ]
 

@@ -43,14 +43,14 @@ import {
 } from "lucide-react";
 
 import riddhiSiddhiImg from "../assets/projects/riddhisiddhibuilding.jpg";
+import rs3SingleImage from "../assets/projects/rs3-single-hero.png";
 import kidsPlayAreaImg from "../assets/projects/kids-playarea.png";
-import floorPlan2nd from "../assets/projects/floorplan-2nd.png";
-import floorPlanTypical from "../assets/projects/floorplan-typical.png";
-import floorPlan7th from "../assets/projects/floorplan-7th.jpg";
-import rs3FrontImg from "../assets/projects/rs3-front-elevation.jpg";
-import rs3SideImg from "../assets/projects/rs3-side-elevation.jpg";
-import rs3CornerImg from "../assets/projects/rs3-corner-elevation.jpg";
 import gameZoneImg from "../assets/projects/gamezone-cropped.jpg";
+import theatherImg from "../assets/projects/theather-image.jpg";
+import swimmingPoolImg from "../assets/projects/swimming-pool-image.png";
+import yogaDayImg from "../assets/projects/yoga-day.png";
+import gymImg from "../assets/projects/gym.png";
+import conferenceRoomImg from "../assets/projects/conference-room.png";
 
 export default function RiddhiSiddhiDetails() {
   const navigate = useNavigate();
@@ -58,9 +58,6 @@ export default function RiddhiSiddhiDetails() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [activeSpecIndex, setActiveSpecIndex] = useState(0);
   const [isSpecAutoPlaying, setIsSpecAutoPlaying] = useState(true);
-  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
-  const [isHeroAutoPlaying, setIsHeroAutoPlaying] = useState(true);
-  const [activePlanKey, setActivePlanKey] = useState("floor2nd");
   const [lightboxImage, setLightboxImage] = useState(null);
   const [amenitySlideIndex, setAmenitySlideIndex] = useState(0);
   const [isAmenityAutoPlaying, setIsAmenityAutoPlaying] = useState(true);
@@ -72,42 +69,10 @@ export default function RiddhiSiddhiDetails() {
     config: "3-bhk",
   });
 
-  const heroBuildingSlides = [
-    {
-      image: rs3FrontImg,
-      title: "Front Elevation View",
-      sub: "Full Front Façade & Dual Road Access Driveways",
-    },
-    {
-      image: rs3SideImg,
-      title: "Side Elevation View",
-      sub: "Slim High-Rise Structural Design & Balcony Stacks",
-    },
-    {
-      image: rs3CornerImg,
-      title: "Corner 3D Elevation View",
-      sub: "Panoramic Architectural View & Ambient Lighting",
-    },
-    {
-      image: riddhiSiddhiImg,
-      title: "Master Architectural Illustration",
-      sub: "32-A, Deep Apartment, Khamla Road, Nagpur",
-    },
-  ];
-
   useEffect(() => {
     document.title = "Riddhi Siddhi 3 | Luxury Brochure | Devang Developers";
     window.scrollTo(0, 0);
   }, []);
-
-  // AUTO-PLAY TIMER FOR HERO TOWER SLIDER (4 SECONDS)
-  useEffect(() => {
-    if (!isHeroAutoPlaying) return;
-    const interval = setInterval(() => {
-      setHeroSlideIndex((prev) => (prev === heroBuildingSlides.length - 1 ? 0 : prev + 1));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isHeroAutoPlaying, heroSlideIndex]);
 
   // AUTO-PLAY TIMER FOR SPECIFICATIONS SLIDER (5 SECONDS)
   useEffect(() => {
@@ -167,14 +132,14 @@ export default function RiddhiSiddhiDetails() {
       tagline: "Luxury that flows above",
       description:
         "A thoughtfully designed rooftop pool offering a refreshing escape from daily life. Surrounded by open skies and calming views for complete rejuvenation.",
-      image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
+      image: swimmingPoolImg,
     },
     {
       category: "MULTIPURPOSE HALL",
       tagline: "A space where moments come together",
       description:
         "A spacious recreation hall designed for social gatherings and leisure activities. Ideal for celebrations, meetings, and community events. A versatile space that brings residents together.",
-      image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
+      image: conferenceRoomImg,
     },
     {
       category: "KIDS PLAY AREA",
@@ -188,21 +153,21 @@ export default function RiddhiSiddhiDetails() {
       tagline: "Find Your Inner balance",
       description:
         "A serene rooftop yoga deck designed for mindful movement and daily wellness. Open skies, fresh air, and peaceful surroundings create the perfect space to restore balance.",
-      image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80",
+      image: yogaDayImg,
     },
     {
       category: "GYMNASIUM",
       tagline: "Fitness that fits your life",
       description:
         "A fully equipped gym designed for strength, fitness, and endurance. Thoughtfully planned to support daily workouts and active lifestyles. Train comfortably in a motivating, well-ventilated space.",
-      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+      image: gymImg,
     },
     {
       category: "THEATER",
       tagline: "An exclusive Cinema Experience",
       description:
-        "A modern mini theater designed for immersive experiences. Enjoy movies, sports, and shows in a comfortable, private setting. Entertainment redefined within your residential community.",
-      image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+        "A modern mini theater designed for immersive experiences. Enjoy movies, sports, and shows in a comfortable, private sitting. Entertainment redefined within your residential community.",
+      image: theatherImg,
     },
     {
       category: "GAME ZONE",
@@ -213,55 +178,7 @@ export default function RiddhiSiddhiDetails() {
     },
   ];
 
-  // ARCHITECTURAL FLOOR PLANS DATA
-  const floorPlansData = {
-    floor2nd: {
-      title: "2nd Floor Plan",
-      subtitle: "Spacious 2 BHK & 3 BHK Layouts with dual access balconies",
-      image: floorPlan2nd,
-      table: [
-        { flat: "1", built: "873", salable: "1168" },
-        { flat: "2", built: "877", salable: "1174" },
-        { flat: "3", built: "879", salable: "1180" },
-        { flat: "4", built: "1696", salable: "2371" },
-        { flat: "5", built: "1507", salable: "1949" },
-      ],
-    },
-    typical345: {
-      title: "Typical Floor Plan (3rd, 4th & 5th Floors)",
-      subtitle: "Optimal natural light & 100% Vastu-compliant layout design",
-      image: floorPlanTypical,
-      table: [
-        { flat: "1", built: "873", salable: "1168" },
-        { flat: "2", built: "877", salable: "1174" },
-        { flat: "3", built: "879", salable: "1180" },
-        { flat: "4", built: "1696", salable: "2371" },
-        { flat: "5", built: "1330", salable: "1822" },
-      ],
-    },
-    typical689: {
-      title: "Typical Floor Plan (6th, 8th & 9th Floors)",
-      subtitle: "High-rise premium 3 BHK & 4 BHK corner residences",
-      image: floorPlanTypical,
-      table: [
-        { flat: "1", built: "1656", salable: "2243" },
-        { flat: "2", built: "1471", salable: "1981" },
-        { flat: "3", built: "1696", salable: "2371" },
-        { flat: "4", built: "1330", salable: "1822" },
-      ],
-    },
-    floor7th: {
-      title: "7th Floor Plan (Refuge Layout)",
-      subtitle: "Features exclusive open refuge terrace deck (220 sq.ft)",
-      image: floorPlan7th,
-      table: [
-        { flat: "1", built: "1656", salable: "2243" },
-        { flat: "2", built: "1471", salable: "1981" },
-        { flat: "3", built: "1696", salable: "2371" },
-        { flat: "4", built: "1266", salable: "1822" },
-      ],
-    },
-  };
+
 
   // FULL TECHNICAL SPECIFICATIONS
   const fullSpecs = [
@@ -345,10 +262,10 @@ export default function RiddhiSiddhiDetails() {
   ];
 
   return (
-    <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased min-h-screen selection:bg-[#852541] selection:text-[#FAF7F2] pb-20 sm:pb-24 lg:pb-32">
+    <div className="relative bg-[#FAF7F2] text-[#852541] font-sans antialiased min-h-screen selection:bg-[#852541] selection:text-[#FAF7F2] pb-32 sm:pb-40 lg:pb-48">
       
       {/* ── TOP HERO BANNER ────────────────────────────────────────────── */}
-      <section className="relative pt-20 pb-8 px-6 bg-[#FAF7F2] text-center border-b border-[#bb9034]/20">
+      <section className="relative pt-44 sm:pt-52 md:pt-56 lg:pt-60 pb-10 px-6 bg-[#FAF7F2] text-center border-b border-[#bb9034]/20">
         <div className="max-w-5xl mx-auto space-y-4">
           
           <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/35 text-[#852541] text-xs uppercase tracking-[0.25em] font-semibold shadow-sm">
@@ -359,13 +276,13 @@ export default function RiddhiSiddhiDetails() {
             RIDDHI SIDDHI <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">~ III ~</span>
           </h1>
 
-          <p className="text-lg sm:text-2xl font-serif text-[#bb9034] italic font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-2xl font-sans text-[#bb9034] font-medium max-w-3xl mx-auto leading-relaxed">
             An Address Defined by Vision
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-[#852541] pt-2">
             <span className="flex items-center gap-1 bg-white px-4 py-2 rounded-full border border-[#bb9034]/30 shadow-sm">
-              <MapPin size={14} className="text-[#bb9034]" /> 32-A, Deep Apartment, Pande Layout, Khamla Road, Nagpur
+              <MapPin size={14} className="text-[#bb9034]" /> 32-A, Deep Apartment, London Street, Nagpur
             </span>
             <span className="flex items-center gap-1 bg-white px-4 py-2 rounded-full border border-[#bb9034]/30 shadow-sm">
               <ShieldCheck size={14} className="text-[#bb9034]" /> MahaRERA: PR1190002501512
@@ -379,111 +296,49 @@ export default function RiddhiSiddhiDetails() {
       <section className="py-10 px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column: Interactive Architectural Tower Showcase */}
+          {/* Left Column: Architectural Showcase Card */}
           <div className="lg:col-span-6 space-y-4">
-            
-            {/* Main Interactive Slider Box */}
             <div
-              onMouseEnter={() => setIsHeroAutoPlaying(false)}
-              onMouseLeave={() => setIsHeroAutoPlaying(true)}
-              className="relative rounded-[32px] overflow-hidden border-2 border-[#bb9034]/50 shadow-[0_20px_50px_rgba(133,37,65,0.15)] bg-white group h-[420px] sm:h-[480px] transition-all duration-500 hover:shadow-[0_30px_70px_rgba(133,37,65,0.25)]"
+              className="relative rounded-[32px] overflow-hidden border-2 border-[#bb9034]/60 shadow-[0_25px_60px_rgba(133,37,65,0.2)] bg-gradient-to-b from-[#180a11] via-[#12080d] to-[#0a0407] group aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] w-full max-h-[640px] flex items-center justify-center p-0 transition-all duration-500 hover:shadow-[0_35px_80px_rgba(133,37,65,0.3)] cursor-pointer"
+              onClick={() => setLightboxImage(rs3SingleImage)}
             >
-              {/* Animated Slide Images */}
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={heroSlideIndex}
-                  src={heroBuildingSlides[heroSlideIndex].image}
-                  alt={heroBuildingSlides[heroSlideIndex].title}
-                  initial={{ opacity: 0, scale: 1.06 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full h-full object-cover cursor-pointer"
-                  onClick={() => setLightboxImage(heroBuildingSlides[heroSlideIndex].image)}
-                />
-              </AnimatePresence>
+              {/* 100% Full Card Coverage Image - Zero letterboxing, zero clipping */}
+              <img
+                src={rs3SingleImage}
+                alt="Riddhi Siddhi 3 Landmark Elevation"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+              />
 
-              {/* Dynamic Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35 pointer-events-none" />
+              {/* Gradient Subtle Shading for Overlay Text */}
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0407]/95 via-[#0a0407]/50 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#0a0407]/70 to-transparent pointer-events-none" />
 
-              {/* Top Bar: Live Counter & Action Buttons */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#852541]/90 backdrop-blur-md text-[#c9a874] text-[10px] font-extrabold uppercase tracking-widest shadow-md border border-[#c9a874]/40">
-                  <Sparkles size={12} className="text-[#c9a874]" /> View 0{heroSlideIndex + 1} / 0{heroBuildingSlides.length}
-                </span>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setLightboxImage(heroBuildingSlides[heroSlideIndex].image)}
-                    className="px-3 py-1.5 rounded-full bg-black/60 hover:bg-[#852541] backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider transition cursor-pointer shadow-md border border-white/30 flex items-center gap-1"
-                  >
-                    <Eye size={13} /> Expand
-                  </button>
-
-                  <div className="flex items-center gap-1">
-                    <button
-                      onClick={() => {
-                        setIsHeroAutoPlaying(false);
-                        setHeroSlideIndex((prev) => (prev === 0 ? heroBuildingSlides.length - 1 : prev - 1));
-                      }}
-                      className="w-8 h-8 rounded-full bg-black/60 hover:bg-[#852541] text-white flex items-center justify-center transition cursor-pointer shadow-md border border-white/20"
-                    >
-                      <ChevronLeft size={16} />
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsHeroAutoPlaying(false);
-                        setHeroSlideIndex((prev) => (prev === heroBuildingSlides.length - 1 ? 0 : prev + 1));
-                      }}
-                      className="w-8 h-8 rounded-full bg-black/60 hover:bg-[#852541] text-white flex items-center justify-center transition cursor-pointer shadow-md border border-white/20"
-                    >
-                      <ChevronRight size={16} />
-                    </button>
-                  </div>
-                </div>
+              {/* Top Bar: Expand Action Button */}
+              <div className="absolute top-4 right-4 z-10">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxImage(rs3SingleImage);
+                  }}
+                  className="px-4 py-2 rounded-full bg-[#852541]/90 hover:bg-[#bb9034] backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer shadow-xl border border-[#bb9034]/50 flex items-center gap-2 hover:scale-105"
+                >
+                  <Eye size={15} className="text-[#c9a874]" /> Expand Full View
+                </button>
               </div>
 
-              {/* Bottom Caption Badge */}
-              <div className="absolute bottom-5 left-5 right-5 text-white space-y-1 z-10 drop-shadow-md">
+              {/* Bottom Title Info */}
+              <div className="absolute bottom-5 left-5 right-5 text-white space-y-1.5 z-10 drop-shadow-lg">
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#852541]/90 backdrop-blur-md text-[#c9a874] text-[10px] font-extrabold uppercase tracking-widest border border-[#c9a874]/40 shadow-md">
+                  <Sparkles size={12} className="text-[#c9a874]" /> Riddhi Siddhi ~ III ~ Landmark
+                </span>
                 <h3 className="text-xl sm:text-2xl font-serif font-bold text-white leading-tight">
-                  {heroBuildingSlides[heroSlideIndex].title}
+                  Front Architectural Elevation
                 </h3>
-                <p className="text-xs text-gray-200 font-light">
-                  {heroBuildingSlides[heroSlideIndex].sub}
+                <p className="text-xs text-gray-300 font-light flex items-center gap-1">
+                  <MapPin size={13} className="text-[#bb9034]" /> 32-A, Deep Apartment, London Street, Nagpur
                 </p>
               </div>
-
             </div>
-
-            {/* Interactive View Angle Thumbnails Bar */}
-            <div className="grid grid-cols-4 gap-2 pt-1">
-              {heroBuildingSlides.map((slide, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setIsHeroAutoPlaying(false);
-                    setHeroSlideIndex(idx);
-                  }}
-                  className={`relative rounded-2xl overflow-hidden border-2 transition-all duration-300 h-20 group cursor-pointer ${
-                    heroSlideIndex === idx
-                      ? "border-[#852541] ring-2 ring-[#bb9034]/60 scale-[1.03] shadow-md"
-                      : "border-[#bb9034]/30 opacity-70 hover:opacity-100 hover:border-[#bb9034]"
-                  }`}
-                >
-                  <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all" />
-                  <span className="absolute bottom-1 left-1.5 right-1.5 text-[9px] font-bold text-white truncate drop-shadow-sm">
-                    {slide.title.split(" ")[0]} {slide.title.split(" ")[1] || ""}
-                  </span>
-                  {heroSlideIndex === idx && (
-                    <div className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-[#852541] text-[#c9a874] flex items-center justify-center text-[8px] font-bold">
-                      ✓
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
-
           </div>
 
           {/* Right Column: Luxury Glassmorphic Founder Editorial Vision Card */}
@@ -503,36 +358,21 @@ export default function RiddhiSiddhiDetails() {
                 </span>
               </div>
 
-              {/* Verbatim Vision Text with Refined Luxury Typography */}
+              {/* Architectural Philosophy Vision Text */}
               <div className="space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed font-light relative z-10">
                 <p>
-                  This architectural illustration represents more than a structure. It reflects a thoughtfully conceived vision shaped by <strong className="font-semibold text-[#852541]">precision, purpose, and enduring values</strong>. Riddhi Siddhi – III stands as a testament to refined design, structural clarity, and timeless aesthetics.
+                  <strong className="font-semibold text-[#852541]">Riddhi Siddhi – III</strong> is designed with a simple idea in mind — creating a home that feels <strong className="font-semibold text-[#852541]">comfortable, elegant, and lasting</strong>. Every part of the development has been planned with care, from the overall structure to the smallest details of the design. The result is a thoughtfully designed space that brings together comfort, functionality, and a refined sense of style.
                 </p>
                 <p>
-                  At Devang Developers, every project is guided by <strong className="font-semibold text-[#852541]">integrity, uncompromising craftsmanship</strong>, and a deep commitment to long-term value. We believe real estate is not merely about constructing buildings, but about creating homes that inspire confidence, comfort, and a superior quality of life.
+                  At <strong className="font-semibold text-[#852541]">Devang Developers</strong>, we believe that a good home is more than just walls and spaces. It should provide a sense of <strong className="font-semibold text-[#852541]">comfort, security, and pride</strong>. That is why we focus on thoughtful planning, strong construction, quality materials, and designs that remain appealing over time.
                 </p>
                 <p>
-                  Each detail of this development embodies our philosophy of thoughtful planning, quality execution, and <strong className="font-semibold text-[#852541]">transparent dealings</strong>. Our journey is driven by the belief that premium living experiences should be delivered with authenticity and value—principles that continue to define how we design, build, and deliver every home.
+                  Every detail at Riddhi Siddhi – III reflects our approach to responsible and careful development. From the layout and finishes to the overall look and feel, each element is considered to create a balanced living experience. With clear communication, attention to quality, and a commitment to doing things the right way, we aim to create homes that people can enjoy with <strong className="font-semibold text-[#852541]">confidence for years to come</strong>.
                 </p>
               </div>
 
-              {/* Founder Sign-off & High-Impact CTA Button Bar */}
-              <div className="pt-6 border-t border-[#bb9034]/30 flex flex-col sm:flex-row items-center justify-between gap-5 relative z-10">
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-[#852541] text-[#c9a874] flex items-center justify-center font-serif font-bold text-lg shadow-md border border-[#c9a874]/40">
-                    HN
-                  </div>
-                  <div>
-                    <p className="text-lg font-serif font-bold text-[#852541] leading-snug">
-                      Hemal Nadiyana
-                    </p>
-                    <p className="text-[10px] text-[#bb9034] uppercase tracking-widest font-extrabold">
-                      Founding Partner
-                    </p>
-                  </div>
-                </div>
-
+              {/* High-Impact CTA Button Bar */}
+              <div className="pt-6 border-t border-[#bb9034]/30 flex flex-col sm:flex-row items-center justify-end gap-5 relative z-10">
                 <button
                   onClick={() => setModalOpen(true)}
                   className="w-full sm:w-auto bg-[#852541] hover:bg-[#6B1C33] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer border border-[#bb9034]/50 hover:scale-105"
@@ -541,7 +381,6 @@ export default function RiddhiSiddhiDetails() {
                   <span>Schedule Site Visit</span>
                   <ArrowRight size={14} className="text-[#c9a874]" />
                 </button>
-
               </div>
 
             </div>
@@ -560,7 +399,7 @@ export default function RiddhiSiddhiDetails() {
             </span>
             
             <h2 className="text-3xl sm:text-5xl font-serif font-extrabold text-[#852541] tracking-widest leading-tight">
-              A M E N I T I E S
+              L I V I N G F E A T U R E S
             </h2>
             
             <p className="text-xs sm:text-sm text-gray-600 font-serif italic max-w-xl mx-auto leading-relaxed">
@@ -568,48 +407,37 @@ export default function RiddhiSiddhiDetails() {
             </p>
           </div>
 
-          {/* 10 ICONIC AMENITIES CARDS AUTO-SLIDER (NO BUTTONS, SLIDES 1-BY-1 AUTOMATICALLY) */}
-          <div
-            onMouseEnter={() => setIsIconSliderAutoPlaying(false)}
-            onMouseLeave={() => setIsIconSliderAutoPlaying(true)}
-            className="relative overflow-hidden py-4 px-1"
-          >
+          {/* 10 ICONIC AMENITIES CARDS CONTINUOUS 1-BY-1 INFINITE SLIDER */}
+          <div className="relative overflow-hidden py-4 px-1 group/slider">
+            
+            {/* Left & Right Gradient Fade Overlays */}
+            <div className="absolute top-0 bottom-0 left-0 w-12 bg-gradient-to-r from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 w-12 bg-gradient-to-l from-[#FAF7F2] to-transparent z-10 pointer-events-none" />
+
             <motion.div
-              animate={{ x: `-${(activeIconCardIndex * 100) / amenitiesList.length}%` }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-3 sm:gap-4 w-[280%] sm:w-[200%] lg:w-[150%]"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 22,
+                  ease: "linear",
+                },
+              }}
+              className="flex items-center gap-4 w-max hover:[animation-play-state:paused]"
             >
-              {amenitiesList.map((item, idx) => {
+              {[...amenitiesList, ...amenitiesList, ...amenitiesList].map((item, idx) => {
                 const Icon = item.icon;
-                const isActive = activeIconCardIndex === idx;
                 return (
                   <div
                     key={idx}
-                    onClick={() => {
-                      setIsIconSliderAutoPlaying(false);
-                      setActiveIconCardIndex(idx);
-                    }}
-                    className={`flex-1 flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-500 cursor-pointer select-none min-h-[105px] ${
-                      isActive
-                        ? "bg-[#852541] text-white border-2 border-[#bb9034] shadow-xl scale-105 -translate-y-1"
-                        : "bg-white text-[#852541] border border-[#bb9034]/30 hover:border-[#852541] shadow-xs hover:shadow-md"
-                    }`}
+                    className="w-[140px] sm:w-[170px] flex-shrink-0 flex flex-col items-center justify-center p-4 rounded-2xl bg-white text-[#852541] border border-[#bb9034]/30 hover:border-[#852541] hover:bg-[#852541] hover:text-white shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer select-none min-h-[110px] group/card"
                   >
-                    <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center mb-2.5 transition-all duration-300 ${
-                        isActive
-                          ? "bg-white text-[#852541] border-2 border-[#bb9034] shadow-sm"
-                          : "bg-[#FAF7F2] text-[#852541] border border-[#bb9034]/30"
-                      }`}
-                    >
-                      <Icon size={20} className={isActive ? "text-[#852541]" : "text-[#852541]"} />
+                    <div className="w-10 h-10 rounded-full bg-[#FAF7F2] text-[#852541] group-hover/card:bg-white group-hover/card:text-[#852541] border border-[#bb9034]/30 flex items-center justify-center mb-2.5 transition-all duration-300 shadow-sm">
+                      <Icon size={20} className="text-[#852541]" />
                     </div>
 
-                    <span
-                      className={`text-[10px] font-extrabold uppercase tracking-wider text-center leading-tight transition-colors ${
-                      isActive ? "text-white" : "text-[#852541]"
-                      }`}
-                    >
+                    <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-center leading-tight transition-colors text-[#852541] group-hover/card:text-white">
                       {item.label}
                     </span>
                   </div>
@@ -626,7 +454,7 @@ export default function RiddhiSiddhiDetails() {
         <div className="w-full space-y-6">
           <div className="text-left border-l-4 border-[#bb9034] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
-              01 / 03 • Exclusive Lifestyle Spaces
+              01 / 02 • Exclusive Lifestyle Spaces
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
               Rooftop & Recreation Showcase
@@ -752,7 +580,7 @@ export default function RiddhiSiddhiDetails() {
         <div className="w-full space-y-6">
           <div className="text-left border-l-4 border-[#852541] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
-              02 / 03 • Technical Specifications
+              02 / 02 • Technical Specifications
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
               Engineered Quality Standards
@@ -862,129 +690,7 @@ export default function RiddhiSiddhiDetails() {
         </div>
       </section>
 
-      {/* ── SECTION 3: ARCHITECTURAL FLOOR PLANS SHOWCASE ── */}
-      <section className="py-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
-        <div className="w-full space-y-6">
-          <div className="text-left border-l-4 border-[#bb9034] pl-4">
-            <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
-              03 / 03 • Architectural Layout Blueprints
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
-              Floor & Layout Master Plans
-            </h2>
-            <p className="text-xs text-gray-600 font-light leading-relaxed mt-1">
-              Explore 100% Vastu-compliant residential layouts with precise built-up & salable area breakdowns.
-            </p>
-          </div>
 
-          {/* MAIN FLOOR PLANS CONTAINER */}
-          <div className="space-y-6 w-full">
-            
-            {/* FLOOR LEVEL FILTER TABS */}
-            <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar scroll-smooth gap-2.5 pb-2 w-full justify-start sm:justify-center">
-              {Object.keys(floorPlansData).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setActivePlanKey(key)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer shrink-0 ${
-                    activePlanKey === key
-                      ? "bg-[#852541] text-white shadow-md"
-                      : "bg-[#FAF7F2] text-[#852541] hover:bg-[#bb9034]/20 border border-[#bb9034]/20"
-                  }`}
-                >
-                  {floorPlansData[key].title}
-                </button>
-              ))}
-            </div>
-
-            {/* ACTIVE PLAN CARD DISPLAY */}
-            <div className="bg-[#FAF7F2] p-5 sm:p-8 rounded-3xl border border-[#bb9034]/30 space-y-5 shadow-sm w-full">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#bb9034]/20 pb-4">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-serif font-bold text-[#852541]">
-                    {floorPlansData[activePlanKey].title}
-                  </h3>
-                  <p className="text-xs text-gray-600 font-light mt-0.5">
-                    {floorPlansData[activePlanKey].subtitle}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => setLightboxImage(floorPlansData[activePlanKey].image)}
-                  className="inline-flex items-center gap-1.5 bg-[#852541] hover:bg-[#bb9034] text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition shadow-sm cursor-pointer shrink-0"
-                >
-                  <Eye size={14} /> Full Screen View
-                </button>
-              </div>
-
-              {/* BROCHURE PLAN PHOTO DISPLAY */}
-              <div className="grid lg:grid-cols-12 gap-8 items-center w-full">
-                {/* Left: Interactive Floor Plan Image */}
-                <div
-                  onClick={() => setLightboxImage(floorPlansData[activePlanKey].image)}
-                  className="lg:col-span-7 relative rounded-2xl overflow-hidden border-2 border-[#bb9034]/30 bg-white shadow-md group cursor-pointer"
-                >
-                  <img
-                    src={floorPlansData[activePlanKey].image}
-                    alt={floorPlansData[activePlanKey].title}
-                    className="w-full h-[260px] sm:h-[340px] object-contain p-3 transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-2 text-white font-bold text-xs transition duration-300 backdrop-blur-xs">
-                    <Maximize2 size={18} /> Click to Expand Plan
-                  </div>
-                </div>
-
-                {/* Right: Area Calculation Breakdown */}
-                <div className="lg:col-span-5 bg-white p-5 rounded-2xl border border-[#bb9034]/30 space-y-4 shadow-sm">
-                  <div className="flex items-center justify-between border-b border-gray-100 pb-2.5">
-                    <span className="text-xs font-serif font-bold text-[#852541] uppercase tracking-wider">
-                      Area Schedule Matrix
-                    </span>
-                    <span className="text-[10px] font-bold text-[#bb9034] bg-[#FAF7F2] px-2.5 py-1 rounded-md border border-[#bb9034]/30">
-                      Vastu Approved
-                    </span>
-                  </div>
-
-                  {/* Area Table */}
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left text-xs">
-                      <thead>
-                        <tr className="border-b border-gray-200 text-[#852541] font-bold">
-                          <th className="py-2">Flat</th>
-                          <th className="py-2">Built-up</th>
-                          <th className="py-2">Salable Area</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-gray-100 font-medium text-gray-700">
-                        {floorPlansData[activePlanKey].table.map((row, idx) => (
-                          <tr key={idx} className="hover:bg-[#FAF7F2] transition">
-                            <td className="py-2 font-bold text-[#852541]">Flat {row.flat}</td>
-                            <td className="py-2">{row.built} sq.ft</td>
-                            <td className="py-2 font-bold text-[#852541]">{row.salable} sq.ft</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div className="pt-1.5 border-t border-gray-100 text-[10px] text-gray-500 font-light">
-                    <p>* Areas as per MahaRERA architectural guidelines.</p>
-                  </div>
-
-                  <button
-                    onClick={() => setModalOpen(true)}
-                    className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 cursor-pointer mt-1"
-                  >
-                    <Download size={14} /> Request Plan PDF
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* ── LOCATION ADVANTAGE: STANDING AT RIDDHI SIDDHI 3 ───────────────── */}
       <section className="py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-12 w-full">
@@ -1060,7 +766,7 @@ export default function RiddhiSiddhiDetails() {
               </li>
               <li className="flex items-center gap-2 font-medium">
                 <CheckCircle2 size={14} className="text-[#852541] shrink-0" />
-                <span>Wardha Road Metro Station</span>
+                <span>Jaiprakash Nagar Metro Station</span>
               </li>
             </ul>
           </div>
@@ -1193,13 +899,13 @@ export default function RiddhiSiddhiDetails() {
               <span className="truncate">WhatsApp Location Pin</span>
             </a>
 
-            <button
-              onClick={() => setModalOpen(true)}
+            <a
+              href="tel:+919921042899"
               className="w-full bg-[#bb9034] hover:bg-[#852541] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
             >
-              <MapPin size={14} className="shrink-0" />
+              <PhoneCall size={14} className="shrink-0" />
               <span className="truncate">Book Location Tour</span>
-            </button>
+            </a>
           </div>
 
         </div>
@@ -1212,8 +918,8 @@ export default function RiddhiSiddhiDetails() {
             </div>
             <h4 className="text-sm font-bold text-[#852541]">Zero Traffic Noise</h4>
             <p className="text-xs text-gray-600 font-light leading-relaxed">
-              Situated in peaceful Pande Layout, just 50m off Khamla Road — enjoy quiet living away from direct road honking.
-            </p>
+              Live peacefully just 50 metres from London Street, with easy connectivity and less traffic noise.
+              </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-[#bb9034]/30 shadow-sm text-center space-y-2">
@@ -1232,7 +938,7 @@ export default function RiddhiSiddhiDetails() {
             </div>
             <h4 className="text-sm font-bold text-[#852541]">Everything Within Reach</h4>
             <p className="text-xs text-gray-600 font-light leading-relaxed">
-              Top CBSE schools, multi-specialty hospitals, banks, supermarkets & metro station all within 5 minutes.
+              Top CBSE Schools, Supermarkets, Multi-Specialty Hospitals & Metro Stations — all within 5 minutes.
             </p>
           </div>
         </div>
@@ -1244,7 +950,7 @@ export default function RiddhiSiddhiDetails() {
         <button
           onClick={() => {
             window.scrollTo(0, 0);
-            navigate("/project");
+            navigate("/project?tab=completed", { state: { tab: "completed" } });
           }}
           className="inline-flex items-center gap-2.5 bg-white hover:bg-[#852541] text-[#852541] hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl border-2 border-[#bb9034]/40 cursor-pointer hover:scale-105 group"
         >
@@ -1253,23 +959,31 @@ export default function RiddhiSiddhiDetails() {
         </button>
       </div>
 
-      {/* ── HIGH-RES FLOOR PLAN LIGHTBOX MODAL ──────────────────────────── */}
+      {/* ── HIGH-RES FULL SCREEN LIGHTBOX MODAL ──────────────────────────── */}
       {lightboxImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fadeIn">
-          <div className="relative max-w-5xl w-full bg-white rounded-3xl p-4 sm:p-6 overflow-hidden shadow-2xl">
-            <button
-              onClick={() => setLightboxImage(null)}
-              className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-black/70 hover:bg-[#852541] text-white transition cursor-pointer shadow-lg"
-            >
-              <X size={20} />
-            </button>
-            <div className="max-h-[85vh] overflow-auto flex items-center justify-center">
-              <img
-                src={lightboxImage}
-                alt="High-Res Floor Plan Blueprint"
-                className="w-full h-auto object-contain rounded-xl"
-              />
-            </div>
+        <div
+          onClick={() => setLightboxImage(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-2 sm:p-6 animate-fadeIn cursor-zoom-out"
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-5 right-5 sm:top-7 sm:right-8 z-50 flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#852541] hover:bg-[#bb9034] text-white transition cursor-pointer shadow-2xl border border-white/20 text-xs font-bold uppercase tracking-widest"
+          >
+            <span>Close</span>
+            <X size={18} />
+          </button>
+
+          {/* Full Screen Un-cropped Image Container */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex items-center justify-center max-w-full max-h-full"
+          >
+            <img
+              src={lightboxImage}
+              alt="Full Resolution View"
+              className="max-h-[92vh] max-w-[95vw] w-auto h-auto object-contain rounded-2xl shadow-2xl border border-white/10"
+            />
           </div>
         </div>
       )}

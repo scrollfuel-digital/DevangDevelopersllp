@@ -34,8 +34,8 @@ import riddhiSiddhiImg from "../../assets/projects/riddhisiddhibuilding.jpg";
 // ── Data ──────────────────────────────────────────────────────────
 
 const stats = [
-  { icon: CalendarClock, value: "18+", label: "Years Experience" },
-  { icon: Users, value: "100+", label: "Happy Families" },
+  { icon: CalendarClock, value: "25+", label: "Years Experience" },
+  { icon: Users, value: "500+", label: "Happy Families" },
   { icon: Award, value: "2022", label: "Iconic Realtor Award" },
 ];
 
@@ -43,14 +43,14 @@ const flagshipProject = {
   id: "riddhi-siddhi-3",
   name: "Riddhi Siddhi 3",
   tagline: "Ongoing High-Rise Residential Landmark",
-  location: "Pandey Layout, Khamla Road, Nagpur",
+  location: "London Street, Nagpur",
   image: riddhiSiddhiImg,
   rera: "RERA Approved: P505000XXXX",
   status: "Under Construction",
   completion: "Target Q4 2025",
   units: "2 & 3 BHK Premium Residences",
   description:
-    "A striking high-rise tower crafted for peaceful community living with excellent connectivity on Khamla Road, Nagpur. Built with uncompromising civil engineering standards, neo-classical facade design, and modern lifestyle amenities.",
+    "A striking high-rise tower crafted for peaceful residential living with excellent connectivity on London Street, Nagpur. Built with uncompromising civil engineering standards, neo-classical facade design, and modern lifestyle amenities. The thoughtfully planned residences offer a perfect balance of comfort, elegance, and functionality for contemporary urban living. Every detail is designed to create a refined living environment while ensuring durability, safety, and long-term value. With well-planned spaces, premium finishes, and a welcoming atmosphere, the development offers an elevated lifestyle in one of Nagpur’s well-connected locations.",
   specs: [
     { title: "Structure", desc: "RCC Earthquake Resistant Frame", detail: "Fe550 grade steel & high-strength concrete" },
     { title: "Flooring", desc: "Vitrified Premium Tiles", detail: "800x800mm Italian finish vitrified tiles" },
@@ -66,12 +66,11 @@ const flagshipProject = {
     { icon: Route, label: "Wide Access Roads", desc: "Ample turning radius & paved driveways" },
   ],
   highlights: [
-    "Prime Connectivity on Khamla Road Corridor",
-    "Neo-Classical Elevation & Grand Entrance Lobby",
     "100% Vastu Compliant Efficient Layouts",
+    "Prime Connectivity on London Street Corridor",
     "High-Speed Automatic Passenger Elevators",
     "Rainwater Harvesting & Eco Systems",
-    "Dedicated EV Charging Infrastructure",
+    
   ],
   progress: [
     { stage: "RCC Structure & Slab Work", percentage: 90 },
@@ -117,15 +116,18 @@ function Project() {
           
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#bb9034]/15 border border-[#bb9034]/30 text-[#852541] text-xs font-semibold uppercase tracking-[0.25em]">
-            <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Landmark
+            <Sparkles size={14} className="text-[#bb9034]" /> Devang Developers Signature
           </div>
 
           {/* Main Title */}
-          <h1 className="font-serif text-3xl sm:text-5xl text-[#852541] font-extrabold tracking-wide">
-             Riddhi Siddhi <span className="text-[#bb9034]">3</span>
+          <h1 className="text-4xl sm:text-6xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
+            RIDDHI SIDDHI <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">~ III ~</span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-xs sm:text-sm text-gray-700 font-serif italic leading-relaxed">
+          <p
+            className="text-sm sm:text-[14px] leading-relaxed max-w-3xl mx-auto"
+            style={{ color: "#53504c", fontFamily: "'Poppins', sans-serif" }}
+          >
             A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on Khamla Road, Nagpur.
           </p>
 
@@ -173,7 +175,7 @@ function Project() {
                 {flagshipProject.tagline}
               </span>
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
-                Riddhi Siddhi 3
+                Riddhi Siddhi ~III~
               </h2>
               <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
                 <MapPin size={15} className="text-[#bb9034]" /> {flagshipProject.location}
