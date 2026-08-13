@@ -176,10 +176,10 @@ export default function Blog() {
           </span>
 
           <h1 className="text-4xl md:text-6xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
-            Devang <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Insights</span>
+            Devang <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]"> Perspectives</span>
           </h1>
 
-          <p className="text-base md:text-xl font-serif text-[#bb9034] italic font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl font-sans text-[#bb9034] font-medium max-w-2xl mx-auto leading-relaxed">
             Expert guidance, market trends, architectural innovations, and homebuyer tips for Nagpur property investors.
           </p>
         </div>

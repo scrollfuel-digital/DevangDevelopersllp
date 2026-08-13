@@ -267,8 +267,8 @@ export default function About() {
           {/* Quick Stats Bar */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-[#852541]">
             {[
-              { icon: CalendarClock, val: "18+", lbl: "Years Experience" },
-              { icon: Users, val: "100+", lbl: "Happy Families" },
+              { icon: CalendarClock, val: "25+", lbl: "Years Experience" },
+              { icon: Users, val: "500+", lbl: "Happy Families" },
               { icon: Award, val: "2022", lbl: "Iconic Realtor Award" },
             ].map(({ icon: Icon, val, lbl }) => (
               <div key={lbl} className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#bb9034]/30 shadow-sm">
@@ -508,34 +508,9 @@ export default function About() {
           </div>
         </div>
 
-        {/* CATEGORY FILTER PILLS (CARDLESS STRIP) */}
-        <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar scroll-smooth gap-3 pb-3 justify-start sm:justify-center w-full">
-          {[
-            { id: "all", label: "All Leadership (8)" },
-            { id: "founders", label: "Founders & Board" },
-            { id: "structural", label: "Structural & Architecture" },
-            { id: "legal", label: "Legal & MahaRERA" },
-            { id: "engineering", label: "Engineering & Finance" },
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition cursor-pointer shrink-0 ${
-                selectedCategory === cat.id
-                  ? "bg-[#852541] text-white shadow-md"
-                  : "bg-transparent text-[#852541] hover:bg-[#bb9034]/20 border border-[#bb9034]/30"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
         {/* 8 EDITORIAL TEAM PORTRAITS GRID (NAME REVEALS ON HOVER WITH HORIZONTAL LEFT/RIGHT SLIDE TRANSITION) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full pt-4">
-          {teamMembers
-            .filter((m) => selectedCategory === "all" || m.category === selectedCategory)
-            .map((member, idx) => (
+          {teamMembers.map((member, idx) => (
               <div
                 key={member.id}
                 onClick={() => setActiveMemberModal(member)}
