@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import {
   Building2,
   ShieldCheck,
@@ -307,7 +307,7 @@ export default function About() {
                 We focus on delivering projects that balance aesthetics with functionality, ensuring every apartment, commercial space, and common area is thoughtfully planned for comfort, convenience, and long-term value.
               </p>
               <p>
-                Founded under the visionary leadership of Mr. Hemal Nadiyana, our commitment extends beyond construction. With over 18 years of real estate excellence in Nagpur, we build lasting relationships through transparency, ethical business practices, timely project delivery, and dedicated customer support.
+                Founded under the visionary leadership of Mr. Hemal Nadiyana, our commitment extends beyond construction. With over 25+ years of real estate excellence in Nagpur, we build lasting relationships through transparency, ethical business practices, timely project delivery, and dedicated customer support.
               </p>
             </div>
 
@@ -446,8 +446,8 @@ export default function About() {
             Architects of <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#852541] via-[#bb9034] to-[#852541]">Excellence</span>
           </h2>
 
-          <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-            Meet the visionary founders, chartered civil engineers, legal stalwarts, and master architects shaping Devang Developers' 18+ year legacy across Nagpur.
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 font-light leading-relaxed">
+            Meet the visionary founders, chartered civil engineers, legal stalwarts, and master architects shaping Devang Developers' 25+ year legacy across Nagpur.
           </p>
         </div>
 
@@ -467,7 +467,7 @@ export default function About() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#852541]/70 via-transparent to-transparent opacity-80" />
                 <span className="absolute bottom-4 left-4 right-4 text-center px-4 py-1.5 rounded-full bg-[#852541]/95 border border-[#c9a874] text-[10px] font-bold text-[#c9a874] uppercase tracking-wider shadow-lg">
-                  18+ Years Real Estate Visionary
+                  25+ Years Real Estate Visionary
                 </span>
               </div>
             </div>
@@ -490,21 +490,15 @@ export default function About() {
               Mr. Hemal Nadiyana
             </h3>
 
-            <p className="text-[#bb9034] text-sm sm:text-base font-serif italic leading-relaxed">
+            <p className="text-[#bb9034] text-sm sm:text-base font-sans font-medium leading-relaxed">
               "Building real estate isn't just about concrete structures — it's about delivering peace of mind, structural integrity, and transparent trust for every family."
             </p>
 
             <p className="text-gray-700 text-xs sm:text-sm font-light leading-relaxed">
-              Under the hands-on leadership of Mr. Hemal Nadiyana, Devang Developers has delivered over 100+ happy homes across Nagpur. Guided by uncompromising civil engineering standards, Fe550 TMT structural steel, and 100% MahaRERA regulatory compliance, he spearheads project execution from land acquisition to final possession.
+              Under the hands-on leadership of Mr. Hemal Nadiyana, Devang Developers has successfully delivered 500+ happy homes across Nagpur. With a strong focus on thoughtful planning, quality construction, and customer satisfaction, he leads every project with a commitment to excellence and attention to detail. From land acquisition and project planning to construction and final possession, his leadership ensures that every development reflects reliability, transparency, and long-term value.
             </p>
 
-            <div className="pt-3 grid grid-cols-2 gap-3 text-xs font-semibold text-[#852541]">
-              {["✓ Real Estate Strategy", "✓ Land Title Acquisition", "✓ Fe550 Structural Audit", "✓ 100% RERA Transparency"].map((tag, idx) => (
-                <div key={idx} className="flex items-center gap-1.5 text-gray-800">
-                  <span className="text-[#bb9034] font-bold">{tag}</span>
-                </div>
-              ))}
-            </div>
+
           </div>
         </div>
 
@@ -636,7 +630,7 @@ export default function About() {
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#852541]">
             Why Choose Devang Developers
           </h2>
-          <p className="text-gray-700 text-xs md:text-sm font-light leading-relaxed">
+          <p className="text-gray-700 text-sm sm:text-base md:text-lg font-light leading-relaxed">
             Choosing a developer is as important as choosing a home. At Devang Developers, every decision is guided by quality, integrity, and customer satisfaction.
           </p>
         </div>

@@ -26,6 +26,10 @@ import {
   Building,
   Compass,
   X,
+  Filter,
+  ChevronDown,
+  ChevronUp,
+  SlidersHorizontal,
 } from "lucide-react";
 
 // ── Ongoing Flagship Project Image ────────────────────────────────
@@ -50,7 +54,7 @@ const flagshipProject = {
   completion: "Target Q4 2025",
   units: "2 & 3 BHK Premium Residences",
   description:
-    "A striking high-rise tower crafted for peaceful residential living with excellent connectivity on London Street, Nagpur. Built with uncompromising civil engineering standards, neo-classical facade design, and modern lifestyle amenities. The thoughtfully planned residences offer a perfect balance of comfort, elegance, and functionality for contemporary urban living. Every detail is designed to create a refined living environment while ensuring durability, safety, and long-term value. With well-planned spaces, premium finishes, and a welcoming atmosphere, the development offers an elevated lifestyle in one of Nagpur’s well-connected locations.",
+    "Riddhi Siddhi ~III~ stands as an architectural triumph on London Street, offering ultra-luxurious 3 & 4 BHK apartments crafted for families seeking elevated living spaces. Every detail is designed to create a refined living environment while ensuring durability, safety, and long-term value. With well-planned spaces, premium finishes, and a welcoming atmosphere, the development offers an elevated lifestyle in one of Nagpur’s well-connected locations.",
   specs: [
     { title: "Structure", desc: "RCC Earthquake Resistant Frame", detail: "Fe550 grade steel & high-strength concrete" },
     { title: "Flooring", desc: "Vitrified Premium Tiles", detail: "800x800mm Italian finish vitrified tiles" },
@@ -67,10 +71,9 @@ const flagshipProject = {
   ],
   highlights: [
     "100% Vastu Compliant Efficient Layouts",
-    "Prime Connectivity on London Street Corridor",
-    "High-Speed Automatic Passenger Elevators",
-    "Rainwater Harvesting & Eco Systems",
-    
+    "3 Automatic High-Speed Lifts (Incl. 1 Stretcher Lift)",
+    "Solar-Powered Common Areas & Rooftop Power",
+    "Advanced Safety & Security (CCTV & Intercom)",
   ],
   progress: [
     { stage: "RCC Structure & Slab Work", percentage: 90 },
@@ -89,6 +92,8 @@ const flagshipProject = {
 function Project() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [categoryExpanded, setCategoryExpanded] = useState(true);
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "", unitType: "2 BHK" });
@@ -125,10 +130,10 @@ function Project() {
           </h1>
 
           <p
-            className="text-sm sm:text-[14px] leading-relaxed max-w-3xl mx-auto"
+            className="text-3xl sm:text-[15px] leading-relaxed max-w-3xl mx-auto"
             style={{ color: "#53504c", fontFamily: "'Poppins', sans-serif" }}
           >
-            A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on Khamla Road, Nagpur.
+            A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on London Street, Nagpur.
           </p>
 
           {/* Quick Stats Bar */}
@@ -188,27 +193,97 @@ function Project() {
             
             <div className="space-y-5 w-full max-w-full">
               
-              {/* Navigation Tabs */}
-              <div className="flex border-b border-[#bb9034]/20 overflow-x-auto no-scrollbar scroll-smooth gap-3 pb-2 w-full max-w-full">
-                {[
-                  { id: "overview", label: "Overview" },
-                  { id: "specs", label: "Structural Quality" },
-                  { id: "amenities", label: "Amenities" },
-                  { id: "progress", label: "Construction Progress" },
-                  { id: "location", label: "Location Advantage" },
-                ].map((st) => (
+              {/* Header with Filter Button in Right Corner */}
+              <div className="flex items-center justify-between pb-3 border-b border-[#bb9034]/20 w-full relative">
+                <div className="flex items-center gap-1.5 text-[#852541]">
+                  <Sparkles size={16} className="text-[#bb9034]" />
+                  <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider">
+                    Project Details
+                  </h3>
+                </div>
+
+                {/* Filter Table Button & Popover Panel (Matching Reference UI) */}
+                <div className="relative">
                   <button
-                    key={st.id}
-                    onClick={() => setActiveTab(st.id)}
-                    className={`text-xs font-bold uppercase tracking-wider whitespace-nowrap pb-2 border-b-2 transition-all shrink-0 cursor-pointer ${
-                      activeTab === st.id
-                        ? "border-[#852541] text-[#852541]"
-                        : "border-transparent text-gray-400 hover:text-[#852541]"
-                    }`}
+                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                    className="flex items-center gap-2 bg-white border border-[#bb9034]/40 text-[#852541] hover:bg-[#852541] hover:text-white px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm cursor-pointer"
                   >
-                    {st.label}
+                    <SlidersHorizontal size={14} className="text-[#bb9034]" />
+                    <span>Filter</span>
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${isFilterOpen ? "rotate-180" : ""}`} />
                   </button>
-                ))}
+
+                  {/* Floating Filter Table Popover (Matching Reference Image) */}
+                  {isFilterOpen && (
+                    <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl border border-[#bb9034]/30 shadow-2xl p-4 z-30 space-y-3 animate-fadeIn">
+                      {/* Popover Header */}
+                      <div className="flex items-center justify-between pb-2.5 border-b border-[#bb9034]/20">
+                        <div className="flex items-center gap-2 text-[#852541]">
+                          <SlidersHorizontal size={16} className="text-[#bb9034]" />
+                          <span className="font-extrabold text-xs uppercase tracking-wider">Filter</span>
+                        </div>
+                        <button
+                          onClick={() => setIsFilterOpen(false)}
+                          className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white text-[10px] font-extrabold uppercase tracking-widest cursor-pointer shadow-xs select-none border-0 outline-none"
+                          style={{ backgroundColor: "#B8864E" }}
+                        >
+                          <span>CLOSE</span>
+                          <X size={13} strokeWidth={2.5} className="text-white" />
+                        </button>
+                      </div>
+
+                      {/* Category Collapsible Block */}
+                      <div className="space-y-2 pt-1">
+                        <button
+                          onClick={() => setCategoryExpanded(!categoryExpanded)}
+                          className="w-full flex items-center justify-between text-xs font-bold text-[#852541] uppercase tracking-wider py-1 cursor-pointer hover:text-[#bb9034] transition-colors"
+                        >
+                          <span>Category</span>
+                          {categoryExpanded ? (
+                            <ChevronUp size={14} className="text-[#bb9034]" />
+                          ) : (
+                            <ChevronDown size={14} className="text-[#bb9034]" />
+                          )}
+                        </button>
+
+                        {categoryExpanded && (
+                          <div className="space-y-1 pl-1 pt-1 border-l-2 border-[#bb9034]/20 ml-1">
+                            {[
+                              { id: "overview", label: "Overview" },
+                              { id: "specs", label: "Structural Quality" },
+                              { id: "amenities", label: "Amenities" },
+                              { id: "location", label: "Location Advantage" },
+                            ].map((cat) => {
+                              const isChecked = activeTab === cat.id;
+                              return (
+                                <label
+                                  key={cat.id}
+                                  onClick={() => {
+                                    setActiveTab(cat.id);
+                                    setIsFilterOpen(false);
+                                  }}
+                                  className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium cursor-pointer transition-all ${
+                                    isChecked
+                                      ? "bg-[#852541]/10 text-[#852541] font-bold"
+                                      : "text-gray-700 hover:bg-gray-50"
+                                  }`}
+                                >
+                                  <input
+                                    type="checkbox"
+                                    checked={isChecked}
+                                    onChange={() => {}}
+                                    className="w-4 h-4 rounded text-[#852541] focus:ring-[#852541] border-gray-300 accent-[#852541] cursor-pointer"
+                                  />
+                                  <span>{cat.label}</span>
+                                </label>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* TAB 1: OVERVIEW */}
@@ -218,7 +293,10 @@ function Project() {
                     <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold mb-2 flex items-center gap-2">
                       <Info size={14} className="shrink-0" /> Project Summary
                     </h4>
-                    <p className="text-gray-700 text-xs sm:text-sm leading-relaxed break-words">
+                    <p
+                      className="text-gray-800 text-xs sm:text-sm leading-relaxed break-words"
+                      style={{ fontWeight: 600 }}
+                    >
                       {flagshipProject.description}
                     </p>
                   </div>
@@ -280,39 +358,11 @@ function Project() {
                 </div>
               )}
 
-              {/* TAB 4: PROGRESS */}
-              {activeTab === "progress" && (
-                <div className="space-y-4 animate-fadeIn w-full">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
-                      <Hammer size={14} className="shrink-0" /> Construction Status
-                    </h4>
-                    <span className="text-xs font-bold text-[#852541]">{flagshipProject.completion}</span>
-                  </div>
-                  <div className="space-y-3.5 bg-white p-4 sm:p-5 rounded-2xl border border-[#bb9034]/20 w-full">
-                    {flagshipProject.progress.map((item, idx) => (
-                      <div key={idx} className="space-y-1">
-                        <div className="flex justify-between text-xs font-semibold text-gray-800">
-                          <span className="break-words">{item.stage}</span>
-                          <span className="text-[#852541] font-bold shrink-0 pl-2">{item.percentage}%</span>
-                        </div>
-                        <div className="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
-                          <div
-                            className="bg-gradient-to-r from-[#852541] to-[#bb9034] h-full rounded-full transition-all duration-1000"
-                            style={{ width: `${item.percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {/* TAB 5: LOCATION ADVANTAGE */}
               {activeTab === "location" && (
                 <div className="space-y-4 animate-fadeIn w-full">
                   <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
-                    <Compass size={14} className="shrink-0" /> Khamla Road Proximity Matrix
+                    <Compass size={14} className="shrink-0" /> London Street Proximity Matrix
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {flagshipProject.locationAdvantages.map((item, idx) => (
