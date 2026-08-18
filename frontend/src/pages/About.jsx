@@ -296,7 +296,7 @@ export default function About() {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-serif font-extrabold text-[#852541] leading-tight">
-              Building Trust Through Every Brick
+             Where Every Wall Becomes a Story of Timeless Happiness.
             </h2>
 
             <div className="space-y-4 text-gray-700 text-sm md:text-base leading-relaxed font-light">
