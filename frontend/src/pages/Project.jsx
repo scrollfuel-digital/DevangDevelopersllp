@@ -22,6 +22,7 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Maximize2,
 } from "lucide-react";
 
 // ── Ongoing project image ─────────────────────────────────────────
@@ -167,7 +168,7 @@ const ongoingProjects = [
     rera: "RERA Approved",
     reraNo: "P505000XXXX",
     description:
-      "A striking high-rise tower crafted for peaceful community living, backed by excellent connectivity to the city's major destinations, quality construction, and thoughtfully designed modern amenities.",
+      "A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on London Street, Nagpur.",
     features: [
       { icon: Building2, label: "High-Rise", sub: "Tower" },
       { icon: ShieldCheck, label: "Gated", sub: "Community" },
@@ -367,9 +368,9 @@ function Project() {
             </div>
 
             <div className="space-y-3 pt-4 bg-gradient-to-t from-black/80 via-black/60 to-transparent p-4 rounded-2xl">
-              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
-                <MapPin size={15} className="text-[#c9a874] shrink-0" />
-                <span className="leading-snug truncate">{p.location}</span>
+              <p className="flex items-center gap-1.5 text-sm sm:text-base text-white font-serif font-bold tracking-wide">
+                <Building2 size={16} className="text-[#c9a874] shrink-0" />
+                <span className="leading-snug truncate">{p.name}</span>
               </p>
 
               <button
@@ -524,7 +525,10 @@ function Project() {
                     <MapPin size={18} className="text-[#bb9034] shrink-0" /> <span className="break-words">{ongoingProjects[0].location}</span>
                   </p>
 
-                  <p className="text-xs md:text-sm text-gray-600 font-light leading-relaxed break-words">
+                  <p
+                    className="text-xs md:text-sm text-gray-800 leading-relaxed break-words"
+                    style={{ fontWeight: 600 }}
+                  >
                     {ongoingProjects[0].description}
                   </p>
 
@@ -582,16 +586,17 @@ function Project() {
                 {/* ── LEFT COLUMN (FIXED STICKY TEXT & CTAS) ── */}
                 <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
 
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bb9034]/20 border border-[#c9a874]/40 text-[#852541] text-xs font-semibold uppercase tracking-[0.2em]">
-                    <Sparkles size={14} className="text-[#bb9034]" /> Infinite Auto-Scroll Showcase
-                  </div>
+
 
                   <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#852541] leading-tight">
                     Empower Living with Devang
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-                    With over **25+ years of experience**, we have been delivering thoughtfully designed **luxury residential towers and premium commercial spaces across Nagpur**. Our projects combine contemporary architecture, quality construction, strategic locations, and timeless design to create spaces that offer lasting value and an elevated lifestyle.From elegant residences to modern commercial developments, every project reflects our commitment to **quality, innovation, transparency, and customer satisfaction**. Explore our journey through the cards below — they scroll automatically up and down, while **hovering over any card pauses the movement and reveals a subtle tilt effect** for an interactive experience.
+                  <p
+                    className="text-sm sm:text-base text-gray-800 leading-relaxed"
+                    style={{ fontWeight: 600 }}
+                  >
+                    With over 25+ years of experience, we have been delivering thoughtfully designed luxury residential towers and premium commercial spaces across Nagpur. Our projects combine contemporary architecture, quality construction, strategic locations, and timeless design to create spaces that offer lasting value and an elevated lifestyle.From elegant residences to modern commercial developments, every project reflects our commitment to quality, innovation, transparency, and customer satisfaction. Explore our journey through the cards below — they scroll automatically up and down, while hovering over any card pauses the movement and reveals a subtle tilt effect for an interactive experience.
                   </p>
 
                   {/* ACTION PILL BUTTONS */}
@@ -617,16 +622,7 @@ function Project() {
                     </button>
                   </div>
 
-                  {/* AUTO-SCROLL STATUS INDICATOR */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-[#c9a874]/30">
-                    <span className="flex h-3 w-3 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#bb9034] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-[#bb9034]"></span>
-                    </span>
-                    <span className="text-xs text-[#852541] font-semibold">
-                      Auto-scrolling up & down (Hover to pause)
-                    </span>
-                  </div>
+
 
                 </div>
 
@@ -656,10 +652,11 @@ function Project() {
                   </span>
 
                   <h2 className="text-3xl sm:text-5xl font-serif font-extrabold text-[#852541] tracking-wide leading-tight">
-                    C O M P L E T E D &nbsp; L A N D M A R K S
+                    <span className="inline-block mr-6 sm:mr-10">C O M P L E T E D</span>
+                    <span className="inline-block">L A N D M A R K S</span>
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-gray-600 font-sans font-medium max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#bb9034] font-sans font-medium max-w-2xl mx-auto leading-relaxed">
                     Explore our complete portfolio of delivered residential and commercial developments across Nagpur.
                   </p>
                 </div>
@@ -672,67 +669,82 @@ function Project() {
                       <motion.div
                         key={item.id}
                         id={`completed-editorial-${item.id}`}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ duration: 0.5, delay: idx * 0.05 }}
+                        initial={{ opacity: 0, y: 50, scale: 0.97 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                        whileHover={{ y: -8, scale: 1.012 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{
+                          duration: 0.6,
+                          ease: [0.22, 1, 0.36, 1],
+                          delay: idx * 0.08,
+                        }}
                         onClick={() => setHighlightedProjectId(item.id)}
-                        className={`bg-[#FAF7F2] rounded-[32px] p-4 sm:p-6 lg:p-8 transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center group cursor-pointer border-2 ${
+                        className={`relative bg-[#FAF7F2] rounded-[36px] p-5 sm:p-7 lg:p-9 transition-all duration-700 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center group cursor-pointer border-2 ${
                           isSelected
-                            ? "border-[#bb9034] ring-4 ring-[#bb9034]/40 shadow-[0_25px_60px_rgba(133,37,65,0.3)] scale-[1.01]"
-                            : "border-[#bb9034]/30 shadow-lg hover:shadow-2xl hover:border-[#bb9034]"
+                            ? "border-[#bb9034] ring-4 ring-[#bb9034]/40 shadow-[0_30px_70px_rgba(187,144,52,0.35)]"
+                            : "border-[#bb9034]/30 shadow-[0_15px_40px_rgba(133,37,65,0.08)] hover:shadow-[0_30px_70px_rgba(187,144,52,0.25)] hover:border-[#bb9034]"
                         }`}
                       >
                         {/* LEFT PHOTO COLUMN */}
-                        <div className="lg:col-span-7 relative rounded-[24px] overflow-hidden aspect-[16/10] bg-black shadow-md border border-[#bb9034]/20 w-full">
+                        <div className="lg:col-span-7 relative rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/10] bg-black shadow-lg border border-[#bb9034]/30 w-full flex items-center justify-center">
                           <img
                             src={item.image}
                             alt={item.name}
-                            className="absolute left-0 top-0 h-full w-[185%] max-w-none object-cover object-left transition-transform duration-700 group-hover:scale-105"
+                            className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-108"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
                           
-                          <span className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
+                          <motion.span
+                            whileHover={{ scale: 1.08 }}
+                            className="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/30 text-white text-[11px] font-extrabold uppercase tracking-wider shadow-lg"
+                          >
                             {item.badge}
-                          </span>
+                          </motion.span>
                         </div>
 
                         {/* RIGHT EDITORIAL CONTENT COLUMN */}
-                        <div className="lg:col-span-5 space-y-4 text-left px-2 sm:px-4">
-                          <span className="text-[#bb9034] font-mono text-xs sm:text-sm font-extrabold tracking-widest block">
-                            0{idx + 1} / 08
-                          </span>
+                        <div className="lg:col-span-5 space-y-4 text-left px-2 sm:px-4 pb-6 sm:pb-0">
+                          {/* Location Badge (Above Title - Premium Motion Highlight) */}
+                          <motion.div whileHover={{ scale: 1.04 }} transition={{ type: "spring", stiffness: 300 }}>
+                            <span className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#bb9034]/25 via-[#bb9034]/15 to-[#bb9034]/25 border-2 border-[#bb9034]/80 text-[#852541] px-5 py-2.5 rounded-full shadow-md font-extrabold tracking-wide text-sm sm:text-base transition-all duration-300 group-hover:border-[#bb9034] group-hover:shadow-lg">
+                              <MapPin size={18} className="text-[#bb9034] shrink-0 animate-bounce" />
+                              <span>{item.location}</span>
+                            </span>
+                          </motion.div>
 
                           <h3 className="text-2xl sm:text-4xl font-serif font-extrabold text-[#852541] leading-tight group-hover:text-[#bb9034] transition-colors">
                             "{item.name}"
                           </h3>
 
-                          <p className="text-gray-600 font-light text-xs sm:text-sm leading-relaxed">
+                          <p className="text-black font-semibold text-xs sm:text-sm leading-relaxed" style={{ color: "#000000" }}>
                             {item.description}
                           </p>
 
-                          <div className="flex flex-wrap items-center gap-3 pt-1 text-xs font-semibold text-[#852541]">
-                            <span className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-[#bb9034]/30 shadow-xs">
-                              <MapPin size={13} className="text-[#bb9034]" /> {item.location}
-                            </span>
-                            <span className="flex items-center gap-1.5 bg-white px-3.5 py-1.5 rounded-full border border-[#bb9034]/30 shadow-xs font-mono">
-                              <CheckCircle2 size={13} className="text-[#bb9034]" /> Delivered {item.year}
-                            </span>
-                          </div>
-
                           <div className="pt-2">
-                            <button
+                            <motion.button
+                              whileHover={{ scale: 1.06, x: 4 }}
+                              whileTap={{ scale: 0.95 }}
                               onClick={(e) => {
                                 e.stopPropagation();
-                                handleRedirectContact();
+                                setLightboxImage(item.image);
                               }}
-                              className="bg-[#852541] hover:bg-[#bb9034] text-white px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md flex items-center gap-2.5 cursor-pointer group-hover:shadow-xl"
+                              className="bg-gradient-to-r from-[#852541] via-[#6e1e35] to-[#852541] hover:from-[#bb9034] hover:to-[#852541] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-500 shadow-lg flex items-center gap-3 cursor-pointer group-hover:shadow-xl border border-[#bb9034]/40"
                             >
-                              <span>Schedule Site Visit</span>
-                              <ArrowRight size={15} className="text-white group-hover:translate-x-1 transition-transform" />
-                            </button>
+                              <Maximize2 size={16} className="text-white group-hover:scale-120 transition-transform duration-300" />
+                              <span>View Fullscreen</span>
+                            </motion.button>
                           </div>
                         </div>
+
+                        {/* ABSOLUTE BOTTOM RIGHT: DELIVERED YEAR BADGE WITH MOTION */}
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 z-10 pointer-events-none"
+                        >
+                          <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#bb9034]/50 shadow-md font-mono text-xs font-bold text-[#852541] transition-all duration-300 group-hover:border-[#bb9034]">
+                            <CheckCircle2 size={14} className="text-[#bb9034]" /> Delivered {item.year}
+                          </span>
+                        </motion.div>
                       </motion.div>
                     );
                   })}
@@ -756,9 +768,11 @@ function Project() {
           >
             <button
               onClick={() => setLightboxImage(null)}
-              className="absolute top-6 right-6 text-white/80 hover:text-white bg-black/50 p-3 rounded-full border border-white/30 backdrop-blur-md transition cursor-pointer"
+              className="absolute top-5 right-5 sm:top-7 sm:right-8 z-50 flex items-center gap-3 px-7 py-3 rounded-full text-white text-sm sm:text-base font-extrabold uppercase tracking-widest cursor-pointer shadow-lg select-none border-0 outline-none"
+              style={{ backgroundColor: "#B8864E" }}
             >
-              <X size={24} />
+              <span>CLOSE</span>
+              <X size={20} strokeWidth={2.5} className="text-white" />
             </button>
             <motion.img
               initial={{ scale: 0.9 }}

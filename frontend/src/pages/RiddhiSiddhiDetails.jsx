@@ -282,7 +282,7 @@ export default function RiddhiSiddhiDetails() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-[#852541] pt-2">
             <span className="flex items-center gap-1 bg-white px-4 py-2 rounded-full border border-[#bb9034]/30 shadow-sm">
-              <MapPin size={14} className="text-[#bb9034]" /> 32-A, Deep Apartment, London Street, Nagpur
+              <MapPin size={14} className="text-[#bb9034]" /> London Street, Nagpur
             </span>
             <span className="flex items-center gap-1 bg-white px-4 py-2 rounded-full border border-[#bb9034]/30 shadow-sm">
               <ShieldCheck size={14} className="text-[#bb9034]" /> MahaRERA: PR1190002501512
@@ -335,7 +335,7 @@ export default function RiddhiSiddhiDetails() {
                   Front Architectural Elevation
                 </h3>
                 <p className="text-xs text-gray-300 font-light flex items-center gap-1">
-                  <MapPin size={13} className="text-[#bb9034]" /> 32-A, Deep Apartment, London Street, Nagpur
+                  <MapPin size={13} className="text-[#bb9034]" /> London Street, Nagpur
                 </p>
               </div>
             </div>
@@ -359,7 +359,7 @@ export default function RiddhiSiddhiDetails() {
               </div>
 
               {/* Architectural Philosophy Vision Text */}
-              <div className="space-y-4 text-gray-700 text-xs sm:text-sm leading-relaxed font-light relative z-10">
+              <div className="space-y-4 text-black text-xs sm:text-sm leading-relaxed font-semibold relative z-10" style={{ color: "#000000" }}>
                 <p>
                   <strong className="font-semibold text-[#852541]">Riddhi Siddhi – III</strong> is designed with a simple idea in mind — creating a home that feels <strong className="font-semibold text-[#852541]">comfortable, elegant, and lasting</strong>. Every part of the development has been planned with care, from the overall structure to the smallest details of the design. The result is a thoughtfully designed space that brings together comfort, functionality, and a refined sense of style.
                 </p>
@@ -399,10 +399,11 @@ export default function RiddhiSiddhiDetails() {
             </span>
             
             <h2 className="text-3xl sm:text-5xl font-serif font-extrabold text-[#852541] tracking-widest leading-tight">
-              L I V I N G F E A T U R E S
+              <span className="inline-block mr-6 sm:mr-10">E L E V A T E D</span>
+              <span className="inline-block">L I V I N G</span>
             </h2>
             
-            <p className="text-xs sm:text-sm text-gray-600 font-serif italic max-w-xl mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-gray-600 font-sans not-italic font-normal max-w-xl mx-auto leading-relaxed">
               Well-planned floor layouts featuring premium amenities & curated smart spaces.
             </p>
           </div>
@@ -454,7 +455,7 @@ export default function RiddhiSiddhiDetails() {
         <div className="w-full space-y-6">
           <div className="text-left border-l-4 border-[#bb9034] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
-              01 / 02 • Exclusive Lifestyle Spaces
+           Exclusive Lifestyle Spaces
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
               Rooftop & Recreation Showcase
@@ -510,7 +511,10 @@ export default function RiddhiSiddhiDetails() {
                       </h3>
                     </div>
 
-                    <p className="text-gray-700 text-xs sm:text-sm font-light leading-relaxed">
+                    <p
+                      className="text-gray-800 text-xs sm:text-sm leading-relaxed"
+                      style={{ fontWeight: 600 }}
+                    >
                       {lifestyleAmenities[amenitySlideIndex].description}
                     </p>
 
@@ -580,7 +584,7 @@ export default function RiddhiSiddhiDetails() {
         <div className="w-full space-y-6">
           <div className="text-left border-l-4 border-[#852541] pl-4">
             <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
-              02 / 02 • Technical Specifications
+             Technical Specifications
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#852541]">
               Engineered Quality Standards
@@ -645,7 +649,7 @@ export default function RiddhiSiddhiDetails() {
                         className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-[#bb9034]/20 shadow-xs hover:border-[#852541] hover:shadow-md transition duration-300"
                       >
                         <CheckCircle2 size={16} className="text-[#bb9034] shrink-0 mt-0.5" />
-                        <span className="text-xs text-gray-700 font-light leading-relaxed">
+                        <span className="text-xs text-gray-800 leading-relaxed" style={{ fontWeight: 600 }}>
                           {item}
                         </span>
                       </li>
@@ -703,8 +707,8 @@ export default function RiddhiSiddhiDetails() {
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#852541]">
             Where Everything You Need Is Minutes Away
           </h2>
-          <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-            Positioned in prestigious Pande Layout, just 50 meters off main Khamla Road — experience peaceful living with 360° proximity to Nagpur's top hubs.
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 font-light leading-relaxed">
+            Positioned in prestigious Pande Layout, just 50 meters off main London Street — experience peaceful living with 360° proximity to Nagpur's top hubs.
           </p>
         </div>
 
@@ -722,7 +726,7 @@ export default function RiddhiSiddhiDetails() {
             <h3 className="text-xl font-bold text-[#852541] mb-2">
               Daily Conveniences
             </h3>
-            <p className="text-xs text-gray-600 font-light mb-4 leading-relaxed">
+            <p className="text-xs text-gray-800 mb-4 leading-relaxed" style={{ fontWeight: 600 }}>
               Step out for fresh morning groceries, baking essentials, banks & evening walks without touching your car.
             </p>
             <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
@@ -752,7 +756,7 @@ export default function RiddhiSiddhiDetails() {
             <h3 className="text-xl font-bold text-[#852541] mb-2">
               Education & Transit Hubs
             </h3>
-            <p className="text-xs text-gray-600 font-light mb-4 leading-relaxed">
+            <p className="text-xs text-gray-800 mb-4 leading-relaxed" style={{ fontWeight: 600 }}>
               Seamless commute for children & daily office goers with top schools & rapid metro connectivity nearby.
             </p>
             <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
@@ -782,7 +786,7 @@ export default function RiddhiSiddhiDetails() {
             <h3 className="text-xl font-bold text-[#852541] mb-2">
               Airport & Mega Malls
             </h3>
-            <p className="text-xs text-gray-600 font-light mb-4 leading-relaxed">
+            <p className="text-xs text-gray-800 mb-4 leading-relaxed" style={{ fontWeight: 600 }}>
               Effortless connectivity to international flights, central railway junction & premier shopping destinations.
             </p>
             <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
@@ -792,11 +796,11 @@ export default function RiddhiSiddhiDetails() {
               </li>
               <li className="flex items-center gap-2 font-medium">
                 <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Ajni Junction Railway Station</span>
+                <span>Westside & Pantaloons</span>
               </li>
               <li className="flex items-center gap-2 font-medium">
                 <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>VNIT Campus & VR Nagpur Mall</span>
+                <span>Lenskart & Trends</span>
               </li>
             </ul>
           </div>
@@ -968,10 +972,11 @@ export default function RiddhiSiddhiDetails() {
           {/* Close Button */}
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-5 right-5 sm:top-7 sm:right-8 z-50 flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#852541] hover:bg-[#bb9034] text-white transition cursor-pointer shadow-2xl border border-white/20 text-xs font-bold uppercase tracking-widest"
+            className="absolute top-5 right-5 sm:top-7 sm:right-8 z-50 flex items-center gap-3 px-7 py-3 rounded-full text-white text-sm sm:text-base font-extrabold uppercase tracking-widest cursor-pointer shadow-lg select-none border-0 outline-none"
+            style={{ backgroundColor: "#B8864E" }}
           >
-            <span>Close</span>
-            <X size={18} />
+            <span>CLOSE</span>
+            <X size={20} strokeWidth={2.5} className="text-white" />
           </button>
 
           {/* Full Screen Un-cropped Image Container */}
@@ -995,9 +1000,11 @@ export default function RiddhiSiddhiDetails() {
             
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-200 text-gray-600 transition cursor-pointer"
+              className="absolute top-6 right-6 flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-[11px] font-extrabold uppercase tracking-widest cursor-pointer shadow-md select-none border-0 outline-none"
+              style={{ backgroundColor: "#B8864E" }}
             >
-              <X size={18} />
+              <span>CLOSE</span>
+              <X size={15} strokeWidth={2.5} className="text-white" />
             </button>
 
             {formSubmitted ? (

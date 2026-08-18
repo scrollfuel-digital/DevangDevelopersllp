@@ -69,7 +69,7 @@ function About() {
                         viewport={{ once: true, amount: 0.4 }}
                         transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
                     >
-                        A company rooted by principles of integrity, uncompromising quality, timely delivery, and a strong customer-centric ethos, the company has earned recognition including the Iconic Realtors Award 2022 and accolades for Best Residential Project.Each development of Devang Developers reflects a dedication to creating homes that transcend structure, offering lasting elegance and a foundation for meaningful living. Each development of Devang Developers reflects a dedication to creating homes that transcend structure, offering lasting elegance and a foundation for meaningful living.
+                        A company rooted by principles of integrity, uncompromising quality, timely delivery, and a strong customer-centric ethos, the company has earned recognition including the Iconic Realtors Award 2022 and accolades for Best Residential Project.Each development of Devang Developers reflects a dedication to creating homes that transcend structure, offering lasting elegance and a foundation for meaningful living.
                     </motion.p>
                     
                 </div>

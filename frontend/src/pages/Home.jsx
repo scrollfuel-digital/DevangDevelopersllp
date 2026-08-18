@@ -11,7 +11,7 @@ const SLIDES = [
     eyebrow: 'Ongoing Luxury Flagship',
     title: ['RIDDHI SIDDHI', '~ III ~'],
     subtitle:
-      'A striking high-rise tower crafted for peaceful residential living with excellent connectivity on London Street, Nagpur.',
+      'A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on London Street, Nagpur.',
   },
   {
     image: dharampethImg,
@@ -387,7 +387,8 @@ const Home = () => {
 
         <p
           key={`subtitle-${current}`}
-          className="text-[#F3EEE6]/85 text-[14px] md:text-[15px] leading-relaxed max-w-md font-semibold font-['Inter',sans-serif]"
+          className="text-[#F3EEE6]/85 text-[14px] md:text-[15px] leading-relaxed max-w-md font-['Inter',sans-serif]"
+          style={{ fontWeight: 600 }}
         >
           <AnimatedWords text={SLIDES[current].subtitle} baseDelay={900} />
         </p>
