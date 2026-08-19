@@ -52,9 +52,9 @@ const flagshipProject = {
   rera: "RERA Approved: P505000XXXX",
   status: "Under Construction",
   completion: "Target Q4 2025",
-  units: "2 & 3 BHK Premium Residences",
+  units: "3 BHK Premium Residences",
   description:
-    "Riddhi Siddhi ~III~ stands as an architectural triumph on London Street, offering ultra-luxurious 3 & 4 BHK apartments crafted for families seeking elevated living spaces. Every detail is designed to create a refined living environment while ensuring durability, safety, and long-term value. With well-planned spaces, premium finishes, and a welcoming atmosphere, the development offers an elevated lifestyle in one of Nagpur’s well-connected locations.",
+    "Riddhi Siddhi ~III~ stands as an architectural triumph on London Street, offering ultra-luxurious 3 BHK apartments crafted for families seeking elevated living spaces. Every detail is designed to create a refined living environment while ensuring durability, safety, and long-term value. With well-planned spaces, premium finishes, and a welcoming atmosphere, the development offers an elevated lifestyle in one of Nagpur’s well-connected locations.",
   specs: [
     { title: "Structure", desc: "RCC Earthquake Resistant Frame", detail: "Fe550 grade steel & high-strength concrete" },
     { title: "Flooring", desc: "Vitrified Premium Tiles", detail: "800x800mm Italian finish vitrified tiles" },
@@ -96,7 +96,7 @@ function Project() {
   const [categoryExpanded, setCategoryExpanded] = useState(true);
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", phone: "", message: "", unitType: "2 BHK" });
+  const [formData, setFormData] = useState({ name: "", phone: "", message: "", unitType: "3 BHK" });
 
   const handleOpenEnquiry = () => {
     setEnquiryModalOpen(true);
@@ -202,87 +202,56 @@ function Project() {
                   </h3>
                 </div>
 
-                {/* Filter Table Button & Popover Panel (Matching Reference UI) */}
+                {/* Dynamic Dropdown Button & Popover Panel */}
                 <div className="relative">
-                  <button
-                    onClick={() => setIsFilterOpen(!isFilterOpen)}
-                    className="flex items-center gap-2 bg-white border border-[#bb9034]/40 text-[#852541] hover:bg-[#852541] hover:text-white px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm cursor-pointer"
-                  >
-                    <SlidersHorizontal size={14} className="text-[#bb9034]" />
-                    <span>Filter</span>
-                    <ChevronDown size={14} className={`transition-transform duration-300 ${isFilterOpen ? "rotate-180" : ""}`} />
-                  </button>
+                  {(() => {
+                    const options = [
+                      { id: "overview", label: "Overview & Summary" },
+                      { id: "specs", label: "Structural Quality" },
+                      { id: "amenities", label: "Amenities Showcase" },
+                      { id: "location", label: "Location Advantage" },
+                    ];
+                    const activeOption = options.find((opt) => opt.id === activeTab) || options[0];
 
-                  {/* Floating Filter Table Popover (Matching Reference Image) */}
-                  {isFilterOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl border border-[#bb9034]/30 shadow-2xl p-4 z-30 space-y-3 animate-fadeIn">
-                      {/* Popover Header */}
-                      <div className="flex items-center justify-between pb-2.5 border-b border-[#bb9034]/20">
-                        <div className="flex items-center gap-2 text-[#852541]">
-                          <SlidersHorizontal size={16} className="text-[#bb9034]" />
-                          <span className="font-extrabold text-xs uppercase tracking-wider">Filter</span>
-                        </div>
+                    return (
+                      <>
                         <button
-                          onClick={() => setIsFilterOpen(false)}
-                          className="flex items-center gap-1.5 px-3 py-1 rounded-full text-white text-[10px] font-extrabold uppercase tracking-widest cursor-pointer shadow-xs select-none border-0 outline-none"
-                          style={{ backgroundColor: "#B8864E" }}
+                          onClick={() => setIsFilterOpen(!isFilterOpen)}
+                          className="flex items-center gap-2.5 bg-white border border-[#bb9034]/50 text-[#852541] px-5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all duration-300 shadow-sm cursor-pointer select-none"
                         >
-                          <span>CLOSE</span>
-                          <X size={13} strokeWidth={2.5} className="text-white" />
-                        </button>
-                      </div>
-
-                      {/* Category Collapsible Block */}
-                      <div className="space-y-2 pt-1">
-                        <button
-                          onClick={() => setCategoryExpanded(!categoryExpanded)}
-                          className="w-full flex items-center justify-between text-xs font-bold text-[#852541] uppercase tracking-wider py-1 cursor-pointer hover:text-[#bb9034] transition-colors"
-                        >
-                          <span>Category</span>
-                          {categoryExpanded ? (
-                            <ChevronUp size={14} className="text-[#bb9034]" />
-                          ) : (
-                            <ChevronDown size={14} className="text-[#bb9034]" />
-                          )}
+                          <SlidersHorizontal size={15} className="text-[#bb9034]" />
+                          <span className="font-extrabold tracking-wider text-[#852541]">{activeOption.label}</span>
+                          <ChevronDown size={15} className={`text-[#852541] transition-transform duration-300 ${isFilterOpen ? "rotate-180" : ""}`} />
                         </button>
 
-                        {categoryExpanded && (
-                          <div className="space-y-1 pl-1 pt-1 border-l-2 border-[#bb9034]/20 ml-1">
-                            {[
-                              { id: "overview", label: "Overview" },
-                              { id: "specs", label: "Structural Quality" },
-                              { id: "amenities", label: "Amenities" },
-                              { id: "location", label: "Location Advantage" },
-                            ].map((cat) => {
-                              const isChecked = activeTab === cat.id;
+                        {/* Simple Dropdown Menu */}
+                        {isFilterOpen && (
+                          <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl border border-[#bb9034]/30 shadow-2xl p-2 z-30 space-y-1 animate-fadeIn">
+                            {options.map((item) => {
+                              const isActive = activeTab === item.id;
                               return (
-                                <label
-                                  key={cat.id}
+                                <button
+                                  key={item.id}
                                   onClick={() => {
-                                    setActiveTab(cat.id);
+                                    setActiveTab(item.id);
                                     setIsFilterOpen(false);
                                   }}
-                                  className={`flex items-center gap-2.5 p-2 rounded-xl text-xs font-medium cursor-pointer transition-all ${
-                                    isChecked
-                                      ? "bg-[#852541]/10 text-[#852541] font-bold"
-                                      : "text-gray-700 hover:bg-gray-50"
+                                  className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                                    isActive
+                                      ? "bg-[#852541] text-white shadow-sm"
+                                      : "text-gray-700 hover:bg-[#FAF7F2] hover:text-[#852541]"
                                   }`}
                                 >
-                                  <input
-                                    type="checkbox"
-                                    checked={isChecked}
-                                    onChange={() => {}}
-                                    className="w-4 h-4 rounded text-[#852541] focus:ring-[#852541] border-gray-300 accent-[#852541] cursor-pointer"
-                                  />
-                                  <span>{cat.label}</span>
-                                </label>
+                                  <span>{item.label}</span>
+                                  {isActive && <CheckCircle2 size={14} className="text-[#bb9034]" />}
+                                </button>
                               );
                             })}
                           </div>
                         )}
-                      </div>
-                    </div>
-                  )}
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
 
@@ -294,7 +263,7 @@ function Project() {
                       <Info size={14} className="shrink-0" /> Project Summary
                     </h4>
                     <p
-                      className="text-gray-800 text-xs sm:text-sm leading-relaxed break-words"
+                      className="text-gray-600 text-[13px] sm:text-[14px] leading-relaxed break-words"
                       style={{ fontWeight: 600 }}
                     >
                       {flagshipProject.description}
@@ -324,12 +293,12 @@ function Project() {
                   <h4 className="text-xs uppercase tracking-[0.2em] text-[#bb9034] font-bold flex items-center gap-2">
                     <ShieldCheck size={14} className="shrink-0" /> Structural & Engineering Standards
                   </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto pt-3 sm:pt-4">
                     {flagshipProject.specs.map((item, idx) => (
-                      <div key={idx} className="bg-[#852541]/5 p-3 sm:p-4 rounded-xl border border-[#852541]/15 space-y-1">
-                        <span className="text-[11px] text-[#bb9034] font-bold uppercase tracking-wider block">{item.title}</span>
-                        <span className="text-xs font-serif font-bold text-[#852541] block">{item.desc}</span>
-                        <p className="text-[11px] text-gray-600 mt-1 leading-snug break-words">{item.detail}</p>
+                      <div key={idx} className="bg-[#852541]/5 pt-6 pb-5 px-5 sm:pt-7 sm:pb-6 sm:px-6 rounded-2xl border border-[#852541]/15 space-y-2 text-center flex flex-col items-center justify-center">
+                        <span className="text-[11px] text-[#bb9034] font-bold uppercase tracking-wider block text-center">{item.title}</span>
+                        <span className="text-xs font-serif font-bold text-[#852541] block text-center">{item.desc}</span>
+                        <p className="text-[11px] text-gray-600 mt-1 leading-snug break-words text-center">{item.detail}</p>
                       </div>
                     ))}
                   </div>
@@ -462,9 +431,7 @@ function Project() {
                       onChange={(e) => setFormData({ ...formData, unitType: e.target.value })}
                       className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
                     >
-                      <option value="2 BHK">2 BHK Residential</option>
                       <option value="3 BHK">3 BHK Residential</option>
-                      <option value="4 BHK Luxury">4 BHK Luxury Penthouse</option>
                     </select>
                   </div>
 

@@ -133,24 +133,17 @@ export default function About() {
     },
     {
       number: "03",
-      title: "Contemporary Architecture",
-      desc: "Every apartment is carefully planned to maximize natural light, ventilation, privacy, and efficient use of space, ensuring a perfect balance between functionality and aesthetics.",
-      icon: Building2,
-      badge: "Neo-Classical Design",
-    },
-    {
-      number: "04",
       title: "Transparent Buying Experience",
       desc: "From your first enquiry to project possession, we maintain complete transparency in documentation, pricing, communication, and customer support.",
       icon: HeartHandshake,
       badge: "100% RERA Compliant",
     },
     {
-      number: "05",
+      number: "04",
       title: "Timely Delivery",
-      desc: "We understand the importance of your investment and remain committed to delivering projects within the promised timelines.",
-      icon: Award,
-      badge: "Proven Execution",
+      desc: "We prioritize structured project execution to ensure that every development progresses smoothly and reaches completion on schedule without compromise.",
+      icon: CalendarClock,
+      badge: "On-Time Possession",
     },
   ];
 
@@ -625,7 +618,7 @@ export default function About() {
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <span className="text-xs uppercase tracking-[0.25em] font-bold text-[#bb9034] block">
-            Why Choose Us
+            What Makes Us Different
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#852541]">
             Why Choose Devang Developers
@@ -635,12 +628,12 @@ export default function About() {
           </p>
         </div>
 
-        {/* 5 FULL-SIZE 3D PILLAR CARDS (3 IN FIRST ROW, 2 CENTERED IN SECOND ROW) */}
+        {/* 4 FULL-SIZE 3D PILLAR CARDS (2X2 BALANCED GRID) */}
         <div className="flex flex-wrap justify-center gap-8">
           {whyChooseUsData.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div key={idx} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm">
+              <div key={idx} className="w-full sm:w-[calc(50%-1rem)] max-w-md">
                 <UltraLuxury3DCard className="h-full" padding="p-7 lg:p-8">
                   {/* Background Watermark Number */}
                   <span className="absolute -right-2 -top-4 text-7xl font-serif font-extrabold text-[#852541]/5 pointer-events-none select-none">

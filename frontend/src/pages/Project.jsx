@@ -526,7 +526,7 @@ function Project() {
                   </p>
 
                   <p
-                    className="text-xs md:text-sm text-gray-800 leading-relaxed break-words"
+                    className="text-sm sm:text-base md:text-lg text-gray-800 leading-relaxed break-words"
                     style={{ fontWeight: 600 }}
                   >
                     {ongoingProjects[0].description}

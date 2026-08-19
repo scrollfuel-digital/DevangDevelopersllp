@@ -135,8 +135,7 @@ export default function Contact() {
                       className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-700"
                     >
                       <option value="" disabled>Select Project *</option>
-                      <option value="riddhi-siddhi">Riddhi Siddhi 3 (Khamla Road)</option>
-                      <option value="mangalmurti">Mangalmurti Residency</option>
+                      <option value="riddhi-siddhi">Riddhi Siddhi 3 (London Street)</option>
                       <option value="wing-c">Wing C 129 RSH</option>
                     </select>
                   </div>
