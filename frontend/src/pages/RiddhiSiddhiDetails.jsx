@@ -201,9 +201,9 @@ export default function RiddhiSiddhiDetails() {
     {
       category: "Flooring & Finishes",
       items: [
-        "Glass-finish vitrified tiles (800mm x 1600mm / 800mm x 1200mm) in living, dining & bedrooms.",
-        "Vitrified tile dado up to 600mm on walls in toilets and anti-skid floor tiles.",
-        "Glass-finish vitrified tiles at staircase and entrance lobby.",
+        "Gloss-finish vitrified tiles (800 mm x 1600 mm).",
+        "Gloss-finish vitrified tiles (600mm x 1200mm on walls and 600mm x 600mm Matt finish tiles on Floor) in Toilets",
+        "Gloss-finish vitrified tiles (600mm x 1200mm )at staircase and Lobby",
       ],
     },
     {
@@ -766,11 +766,11 @@ export default function RiddhiSiddhiDetails() {
               </li>
               <li className="flex items-center gap-2 font-medium">
                 <CheckCircle2 size={14} className="text-[#852541] shrink-0" />
-                <span>Orange City Hospital & Research</span>
+                <span>Jaiprakash Nagar Metro Station</span>
               </li>
               <li className="flex items-center gap-2 font-medium">
                 <CheckCircle2 size={14} className="text-[#852541] shrink-0" />
-                <span>Jaiprakash Nagar Metro Station</span>
+                <span>Orange City Hospital & Research</span>
               </li>
             </ul>
           </div>
@@ -792,15 +792,15 @@ export default function RiddhiSiddhiDetails() {
             <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
               <li className="flex items-center gap-2 font-medium">
                 <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
+                <span>Westside & Pantaloons Malls</span>
+              </li>
+              <li className="flex items-center gap-2 font-medium">
+                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
+                <span>Lenskart & Trends Malls</span>
+              </li>
+              <li className="flex items-center gap-2 font-medium">
+                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
                 <span>Nagpur International Airport</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Westside & Pantaloons</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Lenskart & Trends</span>
               </li>
             </ul>
           </div>
@@ -894,7 +894,7 @@ export default function RiddhiSiddhiDetails() {
             </a>
 
             <a
-              href="https://wa.me/919921042899?text=Hello%20Devang%20Developers%2C%20please%20send%20me%20the%20exact%20location%20pin%20for%20Riddhi%20Siddhi%203."
+              href="https://wa.me/919921294799?text=Hello%20Devang%20Developers%2C%20please%20send%20me%20the%20exact%20location%20pin%20for%20Riddhi%20Siddhi%203."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
@@ -1057,16 +1057,14 @@ export default function RiddhiSiddhiDetails() {
 
                   <div>
                     <label className="text-[11px] font-bold uppercase tracking-wider text-gray-700 block mb-1">
-                      Configuration
+                      Interested Configuration
                     </label>
                     <select
                       value={formData.config}
                       onChange={(e) => setFormData({ ...formData, config: e.target.value })}
                       className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-4 py-3 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"
                     >
-                      <option value="2-bhk">2 BHK Luxury Apartment</option>
-                      <option value="3-bhk">3 BHK Premium Residence</option>
-                      <option value="commercial">Commercial Outlet</option>
+                      <option value="3-bhk">3 BHK Residential</option>
                     </select>
                   </div>
                 </div>

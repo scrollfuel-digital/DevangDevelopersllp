@@ -344,7 +344,7 @@ const Home = () => {
       </div>
 
       {/* Prev / Next */}
-      <div className="hidden md:flex absolute left-32 top-1/2 -translate-y-1/2 z-10 items-center gap-10 font-['Inter',sans-serif]">
+      <div className="hidden md:flex absolute left-32 top-1/2 -translate-y-1/2 z-10 items-center gap-10 font-serif">
         <button
           onClick={() => goTo(current - 1)}
           className="flex items-center gap-3 text-[#852541] hover:text-[#6B1C33] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110"
@@ -373,21 +373,21 @@ const Home = () => {
       >
         <span
           key={`eyebrow-${current}`}
-          className="text-[11px] tracking-[0.35em] uppercase text-[#A9814A] font-semibold font-['Inter',sans-serif]"
+          className="text-[11px] tracking-[0.35em] uppercase text-[#A9814A] font-semibold font-serif"
         >
           <AnimatedChars text={SLIDES[current].eyebrow} baseDelay={100} />
         </span>
 
         <h1
           key={`title-${current}`}
-          className="text-[#F3EEE6] text-[9vw] md:text-[3.6vw] leading-[1.05] font-black font-['Fraunces',serif]"
+          className="text-[#F3EEE6] text-[9vw] md:text-[3.6vw] leading-[1.05] font-black font-serif"
         >
           <AnimatedTitle lines={SLIDES[current].title} baseDelay={180} />
         </h1>
 
         <p
           key={`subtitle-${current}`}
-          className="text-[#F3EEE6]/85 text-[14px] md:text-[15px] leading-relaxed max-w-md font-['Inter',sans-serif]"
+          className="text-[#F3EEE6]/85 text-[16px] md:text-[18px] leading-relaxed max-w-md font-serif"
           style={{ fontWeight: 600 }}
         >
           <AnimatedWords text={SLIDES[current].subtitle} baseDelay={900} />
@@ -399,7 +399,7 @@ const Home = () => {
             window.scrollTo(0, 0);
             navigate("/project");
           }}
-          className="animate-[blockUp_560ms_cubic-bezier(0.65,0,0.35,1)_1650ms_both] mt-2 bg-[#A9814A]/90 text-[#14120F] text-[11px] tracking-[0.25em] uppercase px-8 py-4 rounded-full hover:bg-[#F3EEE6] transition-colors duration-300 font-bold font-['Inter',sans-serif] cursor-pointer"
+          className="animate-[blockUp_560ms_cubic-bezier(0.65,0,0.35,1)_1650ms_both] mt-2 bg-[#A9814A]/90 text-[#14120F] text-[11px] tracking-[0.25em] uppercase px-8 py-4 rounded-full hover:bg-[#F3EEE6] transition-colors duration-300 font-bold font-serif cursor-pointer"
         >
           Learn More
         </button>

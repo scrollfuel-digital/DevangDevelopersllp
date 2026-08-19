@@ -14,10 +14,16 @@ const socialLinks = [
 const quickLinks = [
   { name: "Home Page", path: "/" },
   { name: "About Us", path: "/about" },
-  { name: "Projects Portfolio", path: "/project" },
-  { name: "Riddhi Siddhi III", path: "/project/riddhi-siddhi-3" },
-  { name: "Company Blog", path: "/blog" },
-  { name: "Contact Desk", path: "/contact" },
+  {
+    name: "Projects",
+    path: "/project",
+    subLinks: [
+      { name: "Ongoing Project", path: "/project/riddhi-siddhi-3" },
+      { name: "Completed Work", path: "/project" },
+    ],
+  },
+  { name: "Blog", path: "/blog" },
+  { name: "Contact Us", path: "/contact" },
 ];
 
 const fadeUp = {
@@ -91,15 +97,32 @@ const Footer = () => {
 
             <ul className="space-y-2.5 text-xs font-bold">
               {quickLinks.map((link) => (
-                <li key={link.name}>
+                <li key={link.name} className={link.subLinks ? "group relative" : ""}>
                   <Link
                     to={link.path}
                     onClick={() => window.scrollTo(0, 0)}
-                    className="text-[#852541] hover:text-[#bb9034] transition duration-200 flex items-center gap-1.5 group"
+                    className="text-[#852541] hover:text-[#bb9034] transition duration-200 flex items-center gap-1.5 group/link cursor-pointer"
                   >
-                    <ChevronRight size={13} className="text-[#852541] group-hover:text-[#bb9034] group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight size={13} className="text-[#852541] group-hover/link:text-[#bb9034] group-hover/link:translate-x-1 transition-transform" />
                     <span>{link.name}</span>
                   </Link>
+
+                  {/* Hover Dropdown Sub-menu (Matching User Diagram) */}
+                  {link.subLinks && (
+                    <div className="hidden group-hover:block transition-all duration-300 pl-3 pt-1.5 pb-1 space-y-1.5 border-l-2 border-[#bb9034]/50 ml-2 animate-fadeIn">
+                      {link.subLinks.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          to={sub.path}
+                          onClick={() => window.scrollTo(0, 0)}
+                          className="flex items-center gap-1.5 text-[11px] text-[#852541]/90 hover:text-[#bb9034] font-semibold transition duration-200 cursor-pointer"
+                        >
+                          <ChevronRight size={11} className="text-[#bb9034] shrink-0" />
+                          <span>{sub.name}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -150,7 +173,7 @@ const Footer = () => {
                   <MapPin size={14} />
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-black text-[#852541]/75 block tracking-wider">Project Location</span>
+                  <span className="text-[10px] uppercase font-black text-[#852541]/75 block tracking-wider">Office Location</span>
                   <span className="font-bold text-[#852541] leading-snug block">32-A, Deep Apt, Pande Layout, Khamla Road, Nagpur</span>
                 </div>
               </div>
@@ -167,7 +190,7 @@ const Footer = () => {
             className="space-y-3"
           >
             <h4 className="text-xs font-serif font-black uppercase tracking-[0.2em] text-[#852541] border-b-2 border-[#852541] pb-2 inline-block">
-              Project Location Map
+              Office Location Map
             </h4>
 
             {/* Map Card Container */}
