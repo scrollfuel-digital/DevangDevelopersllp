@@ -5,7 +5,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/
 import { Phone, Mail, MapPin, ExternalLink, ArrowUp, ChevronRight } from "lucide-react";
 
 const socialLinks = [
-  { Icon: FaWhatsapp, label: "WhatsApp", href: "https://wa.me/919921042899?text=Hello%20Devang%20Developers%2C%20I%20am%20interested%20in%20your%20projects." },
+  { Icon: FaWhatsapp, label: "WhatsApp", href: "https://wa.me/919822286549?text=Hello%20Devang%20Developers%2C%20I%20am%20interested%20in%20your%20projects." },
   { Icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/devangdevelopers?igsh=MWsxMjhsZ3Vtc2FucQ==" },
   { Icon: FaFacebookF, label: "Facebook", href: "https://www.facebook.com/share/1MAB2J8GPz/" },
   { Icon: FaLinkedinIn, label: "LinkedIn", href: "https://www.linkedin.com/company/devang-developers-llp/" },
@@ -143,7 +143,7 @@ const Footer = () => {
 
             <div className="space-y-3.5 text-xs">
               <a
-                href="tel:+919921042899"
+                href="tel:+919822286549"
                 className="flex items-start gap-3 group transition"
               >
                 <div className="w-8 h-8 rounded-full bg-[#852541] text-[#c9a874] flex items-center justify-center shrink-0 shadow-sm mt-0.5 group-hover:bg-[#bb9034] group-hover:text-white transition duration-300">
@@ -151,7 +151,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-black text-[#852541]/75 block tracking-wider">Phone Support</span>
-                  <span className="font-extrabold text-[#852541] group-hover:text-[#bb9034] transition">+91 9921042899 / 9921294799</span>
+                  <span className="font-extrabold text-[#852541] group-hover:text-[#bb9034] transition">+91 98222 86549</span>
                 </div>
               </a>
 
@@ -163,7 +163,7 @@ const Footer = () => {
                   <Mail size={14} />
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-black text-[#852541]/75 block tracking-wider">Email Inquiry</span>
+                  <span className="text-[10px] uppercase font-black text-[#852541]/75 block tracking-wider">Email Enquiry</span>
                   <span className="font-extrabold text-[#852541] group-hover:text-[#bb9034] transition">devangdevelopers@gmail.com</span>
                 </div>
               </a>
@@ -195,16 +195,18 @@ const Footer = () => {
 
             {/* Map Card Container */}
             <div className="relative w-full h-[145px] rounded-2xl overflow-hidden border-2 border-[#852541]/30 shadow-md bg-white group">
-              <iframe
-                title="Riddhi Siddhi 3 Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.782806282869!2d79.0601!3d21.1211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c062c3e1b3d5%3A0x1404c0d0144f8e56!2sPande%20Layout%2C%20Khamla%2C%20Nagpur%2C%20Maharashtra%20440025!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                className="w-full h-full border-0 transition-all duration-500 group-hover:scale-105"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3537.988289923241!2d79.06142325!3d21.106284349999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf001095dee9%3A0xb4519a091a8fc2df!2sRIDDHI%20SIDDHI%20-%20III!5e1!3m2!1sen!2sin!4v1787218742642!5m2!1sen!2sin" 
+              width="600" 
+              height="450" 
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy" 
+              referrerpolicy="strict-origin-when-cross-origin">
+
+              </iframe>
               <a
-                href="https://maps.google.com/?q=32-A,+Deep+Apartment,+Pande+Layout,+Khamla+Road,+Nagpur"
+                href="https://www.google.com/maps/search/?api=1&query=4337%2BWXW%2C+LONDON+STREET%2C+Pande+Layout%2C+Khamla%2C+Nagpur%2C+Maharashtra+440025"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 bg-[#852541]/85 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-1 text-[11px] font-bold text-white transition-all backdrop-blur-xs"

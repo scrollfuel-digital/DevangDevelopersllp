@@ -45,7 +45,7 @@ function About() {
                     className="text-base md:text-lg font-extrabold mb-5"
                     style={{ color: "#4b4641", fontFamily: "'Poppins', sans-serif" }}
                 >
-                     Wall Of Happiness 
+                     Walls Of Happiness 
                 </motion.h3>
 
                 {/* Paragraphs */}

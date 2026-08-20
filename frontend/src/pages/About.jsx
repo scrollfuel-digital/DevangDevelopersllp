@@ -156,8 +156,8 @@ export default function About() {
       image: milindNadiyanaImg,
       experience: "16+ Years",
       badge: "Master Architect",
-      expertise: ["Neo-Classical Facades", "100% Vastu Layouts", "Natural Light & Air Grid"],
-      bio: "Pioneers the neo-classical elevation design and Vastu-compliant layout plans that define the iconic visual identity of Riddhi Siddhi 3 and Devang landmarks.",
+      expertise: ["Neo-Classical Facades", "Efficient Space Layouts", "Natural Light & Air Grid"],
+      bio: "Pioneers the neo-classical elevation design and optimized space layout plans that define the iconic visual identity of Riddhi Siddhi 3 and Devang landmarks.",
     },
     {
       id: "mr-amit-agrawal",

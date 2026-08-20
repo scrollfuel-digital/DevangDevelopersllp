@@ -19,23 +19,24 @@ import {
 const BLOG_POSTS = [
   {
     id: 1,
-    title: "Why Khamla Road is Nagpur's Top Destination for Premium Residential Living",
+    title: "Why Pande Layout & Khamla Road are Nagpur's Top Destinations for Premium Living",
     category: "Home Buying Guide",
     date: "July 28, 2026",
     readTime: "5 min read",
     author: "Devang Editorial Team",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
     excerpt:
-      "Discover how rapid metro connectivity, proximity to Nagpur Airport, top healthcare centers, and high asset appreciation are driving Khamla Road to become the city's premier high-rise residential corridor.",
+      "Discover why Pande Layout and the London Street corridor offer unmatched quiet luxury, rapid metro connectivity, proximity to Nagpur Airport, and top real estate appreciation.",
     content: `
-      Khamla Road in Nagpur has evolved into one of the most sought-after residential locations in the region. With seamless transit connectivity to the Dr. Babasaheb Ambedkar International Airport, Metro Stations, and key commercial hubs like Wardha Road and IT Park, living here offers unmatched convenience.
+      Pande Layout and the Khamla Road corridor in Nagpur have evolved into the city's most sought-after residential destinations. With direct location on London Street and seamless transit connectivity to the International Airport, Metro Stations, and Wardha Road IT Park, living here offers unmatched lifestyle convenience.
 
-      ### Key Highlights of Living on Khamla Road:
-      - **Rapid Connectivity**: Just 12 minutes drive to Nagpur Airport and 5 minutes to Metro Stations.
-      - **Healthcare & Education**: Proximity to AIIMS Nagpur, MIDAS Hospital, and top educational institutions.
-      - **High Appreciation Potential**: Real estate values along this corridor have grown steadily over the last decade.
+      ### Why Pande Layout & London Street Corridor?
+      - **Elite Peaceful Neighborhood**: Pande Layout is renowned for its quiet residential charm while being situated directly on London Street.
+      - **Rapid Transit Connectivity**: Just 10 minutes drive to Nagpur Airport and 5 minutes to Metro Stations.
+      - **Healthcare & Education**: Proximity to AIIMS Nagpur, MIDAS Hospital, top CBSE schools, and daily retail markets.
+      - **High Appreciation Potential**: Real estate values in Pande Layout have grown steadily, making it South-West Nagpur's benchmark residential address.
 
-      Devang Developers' flagship project, **Riddhi Siddhi 3**, is strategically situated on Khamla Road to offer residents a high-rise sanctuary built with RCC earthquake-resistant engineering, Vastu compliance, and modern lifestyle amenities.
+      Devang Developers' flagship project, **Riddhi Siddhi 3**, is strategically situated directly on London Street in Pande Layout to offer residents a high-rise sanctuary built with RCC earthquake-resistant engineering, architectural precision, and modern lifestyle amenities.
     `,
   },
   {
@@ -140,6 +141,27 @@ const BLOG_POSTS = [
       - **Hydro-Pneumatic Systems**: Smooth, continuous water pressure across all upper floors.
 
       Every Devang building is engineered to stand proud as a symbol of quality for generations.
+    `,
+  },
+  {
+    id: 7,
+    title: "Why Pande Layout? The Premier Residential Haven of South-West Nagpur",
+    category: "Location Insight",
+    date: "August 10, 2026",
+    readTime: "5 min read",
+    author: "Devang Editorial Team",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "An in-depth look at why home buyers and investors prioritize Pande Layout on London Street for its peaceful environment, instant connectivity, and high property appreciation.",
+    content: `
+      When evaluating high-quality residential addresses in Nagpur, **Pande Layout** stands out as a preferred choice for discerning homeowners. Located directly on the prestigious London Street, Pande Layout combines peaceful neighborhood living with instant access to the city's finest infrastructure.
+
+      ### Key Advantages of Living in Pande Layout:
+      1. **Direct Frontage on London Street**: Direct location on London Street ensures effortless commuting across Khamla Road, Wardha Road, and Ring Road.
+      2. **Complete Everyday Infrastructure**: Walkable access to Khamla Main Market, leading banks, pharmacies, and green parks.
+      3. **High Rental & Resale Demand**: Premium 3 BHK residences in Pande Layout command excellent rental yields and robust capital growth year after year.
+
+      Projects like **Riddhi Siddhi ~ III ~** by Devang Developers showcase how modern high-rise architecture seamlessly fits into Pande Layout's prestigious urban fabric.
     `,
   },
 ];

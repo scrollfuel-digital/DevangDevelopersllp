@@ -193,7 +193,7 @@ const footprints = [
     titleLine2: "HEIGHTS",
     location: "Shivaji Nagar, Nagpur",
     image: vakratundImg,
-    badge: "⭐ Prime Landmark",
+    badge: "G+6 Residential",
     year: "2018",
     floors: "G+6 Residential",
     description:
@@ -206,7 +206,7 @@ const footprints = [
     titleLine2: "ENCLAVE",
     location: "Laxmi Nagar, Nagpur",
     image: vignahartaImg,
-    badge: "🏆 Delivered",
+    badge: "G+7 Luxury Residences",
     year: "2019",
     floors: "G+7 Luxury Residences",
     description:
@@ -219,7 +219,7 @@ const footprints = [
     titleLine2: "PLAZA",
     location: "Ramdaspeth, Nagpur",
     image: manomayImg,
-    badge: "🏢 Commercial Hub",
+    badge: "Commercial Complex",
     year: "2020",
     floors: "Commercial Complex",
     description:
@@ -232,7 +232,7 @@ const footprints = [
     titleLine2: "APARTMENT",
     location: "Ramdaspeth, Nagpur",
     image: shreyasImg,
-    badge: "⭐ Guest Favourite",
+    badge: "G+5 Residential",
     year: "2017",
     floors: "G+5 Residential",
     description:
@@ -245,7 +245,7 @@ const footprints = [
     titleLine2: "APARTMENT",
     location: "Laxmi Nagar, Nagpur",
     image: kirtiKalyaniImg,
-    badge: "🏆 Delivered",
+    badge: "G+7 Premium Flats",
     year: "2021",
     floors: "G+7 Premium Flats",
     description:
@@ -258,7 +258,7 @@ const footprints = [
     titleLine2: "APARTMENT",
     location: "Wardha Road, Nagpur",
     image: avneeshImg,
-    badge: "✨ Prime Hub",
+    badge: "G+6 Residential",
     year: "2016",
     floors: "G+6 Residential",
     description:
@@ -271,7 +271,7 @@ const footprints = [
     titleLine2: "APARTMENT",
     location: "Jaiprakash Nagar, Nagpur",
     image: gaurisutImg,
-    badge: "⭐ Top Quality",
+    badge: "G+6 Residential",
     year: "2022",
     floors: "G+6 Residential",
     description:
@@ -284,7 +284,7 @@ const footprints = [
     titleLine2: "HEIGHTS",
     location: "Dharampeth, Nagpur",
     image: riddhiSiddhiHeightsImg,
-    badge: "👑 Iconic Tower",
+    badge: "High-Rise Tower",
     year: "2023",
     floors: "High-Rise Tower",
     description:
@@ -359,7 +359,7 @@ function Project() {
         overlayContent={
           <>
             <div className="flex items-center justify-between">
-              <span className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/30 text-white text-[10px] font-bold uppercase tracking-wider shadow-md flex items-center gap-1">
+              <span className="px-3 py-1 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#c9a874]/50 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
                 {p.badge}
               </span>
               <span className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-md">
@@ -503,11 +503,11 @@ function Project() {
                     alt={ongoingProjects[0].name}
                     className="h-full w-full object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent pointer-events-none z-[5]" />
                   <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-                  <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/90 backdrop-blur-md border border-[#c9a874]/50 text-[#ffffff] text-xs font-bold shadow-xl">
-                    <ShieldCheck size={16} className="text-[#bb9034]" /> {ongoingProjects[0].rera}
+                  <div className="absolute top-5 left-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#852541]/95 backdrop-blur-md border border-white/50 text-white text-xs font-bold shadow-xl z-20">
+                    <ShieldCheck size={16} className="text-white" /> {ongoingProjects[0].rera}
                   </div>
                 </div>
 
@@ -693,13 +693,9 @@ function Project() {
                             className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-108"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
-                          
-                          <motion.span
-                            whileHover={{ scale: 1.08 }}
-                            className="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/30 text-white text-[11px] font-extrabold uppercase tracking-wider shadow-lg"
-                          >
+                          <span className="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-[#852541]/95 backdrop-blur-md border border-[#c9a874]/50 text-white text-[11px] font-extrabold uppercase tracking-wider shadow-lg z-10">
                             {item.badge}
-                          </motion.span>
+                          </span>
                         </div>
 
                         {/* RIGHT EDITORIAL CONTENT COLUMN */}
