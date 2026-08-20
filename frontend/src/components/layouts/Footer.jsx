@@ -196,15 +196,11 @@ const Footer = () => {
             {/* Map Card Container */}
             <div className="relative w-full h-[145px] rounded-2xl overflow-hidden border-2 border-[#852541]/30 shadow-md bg-white group">
               <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3537.988289923241!2d79.06142325!3d21.106284349999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bf001095dee9%3A0xb4519a091a8fc2df!2sRIDDHI%20SIDDHI%20-%20III!5e1!3m2!1sen!2sin!4v1787218742642!5m2!1sen!2sin" 
-              width="600" 
-              height="450" 
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy" 
-              referrerpolicy="strict-origin-when-cross-origin">
-
-              </iframe>
+                title="Riddhi Siddhi 3 Location Map"
+                src="https://maps.google.com/maps?q=21.106284,79.061423&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                className="w-[135%] h-[165%] -mt-12 -ml-12 border-0 pointer-events-none transition-all duration-500"
+                loading="lazy"
+              />
               <a
                 href="https://www.google.com/maps/search/?api=1&query=4337%2BWXW%2C+LONDON+STREET%2C+Pande+Layout%2C+Khamla%2C+Nagpur%2C+Maharashtra+440025"
                 target="_blank"
