@@ -51,6 +51,7 @@ import swimmingPoolImg from "../assets/projects/swimming-pool-image.png";
 import yogaDayImg from "../assets/projects/yoga-day.png";
 import gymImg from "../assets/projects/gym.png";
 import conferenceRoomImg from "../assets/projects/conference-room.png";
+import qrCodeImg from "../assets/Qrcode-1.png";
 
 export default function RiddhiSiddhiDetails() {
   const navigate = useNavigate();
@@ -234,10 +235,10 @@ export default function RiddhiSiddhiDetails() {
       category: "Parking, Security & Power Backup",
       items: [
         "Cement paver block parking flooring with 4-level automated puzzle parking.",
-        "Intercom facility & 24/7 CCTV surveillance at ground floor and all common areas.",
+        "Advanced Safety & Security across ground floor and common areas.",
         "Three automatic lifts (KONE or equivalent): 1 Stretcher Lift, 1 10-passenger & 1 8-passenger lift.",
         "Auto-synchronizing DG Generator backup for lifts, pumps, and common area lighting.",
-        "Firefighting system as per NBC safety drawings & rooftop solar panels for common lighting.",
+        "Firefighting system as per NBC safety drawings & solar power provision for common area lighting.",
       ],
     },
   ];
@@ -248,7 +249,7 @@ export default function RiddhiSiddhiDetails() {
     { name: "Khamla Main Market & Daily Groceries", type: "Daily Needs & Retail", dist: "2 Mins Walk", category: "shopping", icon: ShoppingBag, mapQuery: "Khamla+Main+Market+Nagpur" },
     { name: "SBI, HDFC & ICICI Banks / ATMs", type: "Financial & Banking", dist: "2 Mins Walk", category: "shopping", icon: Compass, mapQuery: "Banks+Khamla+Road+Nagpur" },
     { name: "Max Fashion, Pantaloons & Westside", type: "Retail & Apparel Hub", dist: "3 Mins Drive", category: "shopping", icon: ShoppingBag, mapQuery: "Max+Fashion+Khamla+Nagpur" },
-    { name: "PVR Inox Cinema & Reliance Trends", type: "Entertainment & Cinema", dist: "4 Mins Drive", category: "shopping", icon: Film, mapQuery: "PVR+Inox+Nagpur" },
+    { name: "AM Cinema (Jaiprakash Nagar)", type: "Entertainment & Cinema", dist: "4 Mins Drive", category: "shopping", icon: Film, mapQuery: "AM+Cinema+Jaiprakash+Nagar+Nagpur" },
     
     { name: "Somalwar High School & Junior College", type: "Premier Education", dist: "3 Mins Drive", category: "education", icon: GraduationCap, mapQuery: "Somalwar+High+School+Khamla+Nagpur" },
     { name: "Orange City Hospital & Research Institute", type: "Multi-Specialty Care", dist: "5 Mins Drive", category: "education", icon: Hospital, mapQuery: "Orange+City+Hospital+Nagpur" },
@@ -280,15 +281,6 @@ export default function RiddhiSiddhiDetails() {
             An Address Defined by Vision
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-[#852541] pt-2">
-            <span className="flex items-center gap-1 bg-white px-4 py-2 rounded-full border border-[#bb9034]/30 shadow-sm">
-              <MapPin size={14} className="text-[#bb9034]" /> London Street, Nagpur
-            </span>
-            <span className="flex items-center gap-1 bg-white px-4 py-2 rounded-full border border-[#bb9034]/30 shadow-sm">
-              <ShieldCheck size={14} className="text-[#bb9034]" /> MahaRERA: PR1190002501512
-            </span>
-          </div>
-
         </div>
       </section>
 
@@ -313,17 +305,11 @@ export default function RiddhiSiddhiDetails() {
               <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0407]/95 via-[#0a0407]/50 to-transparent pointer-events-none" />
               <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#0a0407]/70 to-transparent pointer-events-none" />
 
-              {/* Top Bar: Expand Action Button */}
+              {/* Top Bar: MahaRERA Registration Badge */}
               <div className="absolute top-4 right-4 z-10">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setLightboxImage(rs3SingleImage);
-                  }}
-                  className="px-4 py-2 rounded-full bg-[#852541]/90 hover:bg-[#bb9034] backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider transition cursor-pointer shadow-xl border border-[#bb9034]/50 flex items-center gap-2 hover:scale-105"
-                >
-                  <Eye size={15} className="text-[#c9a874]" /> Expand Full View
-                </button>
+                <span className="px-4 py-2 rounded-full bg-[#852541]/95 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider shadow-xl border border-[#bb9034]/60 flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-[#c9a874]" /> MahaRERA: PR1190002501512
+                </span>
               </div>
 
               {/* Bottom Title Info */}
@@ -371,11 +357,17 @@ export default function RiddhiSiddhiDetails() {
                 </p>
               </div>
 
-              {/* High-Impact CTA Button Bar */}
-              <div className="pt-6 border-t border-[#bb9034]/30 flex flex-col sm:flex-row items-center justify-end gap-5 relative z-10">
+              {/* High-Impact CTA Button & QR Code Bar */}
+              <div className="pt-6 border-t border-[#bb9034]/30 flex flex-col sm:flex-row items-center justify-between gap-5 relative z-10">
+                {/* QR Code Box */}
+                <div className="flex flex-col items-center justify-center bg-white p-3 rounded-2xl border border-[#bb9034]/30 shadow-sm w-full sm:w-auto text-center">
+                  <img src={qrCodeImg} alt="QR Code" className="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-xl p-1 bg-white border border-[#bb9034]/20 shadow-sm" />
+                  <span className="text-xs font-bold text-[#852541] uppercase tracking-wider mt-2 block">Scan QR Code</span>
+                </div>
+
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="w-full sm:w-auto bg-[#852541] hover:bg-[#6B1C33] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer border border-[#bb9034]/50 hover:scale-105"
+                  className="w-full sm:w-auto bg-[#852541] hover:bg-[#6B1C33] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer border border-[#bb9034]/50 hover:scale-105 shrink-0"
                 >
                   <PhoneCall size={15} className="text-[#c9a874] animate-pulse" />
                   <span>Schedule Site Visit</span>
@@ -503,9 +495,6 @@ export default function RiddhiSiddhiDetails() {
                   {/* CONTENT CONTAINER */}
                   <div className="lg:col-span-5 space-y-5">
                     <div className="space-y-2">
-                      <span className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#bb9034]">
-                        0{amenitySlideIndex + 1} / 0{lifestyleAmenities.length}
-                      </span>
                       <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#852541] leading-snug">
                         "{lifestyleAmenities[amenitySlideIndex].tagline}"
                       </h3>
@@ -660,10 +649,7 @@ export default function RiddhiSiddhiDetails() {
             </div>
 
             {/* Slider Navigation Controls */}
-            <div className="flex items-center justify-between pt-2 border-t border-[#bb9034]/20 w-full">
-              <span className="text-xs font-serif italic text-[#bb9034]">
-                Page 0{activeSpecIndex + 1} of 0{fullSpecs.length}
-              </span>
+            <div className="flex items-center justify-end pt-2 border-t border-[#bb9034]/20 w-full">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => {
@@ -707,104 +693,6 @@ export default function RiddhiSiddhiDetails() {
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#852541]">
             Where Everything You Need Is Minutes Away
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 font-light leading-relaxed">
-            Positioned in prestigious Pande Layout, just 50 meters off main London Street — experience peaceful living with 360° proximity to Nagpur's top hubs.
-          </p>
-        </div>
-
-        {/* ── "STANDING AT YOUR DOORSTEP" RADIAL PROXIMITY CARDS ── */}
-        <div className="grid md:grid-cols-3 gap-6 w-full">
-          
-          {/* RADIAL 1: 2-5 MINS WALK */}
-          <div className="bg-white rounded-3xl p-6 border-2 border-[#bb9034]/30 shadow-lg hover:shadow-xl transition duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#FAF7F2] rounded-bl-full flex items-start justify-end p-4 text-[#852541]">
-              <Clock size={22} className="text-[#bb9034]" />
-            </div>
-            <span className="inline-block px-3.5 py-1 rounded-full bg-[#852541] text-white text-[10px] font-bold uppercase tracking-wider mb-4 shadow-sm">
-              🚶 2 – 5 Mins Walk
-            </span>
-            <h3 className="text-xl font-bold text-[#852541] mb-2">
-              Daily Conveniences
-            </h3>
-            <p className="text-xs text-gray-800 mb-4 leading-relaxed" style={{ fontWeight: 600 }}>
-              Step out for fresh morning groceries, baking essentials, banks & evening walks without touching your car.
-            </p>
-            <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Khamla Main Retail Market</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>SBI, HDFC & ICICI Bank ATMs</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>PVR Inox Cinema & Food Outlets</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* RADIAL 2: 5 MINS DRIVE */}
-          <div className="bg-white rounded-3xl p-6 border-2 border-[#852541]/40 shadow-lg hover:shadow-xl transition duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#FAF7F2] rounded-bl-full flex items-start justify-end p-4 text-[#852541]">
-              <Train size={22} className="text-[#852541]" />
-            </div>
-            <span className="inline-block px-3.5 py-1 rounded-full bg-[#bb9034] text-white text-[10px] font-bold uppercase tracking-wider mb-4 shadow-sm">
-              🚗 5 Mins Drive
-            </span>
-            <h3 className="text-xl font-bold text-[#852541] mb-2">
-              Education & Transit Hubs
-            </h3>
-            <p className="text-xs text-gray-800 mb-4 leading-relaxed" style={{ fontWeight: 600 }}>
-              Seamless commute for children & daily office goers with top schools & rapid metro connectivity nearby.
-            </p>
-            <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#852541] shrink-0" />
-                <span>Somalwar High School & College</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#852541] shrink-0" />
-                <span>Jaiprakash Nagar Metro Station</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#852541] shrink-0" />
-                <span>Orange City Hospital & Research</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* RADIAL 3: 10-15 MINS DRIVE */}
-          <div className="bg-white rounded-3xl p-6 border-2 border-[#bb9034]/30 shadow-lg hover:shadow-xl transition duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-[#FAF7F2] rounded-bl-full flex items-start justify-end p-4 text-[#852541]">
-              <Plane size={22} className="text-[#bb9034]" />
-            </div>
-            <span className="inline-block px-3.5 py-1 rounded-full bg-[#852541] text-white text-[10px] font-bold uppercase tracking-wider mb-4 shadow-sm">
-              🚘 10 – 15 Mins Drive
-            </span>
-            <h3 className="text-xl font-bold text-[#852541] mb-2">
-              Airport & Mega Malls
-            </h3>
-            <p className="text-xs text-gray-800 mb-4 leading-relaxed" style={{ fontWeight: 600 }}>
-              Effortless connectivity to international flights, central railway junction & premier shopping destinations.
-            </p>
-            <ul className="space-y-2 pt-2 border-t border-[#bb9034]/20 text-xs text-gray-700">
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Westside & Pantaloons Malls</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Lenskart & Trends Malls</span>
-              </li>
-              <li className="flex items-center gap-2 font-medium">
-                <CheckCircle2 size={14} className="text-[#bb9034] shrink-0" />
-                <span>Nagpur International Airport</span>
-              </li>
-            </ul>
-          </div>
-
         </div>
 
         {/* ── CATEGORIZED LANDMARK HOTSPOTS SHOWCASE ── */}
@@ -883,7 +771,7 @@ export default function RiddhiSiddhiDetails() {
           {/* Direct Action Buttons & Map Links */}
           <div className="pt-5 border-t border-[#bb9034]/20 grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
             <a
-              href="https://maps.google.com/?q=32-A,+Deep+Apartment,+Pande+Layout,+Khamla+Road,+Nagpur"
+              href="https://www.google.com/maps/search/?api=1&query=4337%2BWXW%2C+LONDON+STREET%2C+Pande+Layout%2C+Khamla%2C+Nagpur%2C+Maharashtra+440025"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-[#852541] hover:bg-[#bb9034] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
@@ -894,17 +782,17 @@ export default function RiddhiSiddhiDetails() {
             </a>
 
             <a
-              href="https://wa.me/919921294799?text=Hello%20Devang%20Developers%2C%20please%20send%20me%20the%20exact%20location%20pin%20for%20Riddhi%20Siddhi%203."
+              href="https://wa.me/919822286549?text=Hello%20Devang%20Developers%2C%20please%20send%20me%20the%20exact%20location%20pin%20for%20Riddhi%20Siddhi%203."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-[#25D366] hover:bg-[#1DA851] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
             >
               <MessageSquare size={14} className="shrink-0" />
-              <span className="truncate">WhatsApp Location Pin</span>
+              <span className="truncate">WhatsApp</span>
             </a>
 
             <a
-              href="tel:+919921042899"
+              href="tel:+919822286549"
               className="w-full bg-[#bb9034] hover:bg-[#852541] text-white py-3 px-3.5 rounded-2xl text-[11px] sm:text-xs font-bold uppercase tracking-wider transition shadow-md flex items-center justify-center gap-1.5 cursor-pointer text-center"
             >
               <PhoneCall size={14} className="shrink-0" />
@@ -918,12 +806,12 @@ export default function RiddhiSiddhiDetails() {
         <div className="grid sm:grid-cols-3 gap-6 pt-4">
           <div className="bg-white p-6 rounded-2xl border border-[#bb9034]/30 shadow-sm text-center space-y-2">
             <div className="w-12 h-12 rounded-full bg-[#FAF7F2] text-[#852541] flex items-center justify-center mx-auto shadow-sm border border-[#bb9034]/30">
-              <ShieldCheck size={24} className="text-[#bb9034]" />
+              <Navigation size={24} className="text-[#bb9034]" />
             </div>
-            <h4 className="text-sm font-bold text-[#852541]">Zero Traffic Noise</h4>
+            <h4 className="text-sm font-bold text-[#852541]">Direct London Street Access</h4>
             <p className="text-xs text-gray-600 font-light leading-relaxed">
-              Live peacefully just 50 metres from London Street, with easy connectivity and less traffic noise.
-              </p>
+              Situated directly on London Street, offering unmatched frontage, prime urban connectivity, and effortless access across Nagpur.
+            </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-[#bb9034]/30 shadow-sm text-center space-y-2">
@@ -959,7 +847,7 @@ export default function RiddhiSiddhiDetails() {
           className="inline-flex items-center gap-2.5 bg-white hover:bg-[#852541] text-[#852541] hover:text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-xl border-2 border-[#bb9034]/40 cursor-pointer hover:scale-105 group"
         >
           <ChevronLeft size={18} className="text-[#bb9034] group-hover:text-white transition-colors" />
-          <span>Back to Projects Portfolio</span>
+          <span>See Other Project Portfolio</span>
         </button>
       </div>
 
@@ -1048,7 +936,7 @@ export default function RiddhiSiddhiDetails() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 99210 XXXXX"
+                      placeholder="+91 98222 XXXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-4 py-3 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"

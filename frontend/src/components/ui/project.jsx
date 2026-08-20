@@ -34,6 +34,7 @@ import {
 
 // ── Ongoing Flagship Project Image ────────────────────────────────
 import riddhiSiddhiImg from "../../assets/projects/riddhisiddhibuilding.jpg";
+import qrCodeImg from "../../assets/Qrcode-1.png";
 
 // ── Data ──────────────────────────────────────────────────────────
 
@@ -49,7 +50,7 @@ const flagshipProject = {
   tagline: "Ongoing High-Rise Residential Landmark",
   location: "London Street, Nagpur",
   image: riddhiSiddhiImg,
-  rera: "RERA Approved: P505000XXXX",
+  rera: "RERA Approved: PR1190002501512",
   status: "Under Construction",
   completion: "Target Q4 2025",
   units: "3 BHK Premium Residences",
@@ -58,11 +59,11 @@ const flagshipProject = {
   specs: [
     { title: "Structure", desc: "RCC Earthquake Resistant Frame", detail: "Fe550 grade steel & high-strength concrete" },
     { title: "Flooring", desc: "Vitrified Premium Tiles", detail: "800x800mm Italian finish vitrified tiles" },
-    { title: "Security", desc: "24/7 Smart Gated Security", detail: "Multi-tier security with CCTV surveillance" },
+    { title: "Security", desc: "24/7 Smart Gated Security", detail: "Advanced Safety & Security" },
     { title: "Power Backup", desc: "100% Common Area Backup", detail: "Auto DG generator for elevators & lighting" },
   ],
   amenities: [
-    { icon: ShieldCheck, label: "24/7 Gated Security", desc: "CCTV surveillance & smart entry gates" },
+    { icon: ShieldCheck, label: "24/7 Gated Security", desc: "Advanced Safety & Security" },
     { icon: Trees, label: "Avenue Plantation", desc: "Landscaped green gardens & paved walkways" },
     { icon: Droplets, label: "24h Water Supply", desc: "Hydro-pneumatic pumping system" },
     { icon: Zap, label: "Power Backup", desc: "Auto DG backup for essential services" },
@@ -70,10 +71,11 @@ const flagshipProject = {
     { icon: Route, label: "Wide Access Roads", desc: "Ample turning radius & paved driveways" },
   ],
   highlights: [
-    "100% Vastu Compliant Efficient Layouts",
+    
+    
     "3 Automatic High-Speed Lifts (Incl. 1 Stretcher Lift)",
-    "Solar-Powered Common Areas & Rooftop Power",
-    "Advanced Safety & Security (CCTV & Intercom)",
+    "Solar Power Provision for Common Areas",
+    "Advanced Safety & Security",
   ],
   progress: [
     { stage: "RCC Structure & Slab Work", percentage: 90 },
@@ -162,28 +164,30 @@ function Project() {
               alt={flagshipProject.name}
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
+            {/* Balanced Dark Overlay Scrim for Image Clarity + Text Contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 via-40% to-transparent pointer-events-none z-[5]" />
             <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
             {/* Floating Badges */}
-            <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
-              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#852541] text-[#c9a874] text-xs font-bold">
-                <ShieldCheck size={16} className="text-[#bb9034]" /> {flagshipProject.rera}
+            <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-20">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#852541]/95 border border-white/40 text-white text-xs font-bold shadow-xl backdrop-blur-md">
+                <ShieldCheck size={16} className="text-white" /> {flagshipProject.rera}
               </span>
-              <span className="px-4 py-2 rounded-full bg-[#bb9034] text-white text-xs font-bold uppercase tracking-wider">
+              <span className="px-4 py-2 rounded-full bg-[#852541]/95 border border-white/40 text-white text-xs font-bold uppercase tracking-wider shadow-xl backdrop-blur-md">
                 {flagshipProject.status}
               </span>
             </div>
 
             {/* Bottom Title Info */}
-            <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 z-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              <span className="text-xs uppercase tracking-[0.2em] text-[#e5c178] font-bold block">
+            <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 z-20">
+              <span className="text-xs uppercase tracking-[0.25em] text-white font-black block drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
                 {flagshipProject.tagline}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#E5C178] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
                 Riddhi Siddhi ~III~
               </h2>
-              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-medium">
-                <MapPin size={15} className="text-[#bb9034]" /> {flagshipProject.location}
+              <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white font-semibold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                <MapPin size={15} className="text-white" /> {flagshipProject.location}
               </p>
             </div>
           </div>
@@ -206,7 +210,7 @@ function Project() {
                 <div className="relative">
                   {(() => {
                     const options = [
-                      { id: "overview", label: "Overview & Summary" },
+                      { id: "overview", label: "Overview" },
                       { id: "specs", label: "Structural Quality" },
                       { id: "amenities", label: "Amenities Showcase" },
                       { id: "location", label: "Location Advantage" },
@@ -270,18 +274,27 @@ function Project() {
                     </p>
                   </div>
 
-                  {/* Highlights Bullet List */}
+                  {/* Highlights Bullet List & QR Code Side-by-Side */}
                   <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-[#bb9034]/25 space-y-3 w-full">
                     <h4 className="text-xs uppercase tracking-widest text-[#852541] font-bold flex items-center gap-1.5">
                       <Sparkles size={14} className="text-[#bb9034] shrink-0" /> Key Highlights
                     </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700 w-full">
-                      {flagshipProject.highlights.map((h, idx) => (
-                        <div key={idx} className="flex items-start gap-2 bg-[#FBF9F6] p-2 rounded-lg border border-[#bb9034]/10">
-                          <Check size={14} className="text-[#bb9034] shrink-0 mt-0.5" />
-                          <span className="font-medium text-gray-800 break-words leading-tight">{h}</span>
-                        </div>
-                      ))}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-center w-full">
+                      <div className="sm:col-span-8 grid grid-cols-1 gap-2 text-xs text-gray-700 w-full">
+                        {flagshipProject.highlights.map((h, idx) => (
+                          <div key={idx} className="flex items-start gap-2 bg-[#FBF9F6] p-2.5 rounded-lg border border-[#bb9034]/10">
+                            <Check size={14} className="text-[#bb9034] shrink-0 mt-0.5" />
+                            <span className="font-medium text-gray-800 break-words leading-tight">{h}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Larger QR Code Box */}
+                      <div className="sm:col-span-4 bg-[#FBF9F6] p-3 rounded-xl border border-[#bb9034]/20 text-center flex flex-col items-center justify-center shadow-sm">
+                        <img src={qrCodeImg} alt="QR Code" className="w-28 h-28 sm:w-32 sm:h-32 object-contain rounded-xl p-1.5 bg-white border border-[#bb9034]/25 shadow-sm" />
+                        <span className="text-xs font-bold text-[#852541] uppercase tracking-wider mt-2 block">Scan QR Code</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -374,6 +387,20 @@ function Project() {
 
       </section>
 
+      {/* ── SEE OTHER PROJECT PORTFOLIO BUTTON (BENEATH RIDDHI SIDDHI III SECTION) ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex justify-center text-center">
+        <button
+          onClick={() => {
+            window.scrollTo(0, 0);
+            navigate("/project?tab=completed", { state: { tab: "completed" } });
+          }}
+          className="inline-flex items-center gap-3 bg-white hover:bg-[#852541] text-[#852541] hover:text-white px-8 py-4 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest transition-all duration-300 shadow-lg hover:shadow-2xl border-2 border-[#bb9034] cursor-pointer hover:scale-105 group"
+        >
+          <ArrowRight size={20} className="text-[#bb9034] group-hover:text-white transition-colors" />
+          <span>See Other Project Portfolio</span>
+        </button>
+      </div>
+
 
 
       {/* ── ENQUIRY MODAL ───────────────────────────────────────────────── */}
@@ -417,7 +444,7 @@ function Project() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98220 XXXXX"
+                      placeholder="+91 98222 XXXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-white border border-[#bb9034]/30 rounded-xl px-3.5 py-2.5 text-xs text-gray-800 focus:outline-none focus:border-[#852541]"

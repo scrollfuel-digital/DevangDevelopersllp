@@ -129,15 +129,12 @@ export default function Contact() {
                       size={18}
                       className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10"
                     />
-                    <select
-                      defaultValue=""
-                      required
-                      className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none focus:border-[#852541] focus:ring-1 focus:ring-[#852541] transition bg-white text-gray-700"
-                    >
-                      <option value="" disabled>Select Project *</option>
-                      <option value="riddhi-siddhi">Riddhi Siddhi 3 (London Street)</option>
-                      <option value="wing-c">Wing C 129 RSH</option>
-                    </select>
+                    <input
+                      type="text"
+                      value="Riddhi Siddhi (London Street)"
+                      readOnly
+                      className="w-full rounded-xl border border-[#bb9034]/30 py-4 pl-12 pr-4 outline-none bg-[#FAF7F2] text-[#852541] font-bold cursor-default"
+                    />
                   </div>
                 </div>
 
@@ -186,9 +183,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-serif font-bold text-lg text-[#852541]">Phone Number</h4>
                   <p className="text-gray-700 text-sm mt-1 leading-relaxed">
-                    +91 9921042899
-                    <br />
-                    +91 9921294799
+                    +91 98222 86549
                   </p>
                 </div>
               </div>

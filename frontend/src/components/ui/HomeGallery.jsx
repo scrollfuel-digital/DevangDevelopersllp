@@ -23,6 +23,14 @@ const FEATURED_PROJECTS = [
     type: "High-Rise Tower",
     image: riddhiSiddhiImg,
     description: "A luxury architectural landmark offering modern apartments & community living.",
+    width: "100%",                  // Main image width in px or % (e.g. '800px', '100%')
+    height: "500px",                // Main image height in px or % (e.g. '500px', '450px')
+    thumbWidth: "56px",             // Thumbnail width in px
+    thumbHeight: "56px",            // Thumbnail height in px
+    fit: "object-cover",            // Fit mode: 'object-cover', 'object-contain', 'object-fill'
+    position: "object-center",      // Alignment position: 'object-center', 'object-top', etc.
+    scale: "group-hover:scale-105", // Hover scale effect
+    style: {},                      // Custom inline style overrides
   },
   {
     id: 2,
@@ -31,6 +39,14 @@ const FEATURED_PROJECTS = [
     type: "Group Housing",
     image: mangalmurtiImg,
     description: "Innovative group housing development by Devprath / Devang Developers.",
+    width: "100%",
+    height: "500px",
+    thumbWidth: "56px",
+    thumbHeight: "56px",
+    fit: "object-cover",
+    position: "object-center",
+    scale: "group-hover:scale-105",
+    style: {},
   },
   {
     id: 3,
@@ -39,6 +55,14 @@ const FEATURED_PROJECTS = [
     type: "Residential Landmark",
     image: riddhiSiddhiHeightsImg,
     description: "Iconic residential tower located in the heart of Dharampeth.",
+    width: "100%",
+    height: "500px",
+    thumbWidth: "56px",
+    thumbHeight: "56px",
+    fit: "object-cover",
+    position: "object-center",
+    scale: "group-hover:scale-105",
+    style: {},
   },
   {
     id: 4,
@@ -47,6 +71,14 @@ const FEATURED_PROJECTS = [
     type: "Premium Apartments",
     image: gaurisutImg,
     description: "Contemporary apartment residence designed for comfort & peace.",
+    width: "100%",
+    height: "500px",
+    thumbWidth: "56px",
+    thumbHeight: "56px",
+    fit: "object-cover",
+    position: "object-center",
+    scale: "group-hover:scale-105",
+    style: {},
   },
 ];
 
@@ -104,7 +136,12 @@ export default function HomeGallery() {
             <img
               src={activeItem.image}
               alt={activeItem.title}
-              className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-105"
+              style={{
+                width: activeItem.width || "100%",
+                height: activeItem.height || "100%",
+                ...activeItem.style,
+              }}
+              className={`absolute inset-0 ${activeItem.fit || "object-cover"} ${activeItem.position || "object-center"} transition-all duration-1000 ease-out ${activeItem.scale || "group-hover:scale-105"}`}
             />
 
             {/* Gradient Overlay */}
@@ -150,7 +187,7 @@ export default function HomeGallery() {
               <span className="text-xs uppercase tracking-[0.2em] text-[#B98D45] font-bold">
                 Select Project
               </span>
-              <span className="text-xs text-gray-400 font-mono">0{activeIdx + 1} / 04</span>
+              <span className="text-xs text-gray-500 font-bold">0{activeIdx + 1} / 04</span>
             </div>
 
             <div className="space-y-3">
@@ -169,7 +206,11 @@ export default function HomeGallery() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-14 h-14 rounded-xl object-cover border border-[#E8DDD3] shrink-0"
+                      style={{
+                        width: item.thumbWidth || "56px",
+                        height: item.thumbHeight || "56px",
+                      }}
+                      className={`rounded-xl ${item.thumbFit || "object-cover"} ${item.thumbPosition || "object-center"} border border-[#E8DDD3] shrink-0`}
                     />
                     <div>
                       <h4 className="font-serif font-bold text-sm text-[#54152B] leading-snug">

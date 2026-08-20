@@ -10,6 +10,7 @@ const SLIDES = [
     image: rs3HeroFullImg,
     eyebrow: 'Ongoing Luxury Flagship',
     title: ['RIDDHI SIDDHI', '~ III ~'],
+    titleColor: 'text-[#E5C178]',
     subtitle:
       'A striking high-rise residential tower crafted for peaceful community living with excellent connectivity on London Street, Nagpur.',
   },
@@ -17,6 +18,7 @@ const SLIDES = [
     image: dharampethImg,
     eyebrow: 'Completed Landmark',
     title: ['DHARAMPETH', 'BUILDING'],
+    titleColor: 'text-[#E5C178]',
     subtitle:
       '25+ years of iconic architecture & premium living landmarks in Nagpur — crafted with superior quality.',
   },
@@ -24,6 +26,7 @@ const SLIDES = [
     image: mangalmurtiImg,
     eyebrow: 'Completed Landmark',
     title: ['MANGALMURTI', 'RESIDENCY'],
+    titleColor: 'text-[#E5C178]',
     subtitle:
       'A striking residential development crafted for peaceful community living and modern lifestyle amenities.',
   },
@@ -31,6 +34,7 @@ const SLIDES = [
     image: kirtiKalyaniHeroImg,
     eyebrow: 'Completed Landmark',
     title: ['KIRTI KALYANI', 'APARTMENT'],
+    titleColor: 'text-[#E5C178]',
     subtitle:
       'Uncompromising civil engineering standards and thoughtful residential layout design in prime Nagpur.',
   },
@@ -45,7 +49,7 @@ const Icon = ({ path }) => (
 const SOCIALS = [
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/919921042899?text=Hello%20Devang%20Developers%2C%20I%20am%20interested%20in%20your%20projects.',
+    href: 'https://wa.me/919822286549?text=Hello%20Devang%20Developers%2C%20I%20am%20interested%20in%20your%20projects.',
     path: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m0-18.067c-4.512 0-8.186 3.674-8.188 8.187 0 1.442.377 2.85 1.096 4.094l.169.294-.648 2.368 2.424-.636.284.168a8.14 8.14 0 004.86 1.572h.003c4.512 0 8.186-3.674 8.188-8.187A8.13 8.13 0 0017.854 4.3 8.13 8.13 0 0012.051 1.9',
   },
   {
@@ -322,13 +326,13 @@ const Home = () => {
         <Strips image={SLIDES[current].image} revealed={revealed} settled={settled} mode="enter" />
       </div>
 
-      {/* grey tint overlay for legibility + mood, sits above both image layers */}
-      <div className="absolute inset-0 z-[2] pointer-events-none bg-[linear-gradient(270deg,rgba(18,17,15,0.62)_0%,rgba(18,17,15,0.38)_42%,rgba(18,17,15,0.22)_75%,rgba(18,17,15,0.32)_100%)]" />
-      <div className="absolute inset-0 z-[2] pointer-events-none bg-[#1a1815]/25" />
+      {/* Perfectly balanced dark gradient overlay scrim for image clarity + strong text backdrop */}
+      <div className="absolute inset-0 z-[2] pointer-events-none bg-[linear-gradient(270deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.48)_50%,rgba(0,0,0,0.25)_100%)]" />
+      <div className="absolute inset-0 z-[2] pointer-events-none bg-black/25" />
 
       {/* Social rail */}
       <div className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 z-10 flex-col items-center gap-3">
-        <span className="h-10 w-px bg-[#F3EEE6]/25" />
+        <span className="h-10 w-px bg-white/40" />
         {SOCIALS.map((s) => (
           <a
             key={s.label}
@@ -336,7 +340,7 @@ const Home = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={s.label}
-            className="w-11 h-11 rounded-full bg-[#1a1815]/50 backdrop-blur-md border border-[#F3EEE6]/30 flex items-center justify-center text-[#F3EEE6] hover:bg-[#A9814A] hover:border-[#A9814A] hover:scale-110 transition-all duration-300 shadow-lg"
+            className="w-11 h-11 rounded-full bg-black/60 backdrop-blur-md border border-white/40 flex items-center justify-center text-white hover:bg-[#852541] hover:border-white hover:scale-110 transition-all duration-300 shadow-xl"
           >
             <Icon path={s.path} />
           </a>
@@ -347,21 +351,21 @@ const Home = () => {
       <div className="hidden md:flex absolute left-32 top-1/2 -translate-y-1/2 z-10 items-center gap-10 font-serif">
         <button
           onClick={() => goTo(current - 1)}
-          className="flex items-center gap-3 text-[#852541] hover:text-[#6B1C33] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110"
+          className="flex items-center gap-3 text-white hover:text-[#c9a874] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
         >
           <svg width="22" height="14" viewBox="0 0 16 10" fill="none">
-            <path d="M15 5H1M1 5L5.5 1M1 5L5.5 9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M15 5H1M1 5L5.5 1M1 5L5.5 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span className="text-base sm:text-lg font-extrabold tracking-[0.25em] uppercase">Prev</span>
+          <span className="text-base sm:text-lg font-black tracking-[0.25em] uppercase">Prev</span>
         </button>
 
         <button
           onClick={() => goTo(current + 1)}
-          className="flex items-center gap-3 text-[#852541] hover:text-[#6B1C33] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110"
+          className="flex items-center gap-3 text-white hover:text-[#c9a874] transition-all duration-300 font-extrabold cursor-pointer hover:scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
         >
-          <span className="text-base sm:text-lg font-extrabold tracking-[0.25em] uppercase">Next</span>
+          <span className="text-base sm:text-lg font-black tracking-[0.25em] uppercase">Next</span>
           <svg width="22" height="14" viewBox="0 0 16 10" fill="none">
-            <path d="M1 5H15M15 5L10.5 1M15 5L10.5 9" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M1 5H15M15 5L10.5 1M15 5L10.5 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
@@ -373,22 +377,22 @@ const Home = () => {
       >
         <span
           key={`eyebrow-${current}`}
-          className="text-[11px] tracking-[0.35em] uppercase text-[#A9814A] font-semibold font-serif"
+          className="text-xs sm:text-sm tracking-[0.35em] uppercase text-white font-extrabold font-serif drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
         >
           <AnimatedChars text={SLIDES[current].eyebrow} baseDelay={100} />
         </span>
 
         <h1
           key={`title-${current}`}
-          className="text-[#F3EEE6] text-[9vw] md:text-[3.6vw] leading-[1.05] font-black font-serif"
+          className={`${SLIDES[current].titleColor || 'text-white'} text-[9vw] md:text-[3.6vw] leading-[1.05] font-black font-serif drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]`}
         >
           <AnimatedTitle lines={SLIDES[current].title} baseDelay={180} />
         </h1>
 
         <p
           key={`subtitle-${current}`}
-          className="text-[#F3EEE6]/85 text-[16px] md:text-[18px] leading-relaxed max-w-md font-serif"
-          style={{ fontWeight: 600 }}
+          className="text-white text-[16px] md:text-[18px] leading-relaxed max-w-md font-serif drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
+          style={{ fontWeight: 700 }}
         >
           <AnimatedWords text={SLIDES[current].subtitle} baseDelay={900} />
         </p>
@@ -399,7 +403,7 @@ const Home = () => {
             window.scrollTo(0, 0);
             navigate("/project");
           }}
-          className="animate-[blockUp_560ms_cubic-bezier(0.65,0,0.35,1)_1650ms_both] mt-2 bg-[#A9814A]/90 text-[#14120F] text-[11px] tracking-[0.25em] uppercase px-8 py-4 rounded-full hover:bg-[#F3EEE6] transition-colors duration-300 font-bold font-serif cursor-pointer"
+          className="animate-[blockUp_560ms_cubic-bezier(0.65,0,0.35,1)_1650ms_both] mt-2 bg-[#A9814A] text-[#14120F] text-xs sm:text-sm  uppercase px-9 py-4 rounded-full hover:bg-white transition-all duration-300 font-black cursor-pointer shadow-xl active:scale-95"
         >
           Learn More
         </button>
